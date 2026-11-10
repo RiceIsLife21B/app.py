@@ -542,7 +542,7 @@ for ing in ingredients:
         formatted_qty_str = f"{formatted_qty:,}"
         st.markdown(f'<div class="ingredient-row"><span class="qty-highlight">{formatted_qty_str} {ing["unit"]}</span> — {ing["name"]}</div>', unsafe_allow_html=True)
 
-    st.write("---")
-    st.markdown('🍳 **Preparation Steps:**', unsafe_allow_html=True)
+st.write("---")
+st.markdown('🍳 **Preparation Steps:**', unsafe_allow_html=True)
     for i, step in enumerate(steps, 1):
         st.markdown(f'<div class="method-step">**{i}.** {step}</div>', unsafe_allow_html=True)
