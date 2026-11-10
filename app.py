@@ -1,3 +1,4 @@
+(import streamlit as st)
 # Force wide mode optimized for iPad landscape view
 st.set_page_config(layout="wide", page_title="Kitchen POS Recipe Hub")
 
