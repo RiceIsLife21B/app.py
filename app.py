@@ -1266,8 +1266,14 @@ with right:
 
 if recipe["notes"]:
     st.divider()
-    st.warning(recipe["notes"])
-
+    st.markdown(
+        f"""
+        <div class="recipe-notes">
+            {recipe["notes"]}
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
 # ==========================================================
 # LOG OUT
