@@ -1062,12 +1062,6 @@ with top_left:
             on_click=go_back,
             use_container_width=True,
         )
-
-with top_center:
-    st.markdown(
-        '<div class="brand-logo">riceislife</div>',
-        unsafe_allow_html=True
-    )
     
 # ==========================================================
 # CATEGORY NAVIGATION
