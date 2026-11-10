@@ -335,7 +335,6 @@ add(
     Brisket can be smoked in advance.~
     Roast in combination setting at 100% humidity, 202°F for 15 hours.
     """,
-    "Brisket quantity is not specified in the original recipe."
 )
 
 add(
