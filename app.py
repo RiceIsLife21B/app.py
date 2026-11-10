@@ -998,12 +998,6 @@ div[class*="st-key-back_"] button {
     white-space: pre-line !important;
     box-sizing: border-box !important;
 }
-/* BACK TO RECIPES — 40% narrower */
-.st-key-back_to_recipes button {
-    width: 60% !important;
-    min-width: 0 !important;
-    max-width: 60% !important;
-}
 </style>
 """, unsafe_allow_html=True)
 
@@ -1084,21 +1078,6 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# ==========================================================
-# LOGO + BACK BUTTON
-# ==========================================================
-
-top_left, top_center, top_right = st.columns([1, 2, 1])
-
-with top_left:
-    if st.session_state.recipe is not None:
-        st.button(
-            "← BACK TO RECIPES",
-            key="back_to_recipes",
-            on_click=go_back,
-            width= "stretch",
-        )
-    
 # ==========================================================
 # CATEGORY NAVIGATION
 # ==========================================================
