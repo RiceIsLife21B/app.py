@@ -436,8 +436,7 @@ add(
     Water|?|not provided
     """,
     "",
-    "INCOMPLETE RECIPE: The original has no measurements "
-    "or preparation method. Do not use until completed."
+    "Confirm ingredients and preparation instructions with Leo."
 )
 
 add(
@@ -642,7 +641,7 @@ add(
     Mix all other ingredients in a pot and bring to a boil.~
     Pour over julienned jalapeños and let sit for 24 hours.~
     """,
-    "DO NOT USE without confirming preparation instructions."
+    "Confirm preparation instructions with Leo."
 )
 
 add(
