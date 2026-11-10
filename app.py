@@ -467,7 +467,7 @@ if "multiplier" not in st.session_state:
     st.session_state.multiplier = 1
 
 # --- STEP 1: CATEGORY SELECTION ---
-st.write("### 🗂️ 1. Choose Category")
+st.write("### 1. Choose Category")
 cat_cols = st.columns(len(categories))
 for idx, cat in enumerate(categories):
     with cat_cols[idx]:
@@ -480,7 +480,7 @@ for idx, cat in enumerate(categories):
 st.write("---")
 
 # --- STEP 2: RECIPE SELECTION ---
-st.write(f"### 🍽️ 2. Select Recipe ({st.session_state.selected_category})")
+st.write(f"### 2. Select Recipe ({st.session_state.selected_category})")
 current_recipes = list(RECIPES[st.session_state.selected_category].keys())
 
 rec_cols = st.columns(3)
