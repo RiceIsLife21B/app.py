@@ -190,7 +190,7 @@ RECIPES = {
                 "Combine all remaining ingredients except the chives into a smooth, uniform seasoning paste.",
                 "Gently massage the prepared seasoning paste deep into the pieces of chives.",
                 "Leave the finished Kimchi ambient at room temperature or in a designated warm spot for 2 hours.",
-                "Move into cold refrigeration storage; safely hold and store up to 2 weeks."
+                "Refrigerate, store up to 2 weeks."
             ]
         }
     },
@@ -206,8 +206,8 @@ RECIPES = {
                 "Thoroughly combine measured salt and pepper rub mix.",
                 "Season the raw brisket portion generously across all surfaces.",
                 "Cold smoke the seasoned meat using the Rational oven layout for 2 hours.",
-                "Note: You may safely smoke portions ahead of time before execution cooking steps.",
-                "Roast the brisket using the combination oven layout setting at 100% humidity, 202°F for 15 hours straight."
+                "You may get ahead on smoking before cooking.",
+                "Roast brisket in combination setting at 100% humidity, 202°F for 15 hours."
             ]
         },
         "Bulgogi Marinated Beef": {
@@ -223,14 +223,13 @@ RECIPES = {
                 {"name": "Corn Starch", "base_qty": 15, "unit": "g"},
                 {"name": "Ginger", "base_qty": 10, "unit": "g"},
                 {"name": "Dashida (Beef Stock Powder)", "base_qty": 5, "unit": "g"},
+                {"name": "Black Pepper", "base_qty": 3, "unit": "g"}
+            ],
+            "steps": [
 Use code with caution.
-{"name": "Black Pepper", "base_qty": 3, "unit": "g"}
-],
-"steps": [
-"Add measured Garlic, Ginger, and Mirin together into the Vitamix carafe setup.",
-"Grind completely until finely processed and smooth.",
-"Pour into a mixing vessel and incorporate all other recipe ingredients completely.",
-"Bring the complete mixture up to a boil, then pull off heat and let cool fully."
+"Grind Garlic, Ginger finely with Mirin in the Vitamix.",
+"Then mix everything together.",
+"Bring to boil, let cool."
 ]
 },
 "Chicken Brine Formulation": {
@@ -244,9 +243,8 @@ Use code with caution.
 {"name": "Ginger (Crushed)", "base_qty": 15, "unit": "g"}
 ],
 "steps": [
-"Whisk all calculated brine recipe components together inside a clean prep tub.",
-"Continue mixing until the sugar and salts dissolve into solution completely.",
-"Submerge chicken portions completely under liquid level and brine inside refrigeration storage for 24 hours."
+"Whisk all ingredients together until Sugar dissolves.",
+"Brine Chicken For 24 Hours."
 ]
 },
 "Chicken Fry Batter Mix": {
@@ -258,9 +256,7 @@ Use code with caution.
 {"name": "Club Soda (Chilled)", "base_qty": 1, "unit": "can"}
 ],
 "steps": [
-"Add all dry goods and seasoning inputs together in a clean mixing bowl.",
-"Pour the chilled club soda over the dry ingredients.",
-"Whisk everything smoothly together until the batter contains no flour pockets or dry lumps."
+"Whisk all ingredients together until no lumps."
 ]
 },
 "Dashi Egg Prep & Marinade": {
@@ -275,12 +271,12 @@ Use code with caution.
 {"name": "Whole Raw Eggs", "base_qty": 60, "unit": "pcs"}
 ],
 "steps": [
-"Preheat the kitchen Combi Oven setup to full Steam function at 212°F.",
-"Carefully arrange eggs into a singular layer across a perforated hotel pan layout.",
-"Steam the eggs precisely for 8 minutes.",
-"Immediately pull eggs and shock under cold running water flow until chilled down fully, then peel.",
-"In a saucepan, combine water, tamari, sugar, mirin, salt, and hon dashi; bring to a boil, then let cool completely.",
-"Place your clean, peeled cooked eggs directly down into the cold dashi marinade mix and steep overnight."
+"Preheat Combi Oven to Steam 212°F.",
+"Put one layer of Eggs on a perforated hotel pan.",
+"Steam the Eggs for 8 minutes.",
+"Immediately shock Eggs in cold running water until cool then peel.",
+"Combine all ingredients and bring to boil then let cool.",
+"Place peeled eggs into cold marinade and leave overnight."
 ]
 },
 "Garlic Shrimp Marinade": {
@@ -295,9 +291,7 @@ Use code with caution.
 {"name": "Black Pepper", "base_qty": 2, "unit": "g"}
 ],
 "steps": [
-"Finely process green onions, garlic, and ginger until aromatics are broken down.",
-"Whisk with the canola oil, white vinegar, salt, and black pepper until fully combined.",
-"Incorporate cleanly over prepped shrimp portions and store under cold temperature parameters."
+"Whisk together oil, vinegar, seasonings, and minced aromatics until emulsified."
 ]
 },
 "Mushroom Braised Reduction": {
@@ -313,9 +307,8 @@ Use code with caution.
 {"name": "Shiitake Mushroom (Dried)", "base_qty": 1, "unit": "pc"}
 ],
 "steps": [
-"Submerge dried Shiitake pieces under water line overnight to rehydrate fully.",
-"Combine rehydrated shiitake, soaking liquid, and all remaining recipe inputs into a suitable cook pot.",
-"Bring up to temperature and maintain a steady, gentle simmer for exactly 30 minutes."
+"Soak shiitake with water overnight.",
+"Combine everything into a pot and simmer mushrooms for 30 minutes."
 ]
 }
 },
@@ -328,9 +321,8 @@ Use code with caution.
 {"name": "Dashida / Mushroom Powder", "base_qty": 100, "unit": "g"}
 ],
 "steps": [
-"Measure out the Lemon Juice into a clean mixing beaker container unit.",
-"Add Dashida / Mushroom Powder directly into the juice and stir thoroughly until fully dissolved.",
-"Whisk the completed savory liquid mix into the Hellman's Mayo base until completely smooth."
+"Mix Dashida/Mushroom Powder into Lemon Juice until dissolved.",
+"Whisk mix into Mayo."
 ]
 },
 "Chojang Sauce Base": {
@@ -344,10 +336,8 @@ Use code with caution.
 {"name": "Hon Dashi (Fish Stock Powder)", "base_qty": 130, "unit": "g"}
 ],
 "steps": [
-"Pour the measured Rice Vinegar volume directly into a large container vessel.",
-"Add measured Granulated Sugar, Brown Sugar, Salt, and Hon Dashi stock powder into the vinegar.",
-"Whisk vigorously until all crystalline grains and powders dissolve into the acid fully.",
-"Add the Gochujang paste into the solution last, whisking constantly until perfectly unified."
+"Whisk Sugars, Salt, Hon Dashi into Rice Vinegar.",
+"Add Gochujang last and whisk until Hon Dashi and sugars dissolve."
 ]
 },
 "Hot Mustard Mayo": {
@@ -361,8 +351,7 @@ Use code with caution.
 {"name": "Sugar", "base_qty": 60, "unit": "g"}
 ],
 "steps": [
-"Place all individual formulation inputs together into a clean mixing vessel.",
-"Whisk cleanly and thoroughly until a uniform, smooth emulsion forms."
+"Whisk all ingredients together."
 ]
 },
 "Hot Sauce (House Habanero)": {
@@ -376,9 +365,9 @@ Use code with caution.
 {"name": "Salt", "base_qty": 100, "unit": "g"}
 ],
 "steps": [
-"Roughly chop Habanero and Bell Peppers into uniform processing pieces.",
-"Transfer chopped peppers into the Vitamix blender system setup and grind completely.",
-"Pour pepper mash into a vessel and whisk thoroughly alongside Sherry Vinegar, Water, Sugar, and Salt."
+"Cut Habanero and Bell Peppers into pieces.",
+"Grind Peppers in Vitamix.",
+"Whisk all ingredients together."
 ]
 },
 "Japanese Curry Base": {
@@ -387,17 +376,14 @@ Use code with caution.
 {"name": "Onions", "base_qty": 600, "unit": "g"},
 {"name": "Carrots", "base_qty": 450, "unit": "g"},
 {"name": "Potatoes", "base_qty": 300, "unit": "g"},
-{"name": "Salt", "base_qty": 12.5, "unit": "g"},
+{"name": "Salt", "base_qty": 15, "unit": "g"},
 {"name": "Dashida / Mushroom Powder", "base_qty": 10, "unit": "g"},
-{"name": "Dashi Liquid", "base_qty": 1750, "unit": "ml"},
-{"name": "Sesame Oil", "base_qty": 15, "unit": "g"}
+{"name": "Dashi Liquid", "base_qty": 2000, "unit": "ml"},
+{"name": "Sesame oil", "base_qty": 1, "unit": "To Taste"}
 ],
 "steps": [
-"Heat the measured Sesame Oil over a medium flame in a suitable pot container.",
-"Sauté the prepped onions, carrots, and potatoes until aromatic.",
-"Pour in the Dashi liquid base volume completely.",
-"Stir in the Salt and Dashida / Mushroom Powder seasoning blocks.",
-"Bring the complete pot up to a simmer until vegetables are thoroughly tenderized."
+"Sauté chopped vegetables with sesame oil in a pot until softened.",
+"Add dashi liquid, seasonings, and simmer until thick and tender."
 ]
 },
 "KFC Sauce (Kang-Jeong)": {
@@ -411,42 +397,40 @@ Use code with caution.
 {"name": "MSG", "base_qty": 10, "unit": "g"}
 ],
 "steps": [
-"Gather all sauce components into a large stainless steel prep bowl.",
-"Stir and whisk everything cleanly together until the thick syrup matrix blends fully into a uniform glaze."
+"Mix all ingredients together."
 ]
 },
 "Miso Glaze Formulation": {
 "meta": "NOT HALAL | Sweet Umami Finishing Sauce Coating",
 "ingredients": [
-{"name": "Teriyaki Sauce Base", "base_qty": 100, "unit": "g"},
+{"name": "Teriyaki", "base_qty": 100, "unit": "g"},
 {"name": "Miso Paste", "base_qty": 15, "unit": "g"},
-{"name": "Cornstarch Slurry", "base_qty": 5, "unit": "g"}
+{"name": "Cornstarch Slurry", "base_qty": 1, "unit": "To Taste"}
 ],
 "steps": [
-"Combine measured Teriyaki sauce base and Miso paste together using a fine wire whisk.",
-"Apply gentle heat to the pan until the mixture reaches a low simmer.",
-"Prepare a cold cornstarch slurry solution and slowly stream into the pan while whisking.",
-"Hold the glaze on a rolling simmer for exactly 1 minute to cook out starches and thicken."
+"Whisk together teriyaki and miso paste.",
+"Gently heat until a simmer.",
+"Make a cornstarch slurry with cold water.",
+"Whisk in slurry slowly and simmer for 1 min."
 ]
 },
 "Miso Marinade Paste": {
 "meta": "NOT HALAL | Thick Concentrate Protein Coating Marinade",
 "ingredients": [
-{"name": "Miso Paste", "base_qty": 1000, "unit": "g"},
+{"name": "Miso", "base_qty": 1000, "unit": "g"},
 {"name": "Sugar", "base_qty": 600, "unit": "g"},
 {"name": "Water", "base_qty": 400, "unit": "g"},
 {"name": "Mirin", "base_qty": 200, "unit": "g"},
-{"name": "Soy Sauce", "base_qty": 150, "unit": "g"}
+{"name": "Soy", "base_qty": 150, "unit": "g"}
 ],
 "steps": [
-"Add all elements together into a clean, heavy-duty mixing bin container.",
-"Whisk uniformly until the sugar grains fully dissolve into the thick miso paste suspension."
+"Whisk all ingredients together."
 ]
 },
 "Pickled Jalapeño Blend": {
 "meta": "HALAL | Hot Tangy Brined Jalapeño Blend",
 "ingredients": [
-{"name": "Jalapeño Peppers", "base_qty": 1800, "unit": "g"},
+{"name": "Jalapeño", "base_qty": 1800, "unit": "g"},
 {"name": "Sugar", "base_qty": 500, "unit": "g"},
 {"name": "Tamari", "base_qty": 500, "unit": "g"},
 {"name": "Water", "base_qty": 500, "unit": "g"},
@@ -455,9 +439,8 @@ Use code with caution.
 {"name": "Garlic Cloves", "base_qty": 10, "unit": "pcs"}
 ],
 "steps": [
-"Thoroughly clean jalapeños and prepare garlic inputs.",
-"Place all measured liquid inputs, sugars, salts, and solid ingredients cleanly down into the Vitamix blender vessel.",
-"Run the blender unit engine systematically on high speed parameters until the mixture is completely smooth."
+"Peel and cut carrots, onion, ginger into small chunks.",
+"Combine all ingredients into a Vitamix, blend until smooth."
 ]
 }
 }
