@@ -1177,7 +1177,7 @@ with st.container(key="multiplier_row"):
 
     with multiplier_columns[0]:
         st.button(
-            "RESET\n1X",
+            "1X",
             key="reset_multiplier",
             use_container_width=True,
             on_click=select_multiplier,
