@@ -506,7 +506,7 @@ if st.session_state.selected_recipe:
     with display_col1:
         st.write("### 3. Batch Size")
         multipliers_list = [
-            ("1x", 1), ("1.5x, 1.5), ("2x", 2), ("3x", 3),
+            ("1x", 1), ("2x", 2), ("3x", 3),
             ("4x", 4), ("5x", 5), ("6x", 6),
             ("7x", 7), ("8x", 8), ("9x", 9),
             ("10x", 10), ("20x", 20), ("30x", 30)
