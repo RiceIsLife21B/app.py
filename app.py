@@ -317,32 +317,39 @@ if st.session_state.selected_recipe:
     recipe_data = RECIPES[st.session_state.selected_category][recipe_name]
     ingredients = recipe_data["ingredients"]
     steps = recipe_data["steps"]
-    display_col1, display_col2 = st.columns(2)
-with display_col1:
-    st.write("### 🎛️ 3. Batch Size")
-# Grid layout for large multi-size multiplier layout
-multipliers_list = [
-("1x Base", 1), ("2x Double", 2), ("3x Triple", 3),
-("4x Quad", 4), ("5x Batch", 5), ("6x Batch", 6),
-("7x Batch", 7), ("8x Batch", 8), ("9x Batch", 9),
-("10x Bulk", 10), ("20x Massive", 20)
-]
-for btn_label, value in multipliers_list:
-    if st.button(btn_label, key=f"mult_{value}", type="primary" if st.session_state.multiplier == value else "secondary"):
-        st.session_state.multiplier = value
-        st.rerun()
-with display_col2:
-    st.markdown(f'{recipe_name}', unsafe_allow_html=True)
-    st.markdown(f'{recipe_data["meta"]} — Scaling Level: {st.session_state.multiplier}x', unsafe_allow_html=True)
-    st.write("📋 Scaled Ingredient List:")
-    for ing in ingredients:
-        scaled_qty = ing["base_qty"] * st.session_state.multiplier
-        formatted_qty = int(scaled_qty) if scaled_qty % 1 == 0 else round(scaled_qty, 2)
-        formatted_qty_str = f"{formatted_qty:,}"
-        st.markdown(
-f'{formatted_qty_str} {ing["unit"]} — {ing["name"]}',
-unsafe_allow_html=True
-)
-st.markdown('🍳 Preparation Steps', unsafe_allow_html=True)
-for i, step in enumerate(steps, 1):
-    st.markdown(f'{i}. {step}', unsafe_allow_html=True)
+    display_col1, display_col2 = st.columns([1, 2])
+
+    with display_col1:
+        st.write("### 🎛️ 3. Batch Size")
+        multipliers_list = [
+            ("1x Base", 1), ("2x Double", 2), ("3x Triple", 3),
+            ("4x Quad", 4), ("5x Batch", 5), ("6x Batch", 6),
+            ("7x Batch", 7), ("8x Batch", 8), ("9x Batch", 9),
+            ("10x Bulk", 10), ("20x Massive", 20)
+        ]
+        
+        # Grid arrangement for batch buttons so they don't stretch vertically
+        btn_cols = st.columns(2)
+        for idx, (btn_label, value) in enumerate(multipliers_list):
+            col_target = btn_cols[idx % 2]
+            with col_target:
+                if st.button(btn_label, key=f"mult_{value}", type="primary" if st.session_state.multiplier == value else "secondary"):
+                    st.session_state.multiplier = value
+                    st.rerun()
+            
+    with display_col2:
+        st.markdown(f'<div class="recipe-title">{recipe_name}</div>', unsafe_allow_html=True)
+        st.markdown(f'<div class="recipe-meta">{recipe_data["meta"]} — Scaling Level: {st.session_state.multiplier}x</div>', unsafe_allow_html=True)
+        st.write("---")
+        
+        st.write("📋 **Scaled Ingredient List:**")
+        for ing in ingredients:
+            scaled_qty = ing["base_qty"] * st.session_state.multiplier
+            formatted_qty = int(scaled_qty) if scaled_qty % 1 == 0 else round(scaled_qty, 2)
+            formatted_qty_str = f"{formatted_qty:,}"
+            st.markdown(f'<div class="ingredient-row"><span class="qty-highlight">{formatted_qty_str} {ing["unit"]}</span> — {ing["name"]}</div>', unsafe_allow_html=True)
+            
+        st.write("---")
+        st.markdown('<div class="method-header">🍳 Preparation Steps</div>', unsafe_allow_html=True)
+        for i, step in enumerate(steps, 1):
+            st.markdown(f'<div class="method-step">**{i}.** {step}</div>', unsafe_allow_html=True)
