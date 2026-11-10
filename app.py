@@ -516,14 +516,14 @@ with display_col1:
             ("4x Quad", 4), ("5x Batch", 5), ("6x Batch", 6),
             ("7x Batch", 7), ("8x Batch", 8), ("9x Batch", 9),
             ("10x Bulk", 10), ("20x Massive", 20), ("30x Batch", 30)
-        ]
+]
         
-        btn_cols = st.columns(2)
-        for idx, (btn_label, value) in enumerate(multipliers_list):
-            col_target = btn_cols[idx % 2]
-            with col_target:
+btn_cols = st.columns(2)
+    for idx, (btn_label, value) in enumerate(multipliers_list):
+    col_target = btn_cols[idx % 2]
+    with col_target:
         
-display_col1, display_col2 = st.columns([1, 2])
+    display_col1, display_col2 = st.columns([1, 2])
 
 with display_col1:
         with col_target:
