@@ -1085,12 +1085,10 @@ with logo_center:
 with back_right:
     if st.session_state.recipe is not None:
         st.button(
-            "← BACK TO RECIPES",
-            key="back_to_recipes",
-            on_click=go_back,
-            use_container_width=True,
-        )
-
+    "← BACK TO RECIPES",
+    key="back_to_recipes",
+    on_click=go_back,
+)
 
 # ==========================================================
 # RECIPE SELECTION PAGE
