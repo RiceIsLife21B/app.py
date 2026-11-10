@@ -945,7 +945,8 @@ div[class*="st-key-reset_"] button {
     }
 
     div[class*="st-key-cat_"] button {
-        min-height: 108px;
+    min-height: 54px;
+    height: 54px;
     }
 
     div[class*="st-key-recipe_"] button {
