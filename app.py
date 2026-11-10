@@ -171,10 +171,7 @@ add(
     Blend vegetables with vinegar in Vitamix until smooth.~
     Combine blended vegetables with remaining ingredients and whisk until smooth.
     """,
-    "IMPORTANT: Original specifies making two separate 5X batches for 10X. "
-    "Original method says white vinegar, while ingredients say white vinegar. "
-    "Confirm which is correct before production."
-)
+    "IMPORTANT: Original specifies making two separate 5X batches for 10X, NOT a 10X batch.")
 
 add(
     "HOUSE MAYO", SAUCE,
