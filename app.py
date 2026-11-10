@@ -494,23 +494,20 @@ for idx, rec in enumerate(current_recipes):
 st.write("---")
 
 # --- STEP 3: SPLIT INTERFACE PANEL ---
-if "selected_category" in st.session_state and "selected_recipe" in st.session_state:
-    if st.session_state.selected_category not in RECIPES:
-        st.session_state.selected_category = list(RECIPES.keys())[0]
-        st.session_state.selected_recipe = list(RECIPES[st.session_state.selected_category].keys())[0]
-        st.rerun()
-        
-    if st.session_state.selected_recipe not in RECIPES[st.session_state.selected_category]:
-        st.session_state.selected_recipe = list(RECIPES[st.session_state.selected_category].keys())[0]
-        st.rerun()
+# Force reset session state if browser memory has old category names
+if st.session_state.selected_category not in RECIPES:
+    st.session_state.selected_category = list(RECIPES.keys())[0]
+    st.session_state.selected_recipe = list(RECIPES[st.session_state.selected_category].keys())[0]
 
-    recipe_name = st.session_state.selected_recipe
-    recipe_data = RECIPES[st.session_state.selected_category][recipe_name]
-    ingredients = recipe_data["ingredients"]
-    steps = recipe_data["steps"]
+if st.session_state.selected_recipe not in RECIPES[st.session_state.selected_category]:
+    st.session_state.selected_recipe = list(RECIPES[st.session_state.selected_category].keys())[0]
 
-    display_col1, display_col2 = st.columns(2)
+recipe_name = st.session_state.selected_recipe
+recipe_data = RECIPES[st.session_state.selected_category][recipe_name]
+ingredients = recipe_data["ingredients"]
+steps = recipe_data["steps"]
 
+display_col1, display_col2 = st.columns(2)
     with display_col1:
         st.write("### 3. Batch Size")
         multipliers_list = [
