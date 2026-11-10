@@ -315,7 +315,6 @@ RECIPES = {
 },
 "Sauces + Dressings": {
 "Bulgogi Marinade": {
-"meta": "HALAL | High-Volume Savory Marinade Mix",
 "ingredients": [
 {"name": "White Sugar", "base_qty": 150, "unit": "g"},
 {"name": "Mirin", "base_qty": 150, "unit": "g"},
