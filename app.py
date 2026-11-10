@@ -1110,11 +1110,44 @@ for index, category in enumerate(CATEGORIES):
 # RECIPE SELECTION PAGE
 # ==========================================================
 
+if st.session_state.recipe is None:
+
+    category = st.session_state.category
+
+    recipes = [
+        name for name, data in RECIPES.items()
+        if data["category"] == category
+    ]
+
+    # Display 4 recipe buttons per row
+    for start in range(0, len(recipes), 4):
+        row = st.columns(4, gap="medium")
+
+        for index, name in enumerate(recipes[start:start + 4]):
+            with row[index]:
+                st.button(
+                    name,
+                    key=f"recipe_{start + index}",
+                    use_container_width=True,
+                    on_click=select_recipe,
+                    args=(name,),
+                )
+
+        st.write("")
+
+    # Stop here until a recipe is selected
+    st.stop()
+
+
+# ==========================================================
+# RECIPE DETAIL PAGE
+# ==========================================================
 
 recipe_name = st.session_state.recipe
 recipe = RECIPES[recipe_name]
 
 st.write("")
+
 
 # ==========================================================
 # MULTIPLIER BUTTONS
