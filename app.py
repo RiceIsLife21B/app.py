@@ -335,11 +335,11 @@ with display_col2:
     st.markdown(f'{recipe_name}', unsafe_allow_html=True)
     st.markdown(f'{recipe_data["meta"]} — Scaling Level: {st.session_state.multiplier}x', unsafe_allow_html=True)
     st.write("📋 Scaled Ingredient List:")
-for ing in ingredients:
-    scaled_qty = ing["base_qty"] * st.session_state.multiplier
-    formatted_qty = int(scaled_qty) if scaled_qty % 1 == 0 else round(scaled_qty, 2)
-    formatted_qty_str = f"{formatted_qty:,}"
-    st.markdown(
+    for ing in ingredients:
+        scaled_qty = ing["base_qty"] * st.session_state.multiplier
+        formatted_qty = int(scaled_qty) if scaled_qty % 1 == 0 else round(scaled_qty, 2)
+        formatted_qty_str = f"{formatted_qty:,}"
+        st.markdown(
 f'{formatted_qty_str} {ing["unit"]} — {ing["name"]}',
 unsafe_allow_html=True
 )
