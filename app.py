@@ -1048,27 +1048,6 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-
-# ==========================================================
-# CATEGORY NAVIGATION
-# ==========================================================
-
-category_columns = st.columns(3, gap="medium")
-
-for index, category in enumerate(CATEGORIES):
-    with category_columns[index]:
-        st.button(
-            category.upper(),
-            key=f"cat_{index}",
-            use_container_width=True,
-            on_click=select_category,
-            args=(category,),
-        )
-
-        if st.session_state.category == category:
-            highlight_key(f"cat_{index}")
-
-
 # ==========================================================
 # LOGO + BACK BUTTON
 # ==========================================================
@@ -1089,6 +1068,25 @@ with top_center:
         '<div class="brand-logo">riceislife</div>',
         unsafe_allow_html=True
     )
+    
+# ==========================================================
+# CATEGORY NAVIGATION
+# ==========================================================
+
+category_columns = st.columns(3, gap="medium")
+
+for index, category in enumerate(CATEGORIES):
+    with category_columns[index]:
+        st.button(
+            category.upper(),
+            key=f"cat_{index}",
+            use_container_width=True,
+            on_click=select_category,
+            args=(category,),
+        )
+
+        if st.session_state.category == category:
+            highlight_key(f"cat_{index}")
 
 # ==========================================================
 # RECIPE SELECTION PAGE
