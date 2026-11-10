@@ -528,11 +528,14 @@ with display_col1:
                     st.rerun()
 
 with display_col2:
-        st.markdown(f'## {recipe_name}', unsafe_allow_html=True)
-        st.markdown(f'*{recipe_data["meta"]} — Scaling Level: {st.session_state.multiplier}x*', unsafe_allow_html=True)
-        st.write("---")
+    if st.session_state.selected_recipe not in RECIPES[st.session_state.selected_category]:
+        st.session_state.selected_recipe = list(RECIPES[st.session_state.selected_category].keys())[0]
+        st.rerun()
 
-        st.write("📋 **Scaled Ingredient List:**")
+    recipe_name = st.session_state.selected_recipe
+    recipe_data = RECIPES[st.session_state.selected_category][recipe_name]
+    st.markdown(f'## {recipe_name}', unsafe_allow_html=True)
+    st.markdown(f'*{recipe_data["meta"]} — Scaling Level: {st.session_state.multiplier}x*', unsafe_allow_html=True)
         for ing in ingredients:
             scaled_qty = ing["base_qty"] * st.session_state.multiplier
             formatted_qty = int(scaled_qty) if scaled_qty % 1 == 0 else round(scaled_qty, 2)
