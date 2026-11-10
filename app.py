@@ -536,13 +536,13 @@ with display_col2:
     recipe_data = RECIPES[st.session_state.selected_category][recipe_name]
     st.markdown(f'## {recipe_name}', unsafe_allow_html=True)
     st.markdown(f'*{recipe_data["meta"]} — Scaling Level: {st.session_state.multiplier}x*', unsafe_allow_html=True)
-        for ing in ingredients:
-            scaled_qty = ing["base_qty"] * st.session_state.multiplier
-            formatted_qty = int(scaled_qty) if scaled_qty % 1 == 0 else round(scaled_qty, 2)
-            formatted_qty_str = f"{formatted_qty:,}"
-            st.markdown(f'<div class="ingredient-row"><span class="qty-highlight">{formatted_qty_str} {ing["unit"]}</span> — {ing["name"]}</div>', unsafe_allow_html=True)
+for ing in ingredients:
+        scaled_qty = ing["base_qty"] * st.session_state.multiplier
+        formatted_qty = int(scaled_qty) if scaled_qty % 1 == 0 else round(scaled_qty, 2)
+        formatted_qty_str = f"{formatted_qty:,}"
+        st.markdown(f'<div class="ingredient-row"><span class="qty-highlight">{formatted_qty_str} {ing["unit"]}</span> — {ing["name"]}</div>', unsafe_allow_html=True)
 
-        st.write("---")
-        st.markdown('🍳 **Preparation Steps:**', unsafe_allow_html=True)
-        for i, step in enumerate(steps, 1):
-            st.markdown(f'<div class="method-step">**{i}.** {step}</div>', unsafe_allow_html=True)
+    st.write("---")
+    st.markdown('🍳 **Preparation Steps:**', unsafe_allow_html=True)
+    for i, step in enumerate(steps, 1):
+        st.markdown(f'<div class="method-step">**{i}.** {step}</div>', unsafe_allow_html=True)
