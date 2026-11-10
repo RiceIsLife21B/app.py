@@ -93,7 +93,7 @@ add(
     White Vinegar|15|g;
     Corn Starch|15|g;
     Ginger|10|g;
-    Dashida (Beef Stock Powder)|5|g;
+    Dashida|5|g;
     Black Pepper|3|g
     """,
     """
@@ -111,7 +111,7 @@ add(
     Rice Vinegar|3300|g;
     Brown Sugar|500|g;
     Salt|250|g;
-    Hon Dashi (Fish Stock Powder)|130|g
+    Hon Dashi|130|g
     """,
     """
     Whisk sugars, salt and Hon Dashi into rice vinegar.~
