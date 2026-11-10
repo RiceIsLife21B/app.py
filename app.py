@@ -143,7 +143,7 @@ RECIPES = {
             "ingredients": [
                 {"name": "Green Cabbage", "base_qty": 20000, "unit": "g"},
                 {"name": "Kimchi", "base_qty": 10000, "unit": "g"},
-                {"name": "Sugar", "base_qty": 200, "unit": "g"},
+                {"name": "Sugar", "base_qty": 2000, "unit": "g"},
                 {"name": "Lemon Juice", "base_qty": 2000, "unit": "g"},
                 {"name": "Salt", "base_qty": 600, "unit": "g"}
             ],
@@ -467,20 +467,17 @@ Use code with caution.
 
 st.write("### 🗂️ 1. Choose Category")
 categories = list(RECIPES.keys())
+if "selected_category" not in st.session_state:
+st.session_state.selected_category = categories[0]
 cat_cols = st.columns(len(categories))
 for idx, cat in enumerate(categories):
 with cat_cols[idx]:
-label = f"📁 {cat}" if st.session_state.get("selected_category") == cat else cat
+label = f"📁 {cat}" if st.session_state.selected_category == cat else cat
 if st.button(label, key=f"cat_{cat}"):
 st.session_state.selected_category = cat
 st.session_state.selected_recipe = list(RECIPES[cat].keys())[0]
 st.rerun()
-
-Default handling for initial state
-
-if "selected_category" not in st.session_state:
-st.session_state.selected_category = categories[0]
-if "selected_recipe" not in st.session_state:
+if "selected_recipe" not in st.session_state or st.session_state.selected_recipe not in RECIPES[st.session_state.selected_category]:
 st.session_state.selected_recipe = list(RECIPES[st.session_state.selected_category].keys())[0]
 if "multiplier" not in st.session_state:
 st.session_state.multiplier = 1
@@ -529,7 +526,6 @@ st.write("📋 Scaled Ingredient List:")
 for ing in ingredients:
 scaled_qty = ing["base_qty"] * st.session_state.multiplier
 formatted_qty = int(scaled_qty) if scaled_qty % 1 == 0 else round(scaled_qty, 2)
-# Format nicely with grouping separator (e.g. 20,000 instead of 20000)
 formatted_qty_str = f"{formatted_qty:,}"
 st.markdown(
 f'{formatted_qty_str} {ing["unit"]} — {ing["name"]}',
