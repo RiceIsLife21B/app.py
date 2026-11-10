@@ -285,7 +285,7 @@ if "selected_category" not in st.session_state:
 cat_cols = st.columns(len(categories))
 for idx, cat in enumerate(categories):
     with cat_cols[idx]:
-label = f"📁 {cat}" if st.session_state.selected_category == cat else cat
+        label = f"📁 {cat}" if st.session_state.selected_category == cat else cat
 if st.button(label, key=f"cat_{cat}"):
 st.session_state.selected_category = cat
 st.session_state.selected_recipe = list(RECIPES[cat].keys())[0]
