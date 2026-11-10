@@ -319,7 +319,7 @@ if st.session_state.selected_recipe:
     steps = recipe_data["steps"]
     display_col1, display_col2 = st.columns(2)
 with display_col1:
-st.write("### 🎛️ 3. Batch Size")
+    st.write("### 🎛️ 3. Batch Size")
 # Grid layout for large multi-size multiplier layout
 multipliers_list = [
 ("1x Base", 1), ("2x Double", 2), ("3x Triple", 3),
@@ -332,14 +332,14 @@ if st.button(btn_label, key=f"mult_{value}", type="primary" if st.session_state.
    st.session_state.multiplier = value
    st.rerun()
 with display_col2:
-st.markdown(f'{recipe_name}', unsafe_allow_html=True)
-st.markdown(f'{recipe_data["meta"]} — Scaling Level: {st.session_state.multiplier}x', unsafe_allow_html=True)
-st.write("📋 Scaled Ingredient List:")
+    st.markdown(f'{recipe_name}', unsafe_allow_html=True)
+    st.markdown(f'{recipe_data["meta"]} — Scaling Level: {st.session_state.multiplier}x', unsafe_allow_html=True)
+    st.write("📋 Scaled Ingredient List:")
 for ing in ingredients:
-scaled_qty = ing["base_qty"] * st.session_state.multiplier
-formatted_qty = int(scaled_qty) if scaled_qty % 1 == 0 else round(scaled_qty, 2)
-formatted_qty_str = f"{formatted_qty:,}"
-st.markdown(
+    scaled_qty = ing["base_qty"] * st.session_state.multiplier
+    formatted_qty = int(scaled_qty) if scaled_qty % 1 == 0 else round(scaled_qty, 2)
+    formatted_qty_str = f"{formatted_qty:,}"
+    st.markdown(
 f'{formatted_qty_str} {ing["unit"]} — {ing["name"]}',
 unsafe_allow_html=True
 )
