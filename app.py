@@ -82,7 +82,7 @@ SALAD = CATEGORIES[2]
 # ==========================================================
 
 add(
-    "BULGOGI SAUCE", SAUCE,
+    "BULGOGI SAUCE(BEEF)", SAUCE,
     """
     White Sugar|150|g;
     Mirin|150|g;
@@ -188,7 +188,7 @@ add(
 )
 
 add(
-    "KANG JEONG", SAUCE,
+    "KANG JEONG(KFC)", SAUCE,
     """
     Corn Syrup|2500|g;
     Ketchup|1500|g;
@@ -201,7 +201,7 @@ add(
 )
 
 add(
-    "MISO GLAZE", SAUCE,
+    "MISO GLAZE(SALMON)", SAUCE,
     """
     Teriyaki|100|g;
     Miso Paste|15|g;
@@ -259,7 +259,7 @@ add(
 )
 
 add(
-    "TENTSUYU", SAUCE,
+    "TENTSUYU(TOFU)", SAUCE,
     """
     Water|400|g;
     Dashida / Mushroom Powder|8|g;
@@ -271,7 +271,7 @@ add(
 )
 
 add(
-    "TERIYAKI SAUCE", SAUCE,
+    "TERIYAKI SAUCE(CHICKEN)", SAUCE,
     """
     Tamari Soy Sauce|4000|g;
     Sugar|3000|g;
@@ -295,7 +295,7 @@ add(
 )
 
 add(
-    "YUZU GARLIC SAUCE", SAUCE,
+    "YUZU GARLIC SAUCE(OH-MY)", SAUCE,
     """
     Garlic|1100|g;
     Sugar|1000|g;
