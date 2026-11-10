@@ -759,29 +759,18 @@ st.markdown("""
     background: #f7f7f7;
     color: #111111;
 }
-/* RESET button: same size as multiplier buttons */
+/* RESET button: match multiplier button dimensions */
 div[class*="st-key-reset_multiplier"] button {
     width: 100% !important;
     height: 72px !important;
     min-height: 72px !important;
+    max-width: none !important;
     padding: 4px 1px !important;
-    font-size: clamp(12px, 1.4vw, 19px) !important;
+    font-size: 14px !important;
     line-height: 1.1 !important;
     white-space: pre-line !important;
     text-align: center !important;
     border-width: 4px !important;
-}
-/* Square RESET 1X button */
-div[class*="st-key-reset_multiplier"] button {
-    width: 85px !important;
-    height: 85px !important;
-    min-height: 85px !important;
-    padding: 5px !important;
-    font-size: 24px !important;
-    line-height: 1.2 !important;
-    white-space: pre-line !important;
-    text-align: center !important;
-}
 
 .block-container {
     max-width: 1500px;
