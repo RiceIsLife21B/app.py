@@ -296,10 +296,10 @@ if "multiplier" not in st.session_state:
     st.session_state.multiplier = 1
     st.write("---")
 
---- STEP 2: RECIPE SELECTION GRID ---
+#--- STEP 2: RECIPE SELECTION GRID ---
 
 st.write(f"### 🍽️ 2. Select Recipe ({st.session_state.selected_category})")
-current_recipes = list(RECIPES[st.session_state.selected_category].keys())
+    current_recipes = list(RECIPES[st.session_state.selected_category].keys())
 rec_cols = st.columns(3)
 for idx, rec in enumerate(current_recipes):
 col_idx = idx % 3
