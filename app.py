@@ -1074,17 +1074,22 @@ for index, category in enumerate(CATEGORIES):
 # LOGO + BACK BUTTON
 # ==========================================================
 
-logo_left, logo_center, back_right = st.columns([1, 2, 1])
+top_left, top_center, top_right = st.columns([1, 2, 1])
 
-with logo_center:
+with top_left:
+    if st.session_state.recipe is not None:
+        st.button(
+            "← BACK TO RECIPES",
+            key="back_to_recipes",
+            on_click=go_back,
+            use_container_width=True,
+        )
+
+with top_center:
     st.markdown(
         '<div class="brand-logo">riceislife</div>',
         unsafe_allow_html=True
     )
-
-with back_right:
-    if st.session_state.recipe is not None:
-        st.button(
     "← BACK TO RECIPES",
     key="back_to_recipes",
     on_click=go_back,
