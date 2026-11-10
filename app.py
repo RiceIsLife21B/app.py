@@ -105,7 +105,6 @@ st.markdown("""
 RECIPES = {
     "Salads + Pickles": {
         "Bean Sprout Salad (5KG Base)": {
-            "meta": "HALAL | Makes 7L (Use 12L Cambro)",
             "ingredients": [
                 {"name": "Raw Bean Sprouts", "base_qty": 5000, "unit": "g"},
                 {"name": "Fish Sauce", "base_qty": 198, "unit": "g"},
