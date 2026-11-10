@@ -302,7 +302,7 @@ st.write(f"### 🍽️ 2. Select Recipe ({st.session_state.selected_category})")
 current_recipes = list(RECIPES[st.session_state.selected_category].keys())
 rec_cols = st.columns(3)
 for idx, rec in enumerate(current_recipes):
-col_idx = idx % 3
+    col_idx = idx % 3
 with rec_cols[col_idx]:
 label = f"⭐ {rec}" if st.session_state.selected_recipe == rec else rec
 if st.button(label, key=f"rec_{rec}"):
@@ -329,8 +329,8 @@ multipliers_list = [
 ]
 for btn_label, value in multipliers_list:
 if st.button(btn_label, key=f"mult_{value}", type="primary" if st.session_state.multiplier == value else "secondary"):
-st.session_state.multiplier = value
-st.rerun()
+   st.session_state.multiplier = value
+   st.rerun()
 with display_col2:
 st.markdown(f'{recipe_name}', unsafe_allow_html=True)
 st.markdown(f'{recipe_data["meta"]} — Scaling Level: {st.session_state.multiplier}x', unsafe_allow_html=True)
