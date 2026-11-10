@@ -32,7 +32,7 @@ if not st.session_state.authenticated:
     st.write("## 🔒 Staff Login Required")
     password_input = st.text_input("Enter Kitchen Access Code", type="password")
     
-    CORRECT_PIN = "trusttheprocess" 
+    CORRECT_PIN = "1234" 
     
     if st.button("🔓 Access Recipes"):
         if password_input == CORRECT_PIN:
