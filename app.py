@@ -310,7 +310,7 @@ if st.button(label, key=f"rec_{rec}"):
     st.rerun()
     st.write("---")
 
---- STEP 3: MULTIPLIER AND INGREDIENT DISPLAY ---
+#--- STEP 3: MULTIPLIER AND INGREDIENT DISPLAY ---
 
 if st.session_state.selected_recipe:
     recipe_name = st.session_state.selected_recipe
