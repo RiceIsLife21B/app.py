@@ -445,8 +445,7 @@ RECIPES = {
 }
 }
 
---- STEP 1: CATEGORY SELECTION GRID ---
-
+#--- STEP 1: CATEGORY SELECTION GRID ---
 st.write("### 🗂️ 1. Choose Category")
 categories = list(RECIPES.keys())
 if "selected_category" not in st.session_state:
@@ -487,32 +486,34 @@ recipe_data = RECIPES[st.session_state.selected_category][recipe_name]
 ingredients = recipe_data["ingredients"]
 steps = recipe_data["steps"]
 display_col1, display_col2 = st.columns(2)
-with display_col1:
-st.write("### 🎛️ 3. Batch Size")
-if st.button("1x Base Batch", type="primary" if st.session_state.multiplier == 1 else "secondary"):
-st.session_state.multiplier = 1
-st.rerun()
-if st.button("2x Double Batch", type="primary" if st.session_state.multiplier == 2 else "secondary"):
-st.session_state.multiplier = 2
-st.rerun()
-if st.button("4x Quadruple Batch", type="primary" if st.session_state.multiplier == 4 else "secondary"):
-st.session_state.multiplier = 4
-st.rerun()
-if st.button("10x Bulk Batch", type="primary" if st.session_state.multiplier == 10 else "secondary"):
-st.session_state.multiplier = 10
-st.rerun()
-with display_col2:
-st.markdown(f'{recipe_name}', unsafe_allow_html=True)
-st.markdown(f'{recipe_data["meta"]} — Scaling Level: {st.session_state.multiplier}x', unsafe_allow_html=True)
-st.write("📋 Scaled Ingredient List:")
-for ing in ingredients:
-scaled_qty = ing["base_qty"] * st.session_state.multiplier
-formatted_qty = int(scaled_qty) if scaled_qty % 1 == 0 else round(scaled_qty, 2)
-formatted_qty_str = f"{formatted_qty:,}"
-st.markdown(
-f'{formatted_qty_str} {ing["unit"]} — {ing["name"]}',
-unsafe_allow_html=True
-)
-st.markdown('🍳 Preparation Steps', unsafe_allow_html=True)
-for i, step in enumerate(steps, 1):
-st.markdown(f'{i}. {step}', unsafe_allow_html=True)
+
+    with display_col1:
+        st.write("### 🎛️ 3. Batch Size")
+        if st.button("1x Base Batch", type="primary" if st.session_state.multiplier == 1 else "secondary"):
+            st.session_state.multiplier = 1
+            st.rerun()
+        if st.button("2x Double Batch", type="primary" if st.session_state.multiplier == 2 else "secondary"):
+            st.session_state.multiplier = 2
+            st.rerun()
+        if st.button("4x Quadruple Batch", type="primary" if st.session_state.multiplier == 4 else "secondary"):
+            st.session_state.multiplier = 4
+            st.rerun()
+        if st.button("10x Bulk Batch", type="primary" if st.session_state.multiplier == 10 else "secondary"):
+            st.session_state.multiplier = 10
+            st.rerun()
+
+    with display_col2:
+        st.markdown(f'### {recipe_name}', unsafe_allow_html=True)
+        st.markdown(f'*{recipe_data["meta"]} — Scaling Level: {st.session_state.multiplier}x*', unsafe_allow_html=True)
+
+        st.write("📋 **Scaled Ingredient List:**")
+        for ing in ingredients:
+            scaled_qty = ing["base_qty"] * st.session_state.multiplier
+            formatted_qty = int(scaled_qty) if scaled_qty % 1 == 0 else round(scaled_qty, 2)
+            formatted_qty_str = f"{formatted_qty:,}"
+
+            st.markdown(f'**{formatted_qty_str} {ing["unit"]}** — {ing["name"]}')
+
+        st.write("🍳 **Preparation Steps:**")
+        for i, step in enumerate(steps, 1):
+            st.markdown(f'**{i}.** {step}')
