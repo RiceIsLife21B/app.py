@@ -834,7 +834,8 @@ footer {
 
 /* Category buttons */
 div[class*="st-key-cat_"] button {
-    min-height: 145px;
+    min-height: 72px;
+    height: 72px;
     font-size: clamp(18px, 2.5vw, 37px);
 }
 
