@@ -892,7 +892,7 @@ div[class*="st-key-reset_"] button {
     gap: 12px;
     border-bottom: 1px solid #dddddd;
     padding: 10px 0;
-    font-size: clamp(28px);
+    font-size: clamp(40px);
 }
 
 .ingredient-name {
