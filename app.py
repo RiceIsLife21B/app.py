@@ -508,9 +508,9 @@ ingredients = recipe_data["ingredients"]
 steps = recipe_data["steps"]
 
 display_col1, display_col2 = st.columns(2)
-    with display_col1:
-        st.write("### 3. Batch Size")
-        multipliers_list = [
+with display_col1:
+    st.write("### 3. Batch Size")
+    multipliers_list = [
             ("1x", 1), ("2x", 2), ("3x", 3),
             ("4x", 4), ("5x", 5), ("6x", 6),
             ("7x", 7), ("8x", 8), ("9x", 9),
