@@ -1070,9 +1070,26 @@ for index, category in enumerate(CATEGORIES):
             highlight_key(f"cat_{index}")
 
 
-st.markdown(
-    '<div style="height: 0px;"></div>',
-    unsafe_allow_html=True)
+# ==========================================================
+# LOGO + BACK BUTTON
+# ==========================================================
+
+logo_left, logo_center, back_right = st.columns([1, 2, 1])
+
+with logo_center:
+    st.markdown(
+        '<div class="brand-logo">riceislife</div>',
+        unsafe_allow_html=True
+    )
+
+with back_right:
+    if st.session_state.recipe is not None:
+        st.button(
+            "← BACK TO RECIPES",
+            key="back_to_recipes",
+            on_click=go_back,
+            use_container_width=True,
+        )
 
 
 # ==========================================================
