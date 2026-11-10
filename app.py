@@ -1185,35 +1185,31 @@ st.markdown(
     '<div class="batch-label">SELECT BATCH MULTIPLIER</div>',
     unsafe_allow_html=True,
 )
-# 13 buttons: RESET + 12 multipliers
-multiplier_columns = st.columns(13, gap="small")
+# 13 equally sized buttons in one row
+with st.container(key="multiplier_row"):
+    multiplier_columns = st.columns(13, gap="small")
 
-# RESET button in the first column
-with multiplier_columns[0]:
-    st.button(
-        "RESET\n1X",
-        key="reset_multiplier",
-        use_container_width=True,
-        on_click=select_multiplier,
-        args=(1,),
-    )
-
-# Multiplier buttons in the remaining 12 columns
-for index, multiplier in enumerate(MULTIPLIERS):
-
-    with multiplier_columns[index + 1]:
-        label = f"{multiplier:g}X"
-
+    with multiplier_columns[0]:
         st.button(
-            label,
-            key=f"mult_{index}",
+            "RESET\n1X",
+            key="reset_multiplier",
             use_container_width=True,
             on_click=select_multiplier,
-            args=(multiplier,),
+            args=(1,),
         )
 
-        if st.session_state.multiplier == multiplier:
-            highlight_key(f"mult_{index}")
+    for index, multiplier in enumerate(MULTIPLIERS):
+        with multiplier_columns[index + 1]:
+            st.button(
+                f"{multiplier:g}X",
+                key=f"mult_{index}",
+                use_container_width=True,
+                on_click=select_multiplier,
+                args=(multiplier,),
+            )
+
+            if st.session_state.multiplier == multiplier:
+                highlight_key(f"mult_{index}")
 
 st.write("")
 
