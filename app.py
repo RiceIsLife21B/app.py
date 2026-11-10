@@ -345,4 +345,4 @@ unsafe_allow_html=True
 )
 st.markdown('🍳 Preparation Steps', unsafe_allow_html=True)
 for i, step in enumerate(steps, 1):
-st.markdown(f'{i}. {step}', unsafe_allow_html=True)
+    st.markdown(f'{i}. {step}', unsafe_allow_html=True)
