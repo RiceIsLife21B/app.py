@@ -521,11 +521,11 @@ with display_col1:
 btn_cols = st.columns(2)
 for idx, (btn_label, value) in enumerate(multipliers_list):
     col_target = btn_cols[idx % 2]
-with col_target:
-    is_active = st.session_state.multiplier == value
-            if st.button(btn_label, key=f"mult_{value}", type="primary" if is_active else "secondary"):
-                st.session_state.multiplier = value
-                st.rerun()
+    with col_target:
+        is_active = st.session_state.multiplier == value
+        if st.button(btn_label, key=f"mult_{value}", type="primary" if is_active else "secondary"):
+            st.session_state.multiplier = value
+            st.rerun()
 
 with display_col2:
     if st.session_state.selected_recipe not in RECIPES[st.session_state.selected_category]:
