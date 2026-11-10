@@ -1129,12 +1129,6 @@ if st.session_state.recipe is None:
 recipe_name = st.session_state.recipe
 recipe = RECIPES[recipe_name]
 
-st.button(
-    "← BACK TO RECIPES",
-    key="back_to_recipes",
-    on_click=go_back,
-)
-
 st.write("")
 
 # ==========================================================
