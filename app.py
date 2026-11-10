@@ -101,9 +101,9 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# FULL RECIPE BOOK DATABASE
+# CORE RECIPE BOOK DATABASE WITH UPDATED NOMENCLATURE
 RECIPES = {
-    "Salads & Pickles": {
+    "Salads + Pickles": {
         "Bean Sprout Salad (5KG Base)": {
             "meta": "HALAL | Makes 7L (Use 12L Cambro)",
             "ingredients": [
@@ -112,23 +112,6 @@ RECIPES = {
                 {"name": "Garlic (Blitzed)", "base_qty": 110, "unit": "g"},
                 {"name": "Sesame Oil", "base_qty": 132, "unit": "g"},
                 {"name": "Salt", "base_qty": 80, "unit": "g"}
-            ],
-            "steps": [
-                "Steam Bean Sprouts in Rotational for 2 minutes @ 211°F.",
-                "Strain Bean Sprouts and shock in ice water to cool completely.",
-                "In a separate bowl, mix Fish Sauce, Blitzed Garlic, and Sesame Oil.",
-                "Add cooled Bean Sprouts to the dressing mixture and mix thoroughly.",
-                "Check daily and adjust seasoning with Salt if needed."
-            ]
-        },
-        "Bean Sprout Salad (9KG Bulk)": {
-            "meta": "HALAL | Makes 11L (Use 12L Cambro)",
-            "ingredients": [
-                {"name": "Raw Bean Sprouts", "base_qty": 9000, "unit": "g"},
-                {"name": "Fish Sauce", "base_qty": 360, "unit": "g"},
-                {"name": "Garlic (Blitzed)", "base_qty": 200, "unit": "g"},
-                {"name": "Sesame Oil", "base_qty": 240, "unit": "g"},
-                {"name": "Salt", "base_qty": 200, "unit": "g"}
             ],
             "steps": [
                 "Steam Bean Sprouts in Rotational for 2 minutes @ 211°F.",
@@ -152,9 +135,9 @@ RECIPES = {
                 "Use the Robot Coupe unit to slice the cabbages cleanly.",
                 "Gently massage the sliced cabbage with the Salt, Sugar, and Lemon Juice.",
                 "Let the massaged cabbage sit undisturbed for 15 minutes.",
-                "Squeeze all excess moisture out of the cabbage thoroughly.",
-                "Slice the Kimchi to a thickness similar to the cabbage strip profile.",
-                "Mix the sliced kimchi and squeezed cabbage together completely."
+                "Squeeze all moisture out thoroughly.",
+                "Slice Kimchi to similar thickness as cabbage.",
+                "Mix together sliced kimchi and cabbage."
             ]
         },
         "Daikon Pickle": {
@@ -192,9 +175,25 @@ RECIPES = {
                 "Leave the finished Kimchi ambient at room temperature or in a designated warm spot for 2 hours.",
                 "Refrigerate, store up to 2 weeks."
             ]
+        },
+        "Pickled Jalapeno": {
+            "meta": "HALAL | Hot Tangy Brined Jalapeño Blend",
+            "ingredients": [
+                {"name": "Jalapeño", "base_qty": 1800, "unit": "g"},
+                {"name": "Sugar", "base_qty": 500, "unit": "g"},
+                {"name": "Tamari", "base_qty": 500, "unit": "g"},
+                {"name": "Water", "base_qty": 500, "unit": "g"},
+                {"name": "White Vinegar", "base_qty": 500, "unit": "g"},
+                {"name": "Salt", "base_qty": 20, "unit": "g"},
+                {"name": "Garlic Cloves", "base_qty": 10, "unit": "pcs"}
+            ],
+            "steps": [
+                "Peel and cut carrots, onion, ginger into small chunks.",
+                "Combine all ingredients into a Vitamix, blend until smooth."
+            ]
         }
     },
-    "Mains & Marinated Proteins": {
+    "Mains + Marinades": {
         "BBQ Beef Brisket": {
             "meta": "HALAL | Long Roast Setting Setup",
             "ingredients": [
@@ -209,8 +208,10 @@ RECIPES = {
                 "You may get ahead on smoking before cooking.",
                 "Roast brisket in combination setting at 100% humidity, 202°F for 15 hours."
             ]
-        },
-        "Bulgogi Marinated Beef": {
+        }
+    },
+    "Sauces + Dressings": {
+        "Bulgogi Marinade": {
             "meta": "HALAL | High-Volume Savory Marinade Mix",
             "ingredients": [
                 {"name": "White Sugar", "base_qty": 150, "unit": "g"},
@@ -222,96 +223,15 @@ RECIPES = {
                 {"name": "White Vinegar", "base_qty": 15, "unit": "g"},
                 {"name": "Corn Starch", "base_qty": 15, "unit": "g"},
                 {"name": "Ginger", "base_qty": 10, "unit": "g"},
-                {"name": "Dashida (Beef Stock Powder)", "base_qty": 5, "unit": "g"},
-                {"name": "Black Pepper", "base_qty": 3, "unit": "g"}
-            ],
-            "steps": [
+{"name": "Dashida (Beef Stock Powder)", "base_qty": 5, "unit": "g"},
+{"name": "Black Pepper", "base_qty": 3, "unit": "g"}
+],
+"steps": [
 "Grind Garlic, Ginger finely with Mirin in the Vitamix.",
 "Then mix everything together.",
 "Bring to boil, let cool."
 ]
 },
-"Chicken Brine Formulation": {
-"meta": "HALAL | 24-Hour Deep Structural Brining",
-"ingredients": [
-{"name": "Water", "base_qty": 2000, "unit": "g"},
-{"name": "Salt", "base_qty": 100, "unit": "g"},
-{"name": "Soy Sauce", "base_qty": 50, "unit": "g"},
-{"name": "Sugar", "base_qty": 20, "unit": "g"},
-{"name": "Garlic (Crushed)", "base_qty": 15, "unit": "g"},
-{"name": "Ginger (Crushed)", "base_qty": 15, "unit": "g"}
-],
-"steps": [
-"Whisk all ingredients together until Sugar dissolves.",
-"Brine Chicken For 24 Hours."
-]
-},
-"Chicken Fry Batter Mix": {
-"meta": "HALAL | Light Aerated Fry Coating",
-"ingredients": [
-{"name": "All Purpose Flour", "base_qty": 205, "unit": "g"},
-{"name": "Soy Sauce", "base_qty": 10, "unit": "g"},
-{"name": "Salt", "base_qty": 3, "unit": "g"},
-{"name": "Club Soda (Chilled)", "base_qty": 1, "unit": "can"}
-],
-"steps": [
-"Whisk all ingredients together until no lumps."
-]
-},
-"Dashi Egg Prep & Marinade": {
-"meta": "NOT HALAL | Formulated for 60 Eggs batch - Use 5.7L Cambro",
-"ingredients": [
-{"name": "Water", "base_qty": 2000, "unit": "g"},
-{"name": "Tamari Soy Sauce", "base_qty": 300, "unit": "g"},
-{"name": "Sugar", "base_qty": 100, "unit": "g"},
-{"name": "Mirin", "base_qty": 100, "unit": "g"},
-{"name": "Salt", "base_qty": 25, "unit": "g"},
-{"name": "Hon Dashi", "base_qty": 24, "unit": "g"},
-{"name": "Whole Raw Eggs", "base_qty": 60, "unit": "pcs"}
-],
-"steps": [
-"Preheat Combi Oven to Steam 212°F.",
-"Put one layer of Eggs on a perforated hotel pan.",
-"Steam the Eggs for 8 minutes.",
-"Immediately shock Eggs in cold running water until cool then peel.",
-"Combine all ingredients and bring to boil then let cool.",
-"Place peeled eggs into cold marinade and leave overnight."
-]
-},
-"Garlic Shrimp Marinade": {
-"meta": "HALAL | Clean Aromatic Seafood Marinade Base",
-"ingredients": [
-{"name": "Green Onion", "base_qty": 200, "unit": "g"},
-{"name": "Canola Oil", "base_qty": 150, "unit": "g"},
-{"name": "Garlic", "base_qty": 100, "unit": "g"},
-{"name": "White Vinegar", "base_qty": 20, "unit": "g"},
-{"name": "Ginger", "base_qty": 20, "unit": "g"},
-{"name": "Salt", "base_qty": 5, "unit": "g"},
-{"name": "Black Pepper", "base_qty": 2, "unit": "g"}
-],
-"steps": [
-"Whisk together oil, vinegar, seasonings, and minced aromatics until emulsified."
-]
-},
-"Mushroom Braised Reduction": {
-"meta": "HALAL | Savory Concentrated Umami Glaze Base",
-"ingredients": [
-{"name": "Shimeji Mushrooms", "base_qty": 275, "unit": "g"},
-{"name": "Water (Braise Liquid)", "base_qty": 250, "unit": "g"},
-{"name": "Water (Soaking Liquid)", "base_qty": 250, "unit": "g"},
-{"name": "Soy Sauce", "base_qty": 100, "unit": "g"},
-{"name": "Sugar", "base_qty": 20, "unit": "g"},
-{"name": "Ginger", "base_qty": 20, "unit": "g"},
-{"name": "Kombu Sheet", "base_qty": 10, "unit": "g"},
-{"name": "Shiitake Mushroom (Dried)", "base_qty": 1, "unit": "pc"}
-],
-"steps": [
-"Soak shiitake with water overnight.",
-"Combine everything into a pot and simmer mushrooms for 30 minutes."
-]
-}
-},
-"Sauces & Condiments": {
 "House Mayo Base": {
 "meta": "HALAL | Base Yield (Makes 6L) - Use 15L Container",
 "ingredients": [
@@ -339,52 +259,6 @@ RECIPES = {
 "Add Gochujang last and whisk until Hon Dashi and sugars dissolve."
 ]
 },
-"Hot Mustard Mayo": {
-"meta": "NOT HALAL | Creamy Pungent Condiment Spread",
-"ingredients": [
-{"name": "Hellman's Mayo", "base_qty": 800, "unit": "g"},
-{"name": "Dijon Mustard", "base_qty": 440, "unit": "g"},
-{"name": "Lemon Juice", "base_qty": 120, "unit": "g"},
-{"name": "Mirin", "base_qty": 100, "unit": "g"},
-{"name": "Rice Vinegar", "base_qty": 80, "unit": "g"},
-{"name": "Sugar", "base_qty": 60, "unit": "g"}
-],
-"steps": [
-"Whisk all ingredients together."
-]
-},
-"Hot Sauce (House Habanero)": {
-"meta": "HALAL | Intensely Fiery Pepper Reduction Glaze",
-"ingredients": [
-{"name": "Habanero Peppers", "base_qty": 2000, "unit": "g"},
-{"name": "Sherry Vinegar", "base_qty": 1200, "unit": "g"},
-{"name": "Water", "base_qty": 700, "unit": "g"},
-{"name": "Bell Peppers (Mixed colors)", "base_qty": 500, "unit": "g"},
-{"name": "Sugar", "base_qty": 100, "unit": "g"},
-{"name": "Salt", "base_qty": 100, "unit": "g"}
-],
-"steps": [
-"Cut Habanero and Bell Peppers into pieces.",
-"Grind Peppers in Vitamix.",
-"Whisk all ingredients together."
-]
-},
-"Japanese Curry Base": {
-"meta": "HALAL | Deep Comforting Base Layout",
-"ingredients": [
-{"name": "Onions", "base_qty": 600, "unit": "g"},
-{"name": "Carrots", "base_qty": 450, "unit": "g"},
-{"name": "Potatoes", "base_qty": 300, "unit": "g"},
-{"name": "Salt", "base_qty": 15, "unit": "g"},
-{"name": "Dashida / Mushroom Powder", "base_qty": 10, "unit": "g"},
-{"name": "Dashi Liquid", "base_qty": 2000, "unit": "ml"},
-{"name": "Sesame oil", "base_qty": 1, "unit": "To Taste"}
-],
-"steps": [
-"Sauté chopped vegetables with sesame oil in a pot until softened.",
-"Add dashi liquid, seasonings, and simmer until thick and tender."
-]
-},
 "KFC Sauce (Kang-Jeong)": {
 "meta": "HALAL | Sticky Korean Fried Chicken Glaze Sauce",
 "ingredients": [
@@ -398,130 +272,77 @@ RECIPES = {
 "steps": [
 "Mix all ingredients together."
 ]
-},
-"Miso Glaze Formulation": {
-"meta": "NOT HALAL | Sweet Umami Finishing Sauce Coating",
-"ingredients": [
-{"name": "Teriyaki", "base_qty": 100, "unit": "g"},
-{"name": "Miso Paste", "base_qty": 15, "unit": "g"},
-{"name": "Cornstarch Slurry", "base_qty": 1, "unit": "To Taste"}
-],
-"steps": [
-"Whisk together teriyaki and miso paste.",
-"Gently heat until a simmer.",
-"Make a cornstarch slurry with cold water.",
-"Whisk in slurry slowly and simmer for 1 min."
-]
-},
-"Miso Marinade Paste": {
-"meta": "NOT HALAL | Thick Concentrate Protein Coating Marinade",
-"ingredients": [
-{"name": "Miso", "base_qty": 1000, "unit": "g"},
-{"name": "Sugar", "base_qty": 600, "unit": "g"},
-{"name": "Water", "base_qty": 400, "unit": "g"},
-{"name": "Mirin", "base_qty": 200, "unit": "g"},
-{"name": "Soy", "base_qty": 150, "unit": "g"}
-],
-"steps": [
-"Whisk all ingredients together."
-]
-},
-"Pickled Jalapeño Blend": {
-"meta": "HALAL | Hot Tangy Brined Jalapeño Blend",
-"ingredients": [
-{"name": "Jalapeño", "base_qty": 1800, "unit": "g"},
-{"name": "Sugar", "base_qty": 500, "unit": "g"},
-{"name": "Tamari", "base_qty": 500, "unit": "g"},
-{"name": "Water", "base_qty": 500, "unit": "g"},
-{"name": "White Vinegar", "base_qty": 500, "unit": "g"},
-{"name": "Salt", "base_qty": 20, "unit": "g"},
-{"name": "Garlic Cloves", "base_qty": 10, "unit": "pcs"}
-],
-"steps": [
-"Peel and cut carrots, onion, ginger into small chunks.",
-"Combine all ingredients into a Vitamix, blend until smooth."
-]
 }
 }
 }
 
-# --- STEP 1: CATEGORY SELECTION GRID ---
+--- STEP 1: CATEGORY SELECTION GRID ---
+
 st.write("### 🗂️ 1. Choose Category")
 categories = list(RECIPES.keys())
-
 if "selected_category" not in st.session_state:
-    st.session_state.selected_category = categories[0] if categories else ""
-
-cat_cols = st.columns(len(categories)) if categories else st.columns(1)
+st.session_state.selected_category = categories[0]
+cat_cols = st.columns(len(categories))
 for idx, cat in enumerate(categories):
-    with cat_cols[idx]:
-        label = f"📁 {cat}" if st.session_state.selected_category == cat else cat
-        if st.button(label, key=f"cat_{cat}"):
-            st.session_state.selected_category = cat
-            st.session_state.selected_recipe = list(RECIPES[cat].keys())[0] if RECIPES[cat] else ""
-            st.rerun()
-
-if "selected_recipe" not in st.session_state or not st.session_state.selected_recipe:
-    if st.session_state.selected_category in RECIPES and RECIPES[st.session_state.selected_category]:
-        st.session_state.selected_recipe = list(RECIPES[st.session_state.selected_category].keys())[0]
-
+with cat_cols[idx]:
+label = f"📁 {cat}" if st.session_state.selected_category == cat else cat
+if st.button(label, key=f"cat_{cat}"):
+st.session_state.selected_category = cat
+st.session_state.selected_recipe = list(RECIPES[cat].keys())[0]
+st.rerun()
+if "selected_recipe" not in st.session_state or st.session_state.selected_recipe not in RECIPES[st.session_state.selected_category]:
+st.session_state.selected_recipe = list(RECIPES[st.session_state.selected_category].keys())[0]
 if "multiplier" not in st.session_state:
-    st.session_state.multiplier = 1
-
+st.session_state.multiplier = 1
 st.write("---")
 
-# --- STEP 2: RECIPE SELECTION GRID ---
+--- STEP 2: RECIPE SELECTION GRID ---
+
 st.write(f"### 🍽️ 2. Select Recipe ({st.session_state.selected_category})")
-current_recipes = list(RECIPES[st.session_state.selected_category].keys()) if st.session_state.selected_category in RECIPES else []
-
-if current_recipes:
-    rec_cols = st.columns(3)
-    for idx, rec in enumerate(current_recipes):
-        col_idx = idx % 3
-        with rec_cols[col_idx]:
-            label = f"⭐ {rec}" if st.session_state.selected_recipe == rec else rec
-            if st.button(label, key=f"rec_{rec}"):
-                st.session_state.selected_recipe = rec
-                st.rerun()
-
+current_recipes = list(RECIPES[st.session_state.selected_category].keys())
+rec_cols = st.columns(3)
+for idx, rec in enumerate(current_recipes):
+col_idx = idx % 3
+with rec_cols[col_idx]:
+label = f"⭐ {rec}" if st.session_state.selected_recipe == rec else rec
+if st.button(label, key=f"rec_{rec}"):
+st.session_state.selected_recipe = rec
+st.rerun()
 st.write("---")
 
-# --- STEP 3: MULTIPLIER AND INGREDIENT DISPLAY ---
-if st.session_state.selected_recipe and st.session_state.selected_category in RECIPES and st.session_state.selected_recipe in RECIPES[st.session_state.selected_category]:
-    recipe_name = st.session_state.selected_recipe
-    recipe_data = RECIPES[st.session_state.selected_category][recipe_name]
-    ingredients = recipe_data["ingredients"]
-    steps = recipe_data["steps"]
+--- STEP 3: MULTIPLIER AND INGREDIENT DISPLAY ---
 
-    display_col1, display_col2 = st.columns(2)
-
-    with display_col1:
-        st.write("### 🎛️ 3. Batch Size")
-        if st.button("1x Base Batch", type="primary" if st.session_state.multiplier == 1 else "secondary"):
-            st.session_state.multiplier = 1
-            st.rerun()
-        if st.button("2x Double Batch", type="primary" if st.session_state.multiplier == 2 else "secondary"):
-            st.session_state.multiplier = 2
-            st.rerun()
-        if st.button("4x Quadruple Batch", type="primary" if st.session_state.multiplier == 4 else "secondary"):
-            st.session_state.multiplier = 4
-            st.rerun()
-        if st.button("10x Bulk Batch", type="primary" if st.session_state.multiplier == 10 else "secondary"):
-            st.session_state.multiplier = 10
-            st.rerun()
-
-    with display_col2:
-        st.markdown(f'### {recipe_name}', unsafe_allow_html=True)
-        st.markdown(f'*{recipe_data["meta"]} — Scaling Level: {st.session_state.multiplier}x*', unsafe_allow_html=True)
-
-        st.write("📋 **Scaled Ingredient List:**")
-        for ing in ingredients:
-            scaled_qty = ing["base_qty"] * st.session_state.multiplier
-            formatted_qty = int(scaled_qty) if scaled_qty % 1 == 0 else round(scaled_qty, 2)
-            formatted_qty_str = f"{formatted_qty:,}"
-
-            st.markdown(f'**{formatted_qty_str} {ing["unit"]}** — {ing["name"]}')
-
-        st.write("🍳 **Preparation Steps:**")
-        for i, step in enumerate(steps, 1):
-            st.markdown(f'**{i}.** {step}')
+if st.session_state.selected_recipe:
+recipe_name = st.session_state.selected_recipe
+recipe_data = RECIPES[st.session_state.selected_category][recipe_name]
+ingredients = recipe_data["ingredients"]
+steps = recipe_data["steps"]
+display_col1, display_col2 = st.columns(2)
+with display_col1:
+st.write("### 🎛️ 3. Batch Size")
+# Grid layout for large multi-size multiplier layout
+multipliers_list = [
+("1x Base", 1), ("2x Double", 2), ("3x Triple", 3),
+("4x Quad", 4), ("5x Batch", 5), ("6x Batch", 6),
+("7x Batch", 7), ("8x Batch", 8), ("9x Batch", 9),
+("10x Bulk", 10), ("20x Massive", 20)
+]
+for btn_label, value in multipliers_list:
+if st.button(btn_label, key=f"mult_{value}", type="primary" if st.session_state.multiplier == value else "secondary"):
+st.session_state.multiplier = value
+st.rerun()
+with display_col2:
+st.markdown(f'{recipe_name}', unsafe_allow_html=True)
+st.markdown(f'{recipe_data["meta"]} — Scaling Level: {st.session_state.multiplier}x', unsafe_allow_html=True)
+st.write("📋 Scaled Ingredient List:")
+for ing in ingredients:
+scaled_qty = ing["base_qty"] * st.session_state.multiplier
+formatted_qty = int(scaled_qty) if scaled_qty % 1 == 0 else round(scaled_qty, 2)
+formatted_qty_str = f"{formatted_qty:,}"
+st.markdown(
+f'{formatted_qty_str} {ing["unit"]} — {ing["name"]}',
+unsafe_allow_html=True
+)
+st.markdown('🍳 Preparation Steps', unsafe_allow_html=True)
+for i, step in enumerate(steps, 1):
+st.markdown(f'{i}. {step}', unsafe_allow_html=True)
