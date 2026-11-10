@@ -453,7 +453,7 @@ RECIPES = {
 }
 }
 
---- ACTIVE STATE SAFETY CHECKS ---
+#--- ACTIVE STATE SAFETY CHECKS ---
 
 # --- ACTIVE STATE SAFETY CHECKS ---
 categories = list(RECIPES.keys())
