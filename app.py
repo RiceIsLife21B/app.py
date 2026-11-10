@@ -512,10 +512,10 @@ display_col1, display_col2 = st.columns(2)
 with display_col1:
         st.write("### 🎛️ 3. Batch Size")
         multipliers_list = [
-            ("1x Base", 1), ("2x Double", 2), ("3x Triple", 3),
-            ("4x Quad", 4), ("5x Batch", 5), ("6x Batch", 6),
-            ("7x Batch", 7), ("8x Batch", 8), ("9x Batch", 9),
-            ("10x Bulk", 10), ("20x Massive", 20)
+            ("1x", 1), ("2x", 2), ("3x", 3),
+            ("4x", 4), ("5x", 5), ("6x", 6),
+            ("7x", 7), ("8x", 8), ("9x", 9),
+            ("10x", 10), ("20x", 20), ("30x", 30)
         ]
         
         btn_cols = st.columns(2)
