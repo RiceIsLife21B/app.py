@@ -344,10 +344,9 @@ add(
     All Purpose Flour|205|g;
     Soy Sauce|10|g;
     Salt|3|g;
-    Club Soda|1|can
+    Club Soda|1|355ml can
     """,
     "Whisk all ingredients together until no lumps remain.",
-    "The original does not specify the volume of the club soda can."
 )
 
 add(
@@ -408,13 +407,13 @@ add(
     Onions|600|g;
     Carrots|450|g;
     Potatoes|300|g;
-    Salt|?|10-15 g to taste (base batch);
+    Salt|10|g;
     Dashida / Mushroom Powder|10|g;
     Sesame Oil|?|to taste;
-    Dashi|?|1.5-2 L (base batch)
+    Dashi|1.5|L
     """,
     "",
-    "Original method not provided. Salt and dashi are ranges, "
+    "Salt to taste 10-15g max.Dashi 1.5-2L to taste."
     "so these quantities are displayed without automatic scaling."
 )
 
@@ -481,8 +480,7 @@ add(
     Vacuum seal.~
     Sous vide at 80°C for eight hours or 75°C for eleven hours.
     """,
-    "Original lists ginger and garlic per vacuum bag. "
-    "Quantities may need to be adjusted to the number of bags."
+    "2 pcs ginger sliced and 2 garlic cloves per vacuum bag. "
 )
 
 add(
@@ -520,8 +518,7 @@ add(
     Completely drain before putting rice in the rice cooker.~
     Add water and cook.
     """,
-    "Original provides white-rice and brown-rice ratios. "
-    "These should be treated as separate alternatives."
+    "Take Note of the different hite-rice and brown-rice ratios. "
 )
 
 add(
@@ -540,8 +537,8 @@ add(
     Mix all ingredients together.~
     Marinate tofu for at least one hour before use.
     """,
-    "REVIEW REQUIRED: The original lists 'Tofu 70 g' and "
-    "'Marinate 30 g'. Confirm what these entries represent."
+    "REVIEW REQUIRED: The original lists 'Tofu 70g' and "
+    "'Marinate 30g'. Confirm what these entries represent."
 )
 
 # ==========================================================
@@ -564,9 +561,8 @@ add(
     Add bean sprouts and mix thoroughly.~
     Check daily and adjust salt.
     """,
-    "Base uses the original 5,000 g bean sprout version "
-    "(approximately 7 L). Original also contains a 9,000 g "
-    "version with different ingredient ratios. Review before use."
+    "Base uses the original 5,000g/5kg bean sprout version "
+    "(approximately 7L)."
 )
 
 add(
@@ -586,7 +582,6 @@ add(
     Leave at room temperature or a warm spot for two hours to ferment.~
     Refrigerate; original says store up to two weeks.
     """,
-    "Food-safety review required for fermentation and storage instructions."
 )
 
 add(
@@ -607,8 +602,7 @@ add(
     Slice kimchi to a similar thickness as cabbage.~
     Mix together sliced kimchi and cabbage.
     """,
-    "Original marks these quantities X20 and approximately "
-    "40 L. Treat this as the recorded base recipe, not X1."
+    "40L batch as the recorded base recipe."
 )
 
 add(
@@ -633,9 +627,9 @@ add(
 )
 
 add(
-    "PICKLED JALAPENO", SALAD,
+    "PICKLED JALAPEÑO", SALAD,
     """
-    Jalapeno|1800|g;
+    Jalapeño|1800|g;
     Sugar|500|g;
     Tamari|500|g;
     Water|500|g;
@@ -644,9 +638,9 @@ add(
     Garlic Cloves|10|pcs
     """,
     """
-    REVIEW REQUIRED: The method in the original refers to "
-    "carrots, onion and ginger rather than the listed jalapeno "
-    "ingredients. Confirm the correct procedure.
+    Wash, halve, clean and julienne the jalapeño peppers.~ 
+    Mix all other ingredients in a pot and bring to a boil.~
+    Pour over julienned jalapeños and let sit for 24 hours.~
     """,
     "DO NOT USE without confirming preparation instructions."
 )
@@ -666,7 +660,7 @@ add(
     Cool in water bath.~
     Strain well and season broccoli.
     """,
-    "Original notes: Approximately four heads of broccoli."
+    "1,250g = Approximately four heads of broccoli."
 )
 
 add(
