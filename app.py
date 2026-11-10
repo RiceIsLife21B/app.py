@@ -287,14 +287,14 @@ for idx, cat in enumerate(categories):
     with cat_cols[idx]:
         label = f"📁 {cat}" if st.session_state.selected_category == cat else cat
 if st.button(label, key=f"cat_{cat}"):
-st.session_state.selected_category = cat
-st.session_state.selected_recipe = list(RECIPES[cat].keys())[0]
-st.rerun()
+    st.session_state.selected_category = cat
+    st.session_state.selected_recipe = list(RECIPES[cat].keys())[0]
+    st.rerun()
 if "selected_recipe" not in st.session_state or st.session_state.selected_recipe not in RECIPES[st.session_state.selected_category]:
-st.session_state.selected_recipe = list(RECIPES[st.session_state.selected_category].keys())[0]
+    st.session_state.selected_recipe = list(RECIPES[st.session_state.selected_category].keys())[0]
 if "multiplier" not in st.session_state:
-st.session_state.multiplier = 1
-st.write("---")
+    st.session_state.multiplier = 1
+    st.write("---")
 
 --- STEP 2: RECIPE SELECTION GRID ---
 
@@ -306,18 +306,18 @@ col_idx = idx % 3
 with rec_cols[col_idx]:
 label = f"⭐ {rec}" if st.session_state.selected_recipe == rec else rec
 if st.button(label, key=f"rec_{rec}"):
-st.session_state.selected_recipe = rec
-st.rerun()
-st.write("---")
+    st.session_state.selected_recipe = rec
+    st.rerun()
+    st.write("---")
 
 --- STEP 3: MULTIPLIER AND INGREDIENT DISPLAY ---
 
 if st.session_state.selected_recipe:
-recipe_name = st.session_state.selected_recipe
-recipe_data = RECIPES[st.session_state.selected_category][recipe_name]
-ingredients = recipe_data["ingredients"]
-steps = recipe_data["steps"]
-display_col1, display_col2 = st.columns(2)
+    recipe_name = st.session_state.selected_recipe
+    recipe_data = RECIPES[st.session_state.selected_category][recipe_name]
+    ingredients = recipe_data["ingredients"]
+    steps = recipe_data["steps"]
+    display_col1, display_col2 = st.columns(2)
 with display_col1:
 st.write("### 🎛️ 3. Batch Size")
 # Grid layout for large multi-size multiplier layout
