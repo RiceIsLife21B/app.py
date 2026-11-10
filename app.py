@@ -759,6 +759,18 @@ st.markdown("""
     background: #f7f7f7;
     color: #111111;
 }
+/* RESET button: same size as multiplier buttons */
+div[class*="st-key-reset_multiplier"] button {
+    width: 100% !important;
+    height: 72px !important;
+    min-height: 72px !important;
+    padding: 4px 1px !important;
+    font-size: clamp(12px, 1.4vw, 19px) !important;
+    line-height: 1.1 !important;
+    white-space: pre-line !important;
+    text-align: center !important;
+    border-width: 4px !important;
+}
 /* Square RESET 1X button */
 div[class*="st-key-reset_multiplier"] button {
     width: 85px !important;
