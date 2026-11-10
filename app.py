@@ -769,9 +769,9 @@ footer {
     font-family: Arial, Helvetica, sans-serif;
     font-size: clamp(42px, 5vw, 72px);
     font-weight: 800;
-    letter-spacing: -3px;
+    letter-spacing: 0px;
     color: #ed2227;
-    margin: 4px 0 28px 0;
+    margin: 24px 0 28px 0;
 }
 
 /* All main buttons */
