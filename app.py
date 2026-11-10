@@ -759,6 +759,17 @@ st.markdown("""
     background: #f7f7f7;
     color: #111111;
 }
+/* Square RESET 1X button */
+div[class*="st-key-reset_multiplier"] button {
+    width: 85px !important;
+    height: 85px !important;
+    min-height: 85px !important;
+    padding: 5px !important;
+    font-size: 24px !important;
+    line-height: 1.2 !important;
+    white-space: pre-line !important;
+    text-align: center !important;
+}
 
 .block-container {
     max-width: 1500px;
@@ -1123,7 +1134,7 @@ for index, multiplier in enumerate(MULTIPLIERS):
 st.write("")
 
 st.button(
-    "RESET TO 1X",
+    "RESET\n1X",
     key="reset_multiplier",
     on_click=select_multiplier,
     args=(1,),
