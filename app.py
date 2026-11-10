@@ -527,7 +527,7 @@ with display_col1:
                     st.session_state.multiplier = value
                     st.rerun()
 
-    with display_col2:
+with display_col2:
         st.markdown(f'## {recipe_name}', unsafe_allow_html=True)
         st.markdown(f'*{recipe_data["meta"]} — Scaling Level: {st.session_state.multiplier}x*', unsafe_allow_html=True)
         st.write("---")
