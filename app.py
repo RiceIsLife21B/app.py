@@ -516,7 +516,7 @@ with display_col1:
             ("7x", 7), ("8x", 8), ("9x", 9),
             ("10x", 10), ("20x", 20), ("30x", 30)
         ]
-btn_cols = st.columns(2)
+        btn_cols = st.columns(2)
         for idx, (btn_label, value) in enumerate(multipliers_list):
             col_target = btn_cols[idx % 2]
             with col_target:
