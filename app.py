@@ -154,7 +154,7 @@ add(
 add(
     "HOUSE DRESSING", SAUCE,
     """
-    Rice Vinegar|560|g;
+    White Vinegar|560|g;
     Carrots|540|g;
     Canola Oil|320|g;
     Onions|280|g;
