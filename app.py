@@ -232,7 +232,7 @@ RECIPES = {
 "Bring to boil, let cool."
 ]
 },
-"House Mayo Base": {
+"House Mayo": {
 "meta": "HALAL | Base Yield (Makes 6L) - Use 15L Container",
 "ingredients": [
 {"name": "Hellman's Mayo", "base_qty": 5000, "unit": "g"},
@@ -244,7 +244,7 @@ RECIPES = {
 "Whisk mix into Mayo."
 ]
 },
-"Chojang Sauce Base": {
+"Chojang Sauce": {
 "meta": "HALAL | Tangy Korean Hot Sauce Glaze Base",
 "ingredients": [
 {"name": "Gochujang Sauce", "base_qty": 6300, "unit": "g"},
@@ -281,7 +281,7 @@ RECIPES = {
 st.write("### 🗂️ 1. Choose Category")
 categories = list(RECIPES.keys())
 if "selected_category" not in st.session_state:
-st.session_state.selected_category = categories[0]
+st.session_state.selected_category = categories[3]
 cat_cols = st.columns(len(categories))
 for idx, cat in enumerate(categories):
 with cat_cols[idx]:
