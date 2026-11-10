@@ -509,7 +509,7 @@ steps = recipe_data["steps"]
 
 display_col1, display_col2 = st.columns(2)
 
-    with display_col1:
+with display_col1:
         st.write("### 🎛️ 3. Batch Size")
         multipliers_list = [
             ("1x Base", 1), ("2x Double", 2), ("3x Triple", 3),
