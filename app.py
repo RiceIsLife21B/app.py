@@ -759,6 +759,34 @@ st.markdown("""
     background: #f7f7f7;
     color: #111111;
 }
+/* Make RESET and all multiplier buttons identical */
+div[class*="st-key-reset_multiplier"] button,
+div[class*="st-key-mult_"] button {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+
+    height: 72px !important;
+    min-height: 72px !important;
+    max-height: 72px !important;
+
+    padding: 2px !important;
+    margin: 0 !important;
+
+    border: 4px solid #a4a4a4;
+    border-radius: 7px;
+
+    font-size: 14px !important;
+    line-height: 1.1 !important;
+    white-space: pre-line !important;
+    text-align: center !important;
+}
+
+/* Let RESET text wrap onto two lines */
+div[class*="st-key-reset_multiplier"] button p {
+    white-space: pre-line !important;
+    overflow-wrap: normal !important;
+}
 /* RESET button: match multiplier button dimensions */
 div[class*="st-key-reset_multiplier"] button {
     width: 100% !important;
