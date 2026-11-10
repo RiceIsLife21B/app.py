@@ -1111,27 +1111,23 @@ st.markdown(
     '<div class="batch-label">SELECT BATCH MULTIPLIER</div>',
     unsafe_allow_html=True,
 )
-
 # 13 buttons: RESET + 12 multipliers
 multiplier_columns = st.columns(13, gap="small")
 
-/* RESET button: same size as multiplier buttons */
-div[class*="st-key-reset_multiplier"] button {
-    width: 100% !important;
-    height: 72px !important;
-    min-height: 72px !important;
-    padding: 4px 1px !important;
-    font-size: clamp(12px, 1.4vw, 19px) !important;
-    line-height: 1.1 !important;
-    white-space: pre-line !important;
-    text-align: center !important;
-    border-width: 4px !important;
-}
+# RESET button in the first column
+with multiplier_columns[0]:
+    st.button(
+        "RESET\n1X",
+        key="reset_multiplier",
+        use_container_width=True,
+        on_click=select_multiplier,
+        args=(1,),
+    )
+
 # Multiplier buttons in the remaining 12 columns
 for index, multiplier in enumerate(MULTIPLIERS):
 
     with multiplier_columns[index + 1]:
-
         label = f"{multiplier:g}X"
 
         st.button(
@@ -1146,13 +1142,6 @@ for index, multiplier in enumerate(MULTIPLIERS):
             highlight_key(f"mult_{index}")
 
 st.write("")
-
-st.button(
-    "RESET\n1X",
-    key="reset_multiplier",
-    on_click=select_multiplier,
-    args=(1,),
-)
 
 factor = st.session_state.multiplier
 
