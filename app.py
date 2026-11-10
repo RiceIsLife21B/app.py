@@ -167,7 +167,7 @@ if st.session_state.selected_recipe:
     recipe_name = st.session_state.selected_recipe
     ingredients = RECIPES[st.session_state.selected_category][recipe_name]
     
-    display_col1, display_col2 = st.columns()
+    display_col1, display_col2 = st.columns(2)
     
     with display_col1:
         st.write("### 🎛️ 3. Batch Size")
