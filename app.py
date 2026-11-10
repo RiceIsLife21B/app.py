@@ -1070,7 +1070,9 @@ for index, category in enumerate(CATEGORIES):
             highlight_key(f"cat_{index}")
 
 
-st.write("")
+st.markdown(
+    '<div style="height: 0px;"></div>',
+    unsafe_allow_html=True
 
 
 # ==========================================================
