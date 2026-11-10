@@ -507,6 +507,8 @@ recipe_data = RECIPES[st.session_state.selected_category][recipe_name]
 ingredients = recipe_data["ingredients"]
 steps = recipe_data["steps"]
 
+display_col1, display_col2 = st.columns(2)
+
     with display_col1:
         st.write("### 🎛️ 3. Batch Size")
         multipliers_list = [
