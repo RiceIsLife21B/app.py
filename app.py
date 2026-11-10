@@ -445,47 +445,55 @@ RECIPES = {
 }
 }
 
-#--- STEP 1: CATEGORY SELECTION GRID ---
+# --- STEP 1: CATEGORY SELECTION GRID ---
 st.write("### 🗂️ 1. Choose Category")
 categories = list(RECIPES.keys())
+
 if "selected_category" not in st.session_state:
-st.session_state.selected_category = categories[0]
-cat_cols = st.columns(len(categories))
+    st.session_state.selected_category = categories[0] if categories else ""
+
+cat_cols = st.columns(len(categories)) if categories else st.columns(1)
 for idx, cat in enumerate(categories):
-with cat_cols[idx]:
-label = f"📁 {cat}" if st.session_state.selected_category == cat else cat
-if st.button(label, key=f"cat_{cat}"):
-st.session_state.selected_category = cat
-st.session_state.selected_recipe = list(RECIPES[cat].keys())[0]
-st.rerun()
-if "selected_recipe" not in st.session_state or st.session_state.selected_recipe not in RECIPES[st.session_state.selected_category]:
-st.session_state.selected_recipe = list(RECIPES[st.session_state.selected_category].keys())[0]
+    with cat_cols[idx]:
+        label = f"📁 {cat}" if st.session_state.selected_category == cat else cat
+        if st.button(label, key=f"cat_{cat}"):
+            st.session_state.selected_category = cat
+            st.session_state.selected_recipe = list(RECIPES[cat].keys())[0] if RECIPES[cat] else ""
+            st.rerun()
+
+if "selected_recipe" not in st.session_state or not st.session_state.selected_recipe:
+    if st.session_state.selected_category in RECIPES and RECIPES[st.session_state.selected_category]:
+        st.session_state.selected_recipe = list(RECIPES[st.session_state.selected_category].keys())[0]
+
 if "multiplier" not in st.session_state:
-st.session_state.multiplier = 1
+    st.session_state.multiplier = 1
+
 st.write("---")
 
---- STEP 2: RECIPE SELECTION GRID ---
-
+# --- STEP 2: RECIPE SELECTION GRID ---
 st.write(f"### 🍽️ 2. Select Recipe ({st.session_state.selected_category})")
-current_recipes = list(RECIPES[st.session_state.selected_category].keys())
-rec_cols = st.columns(3)
-for idx, rec in enumerate(current_recipes):
-col_idx = idx % 3
-with rec_cols[col_idx]:
-label = f"⭐ {rec}" if st.session_state.selected_recipe == rec else rec
-if st.button(label, key=f"rec_{rec}"):
-st.session_state.selected_recipe = rec
-st.rerun()
+current_recipes = list(RECIPES[st.session_state.selected_category].keys()) if st.session_state.selected_category in RECIPES else []
+
+if current_recipes:
+    rec_cols = st.columns(3)
+    for idx, rec in enumerate(current_recipes):
+        col_idx = idx % 3
+        with rec_cols[col_idx]:
+            label = f"⭐ {rec}" if st.session_state.selected_recipe == rec else rec
+            if st.button(label, key=f"rec_{rec}"):
+                st.session_state.selected_recipe = rec
+                st.rerun()
+
 st.write("---")
 
---- STEP 3: MULTIPLIER AND INGREDIENT DISPLAY ---
+# --- STEP 3: MULTIPLIER AND INGREDIENT DISPLAY ---
+if st.session_state.selected_recipe and st.session_state.selected_category in RECIPES and st.session_state.selected_recipe in RECIPES[st.session_state.selected_category]:
+    recipe_name = st.session_state.selected_recipe
+    recipe_data = RECIPES[st.session_state.selected_category][recipe_name]
+    ingredients = recipe_data["ingredients"]
+    steps = recipe_data["steps"]
 
-if st.session_state.selected_recipe:
-recipe_name = st.session_state.selected_recipe
-recipe_data = RECIPES[st.session_state.selected_category][recipe_name]
-ingredients = recipe_data["ingredients"]
-steps = recipe_data["steps"]
-display_col1, display_col2 = st.columns(2)
+    display_col1, display_col2 = st.columns(2)
 
     with display_col1:
         st.write("### 🎛️ 3. Batch Size")
