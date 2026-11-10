@@ -1072,7 +1072,7 @@ for index, category in enumerate(CATEGORIES):
 
 st.markdown(
     '<div style="height: 0px;"></div>',
-    unsafe_allow_html=True
+    unsafe_allow_html=True)
 
 
 # ==========================================================
