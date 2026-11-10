@@ -1,7 +1,49 @@
 # Force wide mode optimized for iPad landscape view
 st.set_page_config(layout="wide", page_title="Kitchen POS Recipe Hub")
 
-# Inject custom CSS to make it look like a POS touchscreen (Large text, big grid buttons)
+# Initialize session state for password/PIN verification
+if "authenticated" not in st.session_state:
+    st.session_state.authenticated = False
+
+# --- PASSWORD LOCK SCREEN ---
+if not st.session_state.authenticated:
+    st.markdown("""
+        <style>
+        html, body, [data-testid="stAppViewContainer"] {
+            background-color: #121212;
+            color: #FFFFFF;
+            text-align: center;
+        }
+        div.stButton > button {
+            background-color: #2c2c2e !important;
+            color: white !important;
+            border: 2px solid #48484a !important;
+            padding: 15px !important;
+            font-size: 24px !important;
+            font-weight: bold !important;
+            border-radius: 12px !important;
+            width: 100% !important;
+        }
+        </style>
+    """, unsafe_allow_html=True)
+    
+    st.write("## 🔒 Staff Login Required")
+    
+    # Simple password field
+    password_input = st.text_input("Enter Kitchen Access Code", type="password")
+    
+    # Set your password here
+    CORRECT_PIN = "1234" 
+    
+    if st.button("🔓 Access Recipes"):
+        if password_input == CORRECT_PIN:
+            st.session_state.authenticated = True
+            st.rerun()
+        else:
+            st.error("Incorrect code. Try again.")
+    st.stop() # Prevents anything below from loading unless authenticated
+
+# --- MAIN APP CODE (Only runs if authenticated) ---
 st.markdown("""
     <style>
     html, body, [data-testid="stAppViewContainer"] {
@@ -23,12 +65,6 @@ st.markdown("""
     div.stButton > button:active {
         background-color: #ff9500 !important;
         border-color: #ffb340 !important;
-    }
-    /* Style for the active/selected multiplier buttons */
-    .multiplier-container {
-        display: flex;
-        gap: 10px;
-        margin-bottom: 20px;
     }
     .recipe-title {
         font-size: 36px !important;
@@ -102,11 +138,9 @@ cat_cols = st.columns(len(categories))
 
 for idx, cat in enumerate(categories):
     with cat_cols[idx]:
-        # Visual highlight if active
         label = f"📁 {cat}" if st.session_state.selected_category == cat else cat
         if st.button(label, key=f"cat_{cat}"):
             st.session_state.selected_category = cat
-            # Default to the first recipe of the new category
             st.session_state.selected_recipe = list(RECIPES[cat].keys())[0]
             st.rerun()
 
@@ -116,7 +150,6 @@ st.write("---")
 st.write(f"### 🍽️ 2. Select Recipe ({st.session_state.selected_category})")
 current_recipes = list(RECIPES[st.session_state.selected_category].keys())
 
-# Render recipes in a responsive 4-column POS layout grid
 rec_cols = st.columns(4)
 for idx, rec in enumerate(current_recipes):
     col_idx = idx % 4
@@ -133,8 +166,7 @@ if st.session_state.selected_recipe:
     recipe_name = st.session_state.selected_recipe
     ingredients = RECIPES[st.session_state.selected_category][recipe_name]
     
-    # Split screen: Left side for Multipliers, Right side for final output
-    display_col1, display_col2 = st.columns([1, 2])
+    display_col1, display_col2 = st.columns()
     
     with display_col1:
         st.write("### 🎛️ 3. Batch Size")
@@ -155,12 +187,9 @@ if st.session_state.selected_recipe:
         st.markdown(f'<div class="recipe-title">{recipe_name} ({st.session_state.multiplier}x Batch)</div>', unsafe_allow_html=True)
         st.write("Keep open on iPad while preparing:")
         
-        # Display large, readable scaled ingredients
         for ing in ingredients:
             scaled_qty = ing["base_qty"] * st.session_state.multiplier
-            # Format numbers cleanly (e.g. 1000 instead of 1000.0)
             formatted_qty = int(scaled_qty) if scaled_qty % 1 == 0 else round(scaled_qty, 2)
-            
             st.markdown(
                 f'<div class="ingredient-row"><span class="qty-highlight">{formatted_qty} {ing["unit"]}</span> — {ing["name"]}</div>', 
                 unsafe_allow_html=True
