@@ -518,9 +518,9 @@ with display_col1:
             ("10x", 10), ("20x", 20), ("30x", 30)
         ]
         
-        btn_cols = st.columns(2)
-        for idx, (btn_label, value) in enumerate(multipliers_list):
-            col_target = btn_cols[idx % 2]
+        display_col1, display_col2 = st.columns([1, 2])
+
+    with display_col1:
             with col_target:
                 is_active = st.session_state.multiplier == value
                 if st.button(btn_label, key=f"mult_{value}", type="primary" if is_active else "secondary"):
