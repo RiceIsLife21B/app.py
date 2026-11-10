@@ -998,6 +998,17 @@ div[class*="st-key-back_"] button {
     white-space: pre-line !important;
     box-sizing: border-box !important;
 }
+/* Recipe notes box */
+.recipe-notes {
+    background-color: #FFFFFF;
+    border: 2px solid #ED2227;
+    border-radius: 8px;
+    color: #ED2227 !important;
+    padding: 18px 20px;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.5;
+}
 </style>
 """, unsafe_allow_html=True)
 
