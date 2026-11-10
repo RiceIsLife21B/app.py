@@ -172,7 +172,7 @@ add(
     Combine blended vegetables with remaining ingredients and whisk until smooth.
     """,
     "IMPORTANT: Original specifies making two separate 5X batches for 10X. "
-    "Original method says white vinegar, while ingredients say rice vinegar. "
+    "Original method says white vinegar, while ingredients say white vinegar. "
     "Confirm which is correct before production."
 )
 
