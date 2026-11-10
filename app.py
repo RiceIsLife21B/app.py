@@ -106,12 +106,12 @@ RECIPES = {
     "Salads + Pickles": {
         "Bean Sprout Salad (5KG Base)": {
             "meta": "Makes 7L (Use 12L Cambro)",
-            "ingredients": [
-                {"name": "Raw Bean Sprouts", "base_qty": 5000, "unit": "g"},
-                {"name": "Fish Sauce", "base_qty": 198, "unit": "g"},
-                {"name": "Garlic (Blitzed)", "base_qty": 110, "unit": "g"},
-                {"name": "Sesame Oil", "base_qty": 132, "unit": "g"},
-                {"name": "Salt", "base_qty": 80, "unit": "g"}
+                "ingredients": [
+                    {"name": "Raw Bean Sprouts", "base_qty": 5000, "unit": "g"},
+                    {"name": "Fish Sauce", "base_qty": 198, "unit": "g"},
+                    {"name": "Garlic (Blitzed)", "base_qty": 110, "unit": "g"},
+                    {"name": "Sesame Oil", "base_qty": 132, "unit": "g"},
+                    {"name": "Salt", "base_qty": 80, "unit": "g"}
             ],
             "steps": [
                 "Steam Bean Sprouts in Rotational for 2 minutes @ 211°F.",
