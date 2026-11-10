@@ -998,14 +998,12 @@ div[class*="st-key-back_"] button {
     white-space: pre-line !important;
     box-sizing: border-box !important;
 }
-
-/* Keep RESET on two lines */
-.st-key-multiplier_row button p {
-    white-space: pre-line !important;
-    overflow-wrap: anywhere !important;
-    text-align: center !important;
+/* BACK TO RECIPES — 40% narrower */
+.st-key-back_to_recipes button {
+    width: 60% !important;
+    min-width: 0 !important;
+    max-width: 60% !important;
 }
-
 </style>
 """, unsafe_allow_html=True)
 
@@ -1098,7 +1096,7 @@ with top_left:
             "← BACK TO RECIPES",
             key="back_to_recipes",
             on_click=go_back,
-            use_container_width=True,
+            width= "stretch",
         )
     
 # ==========================================================
