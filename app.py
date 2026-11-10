@@ -1112,11 +1112,23 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-multiplier_columns = st.columns(12, gap="small")
+# 13 buttons: RESET + 12 multipliers
+multiplier_columns = st.columns(13, gap="small")
 
+# RESET button in the first column
+with multiplier_columns[0]:
+    st.button(
+        "RESET\n1X",
+        key="reset_multiplier",
+        use_container_width=True,
+        on_click=select_multiplier,
+        args=(1,),
+    )
+
+# Multiplier buttons in the remaining 12 columns
 for index, multiplier in enumerate(MULTIPLIERS):
 
-    with multiplier_columns[index]:
+    with multiplier_columns[index + 1]:
 
         label = f"{multiplier:g}X"
 
