@@ -749,6 +749,11 @@ def format_amount(amount, unit, multiplier):
 st.markdown("""
 <style>
 
+/* Medium-bold fonts throughout the app */
+.stApp,
+.stApp * {
+    font-weight: 600 !important;
+}
 /* General layout */
 .stApp {
     background: #f7f7f7;
