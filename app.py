@@ -284,7 +284,7 @@ if "selected_category" not in st.session_state:
     st.session_state.selected_category = categories[0]
 cat_cols = st.columns(len(categories))
 for idx, cat in enumerate(categories):
-with cat_cols[idx]:
+    with cat_cols[idx]:
 label = f"📁 {cat}" if st.session_state.selected_category == cat else cat
 if st.button(label, key=f"cat_{cat}"):
 st.session_state.selected_category = cat
