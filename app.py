@@ -412,7 +412,7 @@ add(
     Dashi|1.5|L
     """,
     "",
-    "Salt to taste 10-15g max. Dashi 1.5-2L to taste."
+    "Salt to taste 10-15g Max. Dashi 1.5-2L to taste."
 )
 
 add(
@@ -477,7 +477,7 @@ add(
     Vacuum seal.~
     Sous vide at 80°C for eight hours or 75°C for eleven hours.
     """,
-    "2 pcs ginger sliced and 2 garlic cloves per vacuum bag. "
+    "2 pcs ginger sliced and 2 garlic cloves inside each vacuum bag. "
 )
 
 add(
