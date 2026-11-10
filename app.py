@@ -999,7 +999,6 @@ def highlight_key(key):
 
 def login_screen():
     st.markdown(
-        '<div class="brand-logo">riceislife</div>',
         unsafe_allow_html=True
     )
 
@@ -1093,7 +1092,7 @@ with top_center:
     "← BACK TO RECIPES",
     key="back_to_recipes",
     on_click=go_back,
-)
+)›
 
 # ==========================================================
 # RECIPE SELECTION PAGE
