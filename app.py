@@ -281,7 +281,7 @@ RECIPES = {
 st.write("### 🗂️ 1. Choose Category")
 categories = list(RECIPES.keys())
 if "selected_category" not in st.session_state:
-st.session_state.selected_category = categories[3]
+    st.session_state.selected_category = categories[0]
 cat_cols = st.columns(len(categories))
 for idx, cat in enumerate(categories):
 with cat_cols[idx]:
