@@ -771,6 +771,18 @@ div[class*="st-key-reset_multiplier"] button {
     white-space: pre-line !important;
     text-align: center !important;
     border-width: 4px !important;
+}
+/* Square RESET 1X button */
+div[class*="st-key-reset_multiplier"] button {
+    width: 85px !important;
+    height: 85px !important;
+    min-height: 85px !important;
+    padding: 5px !important;
+    font-size: 24px !important;
+    line-height: 1.2 !important;
+    white-space: pre-line !important;
+    text-align: center !important;
+}
 
 .block-container {
     max-width: 1500px;
