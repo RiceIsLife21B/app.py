@@ -104,7 +104,7 @@ add(
 )
 
 add(
-    "CHOJANG", SAUCE,
+    "CHOJANG (PORK BELLY)", SAUCE,
     """
     Gochujang Sauce|6300|g;
     Sugar|3700|g;
