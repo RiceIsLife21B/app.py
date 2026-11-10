@@ -304,7 +304,7 @@ rec_cols = st.columns(3)
 for idx, rec in enumerate(current_recipes):
     col_idx = idx % 3
 with rec_cols[col_idx]:
-label = f"⭐ {rec}" if st.session_state.selected_recipe == rec else rec
+    label = f"⭐ {rec}" if st.session_state.selected_recipe == rec else rec
 if st.button(label, key=f"rec_{rec}"):
     st.session_state.selected_recipe = rec
     st.rerun()
