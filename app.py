@@ -389,7 +389,7 @@ add(
 add(
     "GARLIC SHRIMP", MAIN,
     """
-    Green Onion|200|g;
+    Green Onion Whites|200|g;
     Canola Oil|150|g;
     Garlic|100|g;
     White Vinegar|20|g;
