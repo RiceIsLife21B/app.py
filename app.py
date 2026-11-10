@@ -226,7 +226,6 @@ RECIPES = {
                 {"name": "Black Pepper", "base_qty": 3, "unit": "g"}
             ],
             "steps": [
-Use code with caution.
 "Grind Garlic, Ginger finely with Mirin in the Vitamix.",
 "Then mix everything together.",
 "Bring to boil, let cool."
