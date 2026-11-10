@@ -276,7 +276,7 @@ RECIPES = {
 }
 }
 
---- STEP 1: CATEGORY SELECTION GRID ---
+#--- STEP 1: CATEGORY SELECTION GRID ---
 
 st.write("### 🗂️ 1. Choose Category")
 categories = list(RECIPES.keys())
