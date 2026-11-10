@@ -343,7 +343,7 @@ add(
     All Purpose Flour|205|g;
     Soy Sauce|10|g;
     Salt|3|g;
-    Club Soda|1|355ml can
+    Club Soda|1x|355ml can
     """,
     "Whisk all ingredients together until no lumps remain.",
 )
