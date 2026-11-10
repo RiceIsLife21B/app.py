@@ -383,7 +383,7 @@ add(
     Combine marinade ingredients, bring to a boil and let cool.~
     Place peeled eggs into cold marinade and leave overnight.
     """,
-    "Original notes: Use a 5.7 L Cambro for the base batch."
+    "Use 5.7L Cambro for the base batch."
 )
 
 add(
@@ -412,8 +412,7 @@ add(
     Dashi|1.5|L
     """,
     "",
-    "Salt to taste 10-15g max.Dashi 1.5-2L to taste."
-    "so these quantities are displayed without automatic scaling."
+    "Salt to taste 10-15g max. Dashi 1.5-2L to taste."
 )
 
 add(
@@ -516,7 +515,7 @@ add(
     Completely drain before putting rice in the rice cooker.~
     Add water and cook.
     """,
-    "Take Note of the different hite-rice and brown-rice ratios. "
+    "Take Note of the different white-rice and brown-rice ratios. "
 )
 
 add(
@@ -559,8 +558,7 @@ add(
     Add bean sprouts and mix thoroughly.~
     Check daily and adjust salt.
     """,
-    "Base uses the original 5,000g/5kg bean sprout version "
-    "(approximately 7L)."
+    "7L batch as the recorded base recipe."
 )
 
 add(
