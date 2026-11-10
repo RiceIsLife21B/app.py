@@ -520,10 +520,10 @@ with display_col1:
         
         display_col1, display_col2 = st.columns([1, 2])
 
-    with display_col1:
-            with col_target:
-                is_active = st.session_state.multiplier == value
-                if st.button(btn_label, key=f"mult_{value}", type="primary" if is_active else "secondary"):
+with display_col1:
+        with col_target:
+            is_active = st.session_state.multiplier == value
+            if st.button(btn_label, key=f"mult_{value}", type="primary" if is_active else "secondary"):
                     st.session_state.multiplier = value
                     st.rerun()
 
