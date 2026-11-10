@@ -759,58 +759,7 @@ st.markdown("""
     background: #f7f7f7;
     color: #111111;
 }
-/* Make RESET and all multiplier buttons identical */
-div[class*="st-key-reset_multiplier"] button,
-div[class*="st-key-mult_"] button {
-    width: 100% !important;
-    min-width: 0 !important;
-    max-width: none !important;
 
-    height: 72px !important;
-    min-height: 72px !important;
-    max-height: 72px !important;
-
-    padding: 2px !important;
-    margin: 0 !important;
-
-    border: 4px solid #a4a4a4;
-    border-radius: 7px;
-
-    font-size: 14px !important;
-    line-height: 1.1 !important;
-    white-space: pre-line !important;
-    text-align: center !important;
-}
-
-/* Let RESET text wrap onto two lines */
-div[class*="st-key-reset_multiplier"] button p {
-    white-space: pre-line !important;
-    overflow-wrap: normal !important;
-}
-/* RESET button: match multiplier button dimensions */
-div[class*="st-key-reset_multiplier"] button {
-    width: 100% !important;
-    height: 72px !important;
-    min-height: 72px !important;
-    max-width: none !important;
-    padding: 4px 1px !important;
-    font-size: 14px !important;
-    line-height: 1.1 !important;
-    white-space: pre-line !important;
-    text-align: center !important;
-    border-width: 4px !important;
-}
-/* Square RESET 1X button */
-div[class*="st-key-reset_multiplier"] button {
-    width: 85px !important;
-    height: 85px !important;
-    min-height: 85px !important;
-    padding: 5px !important;
-    font-size: 24px !important;
-    line-height: 1.2 !important;
-    white-space: pre-line !important;
-    text-align: center !important;
-}
 
 .block-container {
     max-width: 1500px;
@@ -909,9 +858,8 @@ div[class*="st-key-mult_"] button {
     font-size: clamp(12px, 1.6vw, 23px);
 }
 
-/* Back/reset buttons */
-div[class*="st-key-back_"] button,
-div[class*="st-key-reset_"] button {
+/* Back button only */
+div[class*="st-key-back_"] button {
     min-height: 48px;
     max-width: 240px;
     font-size: 15px;
@@ -1057,12 +1005,6 @@ div[class*="st-key-reset_"] button {
     overflow-wrap: anywhere !important;
     text-align: center !important;
 }
-
-
-
-What this fixes
-- RESET and 1.5X will occupy equally sized columns.
-- All 13 buttons will have the same height and width
 
 </style>
 """, unsafe_allow_html=True)
