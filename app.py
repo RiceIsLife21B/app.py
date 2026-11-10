@@ -1019,6 +1019,50 @@ div[class*="st-key-reset_"] button {
         border-left-width: 3px;
     }
 }
+/* Force multiplier columns to equal widths */
+.st-key-multiplier_row [data-testid="stColumn"] {
+    min-width: 0 !important;
+    width: 0 !important;
+    flex: 1 1 0 !important;
+}
+
+/* Prevent button containers from overflowing */
+.st-key-multiplier_row .stButton {
+    width: 100% !important;
+    min-width: 0 !important;
+}
+
+/* Make RESET and multipliers identical */
+.st-key-multiplier_row button {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+
+    height: 72px !important;
+    min-height: 72px !important;
+    max-height: 72px !important;
+
+    padding: 2px !important;
+    margin: 0 !important;
+
+    font-size: 12px !important;
+    line-height: 1.1 !important;
+    white-space: pre-line !important;
+    box-sizing: border-box !important;
+}
+
+/* Keep RESET on two lines */
+.st-key-multiplier_row button p {
+    white-space: pre-line !important;
+    overflow-wrap: anywhere !important;
+    text-align: center !important;
+}
+
+
+
+What this fixes
+- RESET and 1.5X will occupy equally sized columns.
+- All 13 buttons will have the same height and width
 
 </style>
 """, unsafe_allow_html=True)
