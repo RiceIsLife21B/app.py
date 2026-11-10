@@ -329,8 +329,8 @@ multipliers_list = [
 ]
 for btn_label, value in multipliers_list:
     if st.button(btn_label, key=f"mult_{value}", type="primary" if st.session_state.multiplier == value else "secondary"):
-    st.session_state.multiplier = value
-    st.rerun()
+        st.session_state.multiplier = value
+        st.rerun()
 with display_col2:
     st.markdown(f'{recipe_name}', unsafe_allow_html=True)
     st.markdown(f'{recipe_data["meta"]} — Scaling Level: {st.session_state.multiplier}x', unsafe_allow_html=True)
