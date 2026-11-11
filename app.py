@@ -217,7 +217,7 @@ add(
 )
 
 add(
-    "SEASONED SOY (GF)", SAUCE,
+    "SEASONED SOY(GF)", SAUCE,
     """
     Tamari|2000|g;
     Water|1000|g;
