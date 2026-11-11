@@ -78,7 +78,7 @@ def add(name, category, ingredients, steps, notes=""):
 # ==========================================================
 
 add(
-    "BULGOGI SAUCE(BEEF)", SAUCE,
+    "BULGOGI SAUCE(KBBQ)", SAUCE,
     """
     White Sugar|150|g;
     Mirin|150|g;
