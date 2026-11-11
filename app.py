@@ -426,14 +426,12 @@ add(
 add(
     "MISO SOUP", MAIN,
     """
-    Roasted Salmon;
-    Miso Paste|?|not provided;
+    Miso|?|not provided;
     Water|?|not provided
     """,
     "",
     "Confirm ingredients and preparation instructions with Leo."
 )
-
 add(
     "MUSHROOM BRAISE", MAIN,
     """
