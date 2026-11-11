@@ -93,7 +93,7 @@ add(
     Black Pepper|3|g
     """,
     """
-    Grind garlic, ginger finely in mirin with Vitamix.~
+    Grind garlic, ginger finely with mirin in Vitamix.~
     Mix everything together.~
     Bring to a boil, let cool.
     """
@@ -111,8 +111,8 @@ add(
     """,
     """
     Whisk sugars, salt and Hon Dashi into rice vinegar.~
-    Add Gochujang last.~
     Whisk until Hon Dashi and sugars dissolved.
+    Add Gochujang last.~
     """
 )
 
