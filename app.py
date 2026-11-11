@@ -420,18 +420,18 @@ add(
     Mirin|200|g;
     Soy|150|g
     """,
-    "Whisk all ingredients together."
+    "Whisk all ingredients together until dissolved."
 )
 
 add(
     "MISO SOUP", MAIN,
     """
-    Roasted Salmon|?|not provided;
-    Miso Paste|?|not provided;
-    Water|?|not provided
+    Roasted Salmon|?|pc;
+    Miso Paste|100|g;
+    Water|4|L
     """,
     "",
-    "Confirm ingredients and preparation instructions with Leo."
+    "Confirm ingredients, amounts and preparation instructions with Leo."
 )
 add(
     "MUSHROOM BRAISE", MAIN,
