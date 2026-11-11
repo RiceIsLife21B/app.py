@@ -16,7 +16,7 @@ st.set_page_config(
 
 CATEGORIES = [
     "Sauces + Dressings",
-    "Mains + Marinades",
+    "Proteins + Marinades",
     "Salads + Pickles",
 ]
 
@@ -74,7 +74,7 @@ def add(name, category, ingredients, steps, notes=""):
 
 
 SAUCE = CATEGORIES[0]
-MAIN = CATEGORIES[1]
+PROTEIN = CATEGORIES[1]
 SALAD = CATEGORIES[2]
 
 # ==========================================================
