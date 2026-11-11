@@ -156,7 +156,7 @@ add(
     Onions|280|g;
     Sugar|120|g;
     Ginger|68|g;
-    Miso|32|g;
+    Miso Paste|32|g;
     Salt|24|g;
     Sesame Oil|20|g;
     Black Pepper|4|g
@@ -414,7 +414,7 @@ add(
 add(
     "MISO MARINADE", MAIN,
     """
-    Miso|1000|g;
+    Miso Paste|1000|g;
     Sugar|600|g;
     Water|400|g;
     Mirin|200|g;
@@ -426,7 +426,8 @@ add(
 add(
     "MISO SOUP", MAIN,
     """
-    Miso|?|not provided;
+    Roasted Salmon;
+    Miso Paste|?|not provided;
     Water|?|not provided
     """,
     "",
@@ -487,7 +488,7 @@ add(
     """,
     """
     Wash rice in a large strainer over a large bowl.~
-    Discard starchy water regularly, with at least three washes.~
+    Discard starchy water regularly, with at least 3 washes.~
     Completely drain before putting rice in the rice cooker.~
     Add water and cook.~
     Season sushi rice.
@@ -517,7 +518,7 @@ add(
 add(
     "TOFU MARINADE", MAIN,
     """
-    Miso Bean Paste|300|g;
+    Miso Paste|300|g;
     Mirin|150|g;
     Black Pepper|3|g;
     Gochugaru|10|g;
@@ -652,7 +653,7 @@ add(
     Cool in water bath.~
     Strain well and season broccoli.
     """,
-    "1,250g = Approximately four heads of broccoli."
+    "1,250g = Approximately 4 heads of broccoli."
 )
 
 add(
