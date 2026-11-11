@@ -111,8 +111,8 @@ add(
     """,
     """
     Whisk sugars, salt and Hon Dashi into rice vinegar.~
-    Whisk until Hon Dashi and sugars dissolved.
-    Add Gochujang last.~
+    Whisk until Hon Dashi and sugars dissolved.~
+    Add Gochujang last.
     """
 )
 
