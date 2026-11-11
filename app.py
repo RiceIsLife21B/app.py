@@ -1125,6 +1125,51 @@ div[data-testid="stTextInput"] button svg {
     color: #FFFFFF !important;
     stroke: #FFFFFF !important;
 }
+/* =========================================
+   PASSWORD BOX — RED #ED2227
+   ========================================= */
+
+/* Outer password box border */
+div[data-testid="stTextInput"] div[data-baseweb="input"],
+div[data-testid="stTextInput"] div[data-baseweb="base-input"] {
+    background: #FFFFFF !important;
+    border: 2px solid #ED2227 !important;
+    border-radius: 6px !important;
+    box-shadow: none !important;
+}
+
+/* Remove black border from the actual input */
+div[data-testid="stTextInput"] input {
+    background: #FFFFFF !important;
+    color: #111111 !important;
+    caret-color: #ED2227 !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Keep outer border red when selected */
+div[data-testid="stTextInput"] div[data-baseweb="input"]:focus-within {
+    border: 2px solid #ED2227 !important;
+    box-shadow: none !important;
+}
+
+/* Eye button — entirely red */
+div[data-testid="stTextInput"] button {
+    background: #ED2227 !important;
+    background-color: #ED2227 !important;
+    background-image: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+/* Eye icon — white */
+div[data-testid="stTextInput"] button svg {
+    color: #FFFFFF !important;
+    stroke: #FFFFFF !important;
+    fill: none !important;
+}
 </style>
 """, unsafe_allow_html=True)
 
