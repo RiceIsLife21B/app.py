@@ -773,7 +773,6 @@ footer {
     color: #ed2227;
     margin: 24px 0 28px 0;
 }
-
 /* All main buttons */
 .stButton > button {
     width: 100%;
@@ -1027,6 +1026,7 @@ def highlight_key(key):
 
 def login_screen():
     st.markdown(
+        '<div class="brand-logo">riceislife</div>',
         unsafe_allow_html=True
     )
 
