@@ -1137,12 +1137,11 @@ def login_screen():
         unsafe_allow_html=True
     )
 
-    st.markdown("### STAFF RECIPE BOOK")
-    st.write("Enterst.markdown(
+    st.markdown("### STAFF")
+       st.markdown(
         '<p style="color:#ED2227;">Enter the staff password to access recipes.</p>',
         unsafe_allow_html=True
-)
- the staff password to access recipes.")
+    )
 
     try:
         correct_password = st.secrets["STAFF_PASSWORD"]
