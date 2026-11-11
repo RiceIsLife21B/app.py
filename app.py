@@ -2,6 +2,11 @@
 import streamlit as st
 import hmac
 from decimal import Decimal
+from html import escape
+
+# ==========================================================
+# RICE IS LIFE — STAFF RECIPE BOOK
+# ==========================================================
 
 st.set_page_config(
     page_title="Rice Is Life | Recipe Book",
@@ -24,20 +29,15 @@ MULTIPLIERS = [
     1.5, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 30
 ]
 
-# ==========================================================
-# RECIPE DATA
-#
-# Ingredients are entered as:
-# Ingredient name | Base quantity | Unit
-#
-# Separate ingredients with semicolons.
-# Separate preparation steps with ~
-#
-# A question mark means the amount is not specified.
-# ==========================================================
+SAUCE = CATEGORIES[0]
+MAIN = CATEGORIES[1]
+SALAD = CATEGORIES[2]
 
 RECIPES = {}
 
+# ==========================================================
+# RECIPE DATA HANDLING
+# ==========================================================
 
 def add(name, category, ingredients, steps, notes=""):
     parsed = []
@@ -72,10 +72,6 @@ def add(name, category, ingredients, steps, notes=""):
         "notes": notes,
     }
 
-
-SAUCE = CATEGORIES[0]
-MAIN = CATEGORIES[1]
-SALAD = CATEGORIES[2]
 
 # ==========================================================
 # SAUCES + DRESSINGS
@@ -171,7 +167,8 @@ add(
     Blend vegetables with vinegar in Vitamix until smooth.~
     Combine blended vegetables with remaining ingredients and whisk until smooth.
     """,
-    "IMPORTANT: Original specifies making two separate 5X batches for 10X, NOT a 10X batch.")
+    "IMPORTANT: Original specifies making two separate 5X batches for 10X, NOT a 10X batch."
+)
 
 add(
     "HOUSE MAYO", SAUCE,
@@ -334,7 +331,7 @@ add(
     Cold smoke using the Rational for two hours.~
     Brisket can be smoked in advance.~
     Roast in combination setting at 100% humidity, 202°F for 15 hours.
-    """,
+    """
 )
 
 add(
@@ -345,7 +342,7 @@ add(
     Salt|3|g;
     Can of Club Soda|355|ml
     """,
-    "Whisk all ingredients together until no lumps remain.",
+    "Whisk all ingredients together until no lumps remain."
 )
 
 add(
@@ -477,7 +474,7 @@ add(
     Vacuum seal.~
     Sous vide at 80°C for eight hours or 75°C for eleven hours.
     """,
-    "2 pcs ginger sliced and 2 garlic cloves inside each vacuum bag. "
+    "2 pcs ginger sliced and 2 garlic cloves inside each vacuum bag."
 )
 
 add(
@@ -515,7 +512,7 @@ add(
     Completely drain before putting rice in the rice cooker.~
     Add water and cook.
     """,
-    "Take Note of the different white-rice and brown-rice ratios. "
+    "Take Note of the different white-rice and brown-rice ratios."
 )
 
 add(
@@ -577,7 +574,7 @@ add(
     Massage paste into chives.~
     Leave at room temperature or a warm spot for two hours to ferment.~
     Refrigerate; original says store up to two weeks.
-    """,
+    """
 )
 
 add(
@@ -634,9 +631,9 @@ add(
     Garlic Cloves|10|pcs
     """,
     """
-    Wash, halve, clean and julienne the jalapeño peppers.~ 
+    Wash, halve, clean and julienne the jalapeño peppers.~
     Mix all other ingredients in a pot and bring to a boil.~
-    Pour over julienned jalapeños and let sit for 24 hours.~
+    Pour over julienned jalapeños and let sit for 24 hours.
     """,
     "Confirm preparation instructions with Leo."
 )
@@ -710,11 +707,6 @@ def select_multiplier(multiplier):
     st.session_state.multiplier = multiplier
 
 
-def go_back():
-    st.session_state.recipe = None
-    st.session_state.multiplier = 1
-
-
 def format_amount(amount, unit, multiplier):
     if amount == "?":
         return unit
@@ -730,23 +722,18 @@ def format_amount(amount, unit, multiplier):
 
 
 # ==========================================================
-# STYLING
+# MAIN CSS STYLING
 # ==========================================================
 
 st.markdown("""
 <style>
 
-/* Medium-bold fonts throughout the app */
-.stApp,
-.stApp * {
-    font-weight: 600 !important;
-}
-/* General layout */
+/* GENERAL PAGE */
+
 .stApp {
-    background: #f7f7f7;
+    background-color: #F7F7F7;
     color: #111111;
 }
-
 
 .block-container {
     max-width: 1500px;
@@ -754,44 +741,46 @@ st.markdown("""
     padding-bottom: 3rem;
 }
 
-/* Hide unnecessary Streamlit interface elements */
-#MainMenu {
+#MainMenu, footer {
     visibility: hidden;
 }
 
-footer {
-    visibility: hidden;
+/* MEDIUM-BOLD FONTS */
+
+.stApp, .stApp * {
+    font-weight: 600;
 }
 
-/* Brand logo */
+/* RICE IS LIFE LOGO */
+
 .brand-logo {
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     font-size: clamp(42px, 5vw, 72px);
     font-weight: 800;
     letter-spacing: 0px;
-    color: #ed2227;
+    color: #ED2227;
     margin: 24px 0 28px 0;
 }
-/* All main buttons */
+
+/* GENERAL RED BUTTONS */
+
 .stButton > button {
     width: 100%;
     min-height: 95px;
     padding: 12px 7px;
 
-    background:
-        linear-gradient(
-            to bottom,
-            #ffaaaa 0%,
-            #ff5555 7%,
-            #ed2227 16%,
-            #ed2227 82%,
-            #d7080d 100%
-        );
+    background: linear-gradient(
+        to bottom,
+        #FFAAAA 0%,
+        #FF5555 7%,
+        #ED2227 16%,
+        #ED2227 82%,
+        #D7080D 100%
+    );
 
-    color: white !important;
-
-    border: 6px solid #a4a4a4;
+    color: #FFFFFF !important;
+    border: 6px solid #A4A4A4;
     border-radius: 7px;
 
     box-shadow:
@@ -800,168 +789,46 @@ footer {
 
     font-family: Arial, Helvetica, sans-serif;
     font-size: clamp(15px, 2.1vw, 29px);
-    font-weight: 800;
+    font-weight: 600;
     line-height: 1.1;
     text-transform: uppercase;
     white-space: normal;
-
-    transition: border-color 0.1s ease;
 }
 
-/* Prevent default hover colors */
 .stButton > button:hover,
 .stButton > button:focus,
 .stButton > button:active {
-    color: white !important;
-    background:
-        linear-gradient(
-            to bottom,
-            #ffaaaa 0%,
-            #ff5555 7%,
-            #ed2227 16%,
-            #ed2227 82%,
-            #d7080d 100%
-        ) !important;
+    color: #FFFFFF !important;
+    background: #ED2227 !important;
 }
 
-/* Category buttons */
+/* CATEGORY BUTTONS */
+
 div[class*="st-key-cat_"] button {
     min-height: 72px;
     height: 72px;
     font-size: clamp(18px, 2.5vw, 37px);
 }
 
-/* Recipe selection buttons */
+/* RECIPE SELECTION BUTTONS */
+
 div[class*="st-key-recipe_"] button {
     min-height: 105px;
 }
 
-/* Multiplier buttons */
-div[class*="st-key-mult_"] button {
-    min-height: 72px;
-    padding: 4px 1px;
-    border-width: 4px;
-    font-size: clamp(12px, 1.6vw, 23px);
-}
+/* MULTIPLIER BUTTONS */
 
-/* Back button only */
-div[class*="st-key-back_"] button {
-    min-height: 48px;
-    max-width: 240px;
-    font-size: 15px;
-}
-
-/* Recipe panel */
-.recipe-title {
-    font-size: clamp(28px, 3vw, 42px);
-    font-weight: 850;
-    margin: 0 0 15px 0;
-    text-transform: uppercase;
-}
-
-.section-title {
-    font-size: clamp(22px, 2.5vw, 32px);
-    font-weight: 850;
-    margin: 5px 0 20px 0;
-    text-transform: uppercase;
-}
-
-.recipe-banner {
-    background: #ed2227;
-    border: 6px solid #aaa;
-    border-radius: 6px;
-    text-align: center;
-    padding: 17px 10px;
-    color: white;
-    font-size: clamp(24px, 3vw, 43px);
-    font-weight: 800;
-    margin-bottom: 22px;
-}
-
-.ingredient-row {
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    border-bottom: 1px solid #dddddd;
-    padding: 10px 0;
-    font-size: clamp(16px, 1.9vw, 24px);
-}
-
-.ingredient-name {
-    font-weight: 650;
-    overflow-wrap: anywhere;
-}
-
-.ingredient-amount {
-    font-weight: 800;
-    text-align: right;
-    white-space: nowrap;
-}
-
-.step-block {
-    margin-bottom: 22px;
-    font-size: clamp(17px, 1.9vw, 24px);
-    line-height: 1.4;
-}
-
-.step-number {
-    font-weight: 850;
-    margin-bottom: 5px;
-}
-
-.vertical-divider {
-    border-left: 5px solid #ed2227;
-    padding-left: 24px;
-}
-
-.batch-label {
-    text-align: center;
-    color: #555555;
-    font-size: 18px;
-    font-weight: 750;
-    margin-bottom: 12px;
-}
-
-/* Smaller screen adjustments */
-@media (max-width: 900px) {
-
-    .block-container {
-        padding-left: 12px;
-        padding-right: 12px;
-    }
-
-    div[class*="st-key-cat_"] button {
-    min-height: 54px;
-    height: 54px;
-    }
-
-    div[class*="st-key-recipe_"] button {
-        min-height: 88px;
-    }
-
-    div[class*="st-key-mult_"] button {
-        min-height: 65px;
-    }
-
-    .vertical-divider {
-        padding-left: 12px;
-        border-left-width: 3px;
-    }
-}
-/* Force multiplier columns to equal widths */
 .st-key-multiplier_row [data-testid="stColumn"] {
     min-width: 0 !important;
     width: 0 !important;
     flex: 1 1 0 !important;
 }
 
-/* Prevent button containers from overflowing */
 .st-key-multiplier_row .stButton {
     width: 100% !important;
     min-width: 0 !important;
 }
 
-/* Make RESET and multipliers identical */
 .st-key-multiplier_row button {
     width: 100% !important;
     min-width: 0 !important;
@@ -974,12 +841,81 @@ div[class*="st-key-back_"] button {
     padding: 2px !important;
     margin: 0 !important;
 
+    border-width: 4px !important;
     font-size: 12px !important;
     line-height: 1.1 !important;
-    white-space: pre-line !important;
     box-sizing: border-box !important;
+    text-align: center !important;
 }
-/* Recipe notes box */
+
+/* RECIPE TITLES */
+
+.section-title {
+    font-size: clamp(22px, 2.5vw, 32px);
+    font-weight: 800;
+    margin: 5px 0 20px 0;
+    text-transform: uppercase;
+}
+
+.recipe-banner {
+    background: #ED2227;
+    border: 6px solid #AAAAAA;
+    border-radius: 6px;
+    text-align: center;
+    padding: 17px 10px;
+    color: #FFFFFF;
+    font-size: clamp(24px, 3vw, 43px);
+    font-weight: 800;
+    margin-bottom: 22px;
+}
+
+/* INGREDIENTS */
+
+.ingredient-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    border-bottom: 1px solid #DDDDDD;
+    padding: 10px 0;
+    font-size: clamp(16px, 1.9vw, 24px);
+}
+
+.ingredient-name {
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+.ingredient-amount {
+    font-weight: 700;
+    text-align: right;
+    white-space: nowrap;
+}
+
+/* PREPARATION STEPS */
+
+.step-block {
+    margin-bottom: 22px;
+    font-size: clamp(17px, 1.9vw, 24px);
+    line-height: 1.4;
+}
+
+.step-number {
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+/* BATCH LABEL */
+
+.batch-label {
+    text-align: center;
+    color: #555555;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+/* RECIPE NOTES */
+
 .recipe-notes {
     background-color: #FFFFFF;
     border: 2px solid #ED2227;
@@ -990,63 +926,205 @@ div[class*="st-key-back_"] button {
     font-weight: 600;
     line-height: 1.5;
 }
-/* Login button capitalization */
-[data-testid="stFormSubmitButton"] button {
-    text-transform: none !important;
-}
-</style>
-""", unsafe_allow_html=True)
 
-/* =========================================
-   STAFF LOGIN — RED AND WHITE STYLING
-   ========================================= */
+/* ==========================================
+   STAFF LOGIN — RED AND WHITE
+   ========================================== */
 
-/* Outer form border */
-div[data-testid="stForm"] {
-    background-color: #FFFFFF !important;
+/* Outer login form */
+
+[data-testid="stForm"] {
+    background: #FFFFFF !important;
     border: 2px solid #ED2227 !important;
     border-radius: 8px !important;
 }
 
-/* Keep the border red when selected */
-.stTextInput [data-baseweb="input"]:focus-within {
+/* Staff heading and instruction */
+
+.login-heading {
+    color: #ED2227;
+    font-size: 28px;
+    font-weight: 800;
+}
+
+.login-instruction {
+    color: #ED2227;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* Password field outer border */
+
+[data-testid="stTextInput"] [data-baseweb="input"] {
+    background: #FFFFFF !important;
+    border: 2px solid #ED2227 !important;
+    border-radius: 6px !important;
+    box-shadow: none !important;
+    overflow: hidden !important;
+}
+
+/* Streamlit BaseWeb outline */
+
+[data-testid="stTextInput"] [data-baseweb="input"]:focus-within {
     border-color: #ED2227 !important;
     box-shadow: none !important;
 }
 
-/* Remove the inner black border */
-.stTextInput input {
+/* Password entry area */
+
+[data-testid="stTextInput"] input {
+    background: #FFFFFF !important;
+    color: #111111 !important;
+    caret-color: #ED2227 !important;
     border: none !important;
     outline: none !important;
     box-shadow: none !important;
-    caret-color: #ED2227 !important;
-}
-/* Password box red outline */
-div[data-testid="stTextInput"] [data-baseweb="input"] {
-    border: 2px solid #ED2227 !important;
-    background: #FFFFFF !important;
+    font-size: 20px !important;
 }
 
-/* Password input red outline when selected */
-div[data-testid="stTextInput"] [data-baseweb="input"]:focus-within {
-    border: 2px solid #ED2227 !important;
-    box-shadow: none !important;
+[data-testid="stTextInput"] input::placeholder {
+    color: #777777 !important;
+    opacity: 1 !important;
 }
 
-/* Red background behind eye icon */
-div[data-testid="stTextInput"] button {
+/* Password eye button */
+
+[data-testid="stTextInput"] button,
+[data-testid="stTextInput"] button:hover,
+[data-testid="stTextInput"] button:focus,
+[data-testid="stTextInput"] [data-testid="stPasswordVisibilityToggle"] {
     background: #ED2227 !important;
-    color: #ED2227 !important;
+    background-color: #ED2227 !important;
+    background-image: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    color: #FFFFFF !important;
+}
+
+/* Surrounding password eye area */
+
+[data-testid="stTextInput"] [data-baseweb="input"] > div:last-child {
+    background: #ED2227 !important;
+    border: none !important;
 }
 
 /* White eye icon */
-div[data-testid="stTextInput"] button svg {
+
+[data-testid="stTextInput"] button svg,
+[data-testid="stTextInput"] button svg * {
     color: #FFFFFF !important;
     stroke: #FFFFFF !important;
 }
 
+/* LOGIN BUTTON */
+
+[data-testid="stFormSubmitButton"] button,
+[data-testid="stFormSubmitButton"] button:hover,
+[data-testid="stFormSubmitButton"] button:focus,
+[data-testid="stFormSubmitButton"] button:active {
+    background: #FFFFFF !important;
+    background-image: none !important;
+    color: #ED2227 !important;
+    border: 2px solid #ED2227 !important;
+    border-radius: 6px !important;
+
+    width: 120px !important;
+    min-height: 44px !important;
+    height: 44px !important;
+
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    text-transform: none !important;
+    box-shadow: none !important;
+}
+
+[data-testid="stFormSubmitButton"] button p {
+    color: #ED2227 !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    text-transform: none !important;
+}
+
+/* SMALLER SCREENS */
+
+@media (max-width: 900px) {
+
+    .block-container {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    div[class*="st-key-cat_"] button {
+        min-height: 54px;
+        height: 54px;
+        font-size: 18px;
+    }
+
+    div[class*="st-key-recipe_"] button {
+        min-height: 88px;
+    }
+
+    .st-key-multiplier_row button {
+        height: 65px !important;
+        min-height: 65px !important;
+        max-height: 65px !important;
+        font-size: 11px !important;
+    }
+}
+
+</style>
+""", unsafe_allow_html=True)
+
+
+# ==========================================================
+# ACTIVE BUTTON HIGHLIGHTING
+# ==========================================================
+
+def highlight_key(key):
+    st.markdown(
+        f"""
+        <style>
+        .st-key-{key} button {{
+            border-color: #4AF000 !important;
+            box-shadow:
+                0 0 0 2px #4AF000,
+                inset 0 2px 2px rgba(255,255,255,0.5)
+                !important;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+# ==========================================================
+# PASSWORD PROTECTION
+# ==========================================================
+
+def login_screen():
+
+    st.markdown(
+        '<div class="brand-logo">riceislife</div>',
+        unsafe_allow_html=True,
+    )
+
+    st.markdown(
+        '<div class="login-heading">STAFF</div>',
+        unsafe_allow_html=True,
+    )
+
+    st.markdown(
+        '<p class="login-instruction">'
+        'Enter the staff password to access recipes.'
+        '</p>',
+        unsafe_allow_html=True,
+    )
+
     try:
-        correct_password = st.secrets["STAFF_PASSWORD"]
+        correct_password = str(
+            st.secrets["STAFF_PASSWORD"]
+        )
     except Exception:
         st.error(
             "Staff password has not been configured. "
@@ -1055,6 +1133,7 @@ div[data-testid="stTextInput"] button svg {
         st.stop()
 
     with st.form("login_form"):
+
         entered = st.text_input(
             "Staff password",
             type="password",
@@ -1064,17 +1143,18 @@ div[data-testid="stTextInput"] button svg {
         submit = st.form_submit_button("Log In")
 
     if submit:
+
         if hmac.compare_digest(
             entered,
-            str(correct_password)
+            correct_password
         ):
             st.session_state.authenticated = True
             st.rerun()
+
         else:
             st.error("Incorrect password.")
 
     st.stop()
-
 
 
 if not st.session_state.authenticated:
@@ -1087,8 +1167,9 @@ if not st.session_state.authenticated:
 
 st.markdown(
     '<div class="brand-logo">riceislife</div>',
-    unsafe_allow_html=True
+    unsafe_allow_html=True,
 )
+
 
 # ==========================================================
 # CATEGORY NAVIGATION
@@ -1097,7 +1178,9 @@ st.markdown(
 category_columns = st.columns(3, gap="medium")
 
 for index, category in enumerate(CATEGORIES):
+
     with category_columns[index]:
+
         st.button(
             category.upper(),
             key=f"cat_{index}",
@@ -1108,6 +1191,7 @@ for index, category in enumerate(CATEGORIES):
 
         if st.session_state.category == category:
             highlight_key(f"cat_{index}")
+
 
 # ==========================================================
 # RECIPE SELECTION PAGE
@@ -1122,12 +1206,18 @@ if st.session_state.recipe is None:
         if data["category"] == category
     ]
 
-    # Display 4 recipe buttons per row
+    # Four recipe buttons per row
+
     for start in range(0, len(recipes), 4):
+
         row = st.columns(4, gap="medium")
 
-        for index, name in enumerate(recipes[start:start + 4]):
+        for index, name in enumerate(
+            recipes[start:start + 4]
+        ):
+
             with row[index]:
+
                 st.button(
                     name,
                     key=f"recipe_{start + index}",
@@ -1138,7 +1228,6 @@ if st.session_state.recipe is None:
 
         st.write("")
 
-    # Stop here until a recipe is selected
     st.stop()
 
 
@@ -1147,9 +1236,13 @@ if st.session_state.recipe is None:
 # ==========================================================
 
 recipe_name = st.session_state.recipe
-recipe = RECIPES[recipe_name]
 
-st.write("")
+if recipe_name not in RECIPES:
+    st.session_state.recipe = None
+    st.session_state.multiplier = 1
+    st.rerun()
+
+recipe = RECIPES[recipe_name]
 
 
 # ==========================================================
@@ -1157,14 +1250,26 @@ st.write("")
 # ==========================================================
 
 st.markdown(
-    '<div class="batch-label">SELECT BATCH MULTIPLIER</div>',
+    '<div class="batch-label">'
+    'SELECT BATCH MULTIPLIER'
+    '</div>',
     unsafe_allow_html=True,
 )
-# 13 equally sized buttons in one row
+
+# 13 buttons in one row:
+# 1X + twelve multiplier buttons
+
 with st.container(key="multiplier_row"):
-    multiplier_columns = st.columns(13, gap="small")
+
+    multiplier_columns = st.columns(
+        13,
+        gap="small",
+    )
+
+    # 1X button
 
     with multiplier_columns[0]:
+
         st.button(
             "1X",
             key="reset_multiplier",
@@ -1173,8 +1278,15 @@ with st.container(key="multiplier_row"):
             args=(1,),
         )
 
+        if st.session_state.multiplier == 1:
+            highlight_key("reset_multiplier")
+
+    # Remaining multipliers
+
     for index, multiplier in enumerate(MULTIPLIERS):
+
         with multiplier_columns[index + 1]:
+
             st.button(
                 f"{multiplier:g}X",
                 key=f"mult_{index}",
@@ -1186,7 +1298,6 @@ with st.container(key="multiplier_row"):
             if st.session_state.multiplier == multiplier:
                 highlight_key(f"mult_{index}")
 
-st.write("")
 
 factor = st.session_state.multiplier
 
@@ -1206,15 +1317,22 @@ st.markdown(
 
 left, right = st.columns([1, 1], gap="large")
 
+
+# ==========================================================
+# LEFT COLUMN — INGREDIENTS
+# ==========================================================
+
 with left:
 
     st.markdown(
-        '<div class="section-title">RECIPE NAME:</div>',
+        '<div class="section-title">'
+        'RECIPE NAME:'
+        '</div>',
         unsafe_allow_html=True,
     )
 
     st.markdown(
-        f'<div class="recipe-banner">{recipe_name}</div>',
+        f'<div class="recipe-banner">{escape(recipe_name)}</div>',
         unsafe_allow_html=True,
     )
 
@@ -1228,14 +1346,17 @@ with left:
             factor,
         )
 
+        ingredient_name = escape(ingredient["name"])
+        quantity_text = escape(quantity)
+
         st.markdown(
             f"""
             <div class="ingredient-row">
                 <span class="ingredient-name">
-                    {ingredient["name"]}
+                    {ingredient_name}
                 </span>
                 <span class="ingredient-amount">
-                    {quantity}
+                    {quantity_text}
                 </span>
             </div>
             """,
@@ -1243,16 +1364,32 @@ with left:
         )
 
 
+# ==========================================================
+# RIGHT COLUMN — PREPARATION STEPS
+# ==========================================================
+
 with right:
 
     st.markdown(
-        '<div class="section-title">PREPARATION STEPS:</div>',
+        '<div class="section-title">'
+        'PREPARATION STEPS:'
+        '</div>',
         unsafe_allow_html=True,
     )
 
     if recipe["steps"]:
 
-        for index, step in enumerate(recipe["steps"], 1):
+        for index, step in enumerate(
+            recipe["steps"], 1
+        ):
+
+            # Permit intentional bold tags in instructions.
+            safe_step = escape(step)
+            safe_step = safe_step.replace(
+                "&lt;strong&gt;", "<strong>"
+            ).replace(
+                "&lt;/strong&gt;", "</strong>"
+            )
 
             st.markdown(
                 f"""
@@ -1260,7 +1397,7 @@ with right:
                     <div class="step-number">
                         STEP #{index}:
                     </div>
-                    <div>{step}</div>
+                    <div>{safe_step}</div>
                 </div>
                 """,
                 unsafe_allow_html=True,
@@ -1277,15 +1414,18 @@ with right:
 # ==========================================================
 
 if recipe["notes"]:
+
     st.divider()
+
     st.markdown(
         f"""
         <div class="recipe-notes">
-            {recipe["notes"]}
+            {escape(recipe["notes"])}
         </div>
         """,
         unsafe_allow_html=True,
     )
+
 
 # ==========================================================
 # LOG OUT
@@ -1294,7 +1434,9 @@ if recipe["notes"]:
 st.divider()
 
 if st.button("LOG OUT", key="logout"):
+
     st.session_state.authenticated = False
     st.session_state.recipe = None
     st.session_state.multiplier = 1
+
     st.rerun()
