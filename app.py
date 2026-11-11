@@ -1102,6 +1102,29 @@ div[data-testid="stFormSubmitButton"] button p {
     box-shadow: none !important;
     caret-color: #ED2227 !important;
 }
+/* Password box red outline */
+div[data-testid="stTextInput"] [data-baseweb="input"] {
+    border: 2px solid #ED2227 !important;
+    background: #FFFFFF !important;
+}
+
+/* Password input red outline when selected */
+div[data-testid="stTextInput"] [data-baseweb="input"]:focus-within {
+    border: 2px solid #ED2227 !important;
+    box-shadow: none !important;
+}
+
+/* Red background behind eye icon */
+div[data-testid="stTextInput"] button {
+    background: #ED2227 !important;
+    color: #FFFFFF !important;
+}
+
+/* White eye icon */
+div[data-testid="stTextInput"] button svg {
+    color: #FFFFFF !important;
+    stroke: #FFFFFF !important;
+}
 </style>
 """, unsafe_allow_html=True)
 
