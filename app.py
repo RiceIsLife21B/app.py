@@ -922,30 +922,6 @@ div[class*="st-key-back_"] button {
     margin-bottom: 12px;
 }
 
-/* Password entry box */
-.stTextInput input {
-    background-color: #FFFFFF !important;
-    color: #111111 !important;
-    caret-color: #ED2227 !important;
-    border: 2px solid #ED2227 !important;
-    border-radius: 6px !important;
-    font-size: 20px !important;
-    padding: 12px 15px !important;
-}
-
-/* Red border when password field is selected */
-.stTextInput input:focus {
-    border-color: #ED2227 !important;
-    box-shadow: 0 0 0 2px rgba(237, 34, 39, 0.15) !important;
-}
-
-/* Make password field container white */
-.stTextInput [data-baseweb="input"] {
-    background-color: #FFFFFF !important;
-    border: 2px solid #ED2227 !important;
-    border-radius: 6px !important;
-}
-
 /* Smaller screen adjustments */
 @media (max-width: 900px) {
 
