@@ -1036,7 +1036,7 @@ div[data-testid="stTextInput"] [data-baseweb="input"]:focus-within {
 /* Red background behind eye icon */
 div[data-testid="stTextInput"] button {
     background: #ED2227 !important;
-    color: #FFFFFF !important;
+    color: #ED2227 !important;
 }
 
 /* White eye icon */
