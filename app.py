@@ -922,9 +922,28 @@ div[class*="st-key-back_"] button {
     margin-bottom: 12px;
 }
 
-/* Password field */
+/* Password entry box */
 .stTextInput input {
-    font-size: 20px;
+    background-color: #FFFFFF !important;
+    color: #111111 !important;
+    caret-color: #ED2227 !important;
+    border: 2px solid #ED2227 !important;
+    border-radius: 6px !important;
+    font-size: 20px !important;
+    padding: 12px 15px !important;
+}
+
+/* Red border when password field is selected */
+.stTextInput input:focus {
+    border-color: #ED2227 !important;
+    box-shadow: 0 0 0 2px rgba(237, 34, 39, 0.15) !important;
+}
+
+/* Make password field container white */
+.stTextInput [data-baseweb="input"] {
+    background-color: #FFFFFF !important;
+    border: 2px solid #ED2227 !important;
+    border-radius: 6px !important;
 }
 
 /* Smaller screen adjustments */
@@ -995,6 +1014,10 @@ div[class*="st-key-back_"] button {
     font-weight: 600;
     line-height: 1.5;
 }
+/* Login button capitalization */
+[data-testid="stFormSubmitButton"] button {
+    text-transform: none !important;
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -1043,12 +1066,14 @@ def login_screen():
         st.stop()
 
     with st.form("login_form"):
-        entered = st.text_input(
+       entered = st.text_input(
             "Staff password",
-            type="password"
-        )
+            type="password",
+            placeholder="Enter password",
+            autocomplete="current-password",
+)
 
-        submit = st.form_submit_button("LOG IN")
+        submit = st.form_submit_button("Log In")
 
     if submit:
         if hmac.compare_digest(
