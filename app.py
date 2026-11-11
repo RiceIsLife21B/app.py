@@ -352,8 +352,8 @@ add(
     Soy Sauce|100|g;
     Salt|50|g;
     Sugar|20|g;
-    Garlic (Crushed)|15|g;
-    Ginger (Crushed)|15|g
+    Garlic(Crushed)|15|g;
+    Ginger(Crushed)|15|g
     """,
     """
     Whisk all ingredients together until sugar dissolves.~
@@ -374,10 +374,10 @@ add(
     """,
     """
     Put 1 layer of eggs on a perforated hotel pan.~
-    Preheat combi oven to steam at 212°F and steam for 8 minutes.~
+    Preheat Combi oven to steam at 212°F for 8 minutes.~
     Immediately shock eggs in cold running water until cool, then peel.~
     Combine marinade ingredients, bring to a boil and let cool.~
-    Place peeled eggs into cold marinade and leave overnight.
+    Place cooled peeled eggs into cold marinade and leave overnight.
     """,
     "Use 5.7L Cambro for the base batch."
 )
