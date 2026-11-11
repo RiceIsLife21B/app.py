@@ -295,7 +295,7 @@ add(
 )
 
 add(
-    "YUZU GARLIC SAUCE(OHMY)", SAUCE,
+    "YUZU GARLIC SAUCE(OH-MY)", SAUCE,
     """
     Garlic|1100|g;
     Sugar|1000|g;
