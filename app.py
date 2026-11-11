@@ -473,14 +473,14 @@ add(
     Trim excess fat from pork belly.~
     Depending on size, cut into thirds or quarters to fit vacuum bags.~
     Mix together mirin and sesame oil.~
-    In a separate bowl, mix salt and sugar.~
     Rub pork belly with mirin and sesame oil first.~
+    In a separate bowl, mix salt and sugar.~
     Generously rub with salt and sugar mixture.~
     Put each cut slab in a vacuum bag with ginger and garlic.~
     Vacuum seal.~
     Sous vide at 80°C for 8 hours or 75°C for 11 hours.
     """,
-    "2 pcs ginger sliced and 2 garlic cloves inside each vacuum bag."
+    "put 2 pcs ginger sliced and 2 garlic inside each vacuum bag."
 )
 
 add(
