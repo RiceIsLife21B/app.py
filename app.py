@@ -93,9 +93,9 @@ add(
     Black Pepper|3|g
     """,
     """
-    Grind garlic and ginger finely with mirin in the Vitamix.~
+    Grind garlic, ginger finely in mirin with Vitamix.~
     Mix everything together.~
-    Bring to a boil, then let cool.
+    Bring to a boil, let cool.
     """
 )
 
@@ -112,7 +112,7 @@ add(
     """
     Whisk sugars, salt and Hon Dashi into rice vinegar.~
     Add Gochujang last.~
-    Whisk until Hon Dashi and sugars dissolve.
+    Whisk until Hon Dashi and sugars dissolved.
     """
 )
 
@@ -175,13 +175,13 @@ add(
     """
     Hellman's Mayo|5000|g;
     Lemon Juice|500|g;
-    Dashida / Mushroom Powder|100|g
+    Dashida/Mushroom Powder|100|g
     """,
     """
     Mix Dashida or mushroom powder into lemon juice until dissolved.~
     Whisk mixture into mayo.
     """,
-    "Original recipe makes approximately 6 L. Use a 15 L container."
+    "Makes approximately 6L. Use a 15L container."
 )
 
 add(
@@ -206,7 +206,7 @@ add(
     """,
     """
     Whisk together teriyaki and miso paste.~
-    Gently heat until simmering.~
+    Gently heat until simmering. Do not let boil!
     Make a cornstarch slurry with cold water.~
     Whisk in slurry slowly and simmer for one minute.
     """,
@@ -227,7 +227,7 @@ add(
     Combine everything in a pot and bring to a boil.~
     Cool and infuse overnight, then strain.
     """,
-    "Original recipe makes approximately 5 L."
+    "Original recipe makes approximately 5L."
 )
 
 add(
@@ -274,18 +274,18 @@ add(
     Sugar|3000|g;
     Mirin|4000|g;
     Sake|4000|g;
-    Garlic (Crushed)|300|g;
-    Ginger (Crushed)|100|g;
+    Garlic(Crushed)|300|g;
+    Ginger(Crushed)|100|g;
     Water|130|g;
     Cornstarch|130|g
     """,
     """
-    Combine soy, sugar, garlic and ginger.~
+    Combine tamari soy, sugar, garlic and ginger.~
     Simmer for 30 minutes until flavors are infused.~
     Remove garlic and ginger.~
-    Reduce by one quarter or until desired consistency.~
+    Reduce by 1/4 or until desired consistency.~
     Create a slurry with cornstarch and water if needed.~
-    Whisk in slurry slowly and simmer for one minute.~
+    Whisk in slurry slowly and simmer for 1 minute.~
     Cool down.
     """,
     "Original recipe makes approximately 12 L."
@@ -310,7 +310,7 @@ add(
     Confit garlic in canola oil until soft and golden.~
     Blend confit garlic and oil until smooth.~
     Combine all ingredients and bring to a boil.~
-    Whisk in cornstarch slurry slowly and continue boiling for one minute.
+    Whisk in cornstarch slurry slowly and continue boiling for 1 minute.
     """
 )
 
@@ -373,9 +373,8 @@ add(
     Eggs|60|eggs
     """,
     """
-    Preheat combi oven to steam at 212°F.~
-    Put one layer of eggs on a perforated hotel pan.~
-    Steam eggs for eight minutes.~
+    Put 1 layer of eggs on a perforated hotel pan.~
+    Preheat combi oven to steam at 212°F and steam for 8 minutes.~
     Immediately shock eggs in cold running water until cool, then peel.~
     Combine marinade ingredients, bring to a boil and let cool.~
     Place peeled eggs into cold marinade and leave overnight.
@@ -472,7 +471,7 @@ add(
     Generously rub with salt and sugar mixture.~
     Put each cut slab in a vacuum bag with ginger and garlic.~
     Vacuum seal.~
-    Sous vide at 80°C for eight hours or 75°C for eleven hours.
+    Sous vide at 80°C for 8 hours or 75°C for 11 hours.
     """,
     "2 pcs ginger sliced and 2 garlic cloves inside each vacuum bag."
 )
@@ -508,7 +507,7 @@ add(
     """,
     """
     Wash rice in a large strainer over a bowl.~
-    Discard starchy water regularly, with at least three washes.~
+    Discard starchy water regularly, with at least 3 washes.~
     Completely drain before putting rice in the rice cooker.~
     Add water and cook.
     """,
@@ -529,7 +528,7 @@ add(
     """,
     """
     Mix all ingredients together.~
-    Marinate tofu for at least one hour before use.
+    Marinate tofu for at least 1 hour before use.
     """,
     "REVIEW REQUIRED: The original lists 'Tofu 70g' and "
     "'Marinate 30g'. Confirm what these entries represent."
@@ -549,7 +548,7 @@ add(
     Salt|80|g
     """,
     """
-    Steam bean sprouts in Rational for two minutes at 211°F.~
+    Steam bean sprouts in Rational at 211°F for 2 minutes.~
     Strain bean sprouts and shock in ice water until cool.~
     In a separate bowl, mix fish sauce, garlic and sesame oil.~
     Add bean sprouts and mix thoroughly.~
@@ -569,10 +568,10 @@ add(
     Gochugaru|20|g
     """,
     """
-    Cut chives into two-inch pieces.~
+    Cut chives into 2 inch pieces.~
     Combine all ingredients except chives into a paste.~
     Massage paste into chives.~
-    Leave at room temperature or a warm spot for two hours to ferment.~
+    Leave at room temperature or a warm spot for 2 hours to ferment.~
     Refrigerate; original says store up to two weeks.
     """
 )
@@ -593,7 +592,7 @@ add(
     Let sit 15 minutes.~
     Squeeze all moisture out thoroughly.~
     Slice kimchi to a similar thickness as cabbage.~
-    Mix together sliced kimchi and cabbage.
+    Mix sliced kimchi and cabbage together.
     """,
     "40L batch as the recorded base recipe."
 )
@@ -631,7 +630,7 @@ add(
     Garlic Cloves|10|pcs
     """,
     """
-    Wash, halve, clean and julienne the jalapeño peppers.~
+    Wash, halve, clean and julienne jalapeño peppers.~
     Mix all other ingredients in a pot and bring to a boil.~
     Pour over julienned jalapeños and let sit for 24 hours.
     """,
@@ -649,7 +648,7 @@ add(
     """,
     """
     Cut broccoli into florets.~
-    Steam broccoli in oven at 212°F for three minutes.~
+    Steam broccoli in oven at 212°F for 3 minutes.~
     Cool in water bath.~
     Strain well and season broccoli.
     """,
@@ -669,9 +668,9 @@ add(
     Slice cucumbers using Robot Coupe.~
     Add sugar and salt, mix well, then let sit 20 minutes.~
     Drain liquid.~
-    Whisk wasabi and vinegar together until dissolved.~
-    Pour liquid over cucumbers and cure overnight.~
-    Rotate cucumbers for the next two days as wasabi powder sinks.
+    Whisk wasabi into vinegar until dissolved.~
+    Pour over cucumbers and cure overnight.~
+    Rotate cucumbers for the next 2 days as wasabi powder sinks.
     """
 )
 
