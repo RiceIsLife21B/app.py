@@ -471,12 +471,12 @@ add(
     """,
     """
     Trim excess fat from pork belly.~
-    Depending on size, cut into thirds or quarters to fit vacuum bags.~
-    Mix together mirin and sesame oil.~
+    Mix mirin and sesame oil together.~
     Rub pork belly with mirin and sesame oil first.~
     In a separate bowl, mix salt and sugar.~
-    Generously rub with salt and sugar mixture.~
+    Generously rub pork belly with salt and sugar mixture.~
     Put each cut slab in a vacuum bag with ginger and garlic.~
+    Depending on size, cut Pork Belly down to fit in vacuum bags.~
     Vacuum seal.~
     Sous vide at 80°C for 8 hours or 75°C for 11 hours.
     """,
@@ -494,7 +494,7 @@ add(
     """,
     """
     Wash rice in a large strainer over a large bowl.~
-    Discard starchy water regularly, with at least 3 washes.~
+    Discard starchy water regularly, with atleast 3 washes.~
     Completely drain before putting rice in the rice cooker.~
     Add water and cook.~
     Season sushi rice.
