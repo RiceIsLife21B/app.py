@@ -1082,6 +1082,26 @@ div[data-testid="stFormSubmitButton"] button p {
     font-weight: 600 !important;
     text-transform: none !important;
 }
+/* Password entry window — red border */
+.stTextInput [data-baseweb="input"] {
+    border: 2px solid #ED2227 !important;
+    border-radius: 6px !important;
+    background-color: #FFFFFF !important;
+}
+
+/* Keep the border red when selected */
+.stTextInput [data-baseweb="input"]:focus-within {
+    border-color: #ED2227 !important;
+    box-shadow: none !important;
+}
+
+/* Remove the inner black border */
+.stTextInput input {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    caret-color: #ED2227 !important;
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -1118,7 +1138,11 @@ def login_screen():
     )
 
     st.markdown("### STAFF RECIPE BOOK")
-    st.write("Enter the staff password to access recipes.")
+    st.write("Enterst.markdown(
+    '<p style="color:#ED2227;">Enter the staff password to access recipes.</p>',
+    unsafe_allow_html=True
+)
+ the staff password to access recipes.")
 
     try:
         correct_password = st.secrets["STAFF_PASSWORD"]
