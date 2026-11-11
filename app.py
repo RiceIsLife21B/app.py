@@ -1139,8 +1139,8 @@ def login_screen():
 
     st.markdown("### STAFF RECIPE BOOK")
     st.write("Enterst.markdown(
-    '<p style="color:#ED2227;">Enter the staff password to access recipes.</p>',
-    unsafe_allow_html=True
+        '<p style="color:#ED2227;">Enter the staff password to access recipes.</p>',
+        unsafe_allow_html=True
 )
  the staff password to access recipes.")
 
