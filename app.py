@@ -1125,20 +1125,20 @@ div[data-testid="stTextInput"] button svg {
     color: #FFFFFF !important;
     stroke: #FFFFFF !important;
 }
-/* =========================================
-   PASSWORD BOX — RED #ED2227
-   ========================================= */
 
-/* Outer password box border */
-div[data-testid="stTextInput"] div[data-baseweb="input"],
-div[data-testid="stTextInput"] div[data-baseweb="base-input"] {
+/* PASSWORD FIELD — RED #ED2227 */
+
+/* Red outline around the entire field */
+div[data-testid="stTextInput"] [data-baseweb="input"],
+div[data-testid="stTextInput"] [data-baseweb="base-input"] {
     background: #FFFFFF !important;
     border: 2px solid #ED2227 !important;
     border-radius: 6px !important;
     box-shadow: none !important;
+    overflow: hidden !important;
 }
 
-/* Remove black border from the actual input */
+/* White password entry area */
 div[data-testid="stTextInput"] input {
     background: #FFFFFF !important;
     color: #111111 !important;
@@ -1148,14 +1148,11 @@ div[data-testid="stTextInput"] input {
     box-shadow: none !important;
 }
 
-/* Keep outer border red when selected */
-div[data-testid="stTextInput"] div[data-baseweb="input"]:focus-within {
-    border: 2px solid #ED2227 !important;
-    box-shadow: none !important;
-}
-
-/* Eye button — entirely red */
-div[data-testid="stTextInput"] button {
+/* Red password visibility control */
+div[data-testid="stTextInput"] [data-baseweb="input"] > div:last-child,
+div[data-testid="stTextInput"] [data-baseweb="input"] button,
+div[data-testid="stTextInput"] [data-baseweb="input"] button:hover,
+div[data-testid="stTextInput"] [data-baseweb="input"] button:focus {
     background: #ED2227 !important;
     background-color: #ED2227 !important;
     background-image: none !important;
@@ -1164,12 +1161,19 @@ div[data-testid="stTextInput"] button {
     box-shadow: none !important;
 }
 
-/* Eye icon — white */
-div[data-testid="stTextInput"] button svg {
+/* White eye icon */
+div[data-testid="stTextInput"] button svg,
+div[data-testid="stTextInput"] button svg * {
     color: #FFFFFF !important;
     stroke: #FFFFFF !important;
-    fill: none !important;
 }
+
+/* Maintain red border when typing */
+div[data-testid="stTextInput"] [data-baseweb="input"]:focus-within {
+    border-color: #ED2227 !important;
+    box-shadow: none !important;
+}
+
 </style>
 """, unsafe_allow_html=True)
 
