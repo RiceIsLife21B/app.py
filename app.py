@@ -431,15 +431,12 @@ add(
     Water|4|L
     """,
     """
-    Trim excess fat from pork belly.~
-    Depending on size, cut into thirds or quarters to fit vacuum bags.~
+    Roast Salmon at 211°F for 2 minutes. .~
     Mix together mirin and sesame oil.~
     In a separate bowl, mix salt and sugar.~
     Rub pork belly with mirin and sesame oil first.~
     Generously rub with salt and sugar mixture.~
-    Put each cut slab in a vacuum bag with ginger and garlic.~
-    Vacuum seal.~
-    Sous vide at 80°C for 8 hours or 75°C for 11 hours.
+    Boil for 8 hours.
     """,
     "Confirm ingredients, amounts and preparation instructions with Leo."
 )
