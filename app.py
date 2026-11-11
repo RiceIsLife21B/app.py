@@ -994,6 +994,94 @@ div[class*="st-key-back_"] button {
 [data-testid="stFormSubmitButton"] button {
     text-transform: none !important;
 }
+/* =========================================
+   STAFF LOGIN — RED AND WHITE STYLING
+   ========================================= */
+
+/* Outer form border */
+div[data-testid="stForm"] {
+    background-color: #FFFFFF !important;
+    border: 2px solid #ED2227 !important;
+    border-radius: 8px !important;
+}
+
+/* Password field outer wrapper */
+.stTextInput [data-baseweb="input"] {
+    background-color: #FFFFFF !important;
+    border: 2px solid #ED2227 !important;
+    border-radius: 6px !important;
+    overflow: hidden !important;
+}
+
+/* Password input */
+.stTextInput input {
+    background-color: #FFFFFF !important;
+    color: #111111 !important;
+    caret-color: #ED2227 !important;
+    font-size: 20px !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Password placeholder */
+.stTextInput input::placeholder {
+    color: #888888 !important;
+    opacity: 1 !important;
+}
+
+/* Password field focus */
+.stTextInput [data-baseweb="input"]:focus-within {
+    border-color: #ED2227 !important;
+    box-shadow: 0 0 0 2px rgba(237,34,39,0.15) !important;
+}
+
+/* Eye visibility button background */
+.stTextInput [data-baseweb="input"] button {
+    background: #ED2227 !important;
+    border: none !important;
+    border-radius: 0 !important;
+    color: #FFFFFF !important;
+}
+
+/* Eye icon color */
+.stTextInput [data-baseweb="input"] button svg {
+    stroke: #FFFFFF !important;
+    color: #FFFFFF !important;
+}
+
+/* Log In button — white background, red border and text */
+div[data-testid="stFormSubmitButton"] button {
+    background: #FFFFFF !important;
+    background-image: none !important;
+    color: #ED2227 !important;
+    border: 2px solid #ED2227 !important;
+    border-radius: 6px !important;
+    min-height: 44px !important;
+    height: 44px !important;
+    width: 120px !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    text-transform: none !important;
+    box-shadow: none !important;
+}
+
+/* Preserve colors when hovering or clicking */
+div[data-testid="stFormSubmitButton"] button:hover,
+div[data-testid="stFormSubmitButton"] button:focus,
+div[data-testid="stFormSubmitButton"] button:active {
+    background: #FFFFFF !important;
+    background-image: none !important;
+    color: #ED2227 !important;
+    border-color: #ED2227 !important;
+}
+
+/* Log In button text */
+div[data-testid="stFormSubmitButton"] button p {
+    color: #ED2227 !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    text-transform: none !important;
+}
 </style>
 """, unsafe_allow_html=True)
 
