@@ -1066,12 +1066,11 @@ def login_screen():
         st.stop()
 
     with st.form("login_form"):
-       entered = st.text_input(
+        entered = st.text_input(
             "Staff password",
             type="password",
             placeholder="Enter password",
-            autocomplete="current-password",
-)
+        )
 
         submit = st.form_submit_button("Log In")
 
@@ -1086,6 +1085,7 @@ def login_screen():
             st.error("Incorrect password.")
 
     st.stop()
+
 
 
 if not st.session_state.authenticated:
