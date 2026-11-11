@@ -426,7 +426,8 @@ add(
 add(
     "MISO SOUP", MAIN,
     """
-    Miso|?|not provided;
+    Roasted Salmon|?|not provided;
+    Miso Paste|?|not provided;
     Water|?|not provided
     """,
     "",
