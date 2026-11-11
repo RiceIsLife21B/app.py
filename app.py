@@ -994,6 +994,9 @@ div[class*="st-key-back_"] button {
 [data-testid="stFormSubmitButton"] button {
     text-transform: none !important;
 }
+</style>
+""", unsafe_allow_html=True)
+
 /* =========================================
    STAFF LOGIN — RED AND WHITE STYLING
    ========================================= */
