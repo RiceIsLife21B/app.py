@@ -621,8 +621,6 @@ add(
     Pour boiling liquid over daikon until covered.~
     Cool before storing.
     """,
-    "Original contains X1, X4 and X8 variants with slightly "
-    "different ratios. Multipliers here use the X1 recipe."
 )
 
 add(
@@ -713,7 +711,47 @@ def select_multiplier(multiplier):
     st.session_state.multiplier = multiplier
 
 
-def format_amount(amount, unit, multiplier):
+
+# ==========================================================
+# SPECIAL RECIPE MULTIPLIER EXCEPTIONS
+# ==========================================================
+
+SPECIAL_MULTIPLIERS = {
+    "PICKLED DAIKON": {
+        4: {
+            "Daikon": 4078,
+            "Water": 2447,
+            "Rice Vinegar": 1631,
+            "Sugar": 1387,
+            "Salt": 102,
+        },
+        8: {
+            "Daikon": 8157,
+            "Water": 4894,
+            "Rice Vinegar": 3263,
+            "Sugar": 2773,
+            "Salt": 204,
+        },
+    },
+}
+
+
+def format_amount(amount, unit, multiplier,
+                  recipe_name=None, ingredient_name=None):
+
+    # Check for an exact recipe-specific exception
+    if recipe_name in SPECIAL_MULTIPLIERS:
+        recipe_exceptions = SPECIAL_MULTIPLIERS[recipe_name]
+
+        if multiplier in recipe_exceptions:
+            special_amount = recipe_exceptions[multiplier].get(
+                ingredient_name
+            )
+
+            if special_amount is not None:
+                return f"{special_amount:,} {unit}"
+
+    # Normal calculation for all other cases
     if amount == "?":
         return unit
 
@@ -725,6 +763,7 @@ def format_amount(amount, unit, multiplier):
         number = f"{result:,.3f}".rstrip("0").rstrip(".")
 
     return f"{number} {unit}"
+
 
 
 # ==========================================================
@@ -1346,11 +1385,14 @@ with left:
 
     for ingredient in recipe["ingredients"]:
 
-        quantity = format_amount(
-            ingredient["amount"],
-            ingredient["unit"],
-            factor,
-        )
+       
+quantity = format_amount(
+    ingredient["amount"],
+    ingredient["unit"],
+    factor,
+    recipe_name=recipe_name,
+    ingredient_name=ingredient["name"],
+)
 
         ingredient_name = escape(ingredient["name"])
         quantity_text = escape(quantity)
