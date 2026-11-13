@@ -1352,7 +1352,7 @@ st.markdown(
     <div style="
         text-align: center;
         color: #0000FF;
-        font-size: 18px;
+        font-size: 24px;
         font-weight: 700;
         margin-bottom: 12px;
     ">
