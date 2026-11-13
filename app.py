@@ -621,6 +621,7 @@ add(
     Pour boiling liquid over daikon until covered.~
     Cool before storing.
     """,
+    "4X + 8X Recipes have been modified to be accurate amounts."
 )
 
 add(
