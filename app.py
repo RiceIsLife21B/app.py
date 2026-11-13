@@ -1383,23 +1383,23 @@ with left:
 
     st.markdown("### INGREDIENTS")
 
-    for ingredient in recipe["ingredients"]:
+for ingredient in recipe["ingredients"]:
 
        
-quantity = format_amount(
-    ingredient["amount"],
-    ingredient["unit"],
-    factor,
-    recipe_name=recipe_name,
-    ingredient_name=ingredient["name"],
+    quantity = format_amount(
+        ingredient["amount"],
+        ingredient["unit"],
+        factor,
+        recipe_name=recipe_name,
+        ingredient_name=ingredient["name"],
 )
 
         ingredient_name = escape(ingredient["name"])
         quantity_text = escape(quantity)
 
-        st.markdown(
-            f"""
-            <div class="ingredient-row">
+            st.markdown(
+                f"""
+                <div class="ingredient-row">
                 <span class="ingredient-name">
                     {ingredient_name}
                 </span>
