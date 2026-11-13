@@ -1349,7 +1349,7 @@ factor = st.session_state.multiplier
 
 st.markdown(
     f"""
-    <div class="batch-label">
+    <div class="batch-label" style="color: #0000FF !important;">
         CURRENT BATCH: {factor:g}X
     </div>
     """,
