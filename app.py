@@ -466,8 +466,8 @@ add(
     "PORK BELLY", MAIN,
     """
     Pork Belly|1|slab;
-    Salt|600|g;
-    Sugar|200|g;
+    Salt|125|g;
+    Sugar|50|g;
     Mirin|200|g;
     Sesame Oil|100|g;
     Ginger (Sliced)|2|pc;
