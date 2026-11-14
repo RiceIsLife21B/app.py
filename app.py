@@ -33,6 +33,8 @@ CATEGORY_COLORS = {
     SALAD: "#81C568",
 }
 
+BATCH_COLOR = "#00A7C5"
+
 MULTIPLIERS = [
     1.5, 2, 3, 4, 5, 6, 7, 8, 9, 10, 13, 20, 30
 ]
@@ -561,6 +563,8 @@ def format_amount(
 st.markdown("""
 <style>
 
+/* General page */
+
 .stApp {
     background: #F7F7F7;
     color: #111111;
@@ -676,7 +680,7 @@ div[class*="st-key-recipe_"] button {
     --button-color: #81C568;
 }
 
-/* Multiplier row - 14 equal buttons */
+/* Multiplier row - turquoise, 14 equal buttons */
 
 .st-key-multiplier_row [data-testid="stHorizontalBlock"] {
     gap: 0.25rem !important;
@@ -733,8 +737,18 @@ div[class*="st-key-recipe_"] button {
     text-transform: uppercase;
 }
 
+/*
+ Recipe title banner:
+ Takes its color from the selected recipe category.
+ It is no longer permanently red.
+*/
+
 .recipe-banner {
-    background: #ED2227;
+    background-color: var(
+        --recipe-title-color,
+        #ED2227
+    ) !important;
+
     color: #FFFFFF;
     border: 6px solid #AAAAAA;
     border-radius: 6px;
@@ -1102,6 +1116,11 @@ if recipe_name not in RECIPES:
 
 recipe = RECIPES[recipe_name]
 
+# Look up this recipe's category color.
+# This also controls its large title banner.
+
+recipe_title_color = CATEGORY_COLORS[recipe["category"]]
+
 
 # ==========================================================
 # MULTIPLIER BUTTONS
@@ -1178,8 +1197,13 @@ with left:
         unsafe_allow_html=True,
     )
 
+    # Recipe title now uses its CATEGORY color.
+    # Orange for sauces, red for mains, green for salads.
+
     st.markdown(
-        f'<div class="recipe-banner">{escape(recipe_name)}</div>',
+        f'<div class="recipe-banner" '
+        f'style="--recipe-title-color: {recipe_title_color};">'
+        f'{escape(recipe_name)}</div>',
         unsafe_allow_html=True,
     )
 
