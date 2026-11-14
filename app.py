@@ -394,7 +394,7 @@ add(
     Black Pepper|2|g;
     Salt|5|g
     """,
-    "slice the green onion whites, garlic and ginger.~
+    slice the green onion whites, garlic and ginger.~
     "Mix all ingredients together."
 )
 
