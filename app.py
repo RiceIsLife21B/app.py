@@ -675,7 +675,7 @@ add(
     Wasabi Powder|8|g
     """,
     """
-    Slice cucumbers using Robot Coupe.~
+    Slice cucumbers 1/8th thickness using Robot Coupe.~
     Add sugar and salt, mix well, then let sit 20 minutes.~
     Drain liquid.~
     Whisk wasabi into vinegar until dissolved.~
