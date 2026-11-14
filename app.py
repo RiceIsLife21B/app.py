@@ -94,7 +94,7 @@ add(
     """,
     """
     Grind garlic, ginger finely with mirin in Vitamix.~
-    Mix everything together.~
+    Mix garlic, ginge and mirin with all ingredients together.~
     Bring to a boil, let cool.
     """
 )
@@ -110,9 +110,9 @@ add(
     Hon Dashi|130|g
     """,
     """
-    Whisk sugars, salt and Hon Dashi into rice vinegar.~
-    Whisk until Hon Dashi and sugars dissolved.~
-    Add Gochujang last.
+    Whisk sugars, salt and hon dashi into rice vinegar.~
+    Whisk until hon dashi and sugars are dissolved.~
+    Add Gochujang paste last.
     """
 )
 
@@ -126,7 +126,7 @@ add(
     Rice Vinegar|80|g;
     Sugar|60|g
     """,
-    "Whisk all ingredients together."
+    "Whisk all ingredients together until sugar is dissolved."
 )
 
 add(
@@ -141,10 +141,10 @@ add(
     """,
     """
     Cut habanero and bell peppers into pieces.~
-    Grind peppers in Vitamix.~
+    Grind all the peppers in Vitamix.~
     Whisk all ingredients together.
     """,
-    "Original notes: Green, red and orange habaneros; red and yellow bell peppers."
+    "Original notes: Green, Red and Orange habaneros; Red and Yellow bell peppers."
 )
 
 add(
@@ -164,7 +164,7 @@ add(
     """
     Peel carrots, onions and ginger.~
     Cut into small chunks.~
-    Blend vegetables with vinegar in Vitamix until smooth.~
+    Blend carrots, onions and ginger with vinegar in Vitamix until smooth.~
     Combine blended vegetables with remaining ingredients and whisk until smooth.
     """,
     "IMPORTANT: Original specifies making two separate 5X batches for 10X, NOT a 10X batch."
@@ -178,7 +178,7 @@ add(
     Dashida/Mushroom Powder|100|g
     """,
     """
-    Mix Dashida or mushroom powder into lemon juice until dissolved.~
+    Mix dashida &/or? mushroom powder into lemon juice until dissolved.~
     Whisk mixture into mayo.
     """,
     "Makes approximately 6L. Use a 15L container."
@@ -210,7 +210,7 @@ add(
     Make a cornstarch slurry with cold water.~
     Whisk in slurry slowly and simmer for one minute.
     """,
-    "Cornstarch slurry has no fixed quantity in the original."
+    "Cornstarch slurry 10-15ml."
 )
 
 add(
@@ -284,11 +284,11 @@ add(
     Simmer for 30 minutes until flavors are infused.~
     Remove garlic and ginger.~
     Reduce by 1/4 or until desired consistency.~
-    Create a slurry with cornstarch and water if needed.~
+    Make a cornstarch slurry.~
     Whisk in slurry slowly and simmer for 1 minute.~
     Cool down.
     """,
-    "Original recipe makes approximately 12 L."
+    "Original recipe makes approximately 12L."
 )
 
 add(
@@ -310,7 +310,8 @@ add(
     Confit garlic in canola oil until soft and golden.~
     Blend confit garlic and oil until smooth.~
     Combine all ingredients and bring to a boil.~
-    Whisk in cornstarch slurry slowly and continue boiling for 1 minute.
+    Make a cornstarch slurry.~
+    Whisk slurry in slowly and continue boiling for 1 minute.
     """
 )
 
@@ -328,7 +329,7 @@ add(
     """
     Mix salt and pepper.~
     Season brisket generously.~
-    Cold smoke using the Rational for two hours.~
+    Cold smoke using the Rational for 2 hours.~
     Brisket can be smoked in advance.~
     Roast in combination setting at 100% humidity, 202°F for 15 hours.
     """
@@ -356,7 +357,7 @@ add(
     Ginger(Crushed)|15|g
     """,
     """
-    Whisk all ingredients together until sugar dissolves.~
+    Whisk all ingredients together until sugar dissolved.~
     Brine chicken for 24 hours.
     """
 )
@@ -393,6 +394,7 @@ add(
     Black Pepper|2|g;
     Salt|5|g
     """,
+    "slice the green onion whites, garlic and ginger.~
     "Mix all ingredients together."
 )
 
@@ -404,7 +406,7 @@ add(
     Potatoes|300|g;
     Salt|10|g;
     Dashida / Mushroom Powder|10|g;
-    Sesame Oil|?|to taste;
+    Sesame Oil|?|to taste????;
     Dashi|1.5|L
     """,
     "",
@@ -432,11 +434,11 @@ add(
     """,
     """
     Roast Salmon at 211°F for 2 minutes. .~
-    Mix together mirin and sesame oil.~
-    In a separate bowl, mix salt and sugar.~
-    Rub pork belly with mirin and sesame oil first.~
-    Generously rub with salt and sugar mixture.~
-    Boil for 8 hours.
+    ms.~
+    ms.~
+    ms.~
+    ms.~
+    Boil for XXX hours.
     """,
     "Confirm ingredients, amounts and preparation instructions with Leo."
 )
@@ -475,7 +477,7 @@ add(
     Rub pork belly with mirin and sesame oil first.~
     In a separate bowl, mix salt and sugar.~
     Generously rub pork belly with salt and sugar mixture.~
-    Depending on size, cut Pork Belly down to fit in vacuum bags.~
+    Cut Pork Belly down to fit inside vacuum bags.~
     Put each slab in a vacuum bag with ginger and garlic.~
     Vacuum seal.~
     Sous vide at 80°C for 8 hours or 75°C for 11 hours.
