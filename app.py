@@ -85,7 +85,7 @@ def R(name, category, ingredients, steps, notes=""):
 
 R(
     "BULGOGI SAUCE(KBBQ)", SAUCE,
-    "White Sugar|150|g;Mirin|150|g;Tamari|150|g;"
+    "White Sugar|150|g;Mirin|150|g;House Soy Sauce|150|g;"
     "Water|100|g;Sesame Oil|30|g;Garlic|20|g;"
     "White Vinegar|15|g;Corn Starch|15|g;"
     "Ginger|10|g;Dashida|5|g;Black Pepper|3|g",
@@ -96,9 +96,9 @@ R(
 
 R(
     "CHOJANG (PORK BELLY)", SAUCE,
-    "Gochujang Sauce|6300|g;Sugar|3700|g;"
+    "Gochujang Paste|6300|g;White Sugar|3700|g;"
     "Rice Vinegar|3300|g;Brown Sugar|500|g;"
-    "Salt|250|g;Hon Dashi|130|g",
+    "Kosher Salt|250|g;Hon Dashi|130|g",
     "Whisk sugars, salt and hon dashi into rice vinegar.~"
     "Whisk until hon dashi and sugars are dissolved.~"
     "Add Gochujang paste last."
@@ -108,7 +108,7 @@ R(
     "HOT MAYO MUSTARD", SAUCE,
     "Hellman's Mayo|800|g;Dijon Mustard|440|g;"
     "Lemon Juice|120|g;Mirin|100|g;"
-    "Rice Vinegar|80|g;Sugar|60|g",
+    "Rice Vinegar|80|g;White Sugar|60|g",
     "Whisk all ingredients together until sugar is dissolved."
 )
 
@@ -116,7 +116,7 @@ R(
     "HOT SAUCE", SAUCE,
     "Habanero Peppers|2000|g;Sherry Vinegar|1200|g;"
     "Water|700|g;Bell Peppers|500|g;"
-    "Sugar|100|g;Salt|100|g",
+    "White Sugar|100|g;Kosher Salt|100|g",
     "Cut habanero and bell peppers into pieces.~"
     "Grind all the peppers in Vitamix.~"
     "Whisk all ingredients together.",
@@ -128,8 +128,8 @@ R(
     "HOUSE DRESSING", SAUCE,
     "White Vinegar|560|g;Carrots|540|g;"
     "Canola Oil|320|g;Onions|280|g;"
-    "Sugar|120|g;Ginger|68|g;Miso Paste|32|g;"
-    "Salt|24|g;Sesame Oil|20|g;Black Pepper|4|g",
+    "White Sugar|120|g;Ginger|68|g;Miso Paste|32|g;"
+    "Kosher Salt|24|g;Sesame Oil|20|g;Black Pepper|4|g",
     "Peel carrots, onions and ginger.~"
     "Cut into small chunks.~"
     "Blend carrots, onions and ginger with vinegar "
@@ -152,14 +152,14 @@ R(
 R(
     "KANG JEONG(KFC)", SAUCE,
     "Corn Syrup|2500|g;Ketchup|1500|g;"
-    "Gochujang|500|g;Minced Garlic|300|g;"
-    "Tamari|200|g;MSG|10|g",
+    "Gochujang Paste|500|g;Minced Garlic|300|g;"
+    "House Soy Sauce|200|g;MSG|10|g",
     "Mix all ingredients together."
 )
 
 R(
     "MISO GLAZE(SALMON)", SAUCE,
-    "Teriyaki|100|g;Miso Paste|15|g;"
+    "House Teriyaki Sauce|100|g;Miso Paste|15|g;"
     "Cornstarch Slurry|?|to taste",
     "Whisk together teriyaki and miso paste.~"
     "Gently heat until simmering. Do not let boil!\n"
@@ -170,7 +170,7 @@ R(
 
 R(
     "SEASONED SOY(GF)", SAUCE,
-    "Tamari|2000|g;Water|1000|g;Mirin|900|g;"
+    "House Soy Sauce|2000|g;Water|1000|g;Mirin|900|g;"
     "Sake|600|g;Kombu|50|g;Bonito|25|g",
     "Combine everything in a pot and bring to a boil.~"
     "Cool and infuse overnight, then strain.",
@@ -179,8 +179,8 @@ R(
 
 R(
     "SPICY MAYO", SAUCE,
-    "Mayo|400|g;Gochujang|40|g;Sriracha|40|g;"
-    "Lemon Juice|40|g;Sugar|20|g;Hot Sauce|27|g",
+    "Mayo|400|g;Gochujang Paste|40|g;Sriracha|40|g;"
+    "Lemon Juice|40|g;White Sugar|20|g;House Hot Sauce|27|g",
     "Dissolve sugar in lemon juice, "
     "then mix all ingredients together."
 )
@@ -188,25 +188,25 @@ R(
 R(
     "SUSHI SU", SAUCE,
     "Mizkan Yamabuki Vinegar|4000|g;Aka Su|600|g;"
-    "Sugar|1750|g;Kosher Salt|600|g;Kombu|30|g",
-    "Whisk all ingredients in a Cambro until "
-    "sugar and salt dissolve."
+    "White Sugar|1750|g;Kosher Salt|600|g;Kombu|30|g",
+    "Whisk all ingredients until sugar and salt"
+    "dissolve."
 )
 
 R(
     "TENTSUYU(TOFU)", SAUCE,
     "Water|400|g;Dashida / Mushroom Powder|8|g;"
-    "Soy|200|g;Mirin|160|g;Sugar|20|g",
+    "House Soy Sauce|200|g;Mirin|160|g;Sugar|20|g",
     "Whisk everything together until dissolved."
 )
 
 R(
     "TERIYAKI SAUCE(CHICKEN)", SAUCE,
-    "Tamari Soy Sauce|4000|g;Sugar|3000|g;"
+    "House Soy Sauce|4000|g;White Sugar|3000|g;"
     "Mirin|4000|g;Sake|4000|g;"
     "Garlic(Crushed)|300|g;Ginger(Crushed)|100|g;"
     "Water|130|g;Cornstarch|130|g",
-    "Combine tamari soy, sugar, garlic and ginger.~"
+    "Combine house soy sauce, sugar, garlic and ginger.~"
     "Simmer for 30 minutes until flavors are infused.~"
     "Remove garlic and ginger.~"
     "Reduce by 1/4 or until desired consistency.~"
@@ -218,7 +218,7 @@ R(
 
 R(
     "YUZU GARLIC SAUCE(OH-MY)", SAUCE,
-    "Garlic|1100|g;Sugar|1000|g;Lemon Juice|825|g;"
+    "Garlic|1100|g;Wjite Sugar|1000|g;Lemon Juice|825|g;"
     "Honey|500|g;Corn Syrup|500|g;Canola Oil|500|g;"
     "Yuzu|300|g;Yuzu Kosho|160|g;Water|100|g;"
     "Corn Starch|50|g;Chili Pepper Flakes|25|g",
@@ -236,8 +236,8 @@ R(
 
 R(
     "BEEF BRISKET", MAIN,
-    "Salt|600|g;Black Pepper Powder|400|g;"
-    "Smoking Wood Chips|?|fill smoker",
+    "Kosher Salt|600|g;Black Pepper|400|g;"
+    "Smoking Wood Chips|150|g:",
     "Mix salt and pepper.~"
     "Season brisket generously.~"
     "Cold smoke using the Rational for 2 hours.~"
@@ -248,15 +248,15 @@ R(
 
 R(
     "CHICKEN BATTER", MAIN,
-    "All Purpose Flour|205|g;Soy Sauce|10|g;"
-    "Salt|3|g;Can of Club Soda|355|ml",
+    "All Purpose Flour|205|g;House Soy Sauce|10|g;"
+    "Kosher Salt|3|g;Can of Club Soda|355|ml",
     "Whisk all ingredients together until no lumps remain."
 )
 
 R(
     "CHICKEN BRINE", MAIN,
-    "Water|2000|g;Soy Sauce|100|g;Salt|50|g;"
-    "Sugar|20|g;Garlic(Crushed)|15|g;"
+    "Water|2000|g;House Soy Sauce|100|g;Kosher Salt|50|g;"
+    "White Sugar|20|g;Garlic(Crushed)|15|g;"
     "Ginger(Crushed)|15|g",
     "Whisk all ingredients together until sugar dissolved.~"
     "Brine chicken for 24 hours."
@@ -264,8 +264,8 @@ R(
 
 R(
     "DASHI EGG MARINADE", MAIN,
-    "Water|2000|g;Tamari Soy Sauce|300|g;"
-    "Sugar|100|g;Mirin|100|g;Salt|25|g;"
+    "Water|2000|g;House Soy Sauce|300|g;"
+    "White Sugar|100|g;Mirin|100|g;Kosher Salt|25|g;"
     "Hon Dashi|24|g;Eggs|60|eggs",
     "Put 1 layer of eggs on a perforated hotel pan.~"
     "Preheat Combi oven to steam at 212°F for 8 minutes.~"
@@ -281,15 +281,15 @@ R(
     "GARLIC SHRIMP", MAIN,
     "Green Onion Whites|200|g;Canola Oil|150|g;"
     "Garlic|100|g;White Vinegar|20|g;"
-    "Ginger|20|g;Black Pepper|2|g;Salt|5|g",
+    "Ginger|20|g;Black Pepper|2|g;Kosher Salt|5|g",
     "slice the green onion whites, garlic and ginger.~"
-    ',\n    "Mix all ingredients together."'
+    "Mix all ingredients together."
 )
 
 R(
     "JAPANESE CURRY", MAIN,
     "Onions|600|g;Carrots|450|g;Potatoes|300|g;"
-    "Salt|10|g;Dashida / Mushroom Powder|10|g;"
+    "Kosher Salt|10|g;Dashida / Mushroom Powder|10|g;"
     "Sesame Oil|?|to taste????;Dashi|1.5|L",
     "",
     "Salt to taste 10-15g Max. Dashi 1.5-2L to taste."
@@ -297,14 +297,16 @@ R(
 
 R(
     "MISO MARINADE", MAIN,
-    "Miso Paste|1000|g;Sugar|600|g;Water|400|g;"
-    "Mirin|200|g;Soy|150|g",
+    "Miso Paste|1000|g;White Sugar|600|g;Water|400|g;"
+    "Mirin|200|g;House Soy Sauce|150|g",
     "Whisk all ingredients together until dissolved."
 )
 
 R(
     "MISO SOUP", MAIN,
-    "Roasted Salmon|?|pc;Miso Paste|100|g;Water|4|L",
+    "Roasted Salmon Head|1|pc;Aka Miso Paste|100|g;Water|4|L;",
+    "Dashi|1.5|L;Kosher Salt|2|g",
+
     "Roast Salmon at 211°F for 2 minutes. .~"
     "ms.~ms.~ms.~ms.~Boil for XXX hours.",
     "Confirm ingredients, amounts and preparation "
@@ -313,8 +315,8 @@ R(
 
 R(
     "MUSHROOM BRAISE", MAIN,
-    "Shiitake (Dried)|1|pc;Water (Soaking)|250|g;"
-    "Shimeji|275|g;Soy|100|g;Sugar|20|g;"
+    "Dried Shiitake Mushrooms|1|pc;Water (Soaking)|250|g;"
+    "Shimeji Mushrooms|275|g;House Soy Sauce|100|g;White Sugar|20|g;"
     "Ginger|20|g;Kombu|10|g;Water (Cooking)|250|g",
     "Soak shiitake in water overnight.~"
     "Combine everything in a pot and simmer mushrooms "
@@ -323,7 +325,7 @@ R(
 
 R(
     "PORK BELLY", MAIN,
-    "Pork Belly|1|slab;Salt|125|g;Sugar|50|g;"
+    "Pork Belly|1|slab;Kosher Salt|125|g;White Sugar|50|g;"
     "Mirin|200|g;Sesame Oil|100|g;"
     "Ginger (Sliced)|2|pc;Garlic (Whole)|2|pc",
     "Trim excess fat from pork belly.~"
@@ -368,13 +370,10 @@ R(
 R(
     "TOFU MARINADE", MAIN,
     "Miso Paste|300|g;Mirin|150|g;Black Pepper|3|g;"
-    "Gochugaru|10|g;Tamari|30|g;"
+    "Gochugaru|10|g;House Soy Sauce|30|g;"
     "Dashida / Mushroom Powder|10|g;"
-    "Tofu|70|g;Marinate|30|g",
     "Mix all ingredients together.~"
-    "Marinate tofu for at least 1 hour before use.",
-    "REVIEW REQUIRED: The original lists 'Tofu 70g' and "
-    "'Marinate 30g'. Confirm what these entries represent."
+    "Brush all 6 sides of cut tofu."
 )
 
 
@@ -396,8 +395,8 @@ R(
 
 R(
     "GARLIC CHIVES", SALAD,
-    "Garlic Chives|1000|g;Tamari|100|g;Sugar|50|g;"
-    "Gochujang Sauce|40|g;Rice Flour|30|g;Gochugaru|20|g",
+    "Garlic Chives|1000|g;House Soy Sauce|100|g;White Sugar|50|g;"
+    "Gochujang Paste|40|g;Rice Flour|30|g;Gochugaru|20|g",
     "Cut chives into 2 inch pieces.~"
     "Combine all ingredients except chives into a paste.~"
     "Massage paste into chives.~"
@@ -409,7 +408,7 @@ R(
 R(
     "KIMCHI COLESLAW", SALAD,
     "Green Cabbage|20000|g;Kimchi|10000|g;"
-    "Sugar|2000|g;Lemon Juice|2000|g;Salt|600|g",
+    "White Sugar|2000|g;Lemon Juice|2000|g;Kosher Salt|600|g",
     "Quarter cabbages and remove stems.~"
     "Use Robot Coupe to slice.~"
     "Gently massage cabbage with salt, sugar and lemon juice.~"
@@ -423,7 +422,7 @@ R(
 R(
     "PICKLED DAIKON", SALAD,
     "Daikon|1000|g;Water|600|g;Rice Vinegar|400|g;"
-    "Sugar|340|g;Salt|25|g",
+    "White Sugar|340|g;Kosher Salt|25|g",
     "Peel and cut daikon into quarter-moon shapes.~"
     "Use Robot Coupe to slice.~"
     "Combine water, rice vinegar, sugar and salt.~"
@@ -435,9 +434,9 @@ R(
 
 R(
     "PICKLED JALAPEÑO", SALAD,
-    "Jalapeño|1800|g;Sugar|500|g;Tamari|500|g;"
+    "Jalapeño|1800|g;White Sugar|500|g;House Soy Sauce|500|g;"
     "Water|500|g;White Vinegar|500|g;"
-    "Salt|20|g;Garlic Cloves|10|pcs",
+    "Kosher Salt|20|g;Garlic Cloves|10|pcs",
     "Wash, halve, clean and julienne jalapeño peppers.~"
     "Mix all other ingredients in a pot and bring to a boil.~"
     "Pour over julienned jalapeños and let sit for 24 hours.",
@@ -447,7 +446,7 @@ R(
 R(
     "SESAME BROCCOLI", SALAD,
     "Broccoli|1250|g;Garlic (Blitzed)|30|g;"
-    "Sesame Oil|20|g;Tamari|25|g;Salt|8|g",
+    "Sesame Oil|20|g;House Soy Sauce|25|g;Kosher Salt|8|g",
     "Cut broccoli into florets.~"
     "Steam broccoli in oven at 212°F for 3 minutes.~"
     "Cool in water bath.~"
@@ -457,9 +456,9 @@ R(
 
 R(
     "WASABI CUCUMBER", SALAD,
-    "Cucumber|1560|g;Sugar|187|g;"
-    "White Vinegar|125|g;Salt|47|g;Wasabi Powder|8|g",
-    "Slice cucumbers 1/8th thickness using Robot Coupe.~"
+    "Cucumber|1560|g;White Sugar|187|g;"
+    "White Vinegar|125|g;Kosher Salt|47|g;Wasabi Powder|8|g",
+    "Slice cucumbers 1/8th thickness using Robot Coupe or mandolin.~"
     "Add sugar and salt, mix well, then let sit 20 minutes.~"
     "Drain liquid.~"
     "Whisk wasabi into vinegar until dissolved.~"
@@ -732,7 +731,7 @@ div[class*="st-key-recipe_"] button {
 
 .section-title {
     font-size: clamp(22px, 2.5vw, 32px);
-    font-weight: 800;
+    font-weight: 400;
     margin: 5px 0 20px;
     text-transform: uppercase;
 }
