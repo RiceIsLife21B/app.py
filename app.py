@@ -119,11 +119,13 @@ R(
     "Habanero Peppers|2000|g;Sherry Vinegar|1200|g;"
     "Water|700|g;Bell Peppers|500|g;"
     "White Sugar|100|g;Kosher Salt|100|g",
+    "Roast whole habanero and bell peppers at 500°F until blister (7-10 min max).~"
     "Cut habanero and bell peppers into pieces.~"
     "Grind all the peppers in Vitamix.~"
-    "Whisk all ingredients together.",
+    "Whisk all ingredients together.~"
+    "Wrap bowl with saran wrap and let ferment at room temerature for 48-72 hours.",
     "Green, Red and Orange habaneros and; "
-    "Red and Yellow bell peppers."
+    "Red and Yellow bell peppers preferred."
 )
 
 R(
