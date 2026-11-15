@@ -302,11 +302,14 @@ R(
     "Whisk all ingredients together until dissolved."
 )
 
+# Corrected MISO SOUP: all ingredients are one argument.
 R(
     "MISO SOUP", MAIN,
-    "Roasted Salmon Head|1|pc;Aka Miso Paste|100|g;Water|4|L;",
-    "Dashi|1.5|L;Kosher Salt|2|g",
-
+    "Roasted Salmon Head|1|pc;"
+    "Aka Miso Paste|100|g;"
+    "Water|4|L;"
+    "Dashi|1.5|L;"
+    "Kosher Salt|2|g",
     "Roast Salmon at 211°F for 2 minutes. .~"
     "ms.~ms.~ms.~ms.~Boil for XXX hours.",
     "Confirm ingredients, amounts and preparation "
@@ -367,11 +370,15 @@ R(
     "Take Note of the different white-rice and brown-rice ratios."
 )
 
+# Corrected TOFU MARINADE: ingredients and steps separated.
 R(
     "TOFU MARINADE", MAIN,
-    "Miso Paste|300|g;Mirin|150|g;Black Pepper|3|g;"
-    "Gochugaru|10|g;House Soy Sauce|30|g;"
-    "Dashida / Mushroom Powder|10|g;"
+    "Miso Paste|300|g;"
+    "Mirin|150|g;"
+    "Black Pepper|3|g;"
+    "Gochugaru|10|g;"
+    "House Soy Sauce|30|g;"
+    "Dashida / Mushroom Powder|10|g",
     "Mix all ingredients together.~"
     "Brush all 6 sides of cut tofu."
 )
@@ -510,15 +517,15 @@ SPECIAL_MULTIPLIERS = {
             "Daikon": 4078,
             "Water": 2447,
             "Rice Vinegar": 1631,
-            "Sugar": 1387,
-            "Salt": 102,
+            "White Sugar": 1387,
+            "Kosher Salt": 102,
         },
         8: {
             "Daikon": 8157,
             "Water": 4894,
             "Rice Vinegar": 3263,
-            "Sugar": 2773,
-            "Salt": 204,
+            "White Sugar": 2773,
+            "Kosher Salt": 204,
         },
     },
 }
@@ -736,11 +743,7 @@ div[class*="st-key-recipe_"] button {
     text-transform: uppercase;
 }
 
-/*
- Recipe title banner:
- Takes its color from the selected recipe category.
- It is no longer permanently red.
-*/
+/* Recipe title banner uses its category color */
 
 .recipe-banner {
     background-color: var(
@@ -1115,9 +1118,6 @@ if recipe_name not in RECIPES:
 
 recipe = RECIPES[recipe_name]
 
-# Look up this recipe's category color.
-# This also controls its large title banner.
-
 recipe_title_color = CATEGORY_COLORS[recipe["category"]]
 
 
@@ -1132,7 +1132,7 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# 14 buttons on one row (1X + 13 multipliers)
+# 14 buttons on one row: 1X + 13 multipliers
 with st.container(key="multiplier_row"):
     multiplier_columns = st.columns(
         14,
@@ -1195,9 +1195,6 @@ with left:
         '</div>',
         unsafe_allow_html=True,
     )
-
-    # Recipe title now uses its CATEGORY color.
-    # Orange for sauces, red for mains, green for salads.
 
     st.markdown(
         f'<div class="recipe-banner" '
