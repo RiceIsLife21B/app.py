@@ -290,7 +290,7 @@ R(
     "until cool, then peel.~"
     "Combine marinade ingredients, bring to a boil and let cool.~"
     "Place cooled peeled eggs into cold marinade "
-    "and leave overnight.",
+    "and marinade for 48 hours.",
     "Use 5.7L Cambro for the base batch."
 )
 
