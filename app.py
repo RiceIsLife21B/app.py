@@ -306,10 +306,10 @@ R(
 R(
     "JAPANESE CURRY", MAIN,
     "Onions|600|g;Carrots|450|g;Potatoes|300|g;"
-    "Kosher Salt|10|g;Dashida / Mushroom Powder|10|g;"
+    "Kosher Salt|10|g;Mushroom Powder|10|g;"
     "Sesame Oil|?|to taste????;Dashi|1.5|L",
-    "Dice potato and keep in cold water for service until order."
-    "Dry them off and deep fry 1:30 min."
+    "Dice potato and keep in cold water for service until order.~"
+    "Dry them off and deep fry 1:30 min.~"
     "Salt to taste 10-15g Max."
 )
 
