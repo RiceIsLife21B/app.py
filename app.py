@@ -157,7 +157,7 @@ R(
     "KANG JEONG(KFC)", SAUCE,
     "Corn Syrup|2500|g;Ketchup|1500|g;"
     "Gochujang Paste|500|g;Minced Garlic|300|g;"
-    "House Soy Sauce|200|g;MSG|10|g",
+    "House Soy Sauce|200|g;Mushroom Powder|10|g",
     "Mix all ingredients together."
 )
 
