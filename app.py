@@ -93,7 +93,7 @@ R(
     "Ginger|10|g;Dashida|5|g;Black Pepper|3|g",
     "Grind garlic, ginger finely with mirin in Vitamix.~"
     "Mix together garlic, ginger and mirin with all other ingredients.~"
-    "Bring to a boil, let cool."
+    "Bring to a boil, add corn starch simmer 1-2 minutes and let cool."
 )
 
 R(
