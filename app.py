@@ -310,7 +310,7 @@ R(
     "Sesame Oil|?|to taste????;Dashi|1.5|L",
     "Dice potato and keep in cold water for service until order.~"
     "Dry them off and deep fry 1:30 min.~"
-    "Salt to taste 10-15g Max."
+    "Make fresh to order."
 )
 
 R(
