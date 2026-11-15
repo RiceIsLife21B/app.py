@@ -408,7 +408,7 @@ R(
     "Strain bean sprouts and shock in ice water until cool.~"
     "In a separate bowl, mix fish sauce, garlic and sesame oil.~"
     "Add bean sprouts and mix thoroughly.~"
-    "Check daily and adjust salt.",
+    "Check daily and adjust salt to taste.",
     "7L batch as the recorded base recipe."
 )
 
