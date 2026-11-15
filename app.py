@@ -416,12 +416,13 @@ R(
     "Green Cabbage|20000|g;Kimchi|10000|g;"
     "White Sugar|2000|g;Lemon Juice|2000|g;Kosher Salt|600|g",
     "Quarter cabbages and remove stems.~"
-    "Use Robot Coupe to slice.~"
+    "Use Robot Coupe to slice cabbage.~"
     "Gently massage cabbage with salt, sugar and lemon juice.~"
-    "Let sit 15 minutes.~"
+    "Let sit 45 minutes.~"
     "Squeeze all moisture out thoroughly.~"
     "Slice kimchi to a similar thickness as cabbage.~"
-    "Mix sliced kimchi and cabbage together.",
+    "Mix sliced kimchi and cabbage together.~"
+    "Mix kimchi every 24 hours, mix bottom to top.~",
     "40L batch as the recorded base recipe."
 )
 
