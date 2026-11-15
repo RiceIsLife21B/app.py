@@ -265,7 +265,7 @@ R(
 )
 
 # ==========================================================
-# DASHI - CORRECTED INGREDIENT FORMAT
+# DASHI
 # ==========================================================
 
 R(
@@ -303,13 +303,17 @@ R(
     "Mix all ingredients together."
 )
 
+# ==========================================================
+# JAPANESE CURRY - CORRECTED
+# ==========================================================
+
 R(
     "JAPANESE CURRY", MAIN,
     "Dashi|1.5|L;Onions|600|g;Carrots|450|g;Potatoes|300|g;"
     "Kosher Salt|10|g;Mushroom Powder|10|g;"
-    "Sesame Oil|?|to taste????;"
+    "Sesame Oil|?|to taste????",
     "Dice potato and keep in cold water for service until order.~"
-    "Dry them off and deep fry 1:30 min.~",
+    "Dry them off and deep fry 1:30 min.",
     "Make fresh to order."
 )
 
@@ -1338,9 +1342,6 @@ with st.container(key="recipe_detail"):
                 ).replace(
                     "&lt;/strong&gt;", "</strong>"
                 )
-
-                # Single-line HTML prevents Streamlit
-                # from displaying HTML as code.
 
                 step_html = (
                     '<div class="step-block">'
