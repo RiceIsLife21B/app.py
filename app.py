@@ -241,10 +241,10 @@ R(
     "Smoking Wood Chips|150|g",
     "Mix salt and pepper.~"
     "Season brisket generously.~"
-    "Cold smoke using the Rational for 2 hours.~"
+    "Braise & Smoke using the Rational for 90 hours.~"
     "Brisket can be smoked in advance.~"
-    "Roast in combination setting at 100% humidity, "
-    "202°F for 15 hours."
+    "Roast in Combi oven at 80% humidity, "
+    "215°F for 12-15 hours."
 )
 
 R(
