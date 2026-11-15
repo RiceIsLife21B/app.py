@@ -220,7 +220,7 @@ R(
 
 R(
     "YUZU GARLIC SAUCE(OH-MY)", SAUCE,
-    "Garlic|1100|g;Wjite Sugar|1000|g;Lemon Juice|825|g;"
+    "Garlic|1100|g;White Sugar|1000|g;Lemon Juice|825|g;"
     "Honey|500|g;Corn Syrup|500|g;Canola Oil|500|g;"
     "Yuzu|300|g;Yuzu Kosho|160|g;Water|50|g;"
     "Corn Starch|50|g;Chili Pepper Flakes|25|g",
