@@ -306,13 +306,10 @@ R(
 
 R(
     "MISO SOUP", MAIN,
-    "Roasted Salmon Head|1|pc;"
-    "Water|4|L;"
     "Dashi|1.5|L;"
     "Aka Miso Paste|100|g;"
     "Kosher Salt|2|g",
-    "Roast Salmon at 211°F for 2 minutes. .~"
-    "ms.~ms.~ms.~ms.~Boil for XXX hours.",
+    "Mix dashi, hon dashi, miso paste and salt and bring to boil.",
     "Confirm ingredients, amounts and preparation with Leo"
 )
 
