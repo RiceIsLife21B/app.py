@@ -168,7 +168,7 @@ R(
     "Whisk the miso paste into the teriyaki.~"
     "Make the cornstarch slurry with cold water.~"
     "Slowly whisk in slurry and simmer for one minute.",
-    "Gently heat until simmering. Do not let boil."
+    "Gently heat, do not let boil."
 )
 
 R(
