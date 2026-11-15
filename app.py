@@ -182,7 +182,7 @@ R(
 
 R(
     "SPICY MAYO", SAUCE,
-    "House Mayo|400|g;Gochujang Paste|40|g;House Hot Sauce|40|g;"
+    "House Mayo|400|g;Gochujang Paste|40|g;House Hot Sauce|40|g;",
     "Mix all ingredients together."
 )
 
