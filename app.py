@@ -122,7 +122,7 @@ R(
     "Cut habanero and bell peppers into pieces.~"
     "Grind all the peppers in Vitamix.~"
     "Whisk all ingredients together.",
-    "Original notes: Green, Red and Orange habaneros; "
+    "Green, Red and Orange habaneros and; "
     "Red and Yellow bell peppers."
 )
 
@@ -134,7 +134,7 @@ R(
     "Kosher Salt|24|g;Sesame Oil|20|g;Black Pepper|4|g",
     "Peel carrots, onions and ginger.~"
     "Cut into small chunks.~"
-    "Blend carrots, onions and ginger with vinegar "
+    "Blend carrots, onions and ginger with white vinegar "
     "in Vitamix until smooth.~"
     "Combine blended vegetables with remaining ingredients "
     "and whisk until smooth.",
@@ -161,13 +161,12 @@ R(
 
 R(
     "MISO GLAZE(SALMON)", SAUCE,
-    "House Teriyaki Sauce|100|g;Miso Paste|15|g;"
-    "Cornstarch Slurry|?|to taste",
-    "Whisk together teriyaki and miso paste.~"
-    "Gently heat until simmering. Do not let boil!\n"
-    "    Make a cornstarch slurry with cold water.~"
-    "Whisk in slurry slowly and simmer for one minute.",
-    "Cornstarch slurry 10-15ml."
+    "House Teriyaki Sauce|100|g;Water|50|g;"
+    "Corn Starch|50|g;Aka Miso Paste|15|g;",
+    "Whisk the miso paste into the teriyaki.~"
+    "Make the cornstarch slurry with cold water.~"
+    "Slowly whisk in slurry and simmer for one minute.",
+    "Gently heat until simmering. Do not let boil."
 )
 
 R(
@@ -181,7 +180,7 @@ R(
 
 R(
     "SPICY MAYO", SAUCE,
-    "Mayo|400|g;Gochujang Paste|40|g;Sriracha|40|g;"
+    "House Mayo|400|g;Gochujang Paste|40|g;Sriracha|40|g;"
     "Lemon Juice|40|g;White Sugar|20|g;House Hot Sauce|27|g",
     "Dissolve sugar in lemon juice, "
     "then mix all ingredients together."
@@ -189,16 +188,16 @@ R(
 
 R(
     "SUSHI SU", SAUCE,
-    "Mizkan Yamabuki Vinegar|4000|g;Aka Su|600|g;"
-    "White Sugar|1750|g;Kosher Salt|600|g;Kombu|30|g",
+    "Mizkan Yamabuki Vinegar|4000|g;White Sugar|1750|g;"
+    "Aka Su|600|g;Kosher Salt|600|g;Kombu|30|g",
     "Whisk all ingredients until sugar and salt"
     "dissolve."
 )
 
 R(
     "TENTSUYU(TOFU)", SAUCE,
-    "Water|400|g;Dashida / Mushroom Powder|8|g;"
-    "House Soy Sauce|200|g;Mirin|160|g;Sugar|20|g",
+    "Water|400|g;House Soy Sauce|200|g;Mirin|160|g;"
+    "White Sugar|20|g;Dashida/Mushroom Powder|8|g;".
     "Whisk everything together until dissolved."
 )
 
@@ -211,7 +210,7 @@ R(
     "Combine house soy sauce, sugar, garlic and ginger.~"
     "Simmer for 30 minutes until flavors are infused.~"
     "Remove garlic and ginger.~"
-    "Reduce by 1/4 or until desired consistency.~"
+    "Reduce by 25% or until desired consistency.~"
     "Make a cornstarch slurry.~"
     "Whisk in slurry slowly and simmer for 1 minute.~"
     "Cool down.",
@@ -222,7 +221,7 @@ R(
     "YUZU GARLIC SAUCE(OH-MY)", SAUCE,
     "Garlic|1100|g;Wjite Sugar|1000|g;Lemon Juice|825|g;"
     "Honey|500|g;Corn Syrup|500|g;Canola Oil|500|g;"
-    "Yuzu|300|g;Yuzu Kosho|160|g;Water|100|g;"
+    "Yuzu|300|g;Yuzu Kosho|160|g;Water|50|g;"
     "Corn Starch|50|g;Chili Pepper Flakes|25|g",
     "Confit garlic in canola oil until soft and golden.~"
     "Blend confit garlic and oil until smooth.~"
