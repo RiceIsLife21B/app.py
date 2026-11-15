@@ -306,10 +306,10 @@ R(
 
 R(
     "MISO SOUP", MAIN,
-    "Dashi|1.5|L;"
-    "Aka Miso Paste|100|g;"
+    "Dashi|4|L;"
+    "Aka Miso Paste|200|g;"
     "Hon Dashi|4|g;"
-    "Kosher Salt|2|g",
+    "Kosher Salt|4|g",
     "Mix dashi, hon dashi, miso paste and salt and bring to boil.",
     "Confirm ingredients, amounts and preparation with Leo"
 )
