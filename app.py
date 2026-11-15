@@ -182,10 +182,8 @@ R(
 
 R(
     "SPICY MAYO", SAUCE,
-    "House Mayo|400|g;Gochujang Paste|40|g;Sriracha|40|g;"
-    "Lemon Juice|40|g;House Hot Sauce|27|g;White Sugar|20|g;",
-    "Dissolve sugar in lemon juice,"
-    "then mix all ingredients together."
+    "House Mayo|400|g;Gochujang Paste|40|g;House Hot Sauce|40|g;"
+    "Mix all ingredients together."
 )
 
 R(
@@ -226,7 +224,7 @@ R(
     "Honey|500|g;Corn Syrup|500|g;Canola Oil|500|g;"
     "Yuzu|300|g;Yuzu Kosho|160|g;Water|50|g;"
     "Corn Starch|50|g;Chili Pepper Flakes|25|g",
-    "Confit garlic in canola oil until soft and golden.~"
+    "Confit garlic in canola oil until soft and golden for 2 hours at low temperature.~"
     "Blend confit garlic and oil until smooth.~"
     "Combine all ingredients and bring to a boil.~"
     "Make a cornstarch slurry.~"
