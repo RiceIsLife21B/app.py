@@ -227,8 +227,8 @@ R(
     "Confit garlic in canola oil until soft and golden for 2 hours at low temperature.~"
     "Blend confit garlic and oil until smooth.~"
     "Combine all ingredients and bring to a boil.~"
-    "Make a cornstarch slurry.~"
-    "Whisk slurry in slowly and continue boiling for 1 minute."
+    "Make a corn starch slurry.~"
+    "Whisk slurry in slowly and continue boiling for 1-2 minutes."
 )
 
 
