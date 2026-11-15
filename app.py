@@ -245,7 +245,7 @@ R(
     "Set it for 215°F for 12-15 hours with 80% humidity.~"
     "Remove, put into hotel pan.~"
     "Collect the drippings and pour overtop of brisket.~"
-    "Wrap in aluminum foil and leave out to cool before refridgeration."
+    "Wrap in aluminum foil and leave out to cool for 5-6 hours before refrigeration."
 )
 
 R(
