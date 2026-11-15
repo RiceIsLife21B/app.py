@@ -433,7 +433,7 @@ R(
     "Slice cabbage with Robot Coupe.~"
     "Lovingly massage cabbage with salt, sugar and lemon juice.~"
     "Let sit 45 minutes.~"
-    "Squeeze all moisture out thoroughly.~"
+    "Squeeze all moisture out.~"
     "Slice kimchi to a similar thickness as cabbage.~"
     "Mix sliced kimchi and cabbage together.~"
     "Mix kimchi every 24 hours, mix bottom to top.~",
