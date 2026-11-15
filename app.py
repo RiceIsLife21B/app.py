@@ -275,8 +275,9 @@ R(
     "Hon Dashi|4|g;"
     "Kosher Salt|4|g;"
     "Kombu|100|g",
-    "Fish head, hon dashi, salt, kombu and bring to boil, skim surface, and simmer for 40 minutes.~"
-    "After simmering, strain while still hot and cool in ice bath."
+    "Roast Salmon Head at 450°C for 15-20 minutes.~"
+    "Put all ingredients in pot and bring to boil, skim surface, and simmer for 40 minutes.~"
+    "After simmering, strain while still hot then cool in ice water bath."
 )
 
 R(
