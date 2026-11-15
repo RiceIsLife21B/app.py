@@ -192,8 +192,9 @@ R(
     "SUSHI SU", SAUCE,
     "Mizkan Yamabuki Vinegar|4000|g;White Sugar|1750|g;"
     "Aka Su|600|g;Kosher Salt|600|g;Kombu|30|g",
-    "Whisk all ingredients until sugar and salt"
-    "dissolve."
+    "Whisk all ingredients at low temperasture until sugar and salt dissolve.",
+    "Cool it down in ice bath. Do not let boil."
+
 )
 
 R(
