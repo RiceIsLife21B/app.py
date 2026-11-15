@@ -389,7 +389,7 @@ R(
 R(
     "BEAN SPROUTS", SALAD,
     "Raw Bean Sprouts|5000|g;Fish Sauce|198|g;"
-    "Garlic (Blitzed)|110|g;Sesame Oil|132|g;Salt|80|g",
+    "Sesame Oil|132|g;Garlic (Blitzed)|110|g;Salt|80|g",
     "Steam bean sprouts in Rational at 211°F for 2 minutes.~"
     "Strain bean sprouts and shock in ice water until cool.~"
     "In a separate bowl, mix fish sauce, garlic and sesame oil.~"
