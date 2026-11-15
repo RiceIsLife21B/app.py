@@ -102,13 +102,13 @@ R(
     "Rice Vinegar|3300|g;Brown Sugar|500|g;"
     "Kosher Salt|250|g;Hon Dashi|130|g",
     "Whisk sugars, salt and hon dashi into rice vinegar.~"
-    "Whisk until hon dashi and sugars are dissolved.~"
+    "Whisk at low heat until hon dashi and sugars are dissolved.~"
     "Add Gochujang paste last."
 )
 
 R(
     "HOT MAYO MUSTARD", SAUCE,
-    "Hellman's Mayo|800|g;Dijon Mustard|440|g;"
+    "House Mayo|800|g;Dijon Mustard|440|g;"
     "Lemon Juice|120|g;Mirin|100|g;"
     "Rice Vinegar|80|g;White Sugar|60|g",
     "Whisk all ingredients together until sugar is dissolved."
