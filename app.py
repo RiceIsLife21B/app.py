@@ -192,7 +192,6 @@ R(
     "Aka Su|600|g;Kosher Salt|600|g;Kombu|30|g",
     "Whisk all ingredients at low temperasture until sugar and salt dissolve.",
     "Cool it down in ice bath. Do not let boil."
-
 )
 
 R(
@@ -263,16 +262,22 @@ R(
     "Whisk all ingredients together until sugar dissolved.~"
     "Brine chicken for 24 hours."
 )
+
+# ==========================================================
+# DASHI - CORRECTED INGREDIENT FORMAT
+# ==========================================================
+
 R(
     "DASHI", MAIN,
     "Water|4|L;"
     "Roasted Salmon Head at 450°C for 15-20 min|1|pc;"
     "Hon Dashi|4|g;"
-    "Kosher Salt|4|g"
+    "Kosher Salt|4|g;"
     "Kombu|100|g",
     "Fish head, hon dashi, salt, kombu and bring to boil, skim surface, and simmer for 40 minutes.~"
     "After simmering, strain while still hot and cool then in ice bath."
 )
+
 R(
     "DASHI EGG MARINADE", MAIN,
     "Water|2000|g;House Soy Sauce|300|g;"
@@ -1332,8 +1337,8 @@ with st.container(key="recipe_detail"):
                     "&lt;/strong&gt;", "</strong>"
                 )
 
-                # HTML on a single logical line prevents
-                # Streamlit from displaying it as code.
+                # Single-line HTML prevents Streamlit
+                # from displaying HTML as code.
 
                 step_html = (
                     '<div class="step-block">'
