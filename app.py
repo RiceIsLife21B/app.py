@@ -308,6 +308,7 @@ R(
     "MISO SOUP", MAIN,
     "Dashi|1.5|L;"
     "Aka Miso Paste|100|g;"
+    "Hon Dashi|4|g;"
     "Kosher Salt|2|g",
     "Mix dashi, hon dashi, miso paste and salt and bring to boil.",
     "Confirm ingredients, amounts and preparation with Leo"
