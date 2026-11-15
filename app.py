@@ -430,7 +430,7 @@ R(
     "Green Cabbage|20000|g;Kimchi|10000|g;"
     "White Sugar|2000|g;Lemon Juice|2000|g;Kosher Salt|600|g",
     "Quarter cabbages and remove stems.~"
-    "Use Robot Coupe to slice cabbage.~"
+    "Slice cabbage with Robot Coupe.~"
     "Lovingly massage cabbage with salt, sugar and lemon juice.~"
     "Let sit 45 minutes.~"
     "Squeeze all moisture out thoroughly.~"
