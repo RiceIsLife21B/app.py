@@ -203,10 +203,10 @@ R(
 
 R(
     "TERIYAKI SAUCE(CHICKEN)", SAUCE,
-    "House Soy Sauce|4000|g;White Sugar|3000|g;"
-    "Mirin|4000|g;Sake|4000|g;"
-    "Garlic(Crushed)|300|g;Ginger(Crushed)|100|g;"
-    "Water|130|g;Cornstarch|130|g",
+    "House Soy Sauce|4000|g;Sake|4000|g;"
+    "Mirin|4000|g;White Sugar|3000|g;"
+    "Garlic(Crushed)|300|g;Water|130|g;"
+    "Cornstarch|130|g;Ginger(Crushed)|100|g;",
     "Combine house soy sauce, sugar, garlic and ginger.~"
     "Simmer for 30 minutes until flavors are infused.~"
     "Remove garlic and ginger.~"
