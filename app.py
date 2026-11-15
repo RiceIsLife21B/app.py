@@ -309,7 +309,7 @@ R(
     "Kosher Salt|10|g;Mushroom Powder|10|g;"
     "Sesame Oil|?|to taste????;"
     "Dice potato and keep in cold water for service until order.~"
-    "Dry them off and deep fry 1:30 min.~"
+    "Dry them off and deep fry 1:30 min.~",
     "Make fresh to order."
 )
 
