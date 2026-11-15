@@ -451,7 +451,7 @@ R(
 R(
     "SESAME BROCCOLI", SALAD,
     "Broccoli|1250|g;Garlic (Blitzed)|30|g;"
-    "Sesame Oil|20|g;House Soy Sauce|25|g;Kosher Salt|8|g",
+    "House Soy Sauce|25|g;Sesame Oil|20|g;Kosher Salt|8|g",
     "Cut broccoli into florets.~"
     "Steam broccoli in oven at 212°F for 3 minutes.~"
     "Cool in water bath.~"
