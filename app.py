@@ -457,8 +457,8 @@ R(
     "Steam broccoli in oven at 212°F for 3 minutes.~"
     "Cool in water bath.~"
     "Strain well and season broccoli."
-    "Mix broccoli with seasoning."
-    "Put on flat hotel pan, saran wrap and put in frdige.",
+    "Put on flat hotel pan, saran wrap and put in fridge."
+    "Mix broccoli with seasoning.",
     "1,250g = Approximately 4 heads of broccoli."
 )
 
