@@ -270,7 +270,7 @@ R(
     "Hon Dashi|4|g;"
     "Kosher Salt|4|g"
     "Kombu|100|g",
-    "Fish head, hon dashi, salt, kombu and bring to boil, skim surface, and simmer for 40 minutes."~
+    "Fish head, hon dashi, salt, kombu and bring to boil, skim surface, and simmer for 40 minutes.~"
     "After simmering, strain while still hot and cool then in ice bath."
 )
 R(
