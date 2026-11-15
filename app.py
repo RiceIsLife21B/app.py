@@ -307,7 +307,6 @@ R(
     "Onions|600|g;Carrots|450|g;Potatoes|300|g;"
     "Kosher Salt|10|g;Dashida / Mushroom Powder|10|g;"
     "Sesame Oil|?|to taste????;Dashi|1.5|L",
-    "",
     "Dice potato and keep in cold water for service until order."
     "Dry trhem off aand deep fry 1:30."
     "Salt to taste 10-15g Max. Dashi 1.5-2L to taste."
