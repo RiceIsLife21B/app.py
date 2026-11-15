@@ -147,8 +147,8 @@ R(
 R(
     "HOUSE MAYO", SAUCE,
     "Hellman's Mayo|5000|g;Lemon Juice|500|g;"
-    "Dashida/Mushroom Powder|100|g",
-    "Mix dashida &/or? mushroom powder into lemon juice "
+    "Mushroom Powder|100|g",
+    "Mix mushroom powder into lemon juice "
     "until dissolved.~Whisk mixture into mayo.",
     "Makes approximately 6L. Use a 15L container."
 )
