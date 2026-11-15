@@ -181,7 +181,7 @@ R(
 R(
     "SPICY MAYO", SAUCE,
     "House Mayo|400|g;Gochujang Paste|40|g;Sriracha|40|g;"
-    "Lemon Juice|40|g;White Sugar|20|g;House Hot Sauce|27|g",
+    "Lemon Juice|40|g;House Hot Sauce|27|g;White Sugar|20|g;",
     "Dissolve sugar in lemon juice,"
     "then mix all ingredients together."
 )
