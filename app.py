@@ -182,7 +182,7 @@ R(
     "SPICY MAYO", SAUCE,
     "House Mayo|400|g;Gochujang Paste|40|g;Sriracha|40|g;"
     "Lemon Juice|40|g;White Sugar|20|g;House Hot Sauce|27|g",
-    "Dissolve sugar in lemon juice, "
+    "Dissolve sugar in lemon juice,"
     "then mix all ingredients together."
 )
 
@@ -198,7 +198,7 @@ R(
     "TENTSUYU(TOFU)", SAUCE,
     "Water|400|g;House Soy Sauce|200|g;Mirin|160|g;"
     "White Sugar|20|g;Dashida/Mushroom Powder|8|g;".
-    "Whisk all ingredients until dissolved"
+    "Whisk all ingredients until dissolved."
 )
 
 R(
