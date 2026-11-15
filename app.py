@@ -1361,6 +1361,7 @@ with st.container(key="recipe_detail"):
             unsafe_allow_html=True,
         )
 
+
         for ingredient in recipe["ingredients"]:
 
             quantity = format_amount(
@@ -1371,26 +1372,21 @@ with st.container(key="recipe_detail"):
                 ingredient_name=ingredient["name"],
             )
 
-            ingredient_name = escape(
-                ingredient["name"]
-            )
-
+            ingredient_name = escape(ingredient["name"])
             quantity_text = escape(quantity)
 
-            st.markdown(
-                f"""
-                <div class="ingredient-row">
-                    <span class="ingredient-name">
-                        {ingredient_name}
-                    </span>
+            ingredient_html = (
+                '<div class="ingredient-row">'
+                f'<span class="ingredient-name">{ingredient_name}</span>'
+                f'<span class="ingredient-amount">{quantity_text}</span>'
+                '</div>'
+            )
 
-                    <span class="ingredient-amount">
-                        {quantity_text}
-                    </span>
-                </div>
-                """,
+            st.markdown(
+                ingredient_html,
                 unsafe_allow_html=True,
             )
+
 
     # ======================================================
     # RECIPE NOTES
