@@ -199,7 +199,7 @@ R(
 R(
     "TENTSUYU(TOFU)", SAUCE,
     "Water|400|g;House Soy Sauce|200|g;Mirin|160|g;"
-    "White Sugar|20|g;Dashida/Mushroom Powder|8|g;",
+    "White Sugar|20|g;Mushroom Powder|8|g;",
     "Whisk all ingredients until dissolved."
 )
 
