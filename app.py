@@ -435,7 +435,8 @@ R(
     "Combine water, rice vinegar, sugar and salt.~"
     "Bring to a boil.~"
     "Pour boiling liquid over daikon until covered.~"
-    "Cool before storing.",
+    "Cool before storing.~",
+    "Mix pickle daikon every 24 hours, mix bottom to top.",
     "4X + 8X Recipes have been modified to be accurate amounts."
 )
 
