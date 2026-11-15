@@ -238,7 +238,7 @@ R(
 R(
     "BEEF BRISKET", MAIN,
     "Kosher Salt|600|g;Black Pepper|400|g;"
-    "Smoking Wood Chips|150|g:",
+    "Smoking Wood Chips|150|g",
     "Mix salt and pepper.~"
     "Season brisket generously.~"
     "Cold smoke using the Rational for 2 hours.~"
@@ -267,7 +267,7 @@ R(
     "DASHI EGG MARINADE", MAIN,
     "Water|2000|g;House Soy Sauce|300|g;"
     "White Sugar|100|g;Mirin|100|g;Kosher Salt|25|g;"
-    "Hon Dashi|24|g;Eggs|60|eggs",
+    "Hon Dashi|24|g;Eggs|60",
     "Put 1 layer of eggs on a perforated hotel pan.~"
     "Preheat Combi oven to steam at 212°F for 8 minutes.~"
     "Immediately shock eggs in cold running water "
@@ -282,7 +282,7 @@ R(
     "GARLIC SHRIMP", MAIN,
     "Green Onion Whites|200|g;Canola Oil|150|g;"
     "Garlic|100|g;White Vinegar|20|g;"
-    "Ginger|20|g;Black Pepper|2|g;Kosher Salt|5|g",
+    "Ginger|20|g;Kosher Salt|5|g;Black Pepper|2|g;",
     "slice the green onion whites, garlic and ginger.~"
     "Mix all ingredients together."
 )
@@ -306,30 +306,29 @@ R(
 R(
     "MISO SOUP", MAIN,
     "Roasted Salmon Head|1|pc;"
-    "Aka Miso Paste|100|g;"
     "Water|4|L;"
     "Dashi|1.5|L;"
+    "Aka Miso Paste|100|g;"
     "Kosher Salt|2|g",
     "Roast Salmon at 211°F for 2 minutes. .~"
     "ms.~ms.~ms.~ms.~Boil for XXX hours.",
-    "Confirm ingredients, amounts and preparation "
-    "instructions with Leo."
+    "Confirm ingredients, amounts and preparation with Leo"
 )
 
 R(
     "MUSHROOM BRAISE", MAIN,
-    "Dried Shiitake Mushrooms|1|pc;Water (Soaking)|250|g;"
-    "Shimeji Mushrooms|275|g;House Soy Sauce|100|g;White Sugar|20|g;"
-    "Ginger|20|g;Kombu|10|g;Water (Cooking)|250|g",
-    "Soak shiitake in water overnight.~"
+    "Dried Shiitake Mushrooms|1|pc;Water (Soak overnight)|250|g;"
+    "Shimeji Mushrooms|275|g;Water (Cooking)|250|g; House Soy Sauce|100|g;"
+    "Water (Cooking)|250|g;White Sugar|20|g;Ginger|20|g;Kombu|10|g;",
+    "Soak shiitake mushroom in water overnight.~"
     "Combine everything in a pot and simmer mushrooms "
     "for 30 minutes with a cartouche."
 )
 
 R(
     "PORK BELLY", MAIN,
-    "Pork Belly|1|slab;Kosher Salt|125|g;White Sugar|50|g;"
-    "Mirin|200|g;Sesame Oil|100|g;"
+    "Pork Belly|1|slab;Mirin|200|g;Kosher Salt|125|g;"
+    "Sesame Oil|100|g;White Sugar|50|g;"
     "Ginger (Sliced)|2|pc;Garlic (Whole)|2|pc",
     "Trim excess fat from pork belly.~"
     "Mix mirin and sesame oil together.~"
@@ -374,12 +373,12 @@ R(
     "TOFU MARINADE", MAIN,
     "Miso Paste|300|g;"
     "Mirin|150|g;"
-    "Black Pepper|3|g;"
-    "Gochugaru|10|g;"
     "House Soy Sauce|30|g;"
-    "Dashida / Mushroom Powder|10|g",
+    "Dashida / Mushroom Powder|10|g;"
+    "Gochugaru|10|g;"
+    "Black Pepper|3|g",
     "Mix all ingredients together.~"
-    "Brush all 6 sides of cut tofu."
+    "Brush all 6 sides of cut tofu with marinade."
 )
 
 
