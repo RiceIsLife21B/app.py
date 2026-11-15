@@ -34,13 +34,14 @@ CATEGORY_COLORS = {
 }
 
 BATCH_COLOR = "#00A7C5"
-SELECTED_BORDER = "#000000"
+SELECTED_BORDER = "#D4AF37"
 
 MULTIPLIERS = [
     1.5, 2, 3, 4, 5, 6, 7, 8, 9, 10, 13, 20, 30
 ]
 
 RECIPES = {}
+
 
 # ==========================================================
 # RECIPE DATA HANDLING
@@ -562,18 +563,19 @@ def format_amount(
 
 
 # ==========================================================
-# STYLING - COMPACT IPAD LAYOUT
+# STYLING - IPAD LAYOUT
 # ==========================================================
 
 st.markdown("""
 <style>
 
-/* General page */
-
 :root {
     --brand-red: #ED2227;
     --batch-blue: #00A7C5;
+    --selected-gold: #D4AF37;
 }
+
+/* GENERAL PAGE */
 
 .stApp {
     background: #F7F7F7;
@@ -582,7 +584,10 @@ st.markdown("""
 
 .block-container {
     max-width: 1500px;
-    padding-top: 0.4rem;
+
+    /* Entire page moved downward 35 pixels */
+    padding-top: calc(0.4rem + 35px) !important;
+
     padding-bottom: 2rem;
 }
 
@@ -594,7 +599,7 @@ st.markdown("""
     font-weight: 600;
 }
 
-/* Logo */
+/* LOGO */
 
 .brand-logo {
     text-align: center;
@@ -604,12 +609,10 @@ st.markdown("""
     line-height: 1.05;
     letter-spacing: 0;
     color: #ED2227;
-
-    /* Reduced space below logo */
     margin: 8px 0 4px;
 }
 
-/* Tighter logo/category navigation spacing */
+/* TOP NAVIGATION SPACING */
 
 .st-key-top_navigation [data-testid="stVerticalBlock"] {
     gap: 0.45rem;
@@ -619,7 +622,7 @@ st.markdown("""
     margin-top: 0;
 }
 
-/* General button styling */
+/* GENERAL BUTTONS */
 
 .stButton > button {
     --button-color: #ED2227;
@@ -646,7 +649,7 @@ st.markdown("""
     white-space: normal;
 }
 
-/* Button hover states */
+/* BUTTON HOVER */
 
 .stButton > button:hover,
 .stButton > button:focus,
@@ -656,7 +659,7 @@ st.markdown("""
     filter: brightness(0.96);
 }
 
-/* Category button colors */
+/* CATEGORY COLORS */
 
 .st-key-cat_0 button {
     --button-color: #F27D34;
@@ -678,40 +681,40 @@ st.markdown("""
     font-size: clamp(16px, 2.2vw, 29px);
 }
 
-/* Recipe selection buttons */
+/* RECIPE SELECTION BUTTONS */
 
 div[class*="st-key-recipe_"] button {
     min-height: 94px;
 }
 
-/* Sauces + Dressings recipe buttons */
+/* SAUCES */
 
 .st-key-recipe_grid_sauce
 div[class*="st-key-recipe_"] button {
     --button-color: #F27D34;
 }
 
-/* Mains + Marinades recipe buttons */
+/* MAINS */
 
 .st-key-recipe_grid_main
 div[class*="st-key-recipe_"] button {
     --button-color: #ED2227;
 }
 
-/* Salads + Pickles recipe buttons */
+/* SALADS */
 
 .st-key-recipe_grid_salad
 div[class*="st-key-recipe_"] button {
     --button-color: #81C568;
 }
 
-/* Recipe detail compact vertical spacing */
+/* RECIPE PAGE VERTICAL SPACING */
 
 .st-key-recipe_detail [data-testid="stVerticalBlock"] {
     gap: 0.45rem;
 }
 
-/* Multiplier buttons */
+/* MULTIPLIER ROW */
 
 .st-key-multiplier_row [data-testid="stHorizontalBlock"] {
     gap: 0.22rem !important;
@@ -754,23 +757,16 @@ div[class*="st-key-recipe_"] button {
     white-space: nowrap !important;
 }
 
-.st-key-multiplier_row button:hover,
-.st-key-multiplier_row button:focus,
-.st-key-multiplier_row button:active {
-    background: #00A7C5 !important;
-    color: #FFFFFF !important;
-}
-
-/* Recipe name and current batch on the same row */
+/* HEADING ROW */
 
 .st-key-recipe_heading [data-testid="stHorizontalBlock"] {
     align-items: center;
 }
 
-/* Smaller recipe title banner */
+/* RECIPE TITLE */
 
 .recipe-banner {
-    background-color: var(
+    background: var(
         --recipe-title-color,
         #ED2227
     ) !important;
@@ -791,11 +787,11 @@ div[class*="st-key-recipe_"] button {
     margin: 0;
 }
 
-/* Current batch indicator */
+/* CURRENT BATCH */
 
 .current-batch {
-    text-align: center;
     color: #00A7C5;
+    text-align: center;
 
     font-size: clamp(18px, 2vw, 25px);
     font-weight: 700;
@@ -804,16 +800,17 @@ div[class*="st-key-recipe_"] button {
     margin: 0;
 }
 
-/* Ingredients and preparation headings */
+/* SECTION HEADINGS */
 
 .section-title {
     font-size: clamp(21px, 2.4vw, 30px);
     font-weight: 600;
+
     margin: 0 0 6px;
     text-transform: uppercase;
 }
 
-/* Ingredients - 50% less vertical padding */
+/* INGREDIENT ROWS */
 
 .ingredient-row {
     display: flex;
@@ -839,7 +836,7 @@ div[class*="st-key-recipe_"] button {
     white-space: nowrap;
 }
 
-/* Preparation steps */
+/* PREPARATION STEPS */
 
 .step-block {
     margin-bottom: 15px;
@@ -852,7 +849,7 @@ div[class*="st-key-recipe_"] button {
     margin-bottom: 3px;
 }
 
-/* Recipe notes */
+/* RECIPE NOTES */
 
 .recipe-notes {
     background: #FFFFFF;
@@ -866,7 +863,7 @@ div[class*="st-key-recipe_"] button {
     font-weight: 600;
 }
 
-/* Login screen */
+/* LOGIN FORM */
 
 [data-testid="stForm"] {
     background: #FFFFFF !important;
@@ -886,7 +883,7 @@ div[class*="st-key-recipe_"] button {
     font-weight: 600;
 }
 
-/* Password field */
+/* PASSWORD INPUT */
 
 [data-testid="stTextInput"] [data-baseweb="input"] {
     background: #FFFFFF !important;
@@ -919,7 +916,7 @@ div[class*="st-key-recipe_"] button {
     opacity: 1 !important;
 }
 
-/* Password visibility control */
+/* PASSWORD EYE CONTROL */
 
 [data-testid="stTextInput"] button,
 [data-testid="stTextInput"] button:hover,
@@ -930,6 +927,7 @@ div[class*="st-key-recipe_"] button {
 [data-baseweb="input"] > div:last-child {
     background: #ED2227 !important;
     background-image: none !important;
+
     color: #FFFFFF !important;
 
     border: 0 !important;
@@ -943,7 +941,7 @@ div[class*="st-key-recipe_"] button {
     stroke: #FFFFFF !important;
 }
 
-/* Log In button */
+/* LOG IN BUTTON */
 
 [data-testid="stFormSubmitButton"] button,
 [data-testid="stFormSubmitButton"] button:hover,
@@ -968,7 +966,7 @@ div[class*="st-key-recipe_"] button {
     text-transform: none !important;
 }
 
-/* iPad and smaller screens */
+/* IPAD PORTRAIT / SMALLER SCREENS */
 
 @media (max-width: 900px) {
 
@@ -986,6 +984,7 @@ div[class*="st-key-recipe_"] button {
     .st-key-cat_2 button {
         height: 54px;
         min-height: 54px;
+
         font-size: clamp(12px, 1.7vw, 18px);
     }
 
@@ -1005,6 +1004,7 @@ div[class*="st-key-recipe_"] button {
 
         padding: 0 !important;
         border-width: 2px !important;
+
         font-size: 10px !important;
     }
 
@@ -1027,7 +1027,7 @@ div[class*="st-key-recipe_"] button {
 
 
 # ==========================================================
-# ACTIVE BUTTON HIGHLIGHTING - BLACK
+# ACTIVE BUTTON HIGHLIGHTING - GOLD
 # ==========================================================
 
 def highlight_key(key):
@@ -1035,9 +1035,10 @@ def highlight_key(key):
         f"""
         <style>
         .st-key-{key} button {{
-            border-color: #000000 !important;
+            border-color: #D4AF37 !important;
+
             box-shadow:
-                0 0 0 2px #000000,
+                0 0 0 2px #D4AF37,
                 inset 0 2px 2px rgba(255,255,255,0.5)
                 !important;
         }}
@@ -1122,7 +1123,10 @@ with st.container(key="top_navigation"):
         unsafe_allow_html=True,
     )
 
-    category_columns = st.columns(3, gap="medium")
+    category_columns = st.columns(
+        3,
+        gap="medium",
+    )
 
     for index, category in enumerate(CATEGORIES):
 
@@ -1164,7 +1168,10 @@ if st.session_state.recipe is None:
 
         for start in range(0, len(recipes), 4):
 
-            row = st.columns(4, gap="medium")
+            row = st.columns(
+                4,
+                gap="medium",
+            )
 
             for index, name in enumerate(
                 recipes[start:start + 4]
@@ -1196,13 +1203,15 @@ if recipe_name not in RECIPES:
 
 recipe = RECIPES[recipe_name]
 
-recipe_title_color = CATEGORY_COLORS[recipe["category"]]
+recipe_title_color = CATEGORY_COLORS[
+    recipe["category"]
+]
 
 
 with st.container(key="recipe_detail"):
 
     # ======================================================
-    # MULTIPLIER BUTTONS - NO HEADING ABOVE
+    # MULTIPLIER BUTTONS
     # ======================================================
 
     with st.container(key="multiplier_row"):
@@ -1212,7 +1221,7 @@ with st.container(key="recipe_detail"):
             gap="small",
         )
 
-        # 1X button
+        # 1X BUTTON
 
         with multiplier_columns[0]:
 
@@ -1227,9 +1236,11 @@ with st.container(key="recipe_detail"):
             if st.session_state.multiplier == 1:
                 highlight_key("reset_multiplier")
 
-        # Remaining multiplier buttons
+        # REMAINING MULTIPLIERS
 
-        for index, multiplier in enumerate(MULTIPLIERS):
+        for index, multiplier in enumerate(
+            MULTIPLIERS
+        ):
 
             with multiplier_columns[index + 1]:
 
@@ -1247,7 +1258,8 @@ with st.container(key="recipe_detail"):
     factor = st.session_state.multiplier
 
     # ======================================================
-    # RECIPE TITLE + CURRENT BATCH ON SAME ROW
+    # HEADING ROW
+    # CURRENT BATCH LEFT / RECIPE TITLE RIGHT
     # ======================================================
 
     with st.container(key="recipe_heading"):
@@ -1260,15 +1272,6 @@ with st.container(key="recipe_detail"):
         with head_left:
 
             st.markdown(
-                f'<div class="recipe-banner" '
-                f'style="--recipe-title-color:{recipe_title_color};">'
-                f'{escape(recipe_name)}</div>',
-                unsafe_allow_html=True,
-            )
-
-        with head_right:
-
-            st.markdown(
                 f"""
                 <div class="current-batch">
                     CURRENT BATCH: {factor:g}X
@@ -1277,8 +1280,19 @@ with st.container(key="recipe_detail"):
                 unsafe_allow_html=True,
             )
 
+        with head_right:
+
+            st.markdown(
+                f'<div class="recipe-banner" '
+                f'style="--recipe-title-color:{recipe_title_color};">'
+                f'{escape(recipe_name)}</div>',
+                unsafe_allow_html=True,
+            )
+
     # ======================================================
-    # INGREDIENTS + PREPARATION STEPS
+    # TWO-COLUMN RECIPE LAYOUT
+    # LEFT = PREPARATION
+    # RIGHT = INGREDIENTS
     # ======================================================
 
     left, right = st.columns(
@@ -1287,51 +1301,10 @@ with st.container(key="recipe_detail"):
     )
 
     # ======================================================
-    # LEFT COLUMN - INGREDIENTS
+    # LEFT COLUMN - PREPARATION STEPS
     # ======================================================
 
     with left:
-
-        st.markdown(
-            '<div class="section-title">INGREDIENTS</div>',
-            unsafe_allow_html=True,
-        )
-
-        for ingredient in recipe["ingredients"]:
-
-            quantity = format_amount(
-                ingredient["amount"],
-                ingredient["unit"],
-                factor,
-                recipe_name=recipe_name,
-                ingredient_name=ingredient["name"],
-            )
-
-            ingredient_name = escape(
-                ingredient["name"]
-            )
-
-            quantity_text = escape(quantity)
-
-            st.markdown(
-                f"""
-                <div class="ingredient-row">
-                    <span class="ingredient-name">
-                        {ingredient_name}
-                    </span>
-                    <span class="ingredient-amount">
-                        {quantity_text}
-                    </span>
-                </div>
-                """,
-                unsafe_allow_html=True,
-            )
-
-    # ======================================================
-    # RIGHT COLUMN - PREPARATION STEPS
-    # ======================================================
-
-    with right:
 
         st.markdown(
             '<div class="section-title">'
@@ -1343,7 +1316,8 @@ with st.container(key="recipe_detail"):
         if recipe["steps"]:
 
             for index, step in enumerate(
-                recipe["steps"], 1
+                recipe["steps"],
+                1
             ):
 
                 safe_step = escape(step)
@@ -1375,7 +1349,51 @@ with st.container(key="recipe_detail"):
             )
 
     # ======================================================
-    # IMPORTANT RECIPE NOTES
+    # RIGHT COLUMN - INGREDIENTS
+    # ======================================================
+
+    with right:
+
+        st.markdown(
+            '<div class="section-title">'
+            'INGREDIENTS'
+            '</div>',
+            unsafe_allow_html=True,
+        )
+
+        for ingredient in recipe["ingredients"]:
+
+            quantity = format_amount(
+                ingredient["amount"],
+                ingredient["unit"],
+                factor,
+                recipe_name=recipe_name,
+                ingredient_name=ingredient["name"],
+            )
+
+            ingredient_name = escape(
+                ingredient["name"]
+            )
+
+            quantity_text = escape(quantity)
+
+            st.markdown(
+                f"""
+                <div class="ingredient-row">
+                    <span class="ingredient-name">
+                        {ingredient_name}
+                    </span>
+
+                    <span class="ingredient-amount">
+                        {quantity_text}
+                    </span>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
+
+    # ======================================================
+    # RECIPE NOTES
     # ======================================================
 
     if recipe["notes"]:
@@ -1391,15 +1409,26 @@ with st.container(key="recipe_detail"):
 
 
 # ==========================================================
-# LOG OUT
+# LOG OUT - BOTTOM RIGHT
 # ==========================================================
 
 st.divider()
 
-if st.button("LOG OUT", key="logout"):
+logout_left, logout_right = st.columns(
+    [5, 1],
+    gap="small",
+)
 
-    st.session_state.authenticated = False
-    st.session_state.recipe = None
-    st.session_state.multiplier = 1
+with logout_right:
 
-    st.rerun()
+    if st.button(
+        "LOG OUT",
+        key="logout",
+        use_container_width=True,
+    ):
+
+        st.session_state.authenticated = False
+        st.session_state.recipe = None
+        st.session_state.multiplier = 1
+
+        st.rerun()
