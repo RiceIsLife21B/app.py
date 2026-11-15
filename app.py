@@ -430,7 +430,7 @@ R(
     "PICKLED DAIKON", SALAD,
     "Daikon|1000|g;Water|600|g;Rice Vinegar|400|g;"
     "White Sugar|340|g;Kosher Salt|25|g",
-    "Peel and cut daikon into 1/8th quarter-moon shapes.~"
+    "Peel and cut daikon into 1/8" quarter-moon shapes.~"
     "Use Robot Coupe to slice.~"
     "Combine water, rice vinegar, sugar and salt.~"
     "Bring to a boil.~"
