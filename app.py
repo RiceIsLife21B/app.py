@@ -267,7 +267,7 @@ R(
     "DASHI EGG MARINADE", MAIN,
     "Water|2000|g;House Soy Sauce|300|g;"
     "White Sugar|100|g;Mirin|100|g;Kosher Salt|25|g;"
-    "Hon Dashi|24|g;Eggs|60",
+    "Hon Dashi|24|g;Eggs|60|eggs",
     "Put 1 layer of eggs on a perforated hotel pan.~"
     "Preheat Combi oven to steam at 212°F for 8 minutes.~"
     "Immediately shock eggs in cold running water "
@@ -582,10 +582,7 @@ st.markdown("""
 
 .block-container {
     max-width: 1500px;
-
-    /* Entire page moved downward 35 pixels */
     padding-top: calc(0.4rem + 35px) !important;
-
     padding-bottom: 2rem;
 }
 
@@ -1270,11 +1267,9 @@ with st.container(key="recipe_detail"):
         with head_left:
 
             st.markdown(
-                f"""
-                <div class="current-batch">
-                    CURRENT BATCH: {factor:g}X
-                </div>
-                """,
+                f'<div class="current-batch">'
+                f'CURRENT BATCH: {factor:g}X'
+                f'</div>',
                 unsafe_allow_html=True,
             )
 
@@ -1314,29 +1309,29 @@ with st.container(key="recipe_detail"):
         if recipe["steps"]:
 
             for index, step in enumerate(
-                recipe["steps"],
-                1
+                recipe["steps"], 1
             ):
 
                 safe_step = escape(step)
 
                 safe_step = safe_step.replace(
-                    "&lt;strong&gt;",
-                    "<strong>"
+                    "&lt;strong&gt;", "<strong>"
                 ).replace(
-                    "&lt;/strong&gt;",
-                    "</strong>"
+                    "&lt;/strong&gt;", "</strong>"
+                )
+
+                # HTML on a single logical line prevents
+                # Streamlit from displaying it as code.
+
+                step_html = (
+                    '<div class="step-block">'
+                    f'<div class="step-number">STEP #{index}:</div>'
+                    f'<div>{safe_step}</div>'
+                    '</div>'
                 )
 
                 st.markdown(
-                    f"""
-                    <div class="step-block">
-                        <div class="step-number">
-                            STEP #{index}:
-                        </div>
-                        <div>{safe_step}</div>
-                    </div>
-                    """,
+                    step_html,
                     unsafe_allow_html=True,
                 )
 
@@ -1358,7 +1353,6 @@ with st.container(key="recipe_detail"):
             '</div>',
             unsafe_allow_html=True,
         )
-
 
         for ingredient in recipe["ingredients"]:
 
@@ -1385,19 +1379,20 @@ with st.container(key="recipe_detail"):
                 unsafe_allow_html=True,
             )
 
-
     # ======================================================
     # RECIPE NOTES
     # ======================================================
 
     if recipe["notes"]:
 
+        note_html = (
+            '<div class="recipe-notes">'
+            f'{escape(recipe["notes"])}'
+            '</div>'
+        )
+
         st.markdown(
-            f"""
-            <div class="recipe-notes">
-                {escape(recipe["notes"])}
-            </div>
-            """,
+            note_html,
             unsafe_allow_html=True,
         )
 
