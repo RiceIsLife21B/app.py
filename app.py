@@ -1,7 +1,7 @@
 
 import streamlit as st
 import hmac
-from decimal import Decimal
+from decimal import Decimal, InvalidOperation
 from html import escape
 
 # ==========================================================
@@ -305,7 +305,7 @@ R(
 )
 
 # ==========================================================
-# JAPANESE CURRY - CORRECTED
+# JAPANESE CURRY
 # ==========================================================
 
 R(
@@ -553,6 +553,10 @@ SPECIAL_MULTIPLIERS = {
 }
 
 
+# ==========================================================
+# SAFE INGREDIENT MULTIPLIER
+# ==========================================================
+
 def format_amount(
     amount,
     unit,
@@ -560,6 +564,8 @@ def format_amount(
     recipe_name=None,
     ingredient_name=None,
 ):
+    # Check for custom recipe-specific quantities.
+
     recipe_exceptions = SPECIAL_MULTIPLIERS.get(
         recipe_name, {}
     )
@@ -571,13 +577,37 @@ def format_amount(
     if ingredient_name in special_amounts:
         return f"{special_amounts[ingredient_name]:,} {unit}"
 
+    # Unknown or nonnumeric quantities must not
+    # crash the application.
+    #
+    # Examples:
+    # ? | to taste
+    # ?? | g
+    # Any future nonnumeric recipe entry
+
+    if amount is None:
+        return unit
+
+    amount = str(amount).strip()
+    unit = str(unit).strip()
+
     if amount == "?":
         return unit
 
-    result = Decimal(amount) * Decimal(str(multiplier))
+    try:
+        result = Decimal(amount) * Decimal(str(multiplier))
+
+    except (InvalidOperation, ValueError, TypeError):
+        # Preserve unknown quantities exactly as entered.
+        # Example: Curry Powder ?? g
+        return f"{amount} {unit}".strip()
+
+    if not result.is_finite():
+        return f"{amount} {unit}".strip()
 
     if result == result.to_integral_value():
         number = f"{int(result):,}"
+
     else:
         number = f"{result:,.3f}".rstrip("0").rstrip(".")
 
@@ -774,6 +804,13 @@ div[class*="st-key-recipe_"] button {
 
     font-size: clamp(9px, 0.95vw, 12px) !important;
     white-space: nowrap !important;
+}
+
+.st-key-multiplier_row button:hover,
+.st-key-multiplier_row button:focus,
+.st-key-multiplier_row button:active {
+    background: #00A7C5 !important;
+    color: #FFFFFF !important;
 }
 
 /* HEADING ROW */
