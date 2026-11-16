@@ -272,11 +272,11 @@ R(
     "DASHI", MAIN,
     "Water|4|L;"
     "Roasted Salmon Head at 450°C for 15-20 min|1|pc;"
+    "Kombu|100|g;"
     "Hon Dashi|4|g;"
-    "Kosher Salt|4|g;"
-    "Kombu|100|g",
+    "Kosher Salt|4|g;",
     "Roast Salmon Head at 450°C for 15-20 minutes.~"
-    "Put all ingredients in pot and bring to boil, skim surface, and simmer for 40 minutes.~"
+    "Bring all ingredients to boil, skim surface, and simmer for 40 minutes.~"
     "After simmering, strain while still hot then cool in ice water bath."
 )
 
