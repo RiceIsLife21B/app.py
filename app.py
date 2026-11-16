@@ -315,7 +315,7 @@ R(
     "Sesame Oil|5|ml to taste",
     "Dice potato and keep in cold water for service.~"
     "Dry them off prior to deep frying for 90 seconds.~"
-    "Mix into curry and serve.",
+    "Mix into curry and serve."
 )
 
 R(
