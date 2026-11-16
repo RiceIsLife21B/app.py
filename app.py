@@ -271,7 +271,7 @@ R(
 R(
     "DASHI", MAIN,
     "Water|4|L;"
-    "Roasted Salmon Head at 450°C for 15-20 min|1|pc;"
+    "Roasted Salmon Head|1|pc;"
     "Kombu|100|g;"
     "Hon Dashi|4|g;"
     "Kosher Salt|4|g;",
