@@ -270,14 +270,21 @@ R(
 
 R(
     "DASHI", MAIN,
-    "Water|4|L;"
+    "Water|20|L;"
     "Roasted Salmon Head|1|pc;"
-    "Kombu|100|g;"
-    "Hon Dashi|4|g;"
-    "Kosher Salt|4|g;",
-    "Roast Salmon Head at 450°C for 15-20 minutes.~"
-    "Bring all ingredients to boil, skim surface, and simmer for 40 minutes.~"
-    "After simmering, strain while still hot then cool in ice water bath."
+    "Daikon|1000|g;"
+    "Mirin|190|g;" 
+    "Whole Green Onions|150|g;"
+    "Kombu|70|g;"  
+    "Kosher Salt|50|g;"
+    "Katsuo Bushio|40|g;"
+    "Hon Dashi|4|g;",
+    "Roast Salmon Head at 460°C at 50% Humidity for 15-20 minutes.~"
+    "Slice Daikon in 1 inch thickness.~"
+    "Bring all ingredients to boil in pot.~"
+    "Skim surface, and simmer for 40 minutes.~"
+    "After simmering, strain while still hot.~"
+    "Then cool in ice water bath."
 )
 
 R(
@@ -330,7 +337,7 @@ R(
     "Dashi|4|L;"
     "Aka Miso Paste|200|g;"
     "Hon Dashi|4|g;"
-    "Kosher Salt|4|g",
+    "Kosher Salt|1|g",
     "Mix dashi, hon dashi, miso paste and salt and bring to boil.",
     "Confirm ingredients, amounts and preparation with Leo"
 )
