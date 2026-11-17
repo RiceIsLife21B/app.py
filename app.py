@@ -277,7 +277,7 @@ R(
     "Whole Green Onions|150|g;"
     "Kombu|70|g;"  
     "Kosher Salt|50|g;"
-    "Katsuo Bushio|40|g;"
+    "Katsuo Bushi|40|g;"
     "Hon Dashi|4|g;",
     "Roast Salmon Head at 460°C at 50% Humidity for 15-20 minutes.~"
     "Slice Daikon in 1 inch thickness.~"
