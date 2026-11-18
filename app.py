@@ -127,29 +127,32 @@ R(
     "Habanero Peppers|2000|g;Sherry Vinegar|1200|g;"
     "Water|700|g;Bell Peppers|500|g;"
     "White Sugar|100|g;Kosher Salt|100|g;Canola Oil|100|g;",
+    "Remove habanero and bell pepper stems, cut bell peppers in half, Rinse with water.~"
+    "Mix in canola oil~"
     "Roast whole habanero and bell peppers at 500°F until blister (7-10 min max).~"
     "Cut habanero and bell peppers into pieces.~"
     "Grind all the peppers in Vitamix.~"
     "Whisk all ingredients together.~"
     "Wrap bowl with saran wrap and let ferment at room temerature for 48-72 hours.",
-    "Green, Red and Orange habaneros and; "
-    "Red and Yellow bell peppers preferred."
+    "Green, Red and Orange habaneros and Red and Yellow bell peppers preferred.~"
+    "After roasting, turn and repeat if neccessary"
 )
 
 R(
     "HOUSE DRESSING", SAUCE,
-    "White Vinegar|560|g;Carrots|540|g;"
+    "Rice Vinegar|600|g;Carrots|540|g;"
     "Canola Oil|320|g;Onions|280|g;"
     "White Sugar|120|g;Ginger|68|g;Miso Paste|32|g;"
     "Kosher Salt|24|g;Sesame Oil|20|g;Black Pepper|4|g",
     "Peel carrots, onions and ginger.~"
     "Cut into small chunks.~"
-    "Blend carrots, onions and ginger with white vinegar "
+    "Blend carrots, onions and ginger with rice vinegar "
     "in Vitamix until smooth.~"
     "Combine blended vegetables with remaining ingredients "
     "and whisk until smooth.",
     "IMPORTANT: Original specifies making two separate "
-    "5X batches for 10X, NOT a 10X batch."
+    "5X batches for 10X, NOT a 10X batch.~"
+    "5X: fits in 12l cambro"
 )
 
 R(
