@@ -161,7 +161,7 @@ R(
     "Mushroom Powder|100|g",
     "Mix mushroom powder into lemon juice "
     "until dissolved.~Whisk mixture into mayo.",
-    "Makes approximately 6L. Use a 15L container."
+    "3x: fits in 22l cambro"
 )
 
 R(
@@ -169,7 +169,8 @@ R(
     "Corn Syrup|2500|g;Ketchup|1500|g;"
     "Gochujang Paste|500|g;Minced Garlic|300|g;"
     "House Soy Sauce|200|g;Mushroom Powder|10|g",
-    "Mix all ingredients together."
+    "Mix all ingredients together.",
+    "1x: fits in 5l cambro"
 )
 
 R(
