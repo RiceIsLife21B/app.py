@@ -77,7 +77,11 @@ def R(name, category, ingredients, steps, notes=""):
             for x in steps.split("~")
             if x.strip()
         ],
-        "notes": notes,
+        "notes": [
+            x.strip()
+            for x in notes.split("~")
+            if x.strip()
+        ],
     }
 
 
@@ -88,12 +92,14 @@ def R(name, category, ingredients, steps, notes=""):
 R(
     "BULGOGI SAUCE(KBBQ)", SAUCE,
     "White Sugar|150|g;Mirin|150|g;House Soy Sauce|150|g;"
-    "Water|100|g;Sesame Oil|30|g;Garlic|20|g;"
-    "White Vinegar|15|g;Corn Starch|15|g;"
+    "Water|40|g;Sesame Oil|30|g;Garlic|20|g;"
+    "White Vinegar|15|g;Corn Starch|40|g;"
     "Ginger|10|g;Dashida|5|g;Black Pepper|3|g",
     "Grind garlic, ginger finely with mirin in Vitamix.~"
     "Mix together garlic, ginger and mirin with all other ingredients.~"
-    "Bring to a boil, add corn starch simmer 1-2 minutes and let cool."
+    "Bring to a boil, add the mix of corn starch and water.~"
+    "Simmer 1-2 minutes and let cool.",
+    "20x: fits in 12L cambro"
 )
 
 R(
@@ -103,7 +109,9 @@ R(
     "Kosher Salt|250|g;Hon Dashi|130|g",
     "Whisk sugars, salt and hon dashi into rice vinegar.~"
     "Whisk at low heat until hon dashi and sugars are dissolved.~"
-    "Add Gochujang paste last."
+    "Add Gochujang paste last.",
+    "Final product: every 500g add 20g of brown sugar.~"
+    "1x: fits 22l cambro"
 )
 
 R(
@@ -118,7 +126,7 @@ R(
     "HOT SAUCE", SAUCE,
     "Habanero Peppers|2000|g;Sherry Vinegar|1200|g;"
     "Water|700|g;Bell Peppers|500|g;"
-    "White Sugar|100|g;Kosher Salt|100|g",
+    "White Sugar|100|g;Kosher Salt|100|g;Canola Oil|100|g;",
     "Roast whole habanero and bell peppers at 500°F until blister (7-10 min max).~"
     "Cut habanero and bell peppers into pieces.~"
     "Grind all the peppers in Vitamix.~"
@@ -1451,9 +1459,14 @@ with st.container(key="recipe_detail"):
 
     if recipe["notes"]:
 
+        notes_html = "".join(
+            f"<div>{escape(note)}</div>"
+            for note in recipe["notes"]
+        )
+
         note_html = (
             '<div class="recipe-notes">'
-            f'{escape(recipe["notes"])}'
+            f'{notes_html}'
             '</div>'
         )
 
