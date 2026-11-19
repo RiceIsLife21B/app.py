@@ -77,7 +77,11 @@ def R(name, category, ingredients, steps, notes=""):
             for x in steps.split("~")
             if x.strip()
         ],
-        "notes": notes,
+        "notes": [
+            x.strip()
+            for x in notes.split("~")
+            if x.strip()
+        ],
     }
 
 
@@ -88,12 +92,14 @@ def R(name, category, ingredients, steps, notes=""):
 R(
     "BULGOGI SAUCE(KBBQ)", SAUCE,
     "White Sugar|150|g;Mirin|150|g;House Soy Sauce|150|g;"
-    "Water|100|g;Sesame Oil|30|g;Garlic|20|g;"
-    "White Vinegar|15|g;Corn Starch|15|g;"
+    "Water|40|g;Sesame Oil|30|g;Garlic|20|g;"
+    "White Vinegar|15|g;Corn Starch|40|g;"
     "Ginger|10|g;Dashida|5|g;Black Pepper|3|g",
     "Grind garlic, ginger finely with mirin in Vitamix.~"
     "Mix together garlic, ginger and mirin with all other ingredients.~"
-    "Bring to a boil, add corn starch simmer 1-2 minutes and let cool."
+    "Bring to a boil, add the mix of corn starch and water.~"
+    "Simmer 1-2 minutes and let cool.",
+    "20x: fits in 12L cambro"
 )
 
 R(
@@ -103,7 +109,9 @@ R(
     "Kosher Salt|250|g;Hon Dashi|130|g",
     "Whisk sugars, salt and hon dashi into rice vinegar.~"
     "Whisk at low heat until hon dashi and sugars are dissolved.~"
-    "Add Gochujang paste last."
+    "Add Gochujang paste last.",
+    "Final product: every 500g add 20g of brown sugar.~"
+    "1x: fits 22l cambro"
 )
 
 R(
@@ -118,30 +126,33 @@ R(
     "HOT SAUCE", SAUCE,
     "Habanero Peppers|2000|g;Sherry Vinegar|1200|g;"
     "Water|700|g;Bell Peppers|500|g;"
-    "White Sugar|100|g;Kosher Salt|100|g",
+    "White Sugar|100|g;Kosher Salt|100|g;Canola Oil|100|g;",
+    "Remove habanero and bell pepper stems, cut bell peppers in half, Rinse with water.~"
+    "Mix in canola oil~"
     "Roast whole habanero and bell peppers at 500°F until blister (7-10 min max).~"
     "Cut habanero and bell peppers into pieces.~"
     "Grind all the peppers in Vitamix.~"
     "Whisk all ingredients together.~"
     "Wrap bowl with saran wrap and let ferment at room temerature for 48-72 hours.",
-    "Green, Red and Orange habaneros and; "
-    "Red and Yellow bell peppers preferred."
+    "Green, Red and Orange habaneros and Red and Yellow bell peppers preferred.~"
+    "After roasting, turn and repeat if neccessary"
 )
 
 R(
     "HOUSE DRESSING", SAUCE,
-    "White Vinegar|560|g;Carrots|540|g;"
+    "Rice Vinegar|600|g;Carrots|540|g;"
     "Canola Oil|320|g;Onions|280|g;"
     "White Sugar|120|g;Ginger|68|g;Miso Paste|32|g;"
     "Kosher Salt|24|g;Sesame Oil|20|g;Black Pepper|4|g",
     "Peel carrots, onions and ginger.~"
     "Cut into small chunks.~"
-    "Blend carrots, onions and ginger with white vinegar "
+    "Blend carrots, onions and ginger with rice vinegar "
     "in Vitamix until smooth.~"
     "Combine blended vegetables with remaining ingredients "
     "and whisk until smooth.",
     "IMPORTANT: Original specifies making two separate "
-    "5X batches for 10X, NOT a 10X batch."
+    "5X batches for 10X, NOT a 10X batch.~"
+    "5X: fits in 12l cambro"
 )
 
 R(
@@ -150,7 +161,7 @@ R(
     "Mushroom Powder|100|g",
     "Mix mushroom powder into lemon juice "
     "until dissolved.~Whisk mixture into mayo.",
-    "Makes approximately 6L. Use a 15L container."
+    "3x: fits in 22l cambro"
 )
 
 R(
@@ -158,7 +169,8 @@ R(
     "Corn Syrup|2500|g;Ketchup|1500|g;"
     "Gochujang Paste|500|g;Minced Garlic|300|g;"
     "House Soy Sauce|200|g;Mushroom Powder|10|g",
-    "Mix all ingredients together."
+    "Mix all ingredients together.",
+    "1x: fits in 5l cambro"
 )
 
 R(
@@ -177,7 +189,8 @@ R(
     "Sake|600|g;Kombu|50|g;Bonito|25|g",
     "Combine everything in a pot and bring to a boil.~"
     "Cool and infuse overnight, then strain.",
-    "Original recipe makes approximately 5L."
+    "Original recipe makes approximately 5L.~"
+    "5x: fits 22l cambro"
 )
 
 R(
@@ -191,7 +204,8 @@ R(
     "Mizkan Yamabuki Vinegar|4000|g;White Sugar|1750|g;"
     "Aka Su|600|g;Kosher Salt|600|g;Kombu|30|g",
     "Whisk all ingredients at low temperasture until sugar and salt dissolve.",
-    "Cool it down in ice bath. Do not let boil."
+    "Cool it down in ice bath. Do not let boil.~"
+    "3x: fits 22l cambro"
 )
 
 R(
@@ -1451,9 +1465,14 @@ with st.container(key="recipe_detail"):
 
     if recipe["notes"]:
 
+        notes_html = "".join(
+            f"<div>{escape(note)}</div>"
+            for note in recipe["notes"]
+        )
+
         note_html = (
             '<div class="recipe-notes">'
-            f'{escape(recipe["notes"])}'
+            f'{notes_html}'
             '</div>'
         )
 
