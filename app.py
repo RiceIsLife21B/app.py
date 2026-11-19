@@ -92,8 +92,8 @@ def R(name, category, ingredients, steps, notes=""):
 R(
     "BULGOGI SAUCE(KBBQ)", SAUCE,
     "White Sugar|150|g;Mirin|150|g;House Soy Sauce|150|g;"
-    "Water|40|g;Sesame Oil|30|g;Garlic|20|g;"
-    "White Vinegar|15|g;Corn Starch|40|g;"
+    "Water|20|g;Sesame Oil|30|g;Garlic|20|g;"
+    "White Vinegar|15|g;Corn Starch|20|g;"
     "Ginger|10|g;Dashida|5|g;Black Pepper|3|g",
     "Grind garlic, ginger finely with mirin in Vitamix.~"
     "Mix together garlic, ginger and mirin with all other ingredients.~"
