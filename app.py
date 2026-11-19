@@ -189,7 +189,8 @@ R(
     "Sake|600|g;Kombu|50|g;Bonito|25|g",
     "Combine everything in a pot and bring to a boil.~"
     "Cool and infuse overnight, then strain.",
-    "Original recipe makes approximately 5L."
+    "Original recipe makes approximately 5L.~"
+    "5x: fits 22l cambro"
 )
 
 R(
@@ -203,7 +204,8 @@ R(
     "Mizkan Yamabuki Vinegar|4000|g;White Sugar|1750|g;"
     "Aka Su|600|g;Kosher Salt|600|g;Kombu|30|g",
     "Whisk all ingredients at low temperasture until sugar and salt dissolve.",
-    "Cool it down in ice bath. Do not let boil."
+    "Cool it down in ice bath. Do not let boil.~"
+    "3x: fits 22l cambro"
 )
 
 R(
