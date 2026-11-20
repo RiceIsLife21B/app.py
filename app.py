@@ -111,7 +111,7 @@ R(
     "Whisk at low heat until hon dashi and sugars are dissolved.~"
     "Add Gochujang paste last.",
     "Final product: every 500g add 20g of brown sugar.~"
-    "1x: fits 22l cambro"
+    "1x: fits 22L cambro"
 )
 
 R(
@@ -152,7 +152,7 @@ R(
     "and whisk until smooth.",
     "IMPORTANT: Original specifies making two separate "
     "5X batches for 10X, NOT a 10X batch.~"
-    "5X: fits in 12l cambro"
+    "5X: fits in 12L cambro"
 )
 
 R(
@@ -161,7 +161,7 @@ R(
     "Mushroom Powder|100|g",
     "Mix mushroom powder into lemon juice "
     "until dissolved.~Whisk mixture into mayo.",
-    "3x: fits in 22l cambro"
+    "3x: fits in 22L cambro"
 )
 
 R(
@@ -170,7 +170,7 @@ R(
     "Gochujang Paste|500|g;Minced Garlic|300|g;"
     "House Soy Sauce|200|g;Mushroom Powder|10|g",
     "Mix all ingredients together.",
-    "1x: fits in 5l cambro"
+    "1x: fits in 5L cambro"
 )
 
 R(
@@ -190,7 +190,7 @@ R(
     "Combine everything in a pot and bring to a boil.~"
     "Cool and infuse overnight, then strain.",
     "Original recipe makes approximately 5L.~"
-    "5x: fits 22l cambro"
+    "5x: fits 22L cambro"
 )
 
 R(
@@ -205,7 +205,7 @@ R(
     "Aka Su|600|g;Kosher Salt|600|g;Kombu|30|g",
     "Whisk all ingredients at low temperasture until sugar and salt dissolve.",
     "Cool it down in ice bath. Do not let boil.~"
-    "3x: fits 22l cambro"
+    "3x: fits 22L cambro"
 )
 
 R(
