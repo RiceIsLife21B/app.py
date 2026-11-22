@@ -433,6 +433,7 @@ R(
     "Raw Bean Sprouts|3000|g;Fish Sauce|118.8|g;"
     "Sesame Oil|79.2|g;Garlic (Blitzed)|66|g;Salt|48|g",
     "Steam bean sprouts in Rational at 211°F for 2 minutes.~"
+    "Drain with a spinner.~"
     "Strain bean sprouts and shock in ice water until cool.~"
     "In a separate bowl, mix fish sauce, garlic and sesame oil.~"
     "Add bean sprouts and mix thoroughly.~"
@@ -498,6 +499,7 @@ R(
     "House Soy Sauce|6|g;Sesame Oil|4.8|g;Kosher Salt|1.92|g",
     "Cut broccoli into florets.~"
     "Steam broccoli in oven at 212°F for 3 minutes.~"
+    "Drain with a spinner.~"
     "Cool in water bath.~"
     "Strain well and season broccoli.~"
     "Mix broccoli with garlic, house soy, sesame oil, and salt.~"
