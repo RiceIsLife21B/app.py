@@ -127,7 +127,7 @@ R(
     "Habanero Peppers|2000|g;Sherry Vinegar|1200|g;"
     "Water|700|g;Bell Peppers|500|g;"
     "White Sugar|100|g;Kosher Salt|100|g;Canola Oil|100|g;",
-    "Cut bell peppers in half, Rinse with water.~"
+    "Cut bell peppers in half, Rinse with all peppers in water.~"
     "Mix in canola oil~"
     "Roast whole habanero and bell peppers at 500°F until blister (7-10 min max).~"
     "Cut habanero and bell peppers into pieces.~"
