@@ -430,14 +430,14 @@ R(
 
 R(
     "BEAN SPROUTS", SALAD,
-    "Raw Bean Sprouts|5000|g;Fish Sauce|198|g;"
-    "Sesame Oil|132|g;Garlic (Blitzed)|110|g;Salt|80|g",
+    "Raw Bean Sprouts|3000|g;Fish Sauce|118.8|g;"
+    "Sesame Oil|79.2|g;Garlic (Blitzed)|66|g;Salt|48|g",
     "Steam bean sprouts in Rational at 211°F for 2 minutes.~"
     "Strain bean sprouts and shock in ice water until cool.~"
     "In a separate bowl, mix fish sauce, garlic and sesame oil.~"
     "Add bean sprouts and mix thoroughly.~"
     "Check daily and adjust salt to taste.",
-    "7L batch as the recorded base recipe."
+    "Batch sizes: 1X = 3 kg, 2X = 6 kg, 3X = 9 kg."
 )
 
 R(
@@ -494,15 +494,15 @@ R(
 
 R(
     "SESAME BROCCOLI", SALAD,
-    "Broccoli|1250|g;Garlic (Blitzed)|30|g;"
-    "House Soy Sauce|25|g;Sesame Oil|20|g;Kosher Salt|8|g",
+    "Broccoli|300|g;Garlic (Blitzed)|7.2|g;"
+    "House Soy Sauce|6|g;Sesame Oil|4.8|g;Kosher Salt|1.92|g",
     "Cut broccoli into florets.~"
     "Steam broccoli in oven at 212°F for 3 minutes.~"
     "Cool in water bath.~"
     "Strain well and season broccoli.~"
     "Mix broccoli with garlic, house soy, sesame oil, and salt.~"
     "Put on flat hotel pan, saran wrap and put in fridge.",
-    "1,250g = Approximately 4 heads of broccoli."
+    "Base: 1X = 300 g. Usual batches: 2X = 600 g, 3X = 900 g, 4X = 1,200 g."
 )
 
 R(
