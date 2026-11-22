@@ -130,7 +130,6 @@ R(
     "Cut bell peppers in half, Rinse with all peppers in water.~"
     "Mix in canola oil~"
     "Roast whole habanero and bell peppers at 500°F until blister (7-10 min max).~"
-    "Cut habanero and bell peppers into pieces.~"
     "Grind all the peppers in Vitamix.~"
     "Whisk all ingredients together.~"
     "Wrap bowl with saran wrap and let ferment at room temerature for 48-72 hours.",
