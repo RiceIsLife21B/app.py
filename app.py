@@ -1117,9 +1117,9 @@ footer {
 
     background-image: none !important;
 
-    color: #FFFFFF !important;
+    color: #D48A55 !important;
 
-    border: 2px solid #686868 !important;
+    border: 3px solid #686868 !important;
 
     border-radius: 9px !important;
 
