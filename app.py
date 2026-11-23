@@ -2,13 +2,13 @@
 import streamlit as st
 import hmac
 import re
-
 from decimal import Decimal, InvalidOperation
 from html import escape
 
 
 # ==========================================================
 # RICE IS LIFE - STAFF RECIPE BOOK
+# DARK DESIGN - UPDATED
 # ==========================================================
 
 st.set_page_config(
@@ -20,8 +20,10 @@ st.set_page_config(
 
 
 # ==========================================================
-# COLORS AND SETTINGS
+# SETTINGS
 # ==========================================================
+
+STAFF_PASSWORD = "aburi"
 
 BACKGROUND = "#030303"
 BUTTON_BG = "#393939"
@@ -29,7 +31,8 @@ WHITE = "#FFFFFF"
 BORDER = "#383838"
 GOLD = "#C6A057"
 MULTIPLIER_COLOR = "#0097B2"
-STEPS_COLOR = "#646464"
+STEP_LABEL_COLOR = "#545454"
+STEP_TEXT_COLOR = "#FFFFFF"
 
 CATEGORIES = [
     "Sauces + Dressings",
@@ -118,6 +121,7 @@ def R(name, category, ingredients, steps, notes=""):
 
 R(
     "BULGOGI SAUCE(KBBQ)", SAUCE,
+
     "White Sugar|150|g;"
     "Mirin|150|g;"
     "House Soy Sauce|150|g;"
@@ -140,6 +144,7 @@ R(
 
 R(
     "CHOJANG (PORK BELLY)", SAUCE,
+
     "Gochujang Paste|6300|g;"
     "White Sugar|3700|g;"
     "Rice Vinegar|3300|g;"
@@ -157,6 +162,7 @@ R(
 
 R(
     "HOT MAYO MUSTARD", SAUCE,
+
     "House Mayo|800|g;"
     "Dijon Mustard|440|g;"
     "Lemon Juice|120|g;"
@@ -169,6 +175,7 @@ R(
 
 R(
     "HOT SAUCE", SAUCE,
+
     "Habanero Peppers|2000|g;"
     "Sherry Vinegar|1200|g;"
     "Water|700|g;"
@@ -190,6 +197,7 @@ R(
 
 R(
     "HOUSE DRESSING", SAUCE,
+
     "Rice Vinegar|600|g;"
     "Carrots|540|g;"
     "Canola Oil|320|g;"
@@ -212,6 +220,7 @@ R(
 
 R(
     "HOUSE MAYO", SAUCE,
+
     "Hellman's Mayo|5000|g;"
     "Lemon Juice|500|g;"
     "Mushroom Powder|100|g",
@@ -224,6 +233,7 @@ R(
 
 R(
     "KANG JEONG(KFC)", SAUCE,
+
     "Corn Syrup|2500|g;"
     "Ketchup|1500|g;"
     "Gochujang Paste|500|g;"
@@ -239,6 +249,7 @@ R(
 
 R(
     "MISO GLAZE(SALMON)", SAUCE,
+
     "House Teriyaki Sauce|100|g;"
     "Water|50|g;"
     "Corn Starch|50|g;"
@@ -253,6 +264,7 @@ R(
 
 R(
     "SEASONED SOY(GF)", SAUCE,
+
     "House Soy Sauce|2000|g;"
     "Water|1000|g;"
     "Mirin|900|g;"
@@ -269,6 +281,7 @@ R(
 
 R(
     "SPICY MAYO", SAUCE,
+
     "House Mayo|400|g;"
     "Gochujang Paste|40|g;"
     "House Hot Sauce|40|g",
@@ -278,6 +291,7 @@ R(
 
 R(
     "SUSHI SU", SAUCE,
+
     "Mizkan Yamabuki Vinegar|4000|g;"
     "White Sugar|1750|g;"
     "Aka Su|600|g;"
@@ -292,6 +306,7 @@ R(
 
 R(
     "TENTSUYU(TOFU)", SAUCE,
+
     "Water|400|g;"
     "House Soy Sauce|200|g;"
     "Mirin|160|g;"
@@ -303,6 +318,7 @@ R(
 
 R(
     "TERIYAKI SAUCE(CHICKEN)", SAUCE,
+
     "House Soy Sauce|4000|g;"
     "Sake|4000|g;"
     "Mirin|4000|g;"
@@ -325,6 +341,7 @@ R(
 
 R(
     "YUZU GARLIC SAUCE(OH-MY)", SAUCE,
+
     "Garlic|1100|g;"
     "White Sugar|1000|g;"
     "Lemon Juice|825|g;"
@@ -351,6 +368,7 @@ R(
 
 R(
     "BEEF BRISKET", MAIN,
+
     "Kosher Salt|600|g;"
     "Black Pepper|400|g;"
     "Smoking Wood Chips|150|g",
@@ -366,6 +384,7 @@ R(
 
 R(
     "CHICKEN BATTER", MAIN,
+
     "All Purpose Flour|205|g;"
     "House Soy Sauce|10|g;"
     "Kosher Salt|3|g;"
@@ -376,6 +395,7 @@ R(
 
 R(
     "CHICKEN BRINE", MAIN,
+
     "Water|2000|g;"
     "House Soy Sauce|100|g;"
     "Kosher Salt|50|g;"
@@ -389,6 +409,7 @@ R(
 
 R(
     "DASHI", MAIN,
+
     "Water|20|L;"
     "Roasted Salmon Head|1|pc;"
     "Daikon|1000|g;"
@@ -410,6 +431,7 @@ R(
 
 R(
     "DASHI EGG MARINADE", MAIN,
+
     "Water|2000|g;"
     "House Soy Sauce|300|g;"
     "White Sugar|100|g;"
@@ -429,6 +451,7 @@ R(
 
 R(
     "GARLIC SHRIMP", MAIN,
+
     "Green Onion Whites|200|g;"
     "Canola Oil|150|g;"
     "Garlic|100|g;"
@@ -443,6 +466,7 @@ R(
 
 R(
     "JAPANESE CURRY", MAIN,
+
     "Dashi|1.5|L;"
     "Curry Powder|??|g;"
     "Onions|600|g;"
@@ -459,6 +483,7 @@ R(
 
 R(
     "MISO MARINADE", MAIN,
+
     "Miso Paste|1000|g;"
     "White Sugar|600|g;"
     "Water|400|g;"
@@ -470,6 +495,7 @@ R(
 
 R(
     "MISO SOUP", MAIN,
+
     "Dashi|4|L;"
     "Aka Miso Paste|200|g;"
     "Hon Dashi|4|g;"
@@ -482,6 +508,7 @@ R(
 
 R(
     "MUSHROOM BRAISE", MAIN,
+
     "Dried Shiitake Mushrooms|1|pc;"
     "Water (Soak overnight)|250|g;"
     "Shimeji Mushrooms|275|g;"
@@ -498,6 +525,7 @@ R(
 
 R(
     "PORK BELLY", MAIN,
+
     "Pork Belly|1|slab;"
     "Mirin|200|g;"
     "Kosher Salt|125|g;"
@@ -521,6 +549,7 @@ R(
 
 R(
     "SUSHI RICE", MAIN,
+
     "Sekka Rice|1100|g;"
     "Water|1080|g;"
     "Sushi Su (Raw Rice Ratio)|220|g;"
@@ -540,6 +569,7 @@ R(
 
 R(
     "WHITE RICE", MAIN,
+
     "Sekka Rice|2740|g;"
     "Water (White Rice)|2740|g;"
     "Brown Rice (Alternative)|1000|g;"
@@ -555,6 +585,7 @@ R(
 
 R(
     "TOFU MARINADE", MAIN,
+
     "Miso Paste|300|g;"
     "Mirin|150|g;"
     "House Soy Sauce|30|g;"
@@ -573,6 +604,7 @@ R(
 
 R(
     "BEAN SPROUTS", SALAD,
+
     "Raw Bean Sprouts|3000|g;"
     "Fish Sauce|118.8|g;"
     "Sesame Oil|79.2|g;"
@@ -591,6 +623,7 @@ R(
 
 R(
     "GARLIC CHIVES", SALAD,
+
     "Garlic Chives|1000|g;"
     "House Soy Sauce|100|g;"
     "White Sugar|50|g;"
@@ -607,6 +640,7 @@ R(
 
 R(
     "KIMCHI COLESLAW", SALAD,
+
     "Green Cabbage|20000|g;"
     "Kimchi|10000|g;"
     "White Sugar|2000|g;"
@@ -627,6 +661,7 @@ R(
 
 R(
     "PICKLED DAIKON", SALAD,
+
     "Daikon|1000|g;"
     "Water|600|g;"
     "Rice Vinegar|400|g;"
@@ -646,6 +681,7 @@ R(
 
 R(
     "PICKLED JALAPEÑO", SALAD,
+
     "Jalapeño|1800|g;"
     "White Sugar|500|g;"
     "House Soy Sauce|500|g;"
@@ -663,6 +699,7 @@ R(
 
 R(
     "SESAME BROCCOLI", SALAD,
+
     "Broccoli|300|g;"
     "Garlic (Blitzed)|7.2|g;"
     "House Soy Sauce|6|g;"
@@ -682,6 +719,7 @@ R(
 
 R(
     "WASABI CUCUMBER", SALAD,
+
     "Cucumber|1560|g;"
     "White Sugar|187|g;"
     "White Vinegar|125|g;"
@@ -787,6 +825,7 @@ def fmt_factor(factor):
 # ==========================================================
 
 def split_recipe_notes(notes):
+
     container_notes = []
     general_notes = []
 
@@ -796,6 +835,7 @@ def split_recipe_notes(notes):
     )
 
     for note in notes:
+
         if pattern.search(note):
             container_notes.append(note)
         else:
@@ -865,7 +905,9 @@ def set_custom_percent(percent_text):
         or value <= 0
         or value > 10000
     ):
-        return "Choose a percentage above 0 and up to 10000."
+        return (
+            "Choose a percentage above 0 and up to 10000."
+        )
 
     st.session_state.custom_percentage = float(value)
     st.session_state.multiplier = float(
@@ -876,14 +918,14 @@ def set_custom_percent(percent_text):
 
 
 # ==========================================================
-# DARK THEME - SINGLE STYLESHEET
+# DARK STYLING
 # ==========================================================
 
 st.markdown("""
 <style>
 
 /* ======================================================
-   COLOR SYSTEM
+   ROOT COLORS
    ====================================================== */
 
 :root {
@@ -891,8 +933,7 @@ st.markdown("""
     --button: #393939;
     --button-hover: #474747;
     --white: #FFFFFF;
-    --muted: #646464;
-    --border: #383838;
+    --step-label: #545454;
     --gold: #C6A057;
     --sauce: #D48A55;
     --main: #ED555A;
@@ -935,7 +976,7 @@ footer {
 }
 
 [data-testid="stSidebar"] {
-    background: #030303 !important;
+    background-color: #030303 !important;
 }
 
 /* ======================================================
@@ -947,9 +988,9 @@ footer {
     font-size: clamp(36px, 4.5vw, 58px);
     font-weight: 800;
     line-height: 1.1;
-    color: #ED2227 !important;
     letter-spacing: -1.5px;
     text-align: center;
+    color: #ED2227 !important;
     margin: 0 0 8px;
 }
 
@@ -964,22 +1005,30 @@ footer {
 }
 
 /* ======================================================
-   GENERAL BUTTONS
+   ALL BUTTONS - SOFT FLOATING GLOW
    ====================================================== */
 
 .stButton > button,
 [data-testid="stPopover"] button {
-    background-color: #393939 !important;
-    background-image: none !important;
+    background: #393939 !important;
     color: #FFFFFF !important;
+
     border: 2px solid #686868 !important;
     border-radius: 9px !important;
-    box-shadow: none !important;
+
+    box-shadow:
+        0 4px 11px rgba(0, 0, 0, .65),
+        0 0 13px rgba(255, 255, 255, .14),
+        0 0 23px rgba(255, 255, 255, .055)
+        !important;
+
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 600 !important;
+
     transition:
-        background-color .15s ease,
-        border-color .15s ease;
+        background .18s ease,
+        box-shadow .18s ease,
+        transform .18s ease;
 }
 
 .stButton > button p,
@@ -990,8 +1039,19 @@ footer {
 
 .stButton > button:hover,
 [data-testid="stPopover"] button:hover {
-    background-color: #474747 !important;
-    color: #FFFFFF !important;
+    background: #474747 !important;
+
+    box-shadow:
+        0 6px 16px rgba(0, 0, 0, .7),
+        0 0 17px rgba(255, 255, 255, .21),
+        0 0 28px rgba(255, 255, 255, .08)
+        !important;
+
+    transform: translateY(-1px);
+}
+
+.stButton > button:active {
+    transform: translateY(1px);
 }
 
 .stButton > button:focus-visible {
@@ -1006,12 +1066,13 @@ footer {
 .st-key-cat_0 button,
 .st-key-cat_1 button,
 .st-key-cat_2 button {
-    background-color: #030303 !important;
-    width: 100%;
+    background: #030303 !important;
     min-height: 66px !important;
+    width: 100%;
+
     font-size: clamp(13px, 1.35vw, 18px) !important;
     font-weight: 700 !important;
-    letter-spacing: .015em;
+
     border: 2px solid #383838 !important;
     border-radius: 9px !important;
 }
@@ -1034,32 +1095,35 @@ footer {
 .st-key-cat_0 button:hover,
 .st-key-cat_1 button:hover,
 .st-key-cat_2 button:hover {
-    background-color: #151515 !important;
+    background: #151515 !important;
 }
 
 /* ======================================================
-   RECIPE SELECTION BUTTONS
+   RECIPE BUTTONS
    ====================================================== */
 
 div[class*="st-key-recipe_"] button {
-    background-color: #393939 !important;
+    background: #393939 !important;
+
     min-height: 86px !important;
     padding: 14px 16px !important;
+
     font-size: clamp(13px, 1.3vw, 17px) !important;
     font-weight: 700 !important;
     line-height: 1.25 !important;
+
     text-align: left !important;
+
     border-width: 2px !important;
     border-style: solid !important;
     border-radius: 9px !important;
-    box-shadow: none !important;
 }
 
 div[class*="st-key-recipe_"] button:hover {
-    background-color: #474747 !important;
+    background: #474747 !important;
 }
 
-/* Sauce buttons: orange text and full border */
+/* Sauces */
 
 .st-key-recipe_grid_sauce
 div[class*="st-key-recipe_"] button {
@@ -1072,7 +1136,7 @@ div[class*="st-key-recipe_"] button p {
     color: #D48A55 !important;
 }
 
-/* Main buttons: red text and full border */
+/* Mains */
 
 .st-key-recipe_grid_main
 div[class*="st-key-recipe_"] button {
@@ -1085,7 +1149,7 @@ div[class*="st-key-recipe_"] button p {
     color: #ED555A !important;
 }
 
-/* Salad buttons: green text and full border */
+/* Salads */
 
 .st-key-recipe_grid_salad
 div[class*="st-key-recipe_"] button {
@@ -1100,19 +1164,36 @@ div[class*="st-key-recipe_"] button p {
 
 /* ======================================================
    MULTIPLIER ROW
+   LARGE BLUE BUTTONS WITH WHITE NUMBERS
    ====================================================== */
+
+/* Scroll horizontally if all 15 controls cannot fit */
 
 .st-key-multiplier_row
 [data-testid="stHorizontalBlock"] {
-    gap: .22rem !important;
+    display: flex !important;
     flex-wrap: nowrap !important;
+
+    gap: 7px !important;
+
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+
+    padding: 10px 6px 18px !important;
+
+    scrollbar-width: thin;
+    scrollbar-color: #545454 #030303;
 }
+
+/* Wide enough to show doubled font size */
 
 .st-key-multiplier_row
 [data-testid="stColumn"] {
-    min-width: 0 !important;
-    width: 0 !important;
-    flex: 1 1 0 !important;
+    flex: 0 0 100px !important;
+
+    min-width: 100px !important;
+    width: 100px !important;
+    max-width: 100px !important;
 }
 
 .st-key-multiplier_row .stButton,
@@ -1122,35 +1203,45 @@ div[class*="st-key-recipe_"] button p {
     min-width: 0 !important;
 }
 
-/* 15% smaller height, square corners,
-   larger type and new turquoise color */
+/* Solid turquoise-blue background */
 
-.st-key-multiplier_row button {
+.st-key-multiplier_row
+.stButton > button,
+.st-key-multiplier_row
+[data-testid="stPopover"] button {
     background-color: #0097B2 !important;
+    background-image: none !important;
+
     color: #FFFFFF !important;
 
     width: 100% !important;
-    min-width: 0 !important;
-
     height: 46px !important;
     min-height: 46px !important;
     max-height: 46px !important;
 
-    padding: 0 1px !important;
+    padding: 0 2px !important;
 
     border: 2px solid #0097B2 !important;
     border-radius: 0 !important;
 
-    box-shadow: none !important;
-
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: clamp(16px, 1.5vw, 22px) !important;
+    /* Doubled from prior 16-22px range */
+    font-size: clamp(32px, 3vw, 44px) !important;
     font-weight: 800 !important;
     line-height: 1 !important;
+
     white-space: nowrap !important;
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, .65),
+        0 0 13px rgba(0, 151, 178, .35),
+        0 0 23px rgba(0, 151, 178, .16)
+        !important;
 }
 
-.st-key-multiplier_row button p {
+.st-key-multiplier_row
+.stButton > button p,
+.st-key-multiplier_row
+[data-testid="stPopover"] button p {
     color: #FFFFFF !important;
     font-size: inherit !important;
     font-weight: 800 !important;
@@ -1158,32 +1249,18 @@ div[class*="st-key-recipe_"] button p {
     white-space: nowrap !important;
 }
 
-.st-key-multiplier_row button:hover {
-    background-color: #087F96 !important;
-    border-color: #087F96 !important;
-}
+.st-key-multiplier_row
+.stButton > button:hover,
+.st-key-multiplier_row
+[data-testid="stPopover"] button:hover {
+    background-color: #0AABC6 !important;
+    border-color: #0AABC6 !important;
 
-/* ======================================================
-   RECIPE HEADING
-   ====================================================== */
-
-.recipe-card-heading {
-    background-color: #030303 !important;
-    color: var(--recipe-accent, #FFFFFF) !important;
-
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: clamp(19px, 1.9vw, 26px);
-    font-weight: 700;
-    line-height: 1.2;
-
-    padding: 15px 18px;
-    border: 2px solid var(--recipe-accent, #FFFFFF);
-    border-radius: 9px;
-    overflow-wrap: anywhere;
-
-    min-height: 64px;
-    display: flex;
-    align-items: center;
+    box-shadow:
+        0 5px 14px rgba(0, 0, 0, .65),
+        0 0 18px rgba(0, 151, 178, .48),
+        0 0 28px rgba(0, 151, 178, .24)
+        !important;
 }
 
 /* ======================================================
@@ -1192,10 +1269,12 @@ div[class*="st-key-recipe_"] button p {
 
 .current-batch {
     color: #FFFFFF !important;
+
     font-family: Arial, Helvetica, sans-serif;
     font-size: clamp(18px, 1.8vw, 24px);
     font-weight: 700;
     line-height: 1.3;
+
     padding: 10px 0 6px;
     margin-bottom: 5px;
 }
@@ -1205,7 +1284,8 @@ div[class*="st-key-recipe_"] button p {
    ====================================================== */
 
 .container-guide {
-    background-color: #141414 !important;
+    background: #141414 !important;
+
     border: 1px solid #484848;
     border-left: 3px solid #C6A057;
     border-radius: 8px;
@@ -1218,16 +1298,20 @@ div[class*="st-key-recipe_"] button p {
 
 .container-guide-label {
     color: #C6A057 !important;
+
     font-family: Arial, Helvetica, sans-serif;
     font-size: 11px;
     font-weight: 800;
+
     letter-spacing: .12em;
     text-transform: uppercase;
+
     margin-bottom: 7px;
 }
 
 .container-guide-value {
     color: #FFFFFF !important;
+
     font-family: Arial, Helvetica, sans-serif;
     font-size: clamp(14px, 1.35vw, 18px);
     font-weight: 600;
@@ -1239,26 +1323,66 @@ div[class*="st-key-recipe_"] button p {
 }
 
 /* ======================================================
-   SECTION HEADINGS
+   RECIPE HEADING
+   ====================================================== */
+
+.recipe-card-heading {
+    background: #030303 !important;
+
+    color: var(
+        --recipe-accent,
+        #FFFFFF
+    ) !important;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: clamp(19px, 1.9vw, 26px);
+    font-weight: 700;
+    line-height: 1.2;
+
+    padding: 15px 18px;
+
+    border: 2px solid var(
+        --recipe-accent,
+        #FFFFFF
+    );
+
+    border-radius: 9px;
+
+    min-height: 64px;
+
+    display: flex;
+    align-items: center;
+
+    overflow-wrap: anywhere;
+}
+
+/* ======================================================
+   PREPARATION AND INGREDIENT HEADINGS
    ====================================================== */
 
 .section-title {
-    color: var(--category-accent, #FFFFFF) !important;
+    color: var(
+        --category-accent,
+        #FFFFFF
+    ) !important;
+
     font-family: Arial, Helvetica, sans-serif;
     font-size: 17px;
     font-weight: 800;
+
     letter-spacing: .08em;
     margin: 10px 0 12px;
 }
 
 /* ======================================================
-   INGREDIENTS WITH DOTTED LEADERS
+   INGREDIENTS - DOTTED LEADERS
    ====================================================== */
 
 .ingredient-row {
     display: flex;
     align-items: baseline;
     justify-content: space-between;
+
     gap: 14px;
 
     border-bottom: 1px solid #292929;
@@ -1275,41 +1399,45 @@ div[class*="st-key-recipe_"] button p {
 .ingredient-name {
     color: #FFFFFF !important;
     font-weight: 500;
+
     overflow-wrap: anywhere;
     flex: 0 1 auto;
+    order: 1;
 }
-
-/* Dots fill the space between name and weight */
 
 .ingredient-row::after {
     content: "";
+
     flex: 1 1 auto;
     min-width: 10px;
+
     border-bottom: 2px dotted #727272;
+
     transform: translateY(-3px);
     order: 2;
 }
 
-.ingredient-name {
-    order: 1;
-}
-
 .ingredient-amount {
-    order: 3;
     color: #FFFFFF !important;
     font-weight: 700;
+
     text-align: right;
     white-space: nowrap;
     font-variant-numeric: tabular-nums;
+
     flex: 0 0 auto;
+    order: 3;
 }
 
 /* ======================================================
-   PREPARATION STEPS - #646464
+   PREPARATION STEPS
    ====================================================== */
 
+/* Instructions in pure white */
+
 .step-block {
-    color: #646464 !important;
+    color: #FFFFFF !important;
+
     border-bottom: 1px solid #292929;
 
     padding: 0 0 14px;
@@ -1320,16 +1448,20 @@ div[class*="st-key-recipe_"] button p {
     line-height: 1.5;
 }
 
-.step-block div,
-.step-block p,
-.step-block span {
-    color: #646464 !important;
+.step-instruction {
+    color: #FFFFFF !important;
+    font-weight: 500;
 }
 
+/* STEP #1 label in #545454 */
+
 .step-number {
-    color: #646464 !important;
-    font-size: 12px;
+    color: #545454 !important;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
     font-weight: 800;
+
     letter-spacing: .07em;
     margin-bottom: 7px;
 }
@@ -1339,11 +1471,12 @@ div[class*="st-key-recipe_"] button p {
    ====================================================== */
 
 .recipe-notes {
-    background-color: #111111 !important;
+    background: #111111 !important;
     color: #FFFFFF !important;
 
     border: 1px solid #383838;
     border-left: 3px solid #C6A057;
+
     border-radius: 8px;
 
     padding: 14px 18px;
@@ -1381,38 +1514,44 @@ hr {
 
 .login-heading {
     color: #FFFFFF !important;
+
     font-family: Arial, Helvetica, sans-serif;
     font-size: 24px;
     font-weight: 700;
+
     margin-bottom: 5px;
 }
 
 .login-instruction {
     color: #FFFFFF !important;
+
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
 }
 
 [data-testid="stForm"] {
-    background-color: #030303 !important;
+    background: #030303 !important;
+
     border: 1px solid #383838 !important;
     border-radius: 12px !important;
+
     padding: 18px;
 }
 
-/* Password entry */
-
 [data-testid="stTextInput"]
 [data-baseweb="input"] {
-    background-color: #030303 !important;
+    background: #030303 !important;
+
     border: 1px solid #555555 !important;
     border-radius: 8px !important;
 }
 
 [data-testid="stTextInput"] input {
-    background-color: #030303 !important;
+    background: #030303 !important;
+
     color: #FFFFFF !important;
     caret-color: #FFFFFF !important;
+
     font-size: 18px !important;
 }
 
@@ -1420,11 +1559,11 @@ hr {
     color: #999999 !important;
 }
 
-/* Eye control */
+/* Password visibility control */
 
 [data-testid="stTextInput"] button,
 [data-testid="stTextInput"] button:hover {
-    background-color: #030303 !important;
+    background: #030303 !important;
     color: #FFFFFF !important;
     border: none !important;
 }
@@ -1434,13 +1573,15 @@ hr {
     stroke: #FFFFFF !important;
 }
 
-/* Log In button */
+/* Log in button */
 
 [data-testid="stFormSubmitButton"] button {
-    background-color: #393939 !important;
+    background: #393939 !important;
     color: #FFFFFF !important;
+
     border: 1px solid #FFFFFF !important;
     border-radius: 8px !important;
+
     min-height: 46px !important;
     padding: 8px 24px !important;
 }
@@ -1456,7 +1597,7 @@ hr {
 [data-testid="stPopoverBody"],
 [data-testid="stPopoverContent"],
 div[data-baseweb="popover"] > div {
-    background-color: #111111 !important;
+    background: #111111 !important;
     color: #FFFFFF !important;
     border-color: #383838 !important;
 }
@@ -1468,21 +1609,22 @@ div[data-baseweb="popover"] > div {
 
 [data-testid="stPopoverBody"]
 [data-testid="stForm"] {
-    background-color: #111111 !important;
+    background: #111111 !important;
     border: none !important;
 }
 
 [data-testid="stPopoverBody"]
 [data-testid="stTextInput"]
 [data-baseweb="input"] {
-    background-color: #030303 !important;
+    background: #030303 !important;
     border: 1px solid #666666 !important;
 }
 
 [data-testid="stPopoverBody"]
 [data-testid="stFormSubmitButton"] button {
-    background-color: #393939 !important;
+    background: #393939 !important;
     color: #FFFFFF !important;
+
     border: 1px solid #C6A057 !important;
     min-height: 44px !important;
 }
@@ -1497,17 +1639,20 @@ textarea {
    ====================================================== */
 
 .st-key-logout button {
-    background-color: #393939 !important;
+    background: #393939 !important;
     color: #FFFFFF !important;
+
     min-height: 48px !important;
     width: 100% !important;
+
     border: 1px solid #777777 !important;
     border-radius: 8px !important;
+
     font-size: 13px !important;
 }
 
 .st-key-logout button:hover {
-    background-color: #474747 !important;
+    background: #474747 !important;
     border-color: #FFFFFF !important;
 }
 
@@ -1530,25 +1675,16 @@ textarea {
         padding: 4px !important;
     }
 
-    /* Keep multiplier buttons square and scrollable */
-
-    .st-key-multiplier_row
-    [data-testid="stHorizontalBlock"] {
-        overflow-x: auto !important;
-        padding-bottom: 7px;
-    }
-
     .st-key-multiplier_row
     [data-testid="stColumn"] {
-        flex: 0 0 54px !important;
-        width: 54px !important;
+        flex: 0 0 92px !important;
+        min-width: 92px !important;
+        width: 92px !important;
+        max-width: 92px !important;
     }
 
     .st-key-multiplier_row button {
-        height: 46px !important;
-        min-height: 46px !important;
-        max-height: 46px !important;
-        font-size: 17px !important;
+        font-size: 32px !important;
     }
 
     div[class*="st-key-recipe_"] button {
@@ -1584,7 +1720,7 @@ textarea {
 
 
 # ==========================================================
-# SELECTED CATEGORY - FULL COLORED BORDER
+# SELECTED CATEGORY
 # ==========================================================
 
 def highlight_category(index):
@@ -1595,7 +1731,10 @@ def highlight_category(index):
         f'<style>'
         f'.st-key-cat_{index} button {{'
         f'border:3px solid {color} !important;'
-        f'box-shadow:0 0 0 1px {color} !important;'
+        f'box-shadow:'
+        f'0 0 0 1px {color},'
+        f'0 0 15px {color}55,'
+        f'0 4px 12px rgba(0,0,0,.6) !important;'
         f'background:#111111 !important;'
         f'}}'
         f'</style>',
@@ -1604,7 +1743,7 @@ def highlight_category(index):
 
 
 # ==========================================================
-# SELECTED MULTIPLIER - GOLD BORDER
+# SELECTED MULTIPLIER
 # ==========================================================
 
 def highlight_multiplier(key):
@@ -1612,9 +1751,12 @@ def highlight_multiplier(key):
     st.markdown(
         f'<style>'
         f'.st-key-{key} button {{'
+        f'background-color:#0097B2 !important;'
         f'border:3px solid #C6A057 !important;'
-        f'box-shadow:0 0 0 1px #C6A057 !important;'
-        f'background:#0097B2 !important;'
+        f'box-shadow:'
+        f'0 0 0 1px #C6A057,'
+        f'0 0 18px rgba(0,151,178,.55),'
+        f'0 0 25px rgba(0,151,178,.22) !important;'
         f'}}'
         f'</style>',
         unsafe_allow_html=True,
@@ -1643,18 +1785,6 @@ def login_screen():
         unsafe_allow_html=True,
     )
 
-    try:
-        secret = str(
-            st.secrets["STAFF_PASSWORD"]
-        )
-
-    except Exception:
-        st.error(
-            "Set STAFF_PASSWORD in the "
-            "Streamlit app's Secrets settings."
-        )
-        st.stop()
-
     with st.form("login_form"):
 
         entered = st.text_input(
@@ -1667,7 +1797,10 @@ def login_screen():
 
     if submit:
 
-        if hmac.compare_digest(entered, secret):
+        if hmac.compare_digest(
+            entered,
+            STAFF_PASSWORD,
+        ):
             st.session_state.authenticated = True
             st.rerun()
 
@@ -1784,7 +1917,7 @@ container_notes, general_notes = split_recipe_notes(
 with st.container(key="recipe_detail"):
 
     # ======================================================
-    # 14 PRESETS + CUSTOM PERCENT BUTTON
+    # PRESET AND CUSTOM MULTIPLIERS
     # ======================================================
 
     with st.container(key="multiplier_row"):
@@ -1814,7 +1947,7 @@ with st.container(key="recipe_detail"):
                         f"mult_{index}"
                     )
 
-        # CUSTOM PERCENTAGE
+        # CUSTOM PERCENTAGE CONTROL
 
         with cols[14]:
 
@@ -1880,7 +2013,7 @@ with st.container(key="recipe_detail"):
         )
 
     st.markdown(
-        f'<div class="current-batch">'
+        '<div class="current-batch">'
         f'{escape(batch_text)}'
         '</div>',
         unsafe_allow_html=True,
@@ -1888,8 +2021,6 @@ with st.container(key="recipe_detail"):
 
     # ======================================================
     # TWO COLUMNS
-    # LEFT: CONTAINER GUIDE + STEPS
-    # RIGHT: RECIPE NAME + INGREDIENTS
     # ======================================================
 
     left, right = st.columns(
@@ -1898,12 +2029,10 @@ with st.container(key="recipe_detail"):
     )
 
     # ======================================================
-    # LEFT COLUMN
+    # LEFT COLUMN - CONTAINER GUIDE + PREPARATION STEPS
     # ======================================================
 
     with left:
-
-        # CONTAINER GUIDE
 
         if container_notes:
 
@@ -1915,6 +2044,7 @@ with st.container(key="recipe_detail"):
             )
 
         else:
+
             container_html = (
                 '<div class="container-guide-value">'
                 'No container size specified'
@@ -1931,7 +2061,7 @@ with st.container(key="recipe_detail"):
             unsafe_allow_html=True,
         )
 
-        # PREPARATION HEADING - CATEGORY COLOR
+        # CATEGORY-COLORED HEADING
 
         st.markdown(
             f'<div class="section-title" '
@@ -1941,7 +2071,7 @@ with st.container(key="recipe_detail"):
             unsafe_allow_html=True,
         )
 
-        # PREPARATION STEPS - GRAY TEXT
+        # STEP LABELS GRAY, INSTRUCTIONS WHITE
 
         if recipe["steps"]:
 
@@ -1954,7 +2084,9 @@ with st.container(key="recipe_detail"):
                     '<div class="step-number">'
                     f'STEP #{number}'
                     '</div>'
-                    f'<div>{escape(step)}</div>'
+                    '<div class="step-instruction">'
+                    f'{escape(step)}'
+                    '</div>'
                     '</div>'
                 )
 
@@ -1964,17 +2096,16 @@ with st.container(key="recipe_detail"):
                 )
 
         else:
+
             st.warning(
                 "Preparation steps have not been provided."
             )
 
     # ======================================================
-    # RIGHT COLUMN
+    # RIGHT COLUMN - RECIPE NAME + INGREDIENTS
     # ======================================================
 
     with right:
-
-        # RECIPE NAME ALIGNED BESIDE CONTAINER GUIDE
 
         st.markdown(
             f'<div class="recipe-card-heading" '
@@ -1984,8 +2115,6 @@ with st.container(key="recipe_detail"):
             unsafe_allow_html=True,
         )
 
-        # INGREDIENTS HEADING - CATEGORY COLOR
-
         st.markdown(
             f'<div class="section-title" '
             f'style="--category-accent:{color};">'
@@ -1993,8 +2122,6 @@ with st.container(key="recipe_detail"):
             '</div>',
             unsafe_allow_html=True,
         )
-
-        # INGREDIENTS WITH DOTTED LEADERS
 
         for ingredient in recipe["ingredients"]:
 
