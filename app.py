@@ -9,7 +9,7 @@ from html import escape
 # ==========================================================
 
 st.set_page_config(
-    page_title="Rice Is Life | Recipe Book",
+    page_title="Rice Is Life | Staff Recipes",
     page_icon="🍚",
     layout="wide",
     initial_sidebar_state="collapsed",
@@ -28,20 +28,17 @@ CATEGORIES = [
 SAUCE, MAIN, SALAD = CATEGORIES
 
 CATEGORY_COLORS = {
-    SAUCE: "#F27D34",
-    MAIN: "#ED2227",
-    SALAD: "#81C568",
+    SAUCE: "#C46B2B",
+    MAIN: "#D83A40",
+    SALAD: "#4E8562",
 }
 
-BATCH_COLOR = "#00A7C5"
-SELECTED_BORDER = "#D4AF37"
-
 MULTIPLIERS = [
-    1.5, 2, 3, 4, 5, 6, 7, 8, 9, 10, 13, 20, 30
+    1, 1.5, 2, 3, 4, 5, 6, 7, 8,
+    9, 10, 13, 20, 30
 ]
 
 RECIPES = {}
-
 
 # ==========================================================
 # RECIPE DATA HANDLING
@@ -54,7 +51,10 @@ def R(name, category, ingredients, steps, notes=""):
         if not entry.strip():
             continue
 
-        parts = [x.strip() for x in entry.split("|")]
+        parts = [
+            p.strip()
+            for p in entry.split("|")
+        ]
 
         if len(parts) != 3:
             raise ValueError(
@@ -73,14 +73,14 @@ def R(name, category, ingredients, steps, notes=""):
         "category": category,
         "ingredients": parsed,
         "steps": [
-            x.strip()
-            for x in steps.split("~")
-            if x.strip()
+            s.strip()
+            for s in steps.split("~")
+            if s.strip()
         ],
         "notes": [
-            x.strip()
-            for x in notes.split("~")
-            if x.strip()
+            n.strip()
+            for n in notes.split("~")
+            if n.strip()
         ],
     }
 
@@ -91,8 +91,9 @@ def R(name, category, ingredients, steps, notes=""):
 
 R(
     "BULGOGI SAUCE(KBBQ)", SAUCE,
-    "White Sugar|150|g;Mirin|150|g;House Soy Sauce|150|g;"
-    "Water|20|g;Sesame Oil|30|g;Garlic|20|g;"
+    "White Sugar|150|g;Mirin|150|g;"
+    "House Soy Sauce|150|g;Water|20|g;"
+    "Sesame Oil|30|g;Garlic|20|g;"
     "White Vinegar|15|g;Corn Starch|20|g;"
     "Ginger|10|g;Dashida|5|g;Black Pepper|3|g",
     "Grind garlic, ginger finely with mirin in Vitamix.~"
@@ -126,7 +127,8 @@ R(
     "HOT SAUCE", SAUCE,
     "Habanero Peppers|2000|g;Sherry Vinegar|1200|g;"
     "Water|700|g;Bell Peppers|500|g;"
-    "White Sugar|100|g;Kosher Salt|100|g;Canola Oil|100|g;",
+    "White Sugar|100|g;Kosher Salt|100|g;"
+    "Canola Oil|100|g",
     "Cut bell peppers in half, Rinse with all peppers in water.~"
     "Mix in canola oil~"
     "Roast whole habanero and bell peppers at 500°F until blister (7-10 min max).~"
@@ -141,16 +143,14 @@ R(
     "HOUSE DRESSING", SAUCE,
     "Rice Vinegar|600|g;Carrots|540|g;"
     "Canola Oil|320|g;Onions|280|g;"
-    "White Sugar|120|g;Ginger|68|g;Miso Paste|32|g;"
-    "Kosher Salt|24|g;Sesame Oil|20|g;Black Pepper|4|g",
+    "White Sugar|120|g;Ginger|68|g;"
+    "Miso Paste|32|g;Kosher Salt|24|g;"
+    "Sesame Oil|20|g;Black Pepper|4|g",
     "Peel carrots, onions and ginger.~"
     "Cut into small chunks.~"
-    "Blend carrots, onions and ginger with rice vinegar "
-    "in Vitamix until smooth.~"
-    "Combine blended vegetables with remaining ingredients "
-    "and whisk until smooth.",
-    "IMPORTANT: Original specifies making two separate "
-    "5X batches for 10X, NOT a 10X batch.~"
+    "Blend carrots, onions and ginger with rice vinegar in Vitamix until smooth.~"
+    "Combine blended vegetables with remaining ingredients and whisk until smooth.",
+    "IMPORTANT: Original specifies making two separate 5X batches for 10X, NOT a 10X batch.~"
     "5X: fits in 12L cambro"
 )
 
@@ -158,16 +158,17 @@ R(
     "HOUSE MAYO", SAUCE,
     "Hellman's Mayo|5000|g;Lemon Juice|500|g;"
     "Mushroom Powder|100|g",
-    "Mix mushroom powder into lemon juice "
-    "until dissolved.~Whisk mixture into mayo.",
+    "Mix mushroom powder into lemon juice until dissolved.~"
+    "Whisk mixture into mayo.",
     "3x: fits in 22L cambro"
 )
 
 R(
     "KANG JEONG(KFC)", SAUCE,
     "Corn Syrup|2500|g;Ketchup|1500|g;"
-    "Gochujang Paste|500|g;Minced Garlic|300|g; MSG|10|g;"
-    "House Soy Sauce|200|g;Mushroom Powder|10|g",
+    "Gochujang Paste|500|g;Minced Garlic|300|g;"
+    "MSG|10|g;House Soy Sauce|200|g;"
+    "Mushroom Powder|10|g",
     "Mix all ingredients together.",
     "1x: fits in 5L cambro"
 )
@@ -175,7 +176,7 @@ R(
 R(
     "MISO GLAZE(SALMON)", SAUCE,
     "House Teriyaki Sauce|100|g;Water|50|g;"
-    "Corn Starch|50|g;Aka Miso Paste|15|g;",
+    "Corn Starch|50|g;Aka Miso Paste|15|g",
     "Whisk the miso paste into the teriyaki.~"
     "Make the cornstarch slurry with cold water.~"
     "Slowly whisk in slurry and simmer for one minute.",
@@ -184,8 +185,9 @@ R(
 
 R(
     "SEASONED SOY(GF)", SAUCE,
-    "House Soy Sauce|2000|g;Water|1000|g;Mirin|900|g;"
-    "Sake|600|g;Kombu|50|g;Bonito|25|g",
+    "House Soy Sauce|2000|g;Water|1000|g;"
+    "Mirin|900|g;Sake|600|g;"
+    "Kombu|50|g;Bonito|25|g",
     "Combine everything in a pot and bring to a boil.~"
     "Cool and infuse overnight, then strain.",
     "Original recipe makes approximately 5L.~"
@@ -194,14 +196,16 @@ R(
 
 R(
     "SPICY MAYO", SAUCE,
-    "House Mayo|400|g;Gochujang Paste|40|g;House Hot Sauce|40|g;",
+    "House Mayo|400|g;Gochujang Paste|40|g;"
+    "House Hot Sauce|40|g",
     "Mix all ingredients together."
 )
 
 R(
     "SUSHI SU", SAUCE,
-    "Mizkan Yamabuki Vinegar|4000|g;White Sugar|1750|g;"
-    "Aka Su|600|g;Kosher Salt|600|g;Kombu|30|g",
+    "Mizkan Yamabuki Vinegar|4000|g;"
+    "White Sugar|1750|g;Aka Su|600|g;"
+    "Kosher Salt|600|g;Kombu|30|g",
     "Whisk all ingredients at low temperasture until sugar and salt dissolve.",
     "Cool it down in ice bath. Do not let boil.~"
     "3x: fits 22L cambro"
@@ -209,8 +213,9 @@ R(
 
 R(
     "TENTSUYU(TOFU)", SAUCE,
-    "Water|400|g;House Soy Sauce|200|g;Mirin|160|g;"
-    "White Sugar|20|g;Mushroom Powder|8|g;",
+    "Water|400|g;House Soy Sauce|200|g;"
+    "Mirin|160|g;White Sugar|20|g;"
+    "Mushroom Powder|8|g",
     "Whisk all ingredients until dissolved."
 )
 
@@ -219,7 +224,7 @@ R(
     "House Soy Sauce|4000|g;Sake|4000|g;"
     "Mirin|4000|g;White Sugar|3000|g;"
     "Garlic(Crushed)|300|g;Water|130|g;"
-    "Cornstarch|130|g;Ginger(Crushed)|100|g;",
+    "Cornstarch|130|g;Ginger(Crushed)|100|g",
     "Combine house soy sauce, sugar, garlic and ginger.~"
     "Simmer for 30 minutes until flavors are infused.~"
     "Remove garlic and ginger.~"
@@ -232,10 +237,12 @@ R(
 
 R(
     "YUZU GARLIC SAUCE(OH-MY)", SAUCE,
-    "Garlic|1100|g;White Sugar|1000|g;Lemon Juice|825|g;"
-    "Honey|500|g;Corn Syrup|500|g;Canola Oil|500|g;"
-    "Yuzu|300|g;Yuzu Kosho|160|g;Water|50|g;"
-    "Corn Starch|50|g;Chili Pepper Flakes|25|g",
+    "Garlic|1100|g;White Sugar|1000|g;"
+    "Lemon Juice|825|g;Honey|500|g;"
+    "Corn Syrup|500|g;Canola Oil|500|g;"
+    "Yuzu|300|g;Yuzu Kosho|160|g;"
+    "Water|50|g;Corn Starch|50|g;"
+    "Chili Pepper Flakes|25|g",
     "Confit garlic in canola oil until soft and golden for 2 hours at low temperature.~"
     "Blend confit garlic and oil until smooth.~"
     "Combine all ingredients and bring to a boil.~"
@@ -270,29 +277,20 @@ R(
 
 R(
     "CHICKEN BRINE", MAIN,
-    "Water|2000|g;House Soy Sauce|100|g;Kosher Salt|50|g;"
-    "White Sugar|20|g;Garlic(Crushed)|15|g;"
-    "Ginger(Crushed)|15|g",
+    "Water|2000|g;House Soy Sauce|100|g;"
+    "Kosher Salt|50|g;White Sugar|20|g;"
+    "Garlic(Crushed)|15|g;Ginger(Crushed)|15|g",
     "Whisk all ingredients together until sugar dissolved.~"
     "Brine chicken for 24 hours."
 )
 
-# ==========================================================
-# DASHI
-# ==========================================================
-
 R(
     "DASHI", MAIN,
-    "Water|20|L;"
-    "Roasted Salmon Head|1|pc;"
-    "Daikon|1000|g;"
-    "Mirin|190|g;" 
-    "Whole Green Onions|150|g;"
-    "Kombu|70|g;"  
-    "Kosher Salt|50|g;"
-    "Katsuo Bushi|40|g;"
-    "Dried Shiitake Mushroom|30|g;"
-    "Hon Dashi|4|g;",
+    "Water|20|L;Roasted Salmon Head|1|pc;"
+    "Daikon|1000|g;Mirin|190|g;"
+    "Whole Green Onions|150|g;Kombu|70|g;"
+    "Kosher Salt|50|g;Katsuo Bushi|40|g;"
+    "Dried Shiitake Mushroom|30|g;Hon Dashi|4|g",
     "Roast Salmon Head at 460°C at 50% Humidity for 15-20 minutes.~"
     "Slice Daikon in 1 inch thickness.~"
     "Bring all ingredients to boil in pot.~"
@@ -304,15 +302,14 @@ R(
 R(
     "DASHI EGG MARINADE", MAIN,
     "Water|2000|g;House Soy Sauce|300|g;"
-    "White Sugar|100|g;Mirin|100|g;Kosher Salt|25|g;"
-    "Hon Dashi|24|g;Eggs|60|eggs",
+    "White Sugar|100|g;Mirin|100|g;"
+    "Kosher Salt|25|g;Hon Dashi|24|g;"
+    "Eggs|60|eggs",
     "Put 1 layer of eggs on a perforated hotel pan.~"
     "Preheat Combi oven to steam at 212°F for 8 minutes.~"
-    "Immediately shock eggs in cold running water "
-    "until cool, then peel.~"
+    "Immediately shock eggs in cold running water until cool, then peel.~"
     "Combine marinade ingredients, bring to a boil and let cool.~"
-    "Place cooled peeled eggs into cold marinade "
-    "and marinade for 48 hours.",
+    "Place cooled peeled eggs into cold marinade and marinade for 48 hours.",
     "Use 5.7L Cambro for the base batch."
 )
 
@@ -320,20 +317,18 @@ R(
     "GARLIC SHRIMP", MAIN,
     "Green Onion Whites|200|g;Canola Oil|150|g;"
     "Garlic|100|g;White Vinegar|20|g;"
-    "Ginger|20|g;Kosher Salt|5|g;Black Pepper|2|g;",
+    "Ginger|20|g;Kosher Salt|5|g;"
+    "Black Pepper|2|g",
     "slice the green onion whites, garlic and ginger.~"
     "Mix all ingredients together."
 )
 
-# ==========================================================
-# JAPANESE CURRY
-# ==========================================================
-
 R(
     "JAPANESE CURRY", MAIN,
-    "Dashi|1.5|L;Curry Powder|??|g;Onions|600|g;Carrots|450|g;"
-    "Potatoes|300|g;Kosher Salt|10|g;Mushroom Powder|10|g;"
-    "Sesame Oil|5|ml to taste",
+    "Dashi|1.5|L;Curry Powder|??|g;"
+    "Onions|600|g;Carrots|450|g;"
+    "Potatoes|300|g;Kosher Salt|10|g;"
+    "Mushroom Powder|10|g;Sesame Oil|5|ml to taste",
     "Dice potato and keep in cold water for service.~"
     "Dry them off prior to deep frying for 90 seconds.~"
     "Mix into curry and serve."
@@ -341,36 +336,39 @@ R(
 
 R(
     "MISO MARINADE", MAIN,
-    "Miso Paste|1000|g;White Sugar|600|g;Water|400|g;"
-    "Mirin|200|g;House Soy Sauce|150|g",
+    "Miso Paste|1000|g;White Sugar|600|g;"
+    "Water|400|g;Mirin|200|g;"
+    "House Soy Sauce|150|g",
     "Whisk all ingredients together until dissolved."
 )
 
 R(
     "MISO SOUP", MAIN,
-    "Dashi|4|L;"
-    "Aka Miso Paste|200|g;"
-    "Hon Dashi|4|g;"
-    "Kosher Salt|1|g",
+    "Dashi|4|L;Aka Miso Paste|200|g;"
+    "Hon Dashi|4|g;Kosher Salt|1|g",
     "Mix dashi, hon dashi, miso paste and salt and bring to boil.",
     "Confirm ingredients, amounts and preparation with Leo"
 )
 
 R(
     "MUSHROOM BRAISE", MAIN,
-    "Dried Shiitake Mushrooms|1|pc;Water (Soak overnight)|250|g;"
-    "Shimeji Mushrooms|275|g;Water (Cooking)|250|g; House Soy Sauce|100|g;"
-    "Water (Cooking)|250|g;White Sugar|20|g;Ginger|20|g;Kombu|10|g;",
+    "Dried Shiitake Mushrooms|1|pc;"
+    "Water (Soak overnight)|250|g;"
+    "Shimeji Mushrooms|275|g;"
+    "Water (Cooking)|250|g;"
+    "House Soy Sauce|100|g;"
+    "Water (Cooking)|250|g;"
+    "White Sugar|20|g;Ginger|20|g;Kombu|10|g",
     "Soak shiitake mushroom in water overnight.~"
-    "Combine everything in a pot and simmer mushrooms "
-    "for 30 minutes with a cartouche."
+    "Combine everything in a pot and simmer mushrooms for 30 minutes with a cartouche."
 )
 
 R(
     "PORK BELLY", MAIN,
-    "Pork Belly|1|slab;Mirin|200|g;Kosher Salt|125|g;"
-    "Sesame Oil|100|g;White Sugar|50|g;"
-    "Ginger (Sliced)|2|pc;Garlic (Whole)|2|pc",
+    "Pork Belly|1|slab;Mirin|200|g;"
+    "Kosher Salt|125|g;Sesame Oil|100|g;"
+    "White Sugar|50|g;Ginger (Sliced)|2|pc;"
+    "Garlic (Whole)|2|pc",
     "Trim excess fat from pork belly.~"
     "Mix mirin and sesame oil together.~"
     "Rub pork belly with mirin and sesame oil first.~"
@@ -392,7 +390,8 @@ R(
     "Wash rice in a large strainer over a large bowl.~"
     "Discard starchy water regularly, with atleast 3 washes.~"
     "Completely drain before putting rice in the rice cooker.~"
-    "Add water and cook.~Season sushi rice.",
+    "Add water and cook.~"
+    "Season sushi rice.",
     "IMPORTANT: Original includes raw-rice and cooked-rice "
     "seasoning references. These are alternatives, "
     "not ingredients to add together."
@@ -412,12 +411,10 @@ R(
 
 R(
     "TOFU MARINADE", MAIN,
-    "Miso Paste|300|g;"
-    "Mirin|150|g;"
+    "Miso Paste|300|g;Mirin|150|g;"
     "House Soy Sauce|30|g;"
     "Dashida / Mushroom Powder|10|g;"
-    "Gochugaru|10|g;"
-    "Black Pepper|3|g",
+    "Gochugaru|10|g;Black Pepper|3|g",
     "Mix all ingredients together.~"
     "Brush all 6 sides of cut tofu with marinade."
 )
@@ -430,7 +427,8 @@ R(
 R(
     "BEAN SPROUTS", SALAD,
     "Raw Bean Sprouts|3000|g;Fish Sauce|118.8|g;"
-    "Sesame Oil|79.2|g;Garlic (Blitzed)|66|g;Salt|48|g",
+    "Sesame Oil|79.2|g;Garlic (Blitzed)|66|g;"
+    "Salt|48|g",
     "Steam bean sprouts in Rational at 211°F for 2 minutes.~"
     "Strain bean sprouts and shock in ice water until cool.~"
     "Drain with a spinner.~"
@@ -442,20 +440,22 @@ R(
 
 R(
     "GARLIC CHIVES", SALAD,
-    "Garlic Chives|1000|g;House Soy Sauce|100|g;White Sugar|50|g;"
-    "Gochujang Paste|40|g;Rice Flour|30|g;Gochugaru|20|g",
+    "Garlic Chives|1000|g;"
+    "House Soy Sauce|100|g;White Sugar|50|g;"
+    "Gochujang Paste|40|g;Rice Flour|30|g;"
+    "Gochugaru|20|g",
     "Cut chives into 2 inch pieces.~"
     "Combine all ingredients except chives into a paste.~"
     "Massage paste into chives.~"
-    "Leave at room temperature or a warm spot "
-    "for 2 hours to ferment.~"
+    "Leave at room temperature or a warm spot for 2 hours to ferment.~"
     "Refrigerate; original says store up to two weeks."
 )
 
 R(
     "KIMCHI COLESLAW", SALAD,
     "Green Cabbage|20000|g;Kimchi|10000|g;"
-    "White Sugar|2000|g;Lemon Juice|2000|g;Kosher Salt|600|g",
+    "White Sugar|2000|g;Lemon Juice|2000|g;"
+    "Kosher Salt|600|g",
     "Quarter cabbages and remove stems.~"
     "Slice cabbage with Robot Coupe.~"
     "Lovingly massage cabbage with salt, sugar and lemon juice.~"
@@ -469,8 +469,9 @@ R(
 
 R(
     "PICKLED DAIKON", SALAD,
-    "Daikon|1000|g;Water|600|g;Rice Vinegar|400|g;"
-    "White Sugar|340|g;Kosher Salt|25|g",
+    "Daikon|1000|g;Water|600|g;"
+    "Rice Vinegar|400|g;White Sugar|340|g;"
+    "Kosher Salt|25|g",
     "Peel and cut daikon into 1/8 inch quarter-moon shapes.~"
     "Use Robot Coupe to slice.~"
     "Combine water, rice vinegar, sugar and salt.~"
@@ -483,9 +484,10 @@ R(
 
 R(
     "PICKLED JALAPEÑO", SALAD,
-    "Jalapeño|1800|g;White Sugar|500|g;House Soy Sauce|500|g;"
-    "Water|500|g;White Vinegar|500|g;"
-    "Kosher Salt|20|g;Garlic Cloves|10|pcs",
+    "Jalapeño|1800|g;White Sugar|500|g;"
+    "House Soy Sauce|500|g;Water|500|g;"
+    "White Vinegar|500|g;Kosher Salt|20|g;"
+    "Garlic Cloves|10|pcs",
     "Wash, halve, clean and julienne jalapeño peppers.~"
     "Mix all other ingredients in a pot and bring to a boil.~"
     "Pour over julienned jalapeños and let sit for 24 hours.",
@@ -495,64 +497,34 @@ R(
 R(
     "SESAME BROCCOLI", SALAD,
     "Broccoli|300|g;Garlic (Blitzed)|7.2|g;"
-    "House Soy Sauce|6|g;Sesame Oil|4.8|g;Kosher Salt|1.92|g",
+    "House Soy Sauce|6|g;Sesame Oil|4.8|g;"
+    "Kosher Salt|1.92|g",
     "Cut broccoli into florets.~"
     "Steam broccoli in oven at 212°F for 3 minutes.~"
     "Cool in water bath.~"
     "Drain with a spinner.~"
     "Mix broccoli with garlic, house soy, sesame oil, and salt.~"
     "Put on flat hotel pan, saran wrap and put in fridge.",
-    "Base: 1X = 300 g. Usual batches: 2X = 600 g, 3X = 900 g, 4X = 1,200 g."
+    "Base: 1X = 300 g. Usual batches: "
+    "2X = 600 g, 3X = 900 g, 4X = 1,200 g."
 )
 
 R(
     "WASABI CUCUMBER", SALAD,
     "Cucumber|1560|g;White Sugar|187|g;"
-    "White Vinegar|125|g;Kosher Salt|47|g;Wasabi Powder|8|g",
+    "White Vinegar|125|g;Kosher Salt|47|g;"
+    "Wasabi Powder|8|g",
     "Slice cucumbers 1/8th thickness using Robot Coupe or mandolin.~"
     "Add sugar and salt, mix well, then let sit 20 minutes.~"
     "Drain liquid.~"
     "Whisk wasabi into vinegar until dissolved.~"
     "Pour over cucumbers and cure overnight.~"
-    "Rotate cucumbers for the next 2 days "
-    "as wasabi powder sinks."
+    "Rotate cucumbers for the next 2 days as wasabi powder sinks."
 )
 
 
 # ==========================================================
-# APPLICATION STATE
-# ==========================================================
-
-if "authenticated" not in st.session_state:
-    st.session_state.authenticated = False
-
-if "category" not in st.session_state:
-    st.session_state.category = SAUCE
-
-if "recipe" not in st.session_state:
-    st.session_state.recipe = None
-
-if "multiplier" not in st.session_state:
-    st.session_state.multiplier = 1
-
-
-def select_category(category):
-    st.session_state.category = category
-    st.session_state.recipe = None
-    st.session_state.multiplier = 1
-
-
-def select_recipe(recipe):
-    st.session_state.recipe = recipe
-    st.session_state.multiplier = 1
-
-
-def select_multiplier(multiplier):
-    st.session_state.multiplier = multiplier
-
-
-# ==========================================================
-# PICKLED DAIKON SPECIAL MULTIPLIERS
+# PICKLED DAIKON SPECIAL QUANTITIES
 # ==========================================================
 
 SPECIAL_MULTIPLIERS = {
@@ -571,12 +543,12 @@ SPECIAL_MULTIPLIERS = {
             "White Sugar": 2773,
             "Kosher Salt": 204,
         },
-    },
+    }
 }
 
 
 # ==========================================================
-# SAFE INGREDIENT MULTIPLIER
+# INGREDIENT MULTIPLIER
 # ==========================================================
 
 def format_amount(
@@ -586,517 +558,509 @@ def format_amount(
     recipe_name=None,
     ingredient_name=None,
 ):
-    # Check for custom recipe-specific quantities.
-
-    recipe_exceptions = SPECIAL_MULTIPLIERS.get(
-        recipe_name, {}
+    amount = (
+        str(amount).strip()
+        if amount is not None
+        else ""
     )
 
-    special_amounts = recipe_exceptions.get(
-        multiplier, {}
-    )
-
-    if ingredient_name in special_amounts:
-        return f"{special_amounts[ingredient_name]:,} {unit}"
-
-    # Unknown or nonnumeric quantities must not
-    # crash the application.
-    #
-    # Examples:
-    # ? | to taste
-    # ?? | g
-    # Any future nonnumeric recipe entry
-
-    if amount is None:
-        return unit
-
-    amount = str(amount).strip()
     unit = str(unit).strip()
 
-    if amount == "?":
+    override = (
+        SPECIAL_MULTIPLIERS
+        .get(recipe_name, {})
+        .get(multiplier, {})
+        .get(ingredient_name)
+    )
+
+    if override is not None:
+        return f"{override:,} {unit}"
+
+    if amount in ("", "?"):
         return unit
 
     try:
-        result = Decimal(amount) * Decimal(str(multiplier))
+        value = (
+            Decimal(amount)
+            * Decimal(str(multiplier))
+        )
+
+        if not value.is_finite():
+            raise InvalidOperation
 
     except (InvalidOperation, ValueError, TypeError):
-        # Preserve unknown quantities exactly as entered.
-        # Example: Curry Powder ?? g
         return f"{amount} {unit}".strip()
 
-    if not result.is_finite():
-        return f"{amount} {unit}".strip()
-
-    if result == result.to_integral_value():
-        number = f"{int(result):,}"
+    if value != value.to_integral_value():
+        text = (
+            f"{value:,.3f}"
+            .rstrip("0")
+            .rstrip(".")
+        )
 
     else:
-        number = f"{result:,.3f}".rstrip("0").rstrip(".")
+        text = f"{int(value):,}"
 
-    return f"{number} {unit}"
+    return f"{text} {unit}"
+
+
+def fmt_factor(factor):
+    return f"{factor:g}X"
 
 
 # ==========================================================
-# STYLING - IPAD LAYOUT
+# APPLICATION STATE
+# ==========================================================
+
+if "authenticated" not in st.session_state:
+    st.session_state.authenticated = False
+
+if "category" not in st.session_state:
+    st.session_state.category = SAUCE
+
+if "recipe" not in st.session_state:
+    st.session_state.recipe = None
+
+if "multiplier" not in st.session_state:
+    st.session_state.multiplier = 1.0
+
+if "custom_percentage" not in st.session_state:
+    st.session_state.custom_percentage = None
+
+
+def select_category(category):
+    st.session_state.category = category
+    st.session_state.recipe = None
+    st.session_state.multiplier = 1.0
+    st.session_state.custom_percentage = None
+
+
+def select_recipe(name):
+    st.session_state.recipe = name
+    st.session_state.multiplier = 1.0
+    st.session_state.custom_percentage = None
+
+
+def select_multiplier(factor):
+    st.session_state.multiplier = float(factor)
+    st.session_state.custom_percentage = None
+
+
+# ==========================================================
+# CUSTOM PERCENTAGE MULTIPLIER
+# ==========================================================
+
+def set_custom_percent(percent_text):
+
+    clean = (
+        percent_text
+        .strip()
+        .replace("%", "")
+        .replace(",", ".")
+    )
+
+    try:
+        value = Decimal(clean)
+
+    except InvalidOperation:
+        return (
+            "Enter a valid percentage such as "
+            "75, 125 or 250."
+        )
+
+    if (
+        not value.is_finite()
+        or value <= 0
+        or value > 10000
+    ):
+        return (
+            "Choose a percentage above 0 "
+            "and no greater than 10000."
+        )
+
+    st.session_state.custom_percentage = float(value)
+
+    st.session_state.multiplier = float(
+        value / Decimal(100)
+    )
+
+    return None
+
+
+# ==========================================================
+# CLEAN STYLESHEET - IPAD LANDSCAPE FIRST
 # ==========================================================
 
 st.markdown("""
 <style>
 
 :root {
-    --brand-red: #ED2227;
-    --batch-blue: #00A7C5;
-    --selected-gold: #D4AF37;
+    --ink: #26313A;
+    --muted: #73808A;
+    --line: #E0E5E6;
+    --panel: #FFFFFF;
+    --gold: #C6A057;
 }
 
-/* GENERAL PAGE */
+/* PAGE */
 
 .stApp {
-    background: #F7F7F7;
-    color: #111111;
+    background: #F4F6F5;
+    color: var(--ink);
 }
 
 .block-container {
-    max-width: 1500px;
-    padding-top: calc(0.4rem + 35px) !important;
-    padding-bottom: 2rem;
+    max-width: 1480px;
+    padding-top: 48px !important;
+    padding-bottom: 30px;
 }
 
 #MainMenu, footer {
     visibility: hidden;
 }
 
-.stApp, .stApp * {
-    font-weight: 600;
-}
-
-/* LOGO */
+/* BRAND */
 
 .brand-logo {
+    font: 800 clamp(34px,4.3vw,56px)/1.1
+          Arial, sans-serif;
+    color: #E5252D;
+    letter-spacing: -1.6px;
     text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: clamp(38px, 4.8vw, 66px);
-    font-weight: 800;
-    line-height: 1.05;
-    letter-spacing: 0;
-    color: #ED2227;
-    margin: 8px 0 4px;
+    margin: 0 0 8px;
 }
 
-/* TOP NAVIGATION SPACING */
-
-.st-key-top_navigation [data-testid="stVerticalBlock"] {
-    gap: 0.45rem;
+.brand-subtitle {
+    text-align: center;
+    color: #7F898B;
+    font: 600 11px Arial, sans-serif;
+    letter-spacing: .22em;
+    margin: 0 0 12px;
 }
 
-.st-key-top_navigation [data-testid="stHorizontalBlock"] {
-    margin-top: 0;
-}
+/* BASE BUTTONS */
 
-/* GENERAL BUTTONS */
+.stButton > button,
+[data-testid="stPopover"] button {
+    background: #FFFFFF !important;
+    color: var(--ink) !important;
 
-.stButton > button {
-    --button-color: #ED2227;
-
-    width: 100%;
-    min-height: 95px;
-    padding: 10px 6px;
-
-    background: var(--button-color) !important;
-    color: #FFFFFF !important;
-
-    border: 5px solid #A4A4A4;
-    border-radius: 7px;
+    border: 1px solid #DCE2E3 !important;
+    border-radius: 11px !important;
 
     box-shadow:
-        0 3px 1px rgba(0,0,0,0.16),
-        inset 0 2px 2px rgba(255,255,255,0.22);
+        0 2px 7px rgba(23,40,45,.045) !important;
 
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: clamp(15px, 2.1vw, 29px);
-    font-weight: 600;
-    line-height: 1.12;
-    text-transform: uppercase;
-    white-space: normal;
+    font-family: Arial, sans-serif !important;
+    font-weight: 650 !important;
+
+    transition:
+        background .14s ease,
+        border-color .14s ease !important;
 }
-
-/* BUTTON HOVER */
 
 .stButton > button:hover,
-.stButton > button:focus,
-.stButton > button:active {
-    background: var(--button-color) !important;
-    color: #FFFFFF !important;
-    filter: brightness(0.96);
+[data-testid="stPopover"] button:hover {
+    background: #F8FAF9 !important;
+    border-color: #9CA9AC !important;
 }
 
-/* CATEGORY COLORS */
-
-.st-key-cat_0 button {
-    --button-color: #F27D34;
+.stButton > button p,
+[data-testid="stPopover"] button p {
+    color: inherit !important;
+    font-weight: inherit !important;
 }
 
-.st-key-cat_1 button {
-    --button-color: #ED2227;
-}
-
-.st-key-cat_2 button {
-    --button-color: #81C568;
-}
+/* CATEGORY TABS */
 
 .st-key-cat_0 button,
 .st-key-cat_1 button,
 .st-key-cat_2 button {
-    min-height: 72px;
-    height: 72px;
-    font-size: clamp(16px, 2.2vw, 29px);
+    min-height: 64px !important;
+    width: 100%;
+    font-size: clamp(13px,1.35vw,17px) !important;
+    letter-spacing: .015em;
 }
 
-/* RECIPE SELECTION BUTTONS */
+.st-key-cat_0 button {
+    color: #BD6B31 !important;
+    border-bottom: 3px solid #D48A55 !important;
+}
+
+.st-key-cat_1 button {
+    color: #C8464B !important;
+    border-bottom: 3px solid #D8787B !important;
+}
+
+.st-key-cat_2 button {
+    color: #4B8060 !important;
+    border-bottom: 3px solid #80A68C !important;
+}
+
+/* RECIPE CARDS */
 
 div[class*="st-key-recipe_"] button {
-    min-height: 94px;
+    width: 100%;
+    min-height: 86px !important;
+    padding: 12px !important;
+    font-size: clamp(12px,1.35vw,17px) !important;
+    text-align: left !important;
+    line-height: 1.22 !important;
 }
-
-/* SAUCES */
 
 .st-key-recipe_grid_sauce
 div[class*="st-key-recipe_"] button {
-    --button-color: #F27D34;
+    border-left: 4px solid #D48A55 !important;
 }
-
-/* MAINS */
 
 .st-key-recipe_grid_main
 div[class*="st-key-recipe_"] button {
-    --button-color: #ED2227;
+    border-left: 4px solid #D8787B !important;
 }
-
-/* SALADS */
 
 .st-key-recipe_grid_salad
 div[class*="st-key-recipe_"] button {
-    --button-color: #81C568;
+    border-left: 4px solid #80A68C !important;
 }
 
-/* RECIPE PAGE VERTICAL SPACING */
+/* MULTIPLIER BUTTONS - 15 CONTROLS */
 
-.st-key-recipe_detail [data-testid="stVerticalBlock"] {
-    gap: 0.45rem;
+.st-key-multiplier_row
+[data-testid="stHorizontalBlock"] {
+    gap: .22rem !important;
+    flex-wrap: nowrap !important;
 }
 
-/* MULTIPLIER ROW */
-
-.st-key-multiplier_row [data-testid="stHorizontalBlock"] {
-    gap: 0.22rem !important;
-}
-
-.st-key-multiplier_row [data-testid="stColumn"] {
+.st-key-multiplier_row
+[data-testid="stColumn"] {
     min-width: 0 !important;
     width: 0 !important;
     flex: 1 1 0 !important;
 }
 
-.st-key-multiplier_row .stButton {
+.st-key-multiplier_row .stButton,
+.st-key-multiplier_row
+[data-testid="stPopover"] {
     width: 100% !important;
     min-width: 0 !important;
 }
 
 .st-key-multiplier_row button {
-    --button-color: #00A7C5;
-
-    background: #00A7C5 !important;
-    color: #FFFFFF !important;
-
     width: 100% !important;
     min-width: 0 !important;
-    max-width: 100% !important;
+    padding: 0 2px !important;
 
-    height: 64px !important;
-    min-height: 64px !important;
-    max-height: 64px !important;
+    min-height: 53px !important;
+    height: 53px !important;
 
-    padding: 1px !important;
-    margin: 0 !important;
-
-    border-width: 3px !important;
-
-    box-sizing: border-box !important;
-    text-align: center !important;
-
-    font-size: clamp(9px, 0.95vw, 12px) !important;
+    border-radius: 9px !important;
+    font-size: clamp(10px,.9vw,13px) !important;
     white-space: nowrap !important;
 }
 
-.st-key-multiplier_row button:hover,
-.st-key-multiplier_row button:focus,
-.st-key-multiplier_row button:active {
-    background: #00A7C5 !important;
-    color: #FFFFFF !important;
+.st-key-multiplier_row button:hover {
+    border-color: #00A7C5 !important;
+    color: #007F95 !important;
 }
 
-/* HEADING ROW */
+/* SELECTED BUTTONS */
 
-.st-key-recipe_heading [data-testid="stHorizontalBlock"] {
-    align-items: center;
+.st-key-top_navigation
+.selected-button button,
+.st-key-multiplier_row
+.selected-button button {
+    border-color: #C6A057 !important;
+    box-shadow:
+        inset 0 0 0 1px #C6A057 !important;
+    background: #FFFCF5 !important;
 }
 
-/* RECIPE TITLE */
+/* RECIPE HEADING */
 
-.recipe-banner {
-    background: var(
-        --recipe-title-color,
-        #ED2227
-    ) !important;
+.recipe-card-heading {
+    font: 700 clamp(18px,1.9vw,26px)/1.2
+          Arial,sans-serif;
 
-    color: #FFFFFF;
+    color: var(--recipe-accent,#26313A);
 
-    border: 4px solid #AAAAAA;
-    border-radius: 6px;
+    padding: 15px 18px;
+    background: #FFF;
 
-    text-align: center;
-    padding: 9px 10px;
+    border: 1px solid #E2E6E6;
+    border-left:
+        4px solid var(--recipe-accent,#26313A);
 
-    font-size: clamp(17px, 2.1vw, 27px);
-    font-weight: 700;
-    line-height: 1.18;
-
+    border-radius: 10px;
     overflow-wrap: anywhere;
-    margin: 0;
 }
-
-/* CURRENT BATCH */
 
 .current-batch {
-    color: #00A7C5;
-    text-align: center;
+    font: 700 clamp(17px,1.8vw,23px)/1.3
+          Arial,sans-serif;
 
-    font-size: clamp(18px, 2vw, 25px);
-    font-weight: 700;
-    line-height: 1.2;
-
-    margin: 0;
+    color: #008DA5;
+    padding: 15px 0;
 }
 
 /* SECTION HEADINGS */
 
 .section-title {
-    font-size: clamp(21px, 2.4vw, 30px);
-    font-weight: 600;
-
-    margin: 0 0 6px;
-    text-transform: uppercase;
+    font: 700 16px Arial,sans-serif;
+    letter-spacing: .08em;
+    color: #59666D;
+    margin: 10px 0 9px;
 }
 
-/* INGREDIENT ROWS */
+/* INGREDIENTS */
 
 .ingredient-row {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    gap: 14px;
 
-    gap: 12px;
-    border-bottom: 1px solid #DDDDDD;
+    border-bottom: 1px solid #E7EAEB;
+    padding: 8px 0;
 
-    padding: 5px 0;
-
-    font-size: clamp(16px, 1.85vw, 23px);
+    font: 500 clamp(15px,1.5vw,19px)/1.35
+          Arial,sans-serif;
 }
 
 .ingredient-name {
-    font-weight: 600;
     overflow-wrap: anywhere;
 }
 
 .ingredient-amount {
     font-weight: 700;
-    text-align: right;
     white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+    color: #23313A;
 }
 
 /* PREPARATION STEPS */
 
 .step-block {
-    margin-bottom: 15px;
-    font-size: clamp(17px, 1.9vw, 23px);
-    line-height: 1.4;
+    border-bottom: 1px solid #ECF0F0;
+
+    padding: 0 0 12px;
+    margin: 0 0 12px;
+
+    font: 500 clamp(15px,1.5vw,19px)/1.48
+          Arial,sans-serif;
 }
 
 .step-number {
+    font-size: 12px;
+    letter-spacing: .07em;
+    color: #708088;
     font-weight: 800;
-    margin-bottom: 3px;
+    margin-bottom: 6px;
 }
 
 /* RECIPE NOTES */
 
 .recipe-notes {
-    background: #FFFFFF;
-    border: 2px solid #ED2227;
-    border-radius: 8px;
+    border-left: 3px solid #B8C4C7;
+    background: #EDF2F2;
+    border-radius: 7px;
 
-    color: #ED2227;
-
-    padding: 14px 18px;
-    font-size: 18px;
-    font-weight: 600;
+    padding: 12px 16px;
+    color: #485B62;
+    margin-top: 15px;
+    font-size: 15px;
 }
 
-/* LOGIN FORM */
-
-[data-testid="stForm"] {
-    background: #FFFFFF !important;
-    border: 2px solid #ED2227 !important;
-    border-radius: 8px !important;
+.recipe-notes div + div {
+    margin-top: 7px;
 }
+
+/* GENERAL SPACING */
+
+.st-key-recipe_detail
+[data-testid="stVerticalBlock"] {
+    gap: .65rem;
+}
+
+/* LOGIN */
 
 .login-heading {
-    color: #ED2227;
-    font-size: 28px;
-    font-weight: 800;
+    color: #26313A;
+    font: bold 22px Arial,sans-serif;
+    margin-bottom: 4px;
 }
 
 .login-instruction {
-    color: #ED2227;
-    font-size: 18px;
-    font-weight: 600;
+    color: #657178;
+    font: 15px Arial,sans-serif;
 }
 
-/* PASSWORD INPUT */
-
-[data-testid="stTextInput"] [data-baseweb="input"] {
-    background: #FFFFFF !important;
-    border: 2px solid #ED2227 !important;
-    border-radius: 6px !important;
-    box-shadow: none !important;
-    overflow: hidden !important;
+[data-testid="stForm"] {
+    background: #FFF;
+    border: 1px solid #DEE4E4;
+    border-radius: 12px;
+    padding: 18px;
 }
 
 [data-testid="stTextInput"]
-[data-baseweb="input"]:focus-within {
-    border-color: #ED2227 !important;
-    box-shadow: none !important;
+[data-baseweb="input"] {
+    background: #FFF;
+    border: 1px solid #A4B2B5;
+    border-radius: 9px;
 }
 
 [data-testid="stTextInput"] input {
-    background: #FFFFFF !important;
-    color: #111111 !important;
-    caret-color: #ED2227 !important;
-
-    border: 0 !important;
-    outline: 0 !important;
-    box-shadow: none !important;
-
-    font-size: 20px !important;
+    background: #FFF;
+    color: #26313A;
+    caret-color: #C8464B;
 }
 
-[data-testid="stTextInput"] input::placeholder {
-    color: #777777 !important;
-    opacity: 1 !important;
+[data-testid="stFormSubmitButton"] button {
+    background: #26313A !important;
+    color: #FFF !important;
+    min-height: 44px;
 }
 
-/* PASSWORD EYE CONTROL */
+/* LOG OUT */
 
-[data-testid="stTextInput"] button,
-[data-testid="stTextInput"] button:hover,
-[data-testid="stTextInput"] button:focus,
-[data-testid="stTextInput"]
-[data-testid="stPasswordVisibilityToggle"],
-[data-testid="stTextInput"]
-[data-baseweb="input"] > div:last-child {
-    background: #ED2227 !important;
-    background-image: none !important;
-
-    color: #FFFFFF !important;
-
-    border: 0 !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
+.st-key-logout button {
+    min-height: 46px;
+    width: 100%;
+    color: #59666D !important;
+    font-size: 13px;
 }
 
-[data-testid="stTextInput"] button svg,
-[data-testid="stTextInput"] button svg * {
-    color: #FFFFFF !important;
-    stroke: #FFFFFF !important;
-}
+/* IPAD PORTRAIT */
 
-/* LOG IN BUTTON */
-
-[data-testid="stFormSubmitButton"] button,
-[data-testid="stFormSubmitButton"] button:hover,
-[data-testid="stFormSubmitButton"] button:focus {
-    background: #FFFFFF !important;
-    color: #ED2227 !important;
-
-    border: 2px solid #ED2227 !important;
-    border-radius: 6px !important;
-
-    width: 120px !important;
-    height: 44px !important;
-    min-height: 44px !important;
-
-    font-size: 18px !important;
-    text-transform: none !important;
-    box-shadow: none !important;
-}
-
-[data-testid="stFormSubmitButton"] button p {
-    color: #ED2227 !important;
-    text-transform: none !important;
-}
-
-/* IPAD PORTRAIT / SMALLER SCREENS */
-
-@media (max-width: 900px) {
+@media(max-width:900px) {
 
     .block-container {
-        padding-left: 10px;
-        padding-right: 10px;
+        padding-left: 14px;
+        padding-right: 14px;
     }
 
-    .brand-logo {
-        margin: 5px 0 2px;
+    .st-key-multiplier_row
+    [data-testid="stHorizontalBlock"] {
+        overflow-x: auto !important;
+        padding-bottom: 6px;
+    }
+
+    .st-key-multiplier_row
+    [data-testid="stColumn"] {
+        flex: 0 0 52px !important;
+        width: 52px !important;
     }
 
     .st-key-cat_0 button,
     .st-key-cat_1 button,
     .st-key-cat_2 button {
-        height: 54px;
-        min-height: 54px;
-
-        font-size: clamp(12px, 1.7vw, 18px);
+        font-size: 12px !important;
+        min-height: 58px !important;
+        padding: 4px !important;
     }
 
-    div[class*="st-key-recipe_"] button {
-        min-height: 85px;
-    }
-
-    .st-key-multiplier_row
-    [data-testid="stHorizontalBlock"] {
-        gap: 0.16rem !important;
-    }
-
-    .st-key-multiplier_row button {
-        height: 57px !important;
-        min-height: 57px !important;
-        max-height: 57px !important;
-
-        padding: 0 !important;
-        border-width: 2px !important;
-
-        font-size: 10px !important;
-    }
-
-    .recipe-banner {
-        font-size: clamp(15px, 2.15vw, 22px);
-        padding: 7px 5px;
-    }
-
-    .current-batch {
-        font-size: clamp(15px, 2.2vw, 21px);
-    }
-
-    .ingredient-row {
-        padding: 4px 0;
+    .recipe-card-heading {
+        padding: 12px 9px;
+        font-size: 17px;
     }
 }
 
@@ -1105,23 +1069,19 @@ div[class*="st-key-recipe_"] button {
 
 
 # ==========================================================
-# ACTIVE BUTTON HIGHLIGHTING - GOLD
+# GOLD BUTTON HIGHLIGHT
 # ==========================================================
 
 def highlight_key(key):
-    st.markdown(
-        f"""
-        <style>
-        .st-key-{key} button {{
-            border-color: #D4AF37 !important;
 
-            box-shadow:
-                0 0 0 2px #D4AF37,
-                inset 0 2px 2px rgba(255,255,255,0.5)
-                !important;
-        }}
-        </style>
-        """,
+    st.markdown(
+        f'<style>'
+        f'.st-key-{key} button {{'
+        f'border-color:#C6A057 !important;'
+        f'box-shadow:inset 0 0 0 1px #C6A057 !important;'
+        f'background:#FFFCF5 !important;'
+        f'}}'
+        f'</style>',
         unsafe_allow_html=True,
     )
 
@@ -1133,31 +1093,28 @@ def highlight_key(key):
 def login_screen():
 
     st.markdown(
-        '<div class="brand-logo">riceislife</div>',
+        '<div class="brand-logo">riceislife</div>'
+        '<div class="brand-subtitle">'
+        'THE KITCHEN RECIPE BOOK'
+        '</div>',
         unsafe_allow_html=True,
     )
 
     st.markdown(
-        '<div class="login-heading">STAFF</div>',
-        unsafe_allow_html=True,
-    )
-
-    st.markdown(
+        '<div class="login-heading">Staff access</div>'
         '<p class="login-instruction">'
-        'Enter the staff password to access recipes.'
+        'Enter the staff password to view recipes.'
         '</p>',
         unsafe_allow_html=True,
     )
 
     try:
-        correct_password = str(
-            st.secrets["STAFF_PASSWORD"]
-        )
+        secret = str(st.secrets["STAFF_PASSWORD"])
 
     except Exception:
         st.error(
-            "Staff password has not been configured. "
-            "Set STAFF_PASSWORD in Streamlit Secrets."
+            "Set STAFF_PASSWORD in the "
+            "Streamlit app's Secrets settings."
         )
         st.stop()
 
@@ -1173,10 +1130,7 @@ def login_screen():
 
     if submit:
 
-        if hmac.compare_digest(
-            entered,
-            correct_password
-        ):
+        if hmac.compare_digest(entered, secret):
             st.session_state.authenticated = True
             st.rerun()
 
@@ -1191,34 +1145,34 @@ if not st.session_state.authenticated:
 
 
 # ==========================================================
-# TOP HEADER AND CATEGORY NAVIGATION
+# HEADER AND CATEGORY NAVIGATION
 # ==========================================================
 
 with st.container(key="top_navigation"):
 
     st.markdown(
-        '<div class="brand-logo">riceislife</div>',
+        '<div class="brand-logo">riceislife</div>'
+        '<div class="brand-subtitle">'
+        'STAFF RECIPE LIBRARY'
+        '</div>',
         unsafe_allow_html=True,
     )
 
-    category_columns = st.columns(
-        3,
-        gap="medium",
-    )
+    columns = st.columns(3, gap="medium")
 
-    for index, category in enumerate(CATEGORIES):
+    for index, cat in enumerate(CATEGORIES):
 
-        with category_columns[index]:
+        with columns[index]:
 
             st.button(
-                category.upper(),
+                cat.upper(),
                 key=f"cat_{index}",
                 use_container_width=True,
                 on_click=select_category,
-                args=(category,),
+                args=(cat,),
             )
 
-            if st.session_state.category == category:
+            if st.session_state.category == cat:
                 highlight_key(f"cat_{index}")
 
 
@@ -1228,34 +1182,31 @@ with st.container(key="top_navigation"):
 
 if st.session_state.recipe is None:
 
-    category = st.session_state.category
+    current = st.session_state.category
 
-    recipes = [
-        name
-        for name, data in RECIPES.items()
-        if data["category"] == category
+    names = [
+        n
+        for n, data in RECIPES.items()
+        if data["category"] == current
     ]
 
     grid_key = {
         SAUCE: "recipe_grid_sauce",
         MAIN: "recipe_grid_main",
         SALAD: "recipe_grid_salad",
-    }[category]
+    }[current]
 
     with st.container(key=grid_key):
 
-        for start in range(0, len(recipes), 4):
+        for start in range(0, len(names), 4):
 
-            row = st.columns(
-                4,
-                gap="medium",
-            )
+            cols = st.columns(4, gap="medium")
 
             for index, name in enumerate(
-                recipes[start:start + 4]
+                names[start:start + 4]
             ):
 
-                with row[index]:
+                with cols[index]:
 
                     st.button(
                         name,
@@ -1276,99 +1227,133 @@ recipe_name = st.session_state.recipe
 
 if recipe_name not in RECIPES:
     st.session_state.recipe = None
-    st.session_state.multiplier = 1
     st.rerun()
 
 recipe = RECIPES[recipe_name]
-
-recipe_title_color = CATEGORY_COLORS[
-    recipe["category"]
-]
+color = CATEGORY_COLORS[recipe["category"]]
 
 
 with st.container(key="recipe_detail"):
 
     # ======================================================
-    # MULTIPLIER BUTTONS
+    # 14 PRESET MULTIPLIERS + CUSTOM PERCENTAGE
     # ======================================================
 
     with st.container(key="multiplier_row"):
 
-        multiplier_columns = st.columns(
-            14,
-            gap="small",
-        )
+        cols = st.columns(15, gap="small")
 
-        # 1X BUTTON
+        for index, factor in enumerate(MULTIPLIERS):
 
-        with multiplier_columns[0]:
-
-            st.button(
-                "1X",
-                key="reset_multiplier",
-                use_container_width=True,
-                on_click=select_multiplier,
-                args=(1,),
-            )
-
-            if st.session_state.multiplier == 1:
-                highlight_key("reset_multiplier")
-
-        # REMAINING MULTIPLIERS
-
-        for index, multiplier in enumerate(
-            MULTIPLIERS
-        ):
-
-            with multiplier_columns[index + 1]:
+            with cols[index]:
 
                 st.button(
-                    f"{multiplier:g}X",
+                    fmt_factor(factor),
                     key=f"mult_{index}",
                     use_container_width=True,
                     on_click=select_multiplier,
-                    args=(multiplier,),
+                    args=(factor,),
                 )
 
-                if st.session_state.multiplier == multiplier:
+                if (
+                    st.session_state.custom_percentage is None
+                    and st.session_state.multiplier == factor
+                ):
                     highlight_key(f"mult_{index}")
+
+        # CUSTOM PERCENTAGE BUTTON
+
+        with cols[14]:
+
+            with st.popover(
+                "?",
+                use_container_width=True,
+            ):
+
+                st.markdown(
+                    "**Custom batch percentage**"
+                )
+
+                st.caption(
+                    "100% = 1X · 150% = 1.5X · "
+                    "250% = 2.5X"
+                )
+
+                with st.form("custom_batch_form"):
+
+                    percentage = st.text_input(
+                        "Enter desired percentage",
+                        placeholder="__%",
+                        value="",
+                    )
+
+                    submitted = st.form_submit_button(
+                        "Apply percentage",
+                        use_container_width=True,
+                    )
+
+                if submitted:
+
+                    error = set_custom_percent(
+                        percentage
+                    )
+
+                    if error:
+                        st.error(error)
+
+                    else:
+                        st.rerun()
+
+    # ======================================================
+    # CURRENT BATCH INDICATOR
+    # ======================================================
 
     factor = st.session_state.multiplier
 
-    # ======================================================
-    # HEADING ROW
-    # CURRENT BATCH LEFT / RECIPE TITLE RIGHT
-    # ======================================================
+    if st.session_state.custom_percentage is not None:
 
-    with st.container(key="recipe_heading"):
-
-        head_left, head_right = st.columns(
-            [1, 1],
-            gap="large",
+        percentage_text = (
+            f"{st.session_state.custom_percentage:g}%"
         )
 
-        with head_left:
+        batch_text = (
+            f"CURRENT BATCH: {percentage_text} "
+            f"({factor:g}X)"
+        )
 
-            st.markdown(
-                f'<div class="current-batch">'
-                f'CURRENT BATCH: {factor:g}X'
-                f'</div>',
-                unsafe_allow_html=True,
-            )
+    else:
+        batch_text = f"CURRENT BATCH: {factor:g}X"
 
-        with head_right:
+    # ======================================================
+    # RECIPE HEADING
+    # ======================================================
 
-            st.markdown(
-                f'<div class="recipe-banner" '
-                f'style="--recipe-title-color:{recipe_title_color};">'
-                f'{escape(recipe_name)}</div>',
-                unsafe_allow_html=True,
-            )
+    heading_left, heading_right = st.columns(
+        [1, 1],
+        gap="large",
+    )
+
+    with heading_left:
+
+        st.markdown(
+            f'<div class="current-batch">'
+            f'{escape(batch_text)}'
+            f'</div>',
+            unsafe_allow_html=True,
+        )
+
+    with heading_right:
+
+        st.markdown(
+            f'<div class="recipe-card-heading" '
+            f'style="--recipe-accent:{color}">'
+            f'{escape(recipe_name)}'
+            f'</div>',
+            unsafe_allow_html=True,
+        )
 
     # ======================================================
     # TWO-COLUMN RECIPE LAYOUT
-    # LEFT = PREPARATION
-    # RIGHT = INGREDIENTS
     # ======================================================
 
     left, right = st.columns(
@@ -1376,54 +1361,43 @@ with st.container(key="recipe_detail"):
         gap="large",
     )
 
-    # ======================================================
     # LEFT COLUMN - PREPARATION STEPS
-    # ======================================================
 
     with left:
 
         st.markdown(
             '<div class="section-title">'
-            'PREPARATION STEPS:'
+            'PREPARATION STEPS'
             '</div>',
             unsafe_allow_html=True,
         )
 
         if recipe["steps"]:
 
-            for index, step in enumerate(
+            for number, step in enumerate(
                 recipe["steps"], 1
             ):
 
-                safe_step = escape(step)
-
-                safe_step = safe_step.replace(
-                    "&lt;strong&gt;", "<strong>"
-                ).replace(
-                    "&lt;/strong&gt;", "</strong>"
-                )
-
-                step_html = (
+                html = (
                     '<div class="step-block">'
-                    f'<div class="step-number">STEP #{index}:</div>'
-                    f'<div>{safe_step}</div>'
+                    f'<div class="step-number">'
+                    f'STEP {number:02d}'
+                    '</div>'
+                    f'<div>{escape(step)}</div>'
                     '</div>'
                 )
 
                 st.markdown(
-                    step_html,
+                    html,
                     unsafe_allow_html=True,
                 )
 
         else:
-
             st.warning(
                 "Preparation steps have not been provided."
             )
 
-    # ======================================================
     # RIGHT COLUMN - INGREDIENTS
-    # ======================================================
 
     with right:
 
@@ -1436,26 +1410,27 @@ with st.container(key="recipe_detail"):
 
         for ingredient in recipe["ingredients"]:
 
-            quantity = format_amount(
+            amount = format_amount(
                 ingredient["amount"],
                 ingredient["unit"],
                 factor,
-                recipe_name=recipe_name,
-                ingredient_name=ingredient["name"],
+                recipe_name,
+                ingredient["name"],
             )
 
-            ingredient_name = escape(ingredient["name"])
-            quantity_text = escape(quantity)
-
-            ingredient_html = (
+            html = (
                 '<div class="ingredient-row">'
-                f'<span class="ingredient-name">{ingredient_name}</span>'
-                f'<span class="ingredient-amount">{quantity_text}</span>'
+                f'<span class="ingredient-name">'
+                f'{escape(ingredient["name"])}'
+                '</span>'
+                f'<span class="ingredient-amount">'
+                f'{escape(amount)}'
+                '</span>'
                 '</div>'
             )
 
             st.markdown(
-                ingredient_html,
+                html,
                 unsafe_allow_html=True,
             )
 
@@ -1465,19 +1440,13 @@ with st.container(key="recipe_detail"):
 
     if recipe["notes"]:
 
-        notes_html = "".join(
-            f"<div>{escape(note)}</div>"
+        html = "".join(
+            f'<div>{escape(note)}</div>'
             for note in recipe["notes"]
         )
 
-        note_html = (
-            '<div class="recipe-notes">'
-            f'{notes_html}'
-            '</div>'
-        )
-
         st.markdown(
-            note_html,
+            f'<div class="recipe-notes">{html}</div>',
             unsafe_allow_html=True,
         )
 
@@ -1488,21 +1457,22 @@ with st.container(key="recipe_detail"):
 
 st.divider()
 
-logout_left, logout_right = st.columns(
-    [5, 1],
+spacer, logout = st.columns(
+    [6, 1],
     gap="small",
 )
 
-with logout_right:
+with logout:
 
     if st.button(
-        "LOG OUT",
+        "Log Out",
         key="logout",
         use_container_width=True,
     ):
 
         st.session_state.authenticated = False
         st.session_state.recipe = None
-        st.session_state.multiplier = 1
+        st.session_state.multiplier = 1.0
+        st.session_state.custom_percentage = None
 
         st.rerun()
