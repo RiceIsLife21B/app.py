@@ -6,6 +6,7 @@ from html import escape
 
 # ==========================================================
 # RICE IS LIFE - STAFF RECIPE BOOK
+# DARK EDITION
 # ==========================================================
 
 st.set_page_config(
@@ -16,8 +17,14 @@ st.set_page_config(
 )
 
 # ==========================================================
-# SETTINGS
+# COLORS AND SETTINGS
 # ==========================================================
+
+BACKGROUND = "#030303"
+BUTTON_BG = "#030303"
+WHITE = "#FFFFFF"
+BORDER = "#383838"
+GOLD = "#C6A057"
 
 CATEGORIES = [
     "Sauces + Dressings",
@@ -28,9 +35,9 @@ CATEGORIES = [
 SAUCE, MAIN, SALAD = CATEGORIES
 
 CATEGORY_COLORS = {
-    SAUCE: "#C46B2B",
-    MAIN: "#D83A40",
-    SALAD: "#4E8562",
+    SAUCE: "#D48A55",
+    MAIN: "#ED555A",
+    SALAD: "#81C568",
 }
 
 MULTIPLIERS = [
@@ -558,6 +565,7 @@ def format_amount(
     recipe_name=None,
     ingredient_name=None,
 ):
+
     amount = (
         str(amount).strip()
         if amount is not None
@@ -597,7 +605,6 @@ def format_amount(
             .rstrip("0")
             .rstrip(".")
         )
-
     else:
         text = f"{int(value):,}"
 
@@ -688,379 +695,894 @@ def set_custom_percent(percent_text):
 
 
 # ==========================================================
-# CLEAN STYLESHEET - IPAD LANDSCAPE FIRST
+# DARK THEME STYLING
 # ==========================================================
 
 st.markdown("""
 <style>
 
+/* ======================================================
+   BASE COLORS
+   ====================================================== */
+
 :root {
-    --ink: #26313A;
-    --muted: #73808A;
-    --line: #E0E5E6;
-    --panel: #FFFFFF;
+    --bg: #030303;
+    --surface: #030303;
+    --surface-raised: #111111;
+    --surface-hover: #191919;
+
+    --white: #FFFFFF;
+    --muted: #A8A8A8;
+
+    --border: #383838;
+    --border-light: #292929;
+
     --gold: #C6A057;
+
+    --sauce: #D48A55;
+    --main: #ED555A;
+    --salad: #81C568;
 }
 
-/* PAGE */
+/* ======================================================
+   PAGE BACKGROUND
+   ====================================================== */
 
-.stApp {
-    background: #F4F6F5;
-    color: var(--ink);
+html,
+body,
+.stApp,
+[data-testid="stAppViewContainer"],
+[data-testid="stMain"],
+section[data-testid="stMain"] {
+    background-color: #030303 !important;
+    color: #FFFFFF !important;
 }
 
 .block-container {
     max-width: 1480px;
+
     padding-top: 48px !important;
-    padding-bottom: 30px;
+    padding-bottom: 35px !important;
 }
 
-#MainMenu, footer {
+/* Streamlit text defaults */
+
+.stApp,
+.stApp p,
+.stApp span,
+.stApp label,
+.stApp h1,
+.stApp h2,
+.stApp h3,
+.stApp h4,
+.stApp h5,
+.stApp h6 {
+    color: #FFFFFF;
+}
+
+/* Sidebar */
+
+[data-testid="stSidebar"] {
+    background-color: #030303 !important;
+}
+
+/* Hide unnecessary UI */
+
+#MainMenu,
+footer {
     visibility: hidden;
 }
 
-/* BRAND */
+/* ======================================================
+   LOGO
+   ====================================================== */
 
 .brand-logo {
-    font: 800 clamp(34px,4.3vw,56px)/1.1
-          Arial, sans-serif;
-    color: #E5252D;
-    letter-spacing: -1.6px;
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: clamp(36px, 4.5vw, 58px);
+    font-weight: 800;
+    line-height: 1.1;
+
+    color: #ED2227 !important;
+
+    letter-spacing: -1.5px;
     text-align: center;
+
     margin: 0 0 8px;
 }
 
 .brand-subtitle {
     text-align: center;
-    color: #7F898B;
-    font: 600 11px Arial, sans-serif;
-    letter-spacing: .22em;
-    margin: 0 0 12px;
+
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+
+    letter-spacing: .20em;
+
+    color: #A8A8A8 !important;
+
+    margin-bottom: 15px;
 }
 
-/* BASE BUTTONS */
+/* ======================================================
+   ALL BUTTONS
+   ====================================================== */
 
 .stButton > button,
 [data-testid="stPopover"] button {
-    background: #FFFFFF !important;
-    color: var(--ink) !important;
 
-    border: 1px solid #DCE2E3 !important;
-    border-radius: 11px !important;
+    background-color: #030303 !important;
+    background-image: none !important;
 
-    box-shadow:
-        0 2px 7px rgba(23,40,45,.045) !important;
+    color: #FFFFFF !important;
 
-    font-family: Arial, sans-serif !important;
-    font-weight: 650 !important;
+    border: 1px solid #383838 !important;
+    border-radius: 9px !important;
+
+    box-shadow: none !important;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600 !important;
 
     transition:
-        background .14s ease,
-        border-color .14s ease !important;
+        background-color .15s ease,
+        border-color .15s ease,
+        color .15s ease;
 }
+
+/* Button text */
+
+.stButton > button p,
+.stButton > button span,
+[data-testid="stPopover"] button p {
+    color: inherit !important;
+}
+
+/* Hover */
 
 .stButton > button:hover,
 [data-testid="stPopover"] button:hover {
-    background: #F8FAF9 !important;
-    border-color: #9CA9AC !important;
+
+    background-color: #191919 !important;
+
+    color: #FFFFFF !important;
+
+    border-color: #696969 !important;
+
+    box-shadow: none !important;
 }
 
-.stButton > button p,
-[data-testid="stPopover"] button p {
-    color: inherit !important;
-    font-weight: inherit !important;
+/* Focus */
+
+.stButton > button:focus-visible {
+    outline: 2px solid #C6A057 !important;
+    outline-offset: 2px;
 }
 
-/* CATEGORY TABS */
+/* ======================================================
+   CATEGORY BUTTONS
+   ====================================================== */
 
 .st-key-cat_0 button,
 .st-key-cat_1 button,
 .st-key-cat_2 button {
-    min-height: 64px !important;
+
+    background-color: #030303 !important;
+
     width: 100%;
-    font-size: clamp(13px,1.35vw,17px) !important;
+
+    min-height: 66px !important;
+
+    font-size: clamp(
+        13px,
+        1.35vw,
+        18px
+    ) !important;
+
     letter-spacing: .015em;
+
+    font-weight: 700 !important;
 }
 
+/* Sauces + Dressings */
+
 .st-key-cat_0 button {
-    color: #BD6B31 !important;
+
+    color: #D48A55 !important;
+
+    border: 1px solid #383838 !important;
     border-bottom: 3px solid #D48A55 !important;
 }
 
-.st-key-cat_1 button {
-    color: #C8464B !important;
-    border-bottom: 3px solid #D8787B !important;
+.st-key-cat_0 button p {
+    color: #D48A55 !important;
 }
+
+/* Mains + Marinades */
+
+.st-key-cat_1 button {
+
+    color: #ED555A !important;
+
+    border: 1px solid #383838 !important;
+    border-bottom: 3px solid #ED555A !important;
+}
+
+.st-key-cat_1 button p {
+    color: #ED555A !important;
+}
+
+/* Salads + Pickles */
 
 .st-key-cat_2 button {
-    color: #4B8060 !important;
-    border-bottom: 3px solid #80A68C !important;
+
+    color: #81C568 !important;
+
+    border: 1px solid #383838 !important;
+    border-bottom: 3px solid #81C568 !important;
 }
 
-/* RECIPE CARDS */
+.st-key-cat_2 button p {
+    color: #81C568 !important;
+}
+
+/* Category hover */
+
+.st-key-cat_0 button:hover,
+.st-key-cat_1 button:hover,
+.st-key-cat_2 button:hover {
+
+    background-color: #111111 !important;
+}
+
+/* ======================================================
+   RECIPE SELECTION BUTTONS
+   ====================================================== */
 
 div[class*="st-key-recipe_"] button {
-    width: 100%;
+
+    background-color: #030303 !important;
+
+    color: #FFFFFF !important;
+
     min-height: 86px !important;
-    padding: 12px !important;
-    font-size: clamp(12px,1.35vw,17px) !important;
+
+    padding: 14px 16px !important;
+
+    font-size: clamp(
+        13px,
+        1.3vw,
+        17px
+    ) !important;
+
+    font-weight: 600 !important;
+
+    line-height: 1.25 !important;
+
     text-align: left !important;
-    line-height: 1.22 !important;
+
+    border: 1px solid #383838 !important;
+    border-radius: 9px !important;
+
+    box-shadow: none !important;
 }
+
+div[class*="st-key-recipe_"] button p {
+    color: #FFFFFF !important;
+}
+
+/* Recipe hover */
+
+div[class*="st-key-recipe_"] button:hover {
+    background-color: #141414 !important;
+    border-color: #686868 !important;
+}
+
+/* Sauce recipe accent */
 
 .st-key-recipe_grid_sauce
 div[class*="st-key-recipe_"] button {
     border-left: 4px solid #D48A55 !important;
 }
 
+/* Main recipe accent */
+
 .st-key-recipe_grid_main
 div[class*="st-key-recipe_"] button {
-    border-left: 4px solid #D8787B !important;
+    border-left: 4px solid #ED555A !important;
 }
+
+/* Salad recipe accent */
 
 .st-key-recipe_grid_salad
 div[class*="st-key-recipe_"] button {
-    border-left: 4px solid #80A68C !important;
+    border-left: 4px solid #81C568 !important;
 }
 
-/* MULTIPLIER BUTTONS - 15 CONTROLS */
+/* ======================================================
+   MULTIPLIER ROW
+   ====================================================== */
 
 .st-key-multiplier_row
 [data-testid="stHorizontalBlock"] {
+
     gap: .22rem !important;
     flex-wrap: nowrap !important;
 }
 
 .st-key-multiplier_row
 [data-testid="stColumn"] {
+
     min-width: 0 !important;
+
     width: 0 !important;
+
     flex: 1 1 0 !important;
 }
 
 .st-key-multiplier_row .stButton,
 .st-key-multiplier_row
 [data-testid="stPopover"] {
+
     width: 100% !important;
     min-width: 0 !important;
 }
 
 .st-key-multiplier_row button {
+
+    background-color: #030303 !important;
+
+    color: #FFFFFF !important;
+
     width: 100% !important;
     min-width: 0 !important;
+
+    height: 54px !important;
+    min-height: 54px !important;
+
     padding: 0 2px !important;
 
-    min-height: 53px !important;
-    height: 53px !important;
+    border: 1px solid #424242 !important;
+    border-radius: 8px !important;
 
-    border-radius: 9px !important;
-    font-size: clamp(10px,.9vw,13px) !important;
+    box-shadow: none !important;
+
+    font-size: clamp(
+        10px,
+        .95vw,
+        13px
+    ) !important;
+
     white-space: nowrap !important;
 }
 
+/* Multiplier hover */
+
 .st-key-multiplier_row button:hover {
+
+    background-color: #151515 !important;
+
+    color: #FFFFFF !important;
+
     border-color: #00A7C5 !important;
-    color: #007F95 !important;
 }
 
-/* SELECTED BUTTONS */
+/* ======================================================
+   SELECTED BUTTON GOLD BORDER
+   ====================================================== */
 
-.st-key-top_navigation
-.selected-button button,
-.st-key-multiplier_row
-.selected-button button {
-    border-color: #C6A057 !important;
-    box-shadow:
-        inset 0 0 0 1px #C6A057 !important;
-    background: #FFFCF5 !important;
+.st-key-cat_0 button:focus-visible,
+.st-key-cat_1 button:focus-visible,
+.st-key-cat_2 button:focus-visible {
+
+    outline: 2px solid #C6A057 !important;
 }
 
-/* RECIPE HEADING */
+/* ======================================================
+   RECIPE HEADER
+   ====================================================== */
 
 .recipe-card-heading {
-    font: 700 clamp(18px,1.9vw,26px)/1.2
-          Arial,sans-serif;
 
-    color: var(--recipe-accent,#26313A);
+    background-color: #030303 !important;
+
+    color: var(
+        --recipe-accent,
+        #FFFFFF
+    ) !important;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: clamp(
+        19px,
+        1.9vw,
+        26px
+    );
+
+    font-weight: 700;
+
+    line-height: 1.2;
 
     padding: 15px 18px;
-    background: #FFF;
 
-    border: 1px solid #E2E6E6;
-    border-left:
-        4px solid var(--recipe-accent,#26313A);
+    border: 1px solid #383838;
 
-    border-radius: 10px;
+    border-left: 4px solid var(
+        --recipe-accent,
+        #FFFFFF
+    );
+
+    border-radius: 9px;
+
     overflow-wrap: anywhere;
 }
 
-.current-batch {
-    font: 700 clamp(17px,1.8vw,23px)/1.3
-          Arial,sans-serif;
+/* ======================================================
+   CURRENT BATCH
+   ====================================================== */
 
-    color: #008DA5;
+.current-batch {
+
+    color: #FFFFFF !important;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: clamp(
+        18px,
+        1.8vw,
+        24px
+    );
+
+    font-weight: 700;
+
+    line-height: 1.3;
+
     padding: 15px 0;
 }
 
-/* SECTION HEADINGS */
+/* ======================================================
+   SECTION TITLES
+   ====================================================== */
 
 .section-title {
-    font: 700 16px Arial,sans-serif;
+
+    color: #FFFFFF !important;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
     letter-spacing: .08em;
-    color: #59666D;
-    margin: 10px 0 9px;
+
+    margin: 10px 0 12px;
 }
 
-/* INGREDIENTS */
+/* ======================================================
+   INGREDIENTS
+   ====================================================== */
 
 .ingredient-row {
+
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
+
     gap: 14px;
 
-    border-bottom: 1px solid #E7EAEB;
-    padding: 8px 0;
+    border-bottom: 1px solid #292929;
 
-    font: 500 clamp(15px,1.5vw,19px)/1.35
-          Arial,sans-serif;
+    padding: 9px 0;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: clamp(
+        15px,
+        1.5vw,
+        19px
+    );
+
+    font-weight: 500;
+
+    line-height: 1.35;
+
+    color: #FFFFFF !important;
 }
 
 .ingredient-name {
+
+    color: #FFFFFF !important;
+
+    font-weight: 500;
+
     overflow-wrap: anywhere;
 }
 
 .ingredient-amount {
+
+    color: #FFFFFF !important;
+
     font-weight: 700;
+
+    text-align: right;
+
     white-space: nowrap;
+
     font-variant-numeric: tabular-nums;
-    color: #23313A;
 }
 
-/* PREPARATION STEPS */
+/* ======================================================
+   PREPARATION STEPS
+   ====================================================== */
 
 .step-block {
-    border-bottom: 1px solid #ECF0F0;
 
-    padding: 0 0 12px;
-    margin: 0 0 12px;
+    color: #FFFFFF !important;
 
-    font: 500 clamp(15px,1.5vw,19px)/1.48
-          Arial,sans-serif;
+    border-bottom: 1px solid #292929;
+
+    padding: 0 0 14px;
+
+    margin: 0 0 14px;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: clamp(
+        15px,
+        1.5vw,
+        19px
+    );
+
+    line-height: 1.5;
+}
+
+.step-block div {
+
+    color: #FFFFFF !important;
 }
 
 .step-number {
+
+    color: #FFFFFF !important;
+
     font-size: 12px;
-    letter-spacing: .07em;
-    color: #708088;
+
     font-weight: 800;
-    margin-bottom: 6px;
+
+    letter-spacing: .07em;
+
+    margin-bottom: 7px;
 }
 
-/* RECIPE NOTES */
+/* ======================================================
+   RECIPE NOTES
+   ====================================================== */
 
 .recipe-notes {
-    border-left: 3px solid #B8C4C7;
-    background: #EDF2F2;
-    border-radius: 7px;
 
-    padding: 12px 16px;
-    color: #485B62;
-    margin-top: 15px;
+    background-color: #111111 !important;
+
+    color: #FFFFFF !important;
+
+    border: 1px solid #383838;
+    border-left: 3px solid #C6A057;
+
+    border-radius: 8px;
+
+    padding: 14px 18px;
+
+    margin-top: 18px;
+
     font-size: 15px;
+
+    line-height: 1.5;
+}
+
+.recipe-notes div {
+
+    color: #FFFFFF !important;
 }
 
 .recipe-notes div + div {
-    margin-top: 7px;
+    margin-top: 8px;
 }
 
-/* GENERAL SPACING */
+/* ======================================================
+   GENERAL STREAMLIT SPACING
+   ====================================================== */
 
 .st-key-recipe_detail
 [data-testid="stVerticalBlock"] {
+
     gap: .65rem;
 }
 
-/* LOGIN */
+/* Dividers */
+
+[data-testid="stDivider"],
+hr {
+
+    border-color: #292929 !important;
+}
+
+/* ======================================================
+   LOGIN SCREEN
+   ====================================================== */
 
 .login-heading {
-    color: #26313A;
-    font: bold 22px Arial,sans-serif;
-    margin-bottom: 4px;
+
+    color: #FFFFFF !important;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 24px;
+
+    font-weight: 700;
+
+    margin-bottom: 5px;
 }
 
 .login-instruction {
-    color: #657178;
-    font: 15px Arial,sans-serif;
+
+    color: #FFFFFF !important;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 16px;
 }
 
+/* Login form container */
+
 [data-testid="stForm"] {
-    background: #FFF;
-    border: 1px solid #DEE4E4;
-    border-radius: 12px;
+
+    background-color: #030303 !important;
+
+    border: 1px solid #383838 !important;
+
+    border-radius: 12px !important;
+
     padding: 18px;
 }
 
+/* Password input border */
+
 [data-testid="stTextInput"]
 [data-baseweb="input"] {
-    background: #FFF;
-    border: 1px solid #A4B2B5;
-    border-radius: 9px;
+
+    background-color: #030303 !important;
+
+    border: 1px solid #555555 !important;
+
+    border-radius: 8px !important;
 }
+
+/* Password entry */
 
 [data-testid="stTextInput"] input {
-    background: #FFF;
-    color: #26313A;
-    caret-color: #C8464B;
+
+    background-color: #030303 !important;
+
+    color: #FFFFFF !important;
+
+    caret-color: #FFFFFF !important;
+
+    font-size: 18px !important;
 }
+
+[data-testid="stTextInput"] input::placeholder {
+
+    color: #999999 !important;
+}
+
+/* Password visibility button */
+
+[data-testid="stTextInput"] button,
+[data-testid="stTextInput"] button:hover {
+
+    background-color: #030303 !important;
+
+    color: #FFFFFF !important;
+
+    border: none !important;
+}
+
+[data-testid="stTextInput"] button svg {
+
+    color: #FFFFFF !important;
+    stroke: #FFFFFF !important;
+}
+
+/* Log In button */
 
 [data-testid="stFormSubmitButton"] button {
-    background: #26313A !important;
-    color: #FFF !important;
-    min-height: 44px;
+
+    background-color: #030303 !important;
+
+    color: #FFFFFF !important;
+
+    border: 1px solid #FFFFFF !important;
+
+    border-radius: 8px !important;
+
+    min-height: 46px !important;
+
+    padding: 8px 24px !important;
 }
 
-/* LOG OUT */
+[data-testid="stFormSubmitButton"] button p {
+    color: #FFFFFF !important;
+}
+
+/* ======================================================
+   CUSTOM PERCENTAGE POPOVER
+   ====================================================== */
+
+[data-testid="stPopoverBody"],
+[data-testid="stPopoverContent"],
+div[data-baseweb="popover"] > div {
+
+    background-color: #111111 !important;
+
+    color: #FFFFFF !important;
+
+    border-color: #383838 !important;
+}
+
+[data-testid="stPopoverBody"] p,
+[data-testid="stPopoverBody"] label {
+
+    color: #FFFFFF !important;
+}
+
+/* Forms */
+
+[data-testid="stPopoverBody"]
+[data-testid="stForm"] {
+
+    background-color: #111111 !important;
+
+    border: none !important;
+}
+
+/* Custom input */
+
+[data-testid="stPopoverBody"]
+[data-testid="stTextInput"]
+[data-baseweb="input"] {
+
+    background-color: #030303 !important;
+
+    border: 1px solid #666666 !important;
+}
+
+/* Custom apply button */
+
+[data-testid="stPopoverBody"]
+[data-testid="stFormSubmitButton"] button {
+
+    background-color: #030303 !important;
+
+    color: #FFFFFF !important;
+
+    border: 1px solid #C6A057 !important;
+
+    min-height: 44px !important;
+}
+
+/* Number input and controls */
+
+input,
+textarea {
+    color: #FFFFFF !important;
+}
+
+/* ======================================================
+   LOG OUT
+   ====================================================== */
 
 .st-key-logout button {
-    min-height: 46px;
-    width: 100%;
-    color: #59666D !important;
-    font-size: 13px;
+
+    background-color: #030303 !important;
+
+    color: #FFFFFF !important;
+
+    min-height: 48px !important;
+
+    width: 100% !important;
+
+    border: 1px solid #555555 !important;
+
+    border-radius: 8px !important;
+
+    font-size: 13px !important;
 }
 
-/* IPAD PORTRAIT */
+.st-key-logout button:hover {
 
-@media(max-width:900px) {
+    background-color: #151515 !important;
+
+    border-color: #FFFFFF !important;
+}
+
+/* ======================================================
+   IPAD PORTRAIT ADJUSTMENTS
+   ====================================================== */
+
+@media (max-width: 900px) {
 
     .block-container {
+
         padding-left: 14px;
         padding-right: 14px;
     }
 
-    .st-key-multiplier_row
-    [data-testid="stHorizontalBlock"] {
-        overflow-x: auto !important;
-        padding-bottom: 6px;
-    }
-
-    .st-key-multiplier_row
-    [data-testid="stColumn"] {
-        flex: 0 0 52px !important;
-        width: 52px !important;
-    }
+    /* Category buttons */
 
     .st-key-cat_0 button,
     .st-key-cat_1 button,
     .st-key-cat_2 button {
-        font-size: 12px !important;
+
         min-height: 58px !important;
+
+        font-size: 12px !important;
+
         padding: 4px !important;
     }
 
+    /* Multiplier row */
+
+    .st-key-multiplier_row
+    [data-testid="stHorizontalBlock"] {
+
+        overflow-x: auto !important;
+
+        padding-bottom: 7px;
+    }
+
+    .st-key-multiplier_row
+    [data-testid="stColumn"] {
+
+        flex: 0 0 52px !important;
+
+        width: 52px !important;
+    }
+
+    /* Recipe cards */
+
+    div[class*="st-key-recipe_"] button {
+
+        min-height: 78px !important;
+
+        padding: 9px !important;
+
+        font-size: 12px !important;
+    }
+
     .recipe-card-heading {
-        padding: 12px 9px;
+
+        padding: 12px 10px;
+
         font-size: 17px;
+    }
+
+    .current-batch {
+
+        font-size: 17px;
+    }
+
+    .ingredient-row {
+
+        padding: 7px 0;
+    }
+
+    .step-block {
+
+        font-size: 15px;
     }
 }
 
@@ -1069,7 +1591,7 @@ div[class*="st-key-recipe_"] button {
 
 
 # ==========================================================
-# GOLD BUTTON HIGHLIGHT
+# SELECTED BUTTON - GOLD ACCENT
 # ==========================================================
 
 def highlight_key(key):
@@ -1079,7 +1601,7 @@ def highlight_key(key):
         f'.st-key-{key} button {{'
         f'border-color:#C6A057 !important;'
         f'box-shadow:inset 0 0 0 1px #C6A057 !important;'
-        f'background:#FFFCF5 !important;'
+        f'background:#14110B !important;'
         f'}}'
         f'</style>',
         unsafe_allow_html=True,
@@ -1230,6 +1752,7 @@ if recipe_name not in RECIPES:
     st.rerun()
 
 recipe = RECIPES[recipe_name]
+
 color = CATEGORY_COLORS[recipe["category"]]
 
 
@@ -1261,7 +1784,9 @@ with st.container(key="recipe_detail"):
                 ):
                     highlight_key(f"mult_{index}")
 
+        # ==================================================
         # CUSTOM PERCENTAGE BUTTON
+        # ==================================================
 
         with cols[14]:
 
@@ -1322,10 +1847,13 @@ with st.container(key="recipe_detail"):
         )
 
     else:
-        batch_text = f"CURRENT BATCH: {factor:g}X"
+
+        batch_text = (
+            f"CURRENT BATCH: {factor:g}X"
+        )
 
     # ======================================================
-    # RECIPE HEADING
+    # HEADING ROW
     # ======================================================
 
     heading_left, heading_right = st.columns(
@@ -1361,7 +1889,9 @@ with st.container(key="recipe_detail"):
         gap="large",
     )
 
+    # ======================================================
     # LEFT COLUMN - PREPARATION STEPS
+    # ======================================================
 
     with left:
 
@@ -1393,11 +1923,14 @@ with st.container(key="recipe_detail"):
                 )
 
         else:
+
             st.warning(
                 "Preparation steps have not been provided."
             )
 
+    # ======================================================
     # RIGHT COLUMN - INGREDIENTS
+    # ======================================================
 
     with right:
 
