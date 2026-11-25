@@ -2,13 +2,14 @@
 import streamlit as st
 import hmac
 import re
+
 from decimal import Decimal, InvalidOperation
 from html import escape
 
 
 # ==========================================================
 # RICE IS LIFE - STAFF RECIPE BOOK
-# DARK DESIGN - UPDATED
+# IPAD LANDSCAPE - DARK EDITION
 # ==========================================================
 
 st.set_page_config(
@@ -28,11 +29,9 @@ STAFF_PASSWORD = "aburi"
 BACKGROUND = "#030303"
 BUTTON_BG = "#393939"
 WHITE = "#FFFFFF"
-BORDER = "#383838"
 GOLD = "#C6A057"
 MULTIPLIER_COLOR = "#0097B2"
 STEP_LABEL_COLOR = "#545454"
-STEP_TEXT_COLOR = "#FFFFFF"
 
 CATEGORIES = [
     "Sauces + Dressings",
@@ -49,27 +48,15 @@ CATEGORY_COLORS = {
 }
 
 MULTIPLIERS = [
-    1,
-    1.5,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9,
-    10,
-    13,
-    20,
-    30,
+    1, 1.5, 2, 3, 4, 5, 6, 7,
+    8, 9, 10, 13, 20, 30
 ]
 
 RECIPES = {}
 
 
 # ==========================================================
-# RECIPE DATA HANDLING
+# RECIPE DATA
 # ==========================================================
 
 def R(name, category, ingredients, steps, notes=""):
@@ -121,7 +108,6 @@ def R(name, category, ingredients, steps, notes=""):
 
 R(
     "BULGOGI SAUCE(KBBQ)", SAUCE,
-
     "White Sugar|150|g;"
     "Mirin|150|g;"
     "House Soy Sauce|150|g;"
@@ -133,49 +119,41 @@ R(
     "Ginger|10|g;"
     "Dashida|5|g;"
     "Black Pepper|3|g",
-
     "Grind garlic, ginger finely with mirin in Vitamix.~"
     "Mix together garlic, ginger and mirin with all other ingredients.~"
     "Bring to a boil, add the mix of corn starch and water.~"
     "Simmer 1-2 minutes and let cool.",
-
     "20x: fits in 12L cambro"
 )
 
 R(
     "CHOJANG (PORK BELLY)", SAUCE,
-
     "Gochujang Paste|6300|g;"
     "White Sugar|3700|g;"
     "Rice Vinegar|3300|g;"
     "Brown Sugar|500|g;"
     "Kosher Salt|250|g;"
     "Hon Dashi|130|g",
-
     "Whisk sugars, salt and hon dashi into rice vinegar.~"
     "Whisk at low heat until hon dashi and sugars are dissolved.~"
     "Add Gochujang paste last.",
-
     "Final product: every 500g add 20g of brown sugar.~"
     "1x: fits 22L cambro"
 )
 
 R(
     "HOT MAYO MUSTARD", SAUCE,
-
     "House Mayo|800|g;"
     "Dijon Mustard|440|g;"
     "Lemon Juice|120|g;"
     "Mirin|100|g;"
     "Rice Vinegar|80|g;"
     "White Sugar|60|g",
-
     "Whisk all ingredients together until sugar is dissolved."
 )
 
 R(
     "HOT SAUCE", SAUCE,
-
     "Habanero Peppers|2000|g;"
     "Sherry Vinegar|1200|g;"
     "Water|700|g;"
@@ -183,21 +161,18 @@ R(
     "White Sugar|100|g;"
     "Kosher Salt|100|g;"
     "Canola Oil|100|g",
-
     "Cut bell peppers in half, Rinse with all peppers in water.~"
     "Mix in canola oil~"
     "Roast whole habanero and bell peppers at 500°F until blister (7-10 min max).~"
     "Grind all the peppers in Vitamix.~"
     "Whisk all ingredients together.~"
     "Wrap bowl with saran wrap and let ferment at room temerature for 48-72 hours.",
-
     "Green, Red and Orange habaneros and Red and Yellow bell peppers preferred.~"
     "After roasting, turn and repeat if neccessary"
 )
 
 R(
     "HOUSE DRESSING", SAUCE,
-
     "Rice Vinegar|600|g;"
     "Carrots|540|g;"
     "Canola Oil|320|g;"
@@ -208,32 +183,26 @@ R(
     "Kosher Salt|24|g;"
     "Sesame Oil|20|g;"
     "Black Pepper|4|g",
-
     "Peel carrots, onions and ginger.~"
     "Cut into small chunks.~"
     "Blend carrots, onions and ginger with rice vinegar in Vitamix until smooth.~"
     "Combine blended vegetables with remaining ingredients and whisk until smooth.",
-
     "IMPORTANT: Original specifies making two separate 5X batches for 10X, NOT a 10X batch.~"
     "5X: fits in 12L cambro"
 )
 
 R(
     "HOUSE MAYO", SAUCE,
-
     "Hellman's Mayo|5000|g;"
     "Lemon Juice|500|g;"
     "Mushroom Powder|100|g",
-
     "Mix mushroom powder into lemon juice until dissolved.~"
     "Whisk mixture into mayo.",
-
     "3x: fits in 22L cambro"
 )
 
 R(
     "KANG JEONG(KFC)", SAUCE,
-
     "Corn Syrup|2500|g;"
     "Ketchup|1500|g;"
     "Gochujang Paste|500|g;"
@@ -241,84 +210,68 @@ R(
     "MSG|10|g;"
     "House Soy Sauce|200|g;"
     "Mushroom Powder|10|g",
-
     "Mix all ingredients together.",
-
     "1x: fits in 5L cambro"
 )
 
 R(
     "MISO GLAZE(SALMON)", SAUCE,
-
     "House Teriyaki Sauce|100|g;"
     "Water|50|g;"
     "Corn Starch|50|g;"
     "Aka Miso Paste|15|g",
-
     "Whisk the miso paste into the teriyaki.~"
     "Make the cornstarch slurry with cold water.~"
     "Slowly whisk in slurry and simmer for one minute.",
-
     "Gently heat, do not let boil."
 )
 
 R(
     "SEASONED SOY(GF)", SAUCE,
-
     "House Soy Sauce|2000|g;"
     "Water|1000|g;"
     "Mirin|900|g;"
     "Sake|600|g;"
     "Kombu|50|g;"
     "Bonito|25|g",
-
     "Combine everything in a pot and bring to a boil.~"
     "Cool and infuse overnight, then strain.",
-
     "Original recipe makes approximately 5L.~"
     "5x: fits 22L cambro"
 )
 
 R(
     "SPICY MAYO", SAUCE,
-
     "House Mayo|400|g;"
     "Gochujang Paste|40|g;"
     "House Hot Sauce|40|g",
-
     "Mix all ingredients together."
 )
 
 R(
     "SUSHI SU", SAUCE,
-
     "Mizkan Yamabuki Vinegar|4000|g;"
     "White Sugar|1750|g;"
     "Aka Su|600|g;"
     "Kosher Salt|600|g;"
     "Kombu|30|g",
-
     "Whisk all ingredients at low temperasture until sugar and salt dissolve.",
-
     "Cool it down in ice bath. Do not let boil.~"
     "3x: fits 22L cambro"
 )
 
 R(
     "TENTSUYU(TOFU)", SAUCE,
-
     "Water|400|g;"
     "House Soy Sauce|200|g;"
     "Mirin|160|g;"
     "White Sugar|20|g;"
     "Mushroom Powder|8|g",
-
     "Whisk all ingredients until dissolved."
 )
 
 R(
     "TERIYAKI SAUCE(CHICKEN)", SAUCE,
-
     "House Soy Sauce|4000|g;"
     "Sake|4000|g;"
     "Mirin|4000|g;"
@@ -327,7 +280,6 @@ R(
     "Water|130|g;"
     "Cornstarch|130|g;"
     "Ginger(Crushed)|100|g",
-
     "Combine house soy sauce, sugar, garlic and ginger.~"
     "Simmer for 30 minutes until flavors are infused.~"
     "Remove garlic and ginger.~"
@@ -335,13 +287,11 @@ R(
     "Make a cornstarch slurry.~"
     "Whisk in slurry slowly and simmer for 1 minute.~"
     "Cool down.",
-
     "Original recipe makes approximately 12L."
 )
 
 R(
     "YUZU GARLIC SAUCE(OH-MY)", SAUCE,
-
     "Garlic|1100|g;"
     "White Sugar|1000|g;"
     "Lemon Juice|825|g;"
@@ -353,7 +303,6 @@ R(
     "Water|50|g;"
     "Corn Starch|50|g;"
     "Chili Pepper Flakes|25|g",
-
     "Confit garlic in canola oil until soft and golden for 2 hours at low temperature.~"
     "Blend confit garlic and oil until smooth.~"
     "Combine all ingredients and bring to a boil.~"
@@ -368,11 +317,9 @@ R(
 
 R(
     "BEEF BRISKET", MAIN,
-
     "Kosher Salt|600|g;"
     "Black Pepper|400|g;"
     "Smoking Wood Chips|150|g",
-
     "Mix salt and pepper.~"
     "Season brisket generously.~"
     "Braise & Smoke function in the Rational for 90 minutes.~"
@@ -384,32 +331,27 @@ R(
 
 R(
     "CHICKEN BATTER", MAIN,
-
     "All Purpose Flour|205|g;"
     "House Soy Sauce|10|g;"
     "Kosher Salt|3|g;"
     "Can of Club Soda|355|ml",
-
     "Whisk all ingredients together until no lumps remain."
 )
 
 R(
     "CHICKEN BRINE", MAIN,
-
     "Water|2000|g;"
     "House Soy Sauce|100|g;"
     "Kosher Salt|50|g;"
     "White Sugar|20|g;"
     "Garlic(Crushed)|15|g;"
     "Ginger(Crushed)|15|g",
-
     "Whisk all ingredients together until sugar dissolved.~"
     "Brine chicken for 24 hours."
 )
 
 R(
     "DASHI", MAIN,
-
     "Water|20|L;"
     "Roasted Salmon Head|1|pc;"
     "Daikon|1000|g;"
@@ -420,7 +362,6 @@ R(
     "Katsuo Bushi|40|g;"
     "Dried Shiitake Mushroom|30|g;"
     "Hon Dashi|4|g",
-
     "Roast Salmon Head at 460°C at 50% Humidity for 15-20 minutes.~"
     "Slice Daikon in 1 inch thickness.~"
     "Bring all ingredients to boil in pot.~"
@@ -431,7 +372,6 @@ R(
 
 R(
     "DASHI EGG MARINADE", MAIN,
-
     "Water|2000|g;"
     "House Soy Sauce|300|g;"
     "White Sugar|100|g;"
@@ -439,19 +379,16 @@ R(
     "Kosher Salt|25|g;"
     "Hon Dashi|24|g;"
     "Eggs|60|eggs",
-
     "Put 1 layer of eggs on a perforated hotel pan.~"
     "Preheat Combi oven to steam at 212°F for 8 minutes.~"
     "Immediately shock eggs in cold running water until cool, then peel.~"
     "Combine marinade ingredients, bring to a boil and let cool.~"
     "Place cooled peeled eggs into cold marinade and marinade for 48 hours.",
-
     "Use 5.7L Cambro for the base batch."
 )
 
 R(
     "GARLIC SHRIMP", MAIN,
-
     "Green Onion Whites|200|g;"
     "Canola Oil|150|g;"
     "Garlic|100|g;"
@@ -459,14 +396,12 @@ R(
     "Ginger|20|g;"
     "Kosher Salt|5|g;"
     "Black Pepper|2|g",
-
     "slice the green onion whites, garlic and ginger.~"
     "Mix all ingredients together."
 )
 
 R(
     "JAPANESE CURRY", MAIN,
-
     "Dashi|1.5|L;"
     "Curry Powder|??|g;"
     "Onions|600|g;"
@@ -475,7 +410,6 @@ R(
     "Kosher Salt|10|g;"
     "Mushroom Powder|10|g;"
     "Sesame Oil|5|ml to taste",
-
     "Dice potato and keep in cold water for service.~"
     "Dry them off prior to deep frying for 90 seconds.~"
     "Mix into curry and serve."
@@ -483,32 +417,26 @@ R(
 
 R(
     "MISO MARINADE", MAIN,
-
     "Miso Paste|1000|g;"
     "White Sugar|600|g;"
     "Water|400|g;"
     "Mirin|200|g;"
     "House Soy Sauce|150|g",
-
     "Whisk all ingredients together until dissolved."
 )
 
 R(
     "MISO SOUP", MAIN,
-
     "Dashi|4|L;"
     "Aka Miso Paste|200|g;"
     "Hon Dashi|4|g;"
     "Kosher Salt|1|g",
-
     "Mix dashi, hon dashi, miso paste and salt and bring to boil.",
-
     "Confirm ingredients, amounts and preparation with Leo"
 )
 
 R(
     "MUSHROOM BRAISE", MAIN,
-
     "Dried Shiitake Mushrooms|1|pc;"
     "Water (Soak overnight)|250|g;"
     "Shimeji Mushrooms|275|g;"
@@ -518,14 +446,12 @@ R(
     "White Sugar|20|g;"
     "Ginger|20|g;"
     "Kombu|10|g",
-
     "Soak shiitake mushroom in water overnight.~"
     "Combine everything in a pot and simmer mushrooms for 30 minutes with a cartouche."
 )
 
 R(
     "PORK BELLY", MAIN,
-
     "Pork Belly|1|slab;"
     "Mirin|200|g;"
     "Kosher Salt|125|g;"
@@ -533,7 +459,6 @@ R(
     "White Sugar|50|g;"
     "Ginger (Sliced)|2|pc;"
     "Garlic (Whole)|2|pc",
-
     "Trim excess fat from pork belly.~"
     "Mix mirin and sesame oil together.~"
     "Rub pork belly with mirin and sesame oil first.~"
@@ -543,25 +468,21 @@ R(
     "Put each slab in a vacuum bag with ginger and garlic.~"
     "Vacuum seal.~"
     "Sous vide at 80°C for 8 hours or 75°C for 11 hours.",
-
     "put 2 pcs ginger sliced and 2 garlic inside each vacuum bag."
 )
 
 R(
     "SUSHI RICE", MAIN,
-
     "Sekka Rice|1100|g;"
     "Water|1080|g;"
     "Sushi Su (Raw Rice Ratio)|220|g;"
     "Cooked Rice (Reference)|1600|g;"
     "Sushi Su (Cooked Rice Ratio)|320|g",
-
     "Wash rice in a large strainer over a large bowl.~"
     "Discard starchy water regularly, with atleast 3 washes.~"
     "Completely drain before putting rice in the rice cooker.~"
     "Add water and cook.~"
     "Season sushi rice.",
-
     "IMPORTANT: Original includes raw-rice and cooked-rice "
     "seasoning references. These are alternatives, "
     "not ingredients to add together."
@@ -569,30 +490,25 @@ R(
 
 R(
     "WHITE RICE", MAIN,
-
     "Sekka Rice|2740|g;"
     "Water (White Rice)|2740|g;"
     "Brown Rice (Alternative)|1000|g;"
     "Water (Brown Rice Alternative)|1300|g",
-
     "Wash rice in a large strainer over a bowl.~"
     "Discard starchy water regularly, with at least 3 washes.~"
     "Completely drain before putting rice in the rice cooker.~"
     "Add water and cook.",
-
     "Take Note of the different white-rice and brown-rice ratios."
 )
 
 R(
     "TOFU MARINADE", MAIN,
-
     "Miso Paste|300|g;"
     "Mirin|150|g;"
     "House Soy Sauce|30|g;"
     "Dashida / Mushroom Powder|10|g;"
     "Gochugaru|10|g;"
     "Black Pepper|3|g",
-
     "Mix all ingredients together.~"
     "Brush all 6 sides of cut tofu with marinade."
 )
@@ -604,33 +520,28 @@ R(
 
 R(
     "BEAN SPROUTS", SALAD,
-
     "Raw Bean Sprouts|3000|g;"
     "Fish Sauce|118.8|g;"
     "Sesame Oil|79.2|g;"
     "Garlic (Blitzed)|66|g;"
     "Salt|48|g",
-
     "Steam bean sprouts in Rational at 211°F for 2 minutes.~"
     "Strain bean sprouts and shock in ice water until cool.~"
     "Drain with a spinner.~"
     "In a separate bowl, mix fish sauce, garlic and sesame oil.~"
     "Add bean sprouts and mix thoroughly.~"
     "Check daily and adjust salt to taste.",
-
     "Batch sizes: 1X = 3 kg, 2X = 6 kg, 3X = 9 kg."
 )
 
 R(
     "GARLIC CHIVES", SALAD,
-
     "Garlic Chives|1000|g;"
     "House Soy Sauce|100|g;"
     "White Sugar|50|g;"
     "Gochujang Paste|40|g;"
     "Rice Flour|30|g;"
     "Gochugaru|20|g",
-
     "Cut chives into 2 inch pieces.~"
     "Combine all ingredients except chives into a paste.~"
     "Massage paste into chives.~"
@@ -640,13 +551,11 @@ R(
 
 R(
     "KIMCHI COLESLAW", SALAD,
-
     "Green Cabbage|20000|g;"
     "Kimchi|10000|g;"
     "White Sugar|2000|g;"
     "Lemon Juice|2000|g;"
     "Kosher Salt|600|g",
-
     "Quarter cabbages and remove stems.~"
     "Slice cabbage with Robot Coupe.~"
     "Lovingly massage cabbage with salt, sugar and lemon juice.~"
@@ -655,19 +564,16 @@ R(
     "Slice kimchi to a similar thickness as cabbage.~"
     "Mix sliced kimchi and cabbage together.~"
     "Mix kimchi every 24 hours, mix bottom to top.~",
-
     "40L batch as the recorded base recipe."
 )
 
 R(
     "PICKLED DAIKON", SALAD,
-
     "Daikon|1000|g;"
     "Water|600|g;"
     "Rice Vinegar|400|g;"
     "White Sugar|340|g;"
     "Kosher Salt|25|g",
-
     "Peel and cut daikon into 1/8 inch quarter-moon shapes.~"
     "Use Robot Coupe to slice.~"
     "Combine water, rice vinegar, sugar and salt.~"
@@ -675,13 +581,11 @@ R(
     "Pour boiling liquid over daikon until covered.~"
     "Cool before storing.~"
     "Mix pickled daikon every 24 hours, mix bottom to top.",
-
     "4X + 8X Recipes have been modified to be accurate amounts."
 )
 
 R(
     "PICKLED JALAPEÑO", SALAD,
-
     "Jalapeño|1800|g;"
     "White Sugar|500|g;"
     "House Soy Sauce|500|g;"
@@ -689,43 +593,36 @@ R(
     "White Vinegar|500|g;"
     "Kosher Salt|20|g;"
     "Garlic Cloves|10|pcs",
-
     "Wash, halve, clean and julienne jalapeño peppers.~"
     "Mix all other ingredients in a pot and bring to a boil.~"
     "Pour over julienned jalapeños and let sit for 24 hours.",
-
     "Confirm preparation instructions with Leo."
 )
 
 R(
     "SESAME BROCCOLI", SALAD,
-
     "Broccoli|300|g;"
     "Garlic (Blitzed)|7.2|g;"
     "House Soy Sauce|6|g;"
     "Sesame Oil|4.8|g;"
     "Kosher Salt|1.92|g",
-
     "Cut broccoli into florets.~"
     "Steam broccoli in oven at 212°F for 3 minutes.~"
     "Cool in water bath.~"
     "Drain with a spinner.~"
     "Mix broccoli with garlic, house soy, sesame oil, and salt.~"
     "Put on flat hotel pan, saran wrap and put in fridge.",
-
     "Base: 1X = 300 g. Usual batches: "
     "2X = 600 g, 3X = 900 g, 4X = 1,200 g."
 )
 
 R(
     "WASABI CUCUMBER", SALAD,
-
     "Cucumber|1560|g;"
     "White Sugar|187|g;"
     "White Vinegar|125|g;"
     "Kosher Salt|47|g;"
     "Wasabi Powder|8|g",
-
     "Slice cucumbers 1/8th thickness using Robot Coupe or mandolin.~"
     "Add sugar and salt, mix well, then let sit 20 minutes.~"
     "Drain liquid.~"
@@ -805,11 +702,13 @@ def format_amount(
         return f"{amount} {unit}".strip()
 
     if value != value.to_integral_value():
+
         text = (
             f"{value:,.3f}"
             .rstrip("0")
             .rstrip(".")
         )
+
     else:
         text = f"{int(value):,}"
 
@@ -865,6 +764,7 @@ if "custom_percentage" not in st.session_state:
 
 
 def select_category(category):
+
     st.session_state.category = category
     st.session_state.recipe = None
     st.session_state.multiplier = 1.0
@@ -872,12 +772,14 @@ def select_category(category):
 
 
 def select_recipe(name):
+
     st.session_state.recipe = name
     st.session_state.multiplier = 1.0
     st.session_state.custom_percentage = None
 
 
 def select_multiplier(factor):
+
     st.session_state.multiplier = float(factor)
     st.session_state.custom_percentage = None
 
@@ -897,6 +799,7 @@ def set_custom_percent(percent_text):
 
     try:
         value = Decimal(clean)
+
     except InvalidOperation:
         return "Enter a valid percentage, such as 75 or 125."
 
@@ -905,11 +808,10 @@ def set_custom_percent(percent_text):
         or value <= 0
         or value > 10000
     ):
-        return (
-            "Choose a percentage above 0 and up to 10000."
-        )
+        return "Choose a percentage above 0 and up to 10000."
 
     st.session_state.custom_percentage = float(value)
+
     st.session_state.multiplier = float(
         value / Decimal(100)
     )
@@ -918,14 +820,14 @@ def set_custom_percent(percent_text):
 
 
 # ==========================================================
-# DARK STYLING
+# DARK THEME AND BUTTON STYLING
 # ==========================================================
 
 st.markdown("""
 <style>
 
 /* ======================================================
-   ROOT COLORS
+   COLOR PALETTE
    ====================================================== */
 
 :root {
@@ -933,7 +835,6 @@ st.markdown("""
     --button: #393939;
     --button-hover: #474747;
     --white: #FFFFFF;
-    --step-label: #545454;
     --gold: #C6A057;
     --sauce: #D48A55;
     --main: #ED555A;
@@ -942,7 +843,7 @@ st.markdown("""
 }
 
 /* ======================================================
-   PAGE
+   PAGE BACKGROUND
    ====================================================== */
 
 html,
@@ -959,6 +860,8 @@ section[data-testid="stMain"] {
     max-width: 1480px;
     padding-top: 48px !important;
     padding-bottom: 35px !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
 }
 
 #MainMenu,
@@ -1005,46 +908,51 @@ footer {
 }
 
 /* ======================================================
-   ALL BUTTONS - SOFT FLOATING GLOW
+   SOFT GLOW - ALL BUTTONS
    ====================================================== */
 
 .stButton > button,
-[data-testid="stPopover"] button {
-    background: #393939 !important;
+[data-testid="stPopover"] button,
+[data-testid="stFormSubmitButton"] button {
+
+    background-color: #393939 !important;
     color: #FFFFFF !important;
 
     border: 2px solid #686868 !important;
     border-radius: 9px !important;
 
     box-shadow:
-        0 4px 11px rgba(0, 0, 0, .65),
-        0 0 13px rgba(255, 255, 255, .14),
-        0 0 23px rgba(255, 255, 255, .055)
+        0 4px 12px rgba(0,0,0,.70),
+        0 0 12px rgba(255,255,255,.16),
+        0 0 23px rgba(255,255,255,.07)
         !important;
 
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 600 !important;
 
     transition:
-        background .18s ease,
-        box-shadow .18s ease,
-        transform .18s ease;
+        background-color .16s ease,
+        box-shadow .16s ease,
+        transform .16s ease;
 }
 
 .stButton > button p,
 .stButton > button span,
-[data-testid="stPopover"] button p {
+[data-testid="stPopover"] button p,
+[data-testid="stFormSubmitButton"] button p {
     color: inherit !important;
 }
 
 .stButton > button:hover,
-[data-testid="stPopover"] button:hover {
-    background: #474747 !important;
+[data-testid="stPopover"] button:hover,
+[data-testid="stFormSubmitButton"] button:hover {
+
+    background-color: #474747 !important;
 
     box-shadow:
-        0 6px 16px rgba(0, 0, 0, .7),
-        0 0 17px rgba(255, 255, 255, .21),
-        0 0 28px rgba(255, 255, 255, .08)
+        0 6px 16px rgba(0,0,0,.75),
+        0 0 18px rgba(255,255,255,.23),
+        0 0 28px rgba(255,255,255,.10)
         !important;
 
     transform: translateY(-1px);
@@ -1066,15 +974,22 @@ footer {
 .st-key-cat_0 button,
 .st-key-cat_1 button,
 .st-key-cat_2 button {
-    background: #030303 !important;
-    min-height: 66px !important;
+
+    background-color: #030303 !important;
     width: 100%;
 
-    font-size: clamp(13px, 1.35vw, 18px) !important;
+    min-height: 66px !important;
+
+    font-size: clamp(13px,1.35vw,18px) !important;
     font-weight: 700 !important;
 
     border: 2px solid #383838 !important;
     border-radius: 9px !important;
+
+    box-shadow:
+        0 4px 12px rgba(0,0,0,.70),
+        0 0 15px rgba(255,255,255,.13)
+        !important;
 }
 
 .st-key-cat_0 button,
@@ -1095,7 +1010,7 @@ footer {
 .st-key-cat_0 button:hover,
 .st-key-cat_1 button:hover,
 .st-key-cat_2 button:hover {
-    background: #151515 !important;
+    background-color: #151515 !important;
 }
 
 /* ======================================================
@@ -1103,24 +1018,31 @@ footer {
    ====================================================== */
 
 div[class*="st-key-recipe_"] button {
-    background: #393939 !important;
+
+    background-color: #393939 !important;
 
     min-height: 86px !important;
     padding: 14px 16px !important;
 
-    font-size: clamp(13px, 1.3vw, 17px) !important;
+    font-size: clamp(13px,1.3vw,17px) !important;
     font-weight: 700 !important;
-    line-height: 1.25 !important;
 
+    line-height: 1.25 !important;
     text-align: left !important;
 
     border-width: 2px !important;
     border-style: solid !important;
     border-radius: 9px !important;
+
+    box-shadow:
+        0 5px 14px rgba(0,0,0,.74),
+        0 0 12px rgba(255,255,255,.13),
+        0 0 23px rgba(255,255,255,.055)
+        !important;
 }
 
 div[class*="st-key-recipe_"] button:hover {
-    background: #474747 !important;
+    background-color: #474747 !important;
 }
 
 /* Sauces */
@@ -1164,102 +1086,163 @@ div[class*="st-key-recipe_"] button p {
 
 /* ======================================================
    MULTIPLIER ROW
-   LARGE BLUE BUTTONS WITH WHITE NUMBERS
+   15 EQUAL SQUARES ON ONE LINE
    ====================================================== */
 
-/* Scroll horizontally if all 15 controls cannot fit */
+/*
+    The row has 15 controls:
+    % + 14 preset multipliers.
+
+    No fixed 100px columns.
+    Each column takes 1/15 of the available width.
+
+    Each button has aspect-ratio 1/1.
+*/
 
 .st-key-multiplier_row
 [data-testid="stHorizontalBlock"] {
+
     display: flex !important;
     flex-wrap: nowrap !important;
 
-    gap: 7px !important;
+    gap: 3px !important;
 
-    overflow-x: auto !important;
-    overflow-y: hidden !important;
+    width: 100% !important;
+    min-width: 0 !important;
 
-    padding: 10px 6px 18px !important;
+    overflow: visible !important;
 
-    scrollbar-width: thin;
-    scrollbar-color: #545454 #030303;
+    padding: 10px 3px 19px !important;
 }
 
-/* Wide enough to show doubled font size */
+/* Force all 15 Streamlit columns to equal widths */
 
 .st-key-multiplier_row
 [data-testid="stColumn"] {
-    flex: 0 0 100px !important;
 
-    min-width: 100px !important;
-    width: 100px !important;
-    max-width: 100px !important;
+    flex: 1 1 0 !important;
+
+    width: 0 !important;
+    min-width: 0 !important;
+    max-width: none !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
 }
+
+/* The button wrappers must fill each column */
 
 .st-key-multiplier_row .stButton,
 .st-key-multiplier_row
 [data-testid="stPopover"] {
+
     width: 100% !important;
     min-width: 0 !important;
+    max-width: 100% !important;
 }
 
-/* Solid turquoise-blue background */
+/* ======================================================
+   SQUARE SOLID-BLUE MULTIPLIER BUTTONS
+   ====================================================== */
 
 .st-key-multiplier_row
 .stButton > button,
 .st-key-multiplier_row
 [data-testid="stPopover"] button {
+
     background-color: #0097B2 !important;
     background-image: none !important;
 
     color: #FFFFFF !important;
 
     width: 100% !important;
-    height: 46px !important;
-    min-height: 46px !important;
-    max-height: 46px !important;
 
-    padding: 0 2px !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+
+    aspect-ratio: 1 / 1 !important;
+
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
 
     border: 2px solid #0097B2 !important;
     border-radius: 0 !important;
 
-    /* Doubled from prior 16-22px range */
-    font-size: clamp(32px, 3vw, 44px) !important;
-    font-weight: 800 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    /*
+       Extra-large font, condensed horizontally
+       so 1.5X fits inside a narrow square.
+    */
+
+    font-size: clamp(44px, 5.5vw, 74px) !important;
+    font-weight: 900 !important;
     line-height: 1 !important;
 
     white-space: nowrap !important;
 
     box-shadow:
-        0 4px 12px rgba(0, 0, 0, .65),
-        0 0 13px rgba(0, 151, 178, .35),
-        0 0 23px rgba(0, 151, 178, .16)
+        0 4px 10px rgba(0,0,0,.70),
+        0 0 11px rgba(0,151,178,.48),
+        0 0 20px rgba(0,151,178,.22)
         !important;
 }
+
+/* Enlarge the numbers and compress their width */
 
 .st-key-multiplier_row
 .stButton > button p,
 .st-key-multiplier_row
 [data-testid="stPopover"] button p {
+
+    display: block !important;
+
+    width: max-content !important;
+    max-width: none !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
     color: #FFFFFF !important;
+
     font-size: inherit !important;
-    font-weight: 800 !important;
+    font-weight: 900 !important;
     line-height: 1 !important;
+
+    letter-spacing: -0.055em !important;
     white-space: nowrap !important;
+
+    transform: scaleX(.50);
+    transform-origin: center center;
+
+    flex: 0 0 auto !important;
+
+    pointer-events: none;
 }
 
 .st-key-multiplier_row
 .stButton > button:hover,
 .st-key-multiplier_row
 [data-testid="stPopover"] button:hover {
+
     background-color: #0AABC6 !important;
     border-color: #0AABC6 !important;
 
     box-shadow:
-        0 5px 14px rgba(0, 0, 0, .65),
-        0 0 18px rgba(0, 151, 178, .48),
-        0 0 28px rgba(0, 151, 178, .24)
+        0 5px 13px rgba(0,0,0,.75),
+        0 0 17px rgba(0,151,178,.65),
+        0 0 28px rgba(0,151,178,.32)
         !important;
 }
 
@@ -1271,7 +1254,7 @@ div[class*="st-key-recipe_"] button p {
     color: #FFFFFF !important;
 
     font-family: Arial, Helvetica, sans-serif;
-    font-size: clamp(18px, 1.8vw, 24px);
+    font-size: clamp(18px,1.8vw,24px);
     font-weight: 700;
     line-height: 1.3;
 
@@ -1284,6 +1267,7 @@ div[class*="st-key-recipe_"] button p {
    ====================================================== */
 
 .container-guide {
+
     background: #141414 !important;
 
     border: 1px solid #484848;
@@ -1305,7 +1289,6 @@ div[class*="st-key-recipe_"] button p {
 
     letter-spacing: .12em;
     text-transform: uppercase;
-
     margin-bottom: 7px;
 }
 
@@ -1313,7 +1296,7 @@ div[class*="st-key-recipe_"] button p {
     color: #FFFFFF !important;
 
     font-family: Arial, Helvetica, sans-serif;
-    font-size: clamp(14px, 1.35vw, 18px);
+    font-size: clamp(14px,1.35vw,18px);
     font-weight: 600;
     line-height: 1.45;
 }
@@ -1323,10 +1306,11 @@ div[class*="st-key-recipe_"] button p {
 }
 
 /* ======================================================
-   RECIPE HEADING
+   RECIPE TITLE
    ====================================================== */
 
 .recipe-card-heading {
+
     background: #030303 !important;
 
     color: var(
@@ -1335,7 +1319,7 @@ div[class*="st-key-recipe_"] button p {
     ) !important;
 
     font-family: Arial, Helvetica, sans-serif;
-    font-size: clamp(19px, 1.9vw, 26px);
+    font-size: clamp(19px,1.9vw,26px);
     font-weight: 700;
     line-height: 1.2;
 
@@ -1347,7 +1331,6 @@ div[class*="st-key-recipe_"] button p {
     );
 
     border-radius: 9px;
-
     min-height: 64px;
 
     display: flex;
@@ -1357,7 +1340,7 @@ div[class*="st-key-recipe_"] button p {
 }
 
 /* ======================================================
-   PREPARATION AND INGREDIENT HEADINGS
+   SECTION HEADINGS
    ====================================================== */
 
 .section-title {
@@ -1375,10 +1358,11 @@ div[class*="st-key-recipe_"] button p {
 }
 
 /* ======================================================
-   INGREDIENTS - DOTTED LEADERS
+   INGREDIENTS WITH DOTTED LEADERS
    ====================================================== */
 
 .ingredient-row {
+
     display: flex;
     align-items: baseline;
     justify-content: space-between;
@@ -1389,7 +1373,7 @@ div[class*="st-key-recipe_"] button p {
     padding: 9px 0;
 
     font-family: Arial, Helvetica, sans-serif;
-    font-size: clamp(15px, 1.5vw, 19px);
+    font-size: clamp(15px,1.5vw,19px);
     font-weight: 500;
     line-height: 1.35;
 
@@ -1406,6 +1390,7 @@ div[class*="st-key-recipe_"] button p {
 }
 
 .ingredient-row::after {
+
     content: "";
 
     flex: 1 1 auto;
@@ -1423,6 +1408,7 @@ div[class*="st-key-recipe_"] button p {
 
     text-align: right;
     white-space: nowrap;
+
     font-variant-numeric: tabular-nums;
 
     flex: 0 0 auto;
@@ -1433,9 +1419,8 @@ div[class*="st-key-recipe_"] button p {
    PREPARATION STEPS
    ====================================================== */
 
-/* Instructions in pure white */
-
 .step-block {
+
     color: #FFFFFF !important;
 
     border-bottom: 1px solid #292929;
@@ -1444,7 +1429,7 @@ div[class*="st-key-recipe_"] button p {
     margin: 0 0 14px;
 
     font-family: Arial, Helvetica, sans-serif;
-    font-size: clamp(15px, 1.5vw, 19px);
+    font-size: clamp(15px,1.5vw,19px);
     line-height: 1.5;
 }
 
@@ -1453,7 +1438,7 @@ div[class*="st-key-recipe_"] button p {
     font-weight: 500;
 }
 
-/* STEP #1 label in #545454 */
+/* STEP NUMBER - GRAY */
 
 .step-number {
     color: #545454 !important;
@@ -1471,6 +1456,7 @@ div[class*="st-key-recipe_"] button p {
    ====================================================== */
 
 .recipe-notes {
+
     background: #111111 !important;
     color: #FFFFFF !important;
 
@@ -1495,7 +1481,7 @@ div[class*="st-key-recipe_"] button p {
 }
 
 /* ======================================================
-   GENERAL SPACING
+   GENERAL STREAMLIT SPACING
    ====================================================== */
 
 .st-key-recipe_detail
@@ -1509,7 +1495,7 @@ hr {
 }
 
 /* ======================================================
-   LOGIN SCREEN
+   LOGIN
    ====================================================== */
 
 .login-heading {
@@ -1559,7 +1545,7 @@ hr {
     color: #999999 !important;
 }
 
-/* Password visibility control */
+/* Password eye control */
 
 [data-testid="stTextInput"] button,
 [data-testid="stTextInput"] button:hover {
@@ -1576,6 +1562,7 @@ hr {
 /* Log in button */
 
 [data-testid="stFormSubmitButton"] button {
+
     background: #393939 !important;
     color: #FFFFFF !important;
 
@@ -1584,6 +1571,11 @@ hr {
 
     min-height: 46px !important;
     padding: 8px 24px !important;
+
+    box-shadow:
+        0 4px 12px rgba(0,0,0,.7),
+        0 0 15px rgba(255,255,255,.16)
+        !important;
 }
 
 [data-testid="stFormSubmitButton"] button p {
@@ -1623,6 +1615,7 @@ div[data-baseweb="popover"] > div {
 [data-testid="stPopoverBody"]
 [data-testid="stFormSubmitButton"] button {
     background: #393939 !important;
+
     color: #FFFFFF !important;
 
     border: 1px solid #C6A057 !important;
@@ -1635,10 +1628,11 @@ textarea {
 }
 
 /* ======================================================
-   LOG OUT
+   LOG OUT BUTTON
    ====================================================== */
 
 .st-key-logout button {
+
     background: #393939 !important;
     color: #FFFFFF !important;
 
@@ -1649,6 +1643,11 @@ textarea {
     border-radius: 8px !important;
 
     font-size: 13px !important;
+
+    box-shadow:
+        0 4px 12px rgba(0,0,0,.7),
+        0 0 15px rgba(255,255,255,.15)
+        !important;
 }
 
 .st-key-logout button:hover {
@@ -1657,14 +1656,14 @@ textarea {
 }
 
 /* ======================================================
-   IPAD PORTRAIT
+   SMALLER DISPLAYS
    ====================================================== */
 
 @media (max-width: 900px) {
 
     .block-container {
-        padding-left: 14px;
-        padding-right: 14px;
+        padding-left: 8px !important;
+        padding-right: 8px !important;
     }
 
     .st-key-cat_0 button,
@@ -1676,15 +1675,23 @@ textarea {
     }
 
     .st-key-multiplier_row
-    [data-testid="stColumn"] {
-        flex: 0 0 92px !important;
-        min-width: 92px !important;
-        width: 92px !important;
-        max-width: 92px !important;
+    [data-testid="stHorizontalBlock"] {
+        gap: 2px !important;
     }
 
-    .st-key-multiplier_row button {
-        font-size: 32px !important;
+    .st-key-multiplier_row
+    .stButton > button,
+    .st-key-multiplier_row
+    [data-testid="stPopover"] button {
+        font-size: clamp(31px, 5vw, 48px) !important;
+        border-width: 1px !important;
+    }
+
+    .st-key-multiplier_row
+    .stButton > button p,
+    .st-key-multiplier_row
+    [data-testid="stPopover"] button p {
+        transform: scaleX(.45);
     }
 
     div[class*="st-key-recipe_"] button {
@@ -1720,7 +1727,7 @@ textarea {
 
 
 # ==========================================================
-# SELECTED CATEGORY
+# SELECTED CATEGORY HIGHLIGHT
 # ==========================================================
 
 def highlight_category(index):
@@ -1743,7 +1750,7 @@ def highlight_category(index):
 
 
 # ==========================================================
-# SELECTED MULTIPLIER
+# SELECTED MULTIPLIER HIGHLIGHT
 # ==========================================================
 
 def highlight_multiplier(key):
@@ -1907,7 +1914,9 @@ if recipe_name not in RECIPES:
 
 recipe = RECIPES[recipe_name]
 
-color = CATEGORY_COLORS[recipe["category"]]
+color = CATEGORY_COLORS[
+    recipe["category"]
+]
 
 container_notes, general_notes = split_recipe_notes(
     recipe["notes"]
@@ -1917,39 +1926,26 @@ container_notes, general_notes = split_recipe_notes(
 with st.container(key="recipe_detail"):
 
     # ======================================================
-    # PRESET AND CUSTOM MULTIPLIERS
+    # SQUARE MULTIPLIERS
+    # FIRST: %
+    # THEN: 1X THROUGH 30X
     # ======================================================
 
     with st.container(key="multiplier_row"):
 
+        # 15 identical, evenly spaced columns.
+        # No minimum 100px widths or horizontal scrolling.
+
         cols = st.columns(
             15,
-            gap="small",
+            gap=None,
         )
 
-        for index, factor in enumerate(MULTIPLIERS):
+        # ==================================================
+        # CUSTOM PERCENTAGE - FAR LEFT
+        # ==================================================
 
-            with cols[index]:
-
-                st.button(
-                    fmt_factor(factor),
-                    key=f"mult_{index}",
-                    use_container_width=True,
-                    on_click=select_multiplier,
-                    args=(factor,),
-                )
-
-                if (
-                    st.session_state.custom_percentage is None
-                    and st.session_state.multiplier == factor
-                ):
-                    highlight_multiplier(
-                        f"mult_{index}"
-                    )
-
-        # CUSTOM PERCENTAGE CONTROL
-
-        with cols[14]:
+        with cols[0]:
 
             with st.popover(
                 "%",
@@ -1990,6 +1986,32 @@ with st.container(key="recipe_detail"):
                     else:
                         st.rerun()
 
+        # ==================================================
+        # 14 PRESET MULTIPLIERS
+        # ==================================================
+
+        for index, factor in enumerate(MULTIPLIERS):
+
+            # Index + 1 places presets after %.
+
+            with cols[index + 1]:
+
+                st.button(
+                    fmt_factor(factor),
+                    key=f"mult_{index}",
+                    use_container_width=True,
+                    on_click=select_multiplier,
+                    args=(factor,),
+                )
+
+                if (
+                    st.session_state.custom_percentage is None
+                    and st.session_state.multiplier == factor
+                ):
+                    highlight_multiplier(
+                        f"mult_{index}"
+                    )
+
     # ======================================================
     # CURRENT BATCH
     # ======================================================
@@ -2029,10 +2051,12 @@ with st.container(key="recipe_detail"):
     )
 
     # ======================================================
-    # LEFT COLUMN - CONTAINER GUIDE + PREPARATION STEPS
+    # LEFT - CONTAINER GUIDE AND PREPARATION
     # ======================================================
 
     with left:
+
+        # CONTAINER GUIDE
 
         if container_notes:
 
@@ -2061,7 +2085,7 @@ with st.container(key="recipe_detail"):
             unsafe_allow_html=True,
         )
 
-        # CATEGORY-COLORED HEADING
+        # PREPARATION HEADING
 
         st.markdown(
             f'<div class="section-title" '
@@ -2071,12 +2095,13 @@ with st.container(key="recipe_detail"):
             unsafe_allow_html=True,
         )
 
-        # STEP LABELS GRAY, INSTRUCTIONS WHITE
+        # PREPARATION STEPS
 
         if recipe["steps"]:
 
             for number, step in enumerate(
-                recipe["steps"], 1
+                recipe["steps"],
+                1,
             ):
 
                 html = (
@@ -2102,7 +2127,7 @@ with st.container(key="recipe_detail"):
             )
 
     # ======================================================
-    # RIGHT COLUMN - RECIPE NAME + INGREDIENTS
+    # RIGHT - RECIPE NAME AND INGREDIENTS
     # ======================================================
 
     with right:
@@ -2169,7 +2194,7 @@ with st.container(key="recipe_detail"):
 
 
 # ==========================================================
-# LOG OUT - BOTTOM RIGHT
+# LOG OUT
 # ==========================================================
 
 st.divider()
