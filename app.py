@@ -2,14 +2,12 @@
 import streamlit as st
 import hmac
 import re
-
 from decimal import Decimal, InvalidOperation
 from html import escape
 
-
 # ==========================================================
 # RICE IS LIFE - STAFF RECIPE BOOK
-# IPAD LANDSCAPE - DARK EDITION
+# COMPLETE APP - LARGE MULTIPLIER LABEL FIX
 # ==========================================================
 
 st.set_page_config(
@@ -18,7 +16,6 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="collapsed",
 )
-
 
 # ==========================================================
 # SETTINGS
@@ -31,7 +28,6 @@ BUTTON_BG = "#393939"
 WHITE = "#FFFFFF"
 GOLD = "#C6A057"
 MULTIPLIER_COLOR = "#0097B2"
-STEP_LABEL_COLOR = "#545454"
 
 CATEGORIES = [
     "Sauces + Dressings",
@@ -49,29 +45,24 @@ CATEGORY_COLORS = {
 
 MULTIPLIERS = [
     1, 1.5, 2, 3, 4, 5, 6, 7,
-    8, 9, 10, 13, 20, 30
+    8, 9, 10, 13, 20, 30,
 ]
 
 RECIPES = {}
 
 
 # ==========================================================
-# RECIPE DATA
+# RECIPE PARSER
 # ==========================================================
 
 def R(name, category, ingredients, steps, notes=""):
-
     parsed = []
 
     for entry in ingredients.split(";"):
-
         if not entry.strip():
             continue
 
-        parts = [
-            p.strip()
-            for p in entry.split("|")
-        ]
+        parts = [p.strip() for p in entry.split("|")]
 
         if len(parts) != 3:
             raise ValueError(
@@ -633,7 +624,7 @@ R(
 
 
 # ==========================================================
-# PICKLED DAIKON SPECIAL QUANTITIES
+# PICKLED DAIKON SPECIAL AMOUNTS
 # ==========================================================
 
 SPECIAL_MULTIPLIERS = {
@@ -657,7 +648,7 @@ SPECIAL_MULTIPLIERS = {
 
 
 # ==========================================================
-# INGREDIENT MULTIPLIER
+# SAFE INGREDIENT MULTIPLIER
 # ==========================================================
 
 def format_amount(
@@ -667,13 +658,7 @@ def format_amount(
     recipe_name=None,
     ingredient_name=None,
 ):
-
-    amount = (
-        str(amount).strip()
-        if amount is not None
-        else ""
-    )
-
+    amount = "" if amount is None else str(amount).strip()
     unit = str(unit).strip()
 
     override = (
@@ -690,10 +675,7 @@ def format_amount(
         return unit
 
     try:
-        value = (
-            Decimal(amount)
-            * Decimal(str(multiplier))
-        )
+        value = Decimal(amount) * Decimal(str(multiplier))
 
         if not value.is_finite():
             raise InvalidOperation
@@ -701,16 +683,10 @@ def format_amount(
     except (InvalidOperation, ValueError, TypeError):
         return f"{amount} {unit}".strip()
 
-    if value != value.to_integral_value():
-
-        text = (
-            f"{value:,.3f}"
-            .rstrip("0")
-            .rstrip(".")
-        )
-
-    else:
+    if value == value.to_integral_value():
         text = f"{int(value):,}"
+    else:
+        text = f"{value:,.3f}".rstrip("0").rstrip(".")
 
     return f"{text} {unit}"
 
@@ -720,11 +696,10 @@ def fmt_factor(factor):
 
 
 # ==========================================================
-# CONTAINER SIZE NOTES
+# CONTAINER GUIDE NOTES
 # ==========================================================
 
 def split_recipe_notes(notes):
-
     container_notes = []
     general_notes = []
 
@@ -734,7 +709,6 @@ def split_recipe_notes(notes):
     )
 
     for note in notes:
-
         if pattern.search(note):
             container_notes.append(note)
         else:
@@ -764,7 +738,6 @@ if "custom_percentage" not in st.session_state:
 
 
 def select_category(category):
-
     st.session_state.category = category
     st.session_state.recipe = None
     st.session_state.multiplier = 1.0
@@ -772,14 +745,12 @@ def select_category(category):
 
 
 def select_recipe(name):
-
     st.session_state.recipe = name
     st.session_state.multiplier = 1.0
     st.session_state.custom_percentage = None
 
 
 def select_multiplier(factor):
-
     st.session_state.multiplier = float(factor)
     st.session_state.custom_percentage = None
 
@@ -789,9 +760,8 @@ def select_multiplier(factor):
 # ==========================================================
 
 def set_custom_percent(percent_text):
-
     clean = (
-        percent_text
+        str(percent_text)
         .strip()
         .replace("%", "")
         .replace(",", ".")
@@ -799,52 +769,26 @@ def set_custom_percent(percent_text):
 
     try:
         value = Decimal(clean)
+    except (InvalidOperation, ValueError):
+        return "Enter a valid percentage such as 75 or 125."
 
-    except InvalidOperation:
-        return "Enter a valid percentage, such as 75 or 125."
-
-    if (
-        not value.is_finite()
-        or value <= 0
-        or value > 10000
-    ):
+    if not value.is_finite() or value <= 0 or value > 10000:
         return "Choose a percentage above 0 and up to 10000."
 
     st.session_state.custom_percentage = float(value)
-
-    st.session_state.multiplier = float(
-        value / Decimal(100)
-    )
+    st.session_state.multiplier = float(value / Decimal(100))
 
     return None
 
 
 # ==========================================================
-# DARK THEME AND BUTTON STYLING
+# STYLESHEET
 # ==========================================================
 
 st.markdown("""
 <style>
 
-/* ======================================================
-   COLOR PALETTE
-   ====================================================== */
-
-:root {
-    --bg: #030303;
-    --button: #393939;
-    --button-hover: #474747;
-    --white: #FFFFFF;
-    --gold: #C6A057;
-    --sauce: #D48A55;
-    --main: #ED555A;
-    --salad: #81C568;
-    --multiplier: #0097B2;
-}
-
-/* ======================================================
-   PAGE BACKGROUND
-   ====================================================== */
+/* PAGE */
 
 html,
 body,
@@ -852,16 +796,13 @@ body,
 [data-testid="stAppViewContainer"],
 [data-testid="stMain"],
 section[data-testid="stMain"] {
-    background-color: #030303 !important;
+    background: #030303 !important;
     color: #FFFFFF !important;
 }
 
 .block-container {
     max-width: 1480px;
-    padding-top: 48px !important;
-    padding-bottom: 35px !important;
-    padding-left: 12px !important;
-    padding-right: 12px !important;
+    padding: 48px 12px 35px !important;
 }
 
 #MainMenu,
@@ -878,118 +819,76 @@ footer {
     color: #FFFFFF;
 }
 
-[data-testid="stSidebar"] {
-    background-color: #030303 !important;
-}
-
-/* ======================================================
-   BRAND
-   ====================================================== */
+/* BRAND */
 
 .brand-logo {
+    color: #ED2227 !important;
     font-family: Arial, Helvetica, sans-serif;
     font-size: clamp(36px, 4.5vw, 58px);
     font-weight: 800;
-    line-height: 1.1;
     letter-spacing: -1.5px;
     text-align: center;
-    color: #ED2227 !important;
+    line-height: 1.1;
     margin: 0 0 8px;
 }
 
 .brand-subtitle {
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: .20em;
     color: #B4B4B4 !important;
+    text-align: center;
+    font: 600 11px Arial, Helvetica, sans-serif;
+    letter-spacing: .20em;
     margin-bottom: 15px;
 }
 
-/* ======================================================
-   SOFT GLOW - ALL BUTTONS
-   ====================================================== */
+/* ALL BUTTONS - SOFT GLOW */
 
 .stButton > button,
 [data-testid="stPopover"] button,
 [data-testid="stFormSubmitButton"] button {
-
-    background-color: #393939 !important;
+    background: #393939 !important;
     color: #FFFFFF !important;
-
     border: 2px solid #686868 !important;
     border-radius: 9px !important;
 
     box-shadow:
-        0 4px 12px rgba(0,0,0,.70),
-        0 0 12px rgba(255,255,255,.16),
-        0 0 23px rgba(255,255,255,.07)
+        0 4px 12px rgba(0, 0, 0, .70),
+        0 0 12px rgba(255, 255, 255, .16),
+        0 0 23px rgba(255, 255, 255, .07)
         !important;
 
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 600 !important;
-
-    transition:
-        background-color .16s ease,
-        box-shadow .16s ease,
-        transform .16s ease;
-}
-
-.stButton > button p,
-.stButton > button span,
-[data-testid="stPopover"] button p,
-[data-testid="stFormSubmitButton"] button p {
-    color: inherit !important;
+    transition: background .16s ease, box-shadow .16s ease;
 }
 
 .stButton > button:hover,
 [data-testid="stPopover"] button:hover,
 [data-testid="stFormSubmitButton"] button:hover {
-
-    background-color: #474747 !important;
+    background: #474747 !important;
 
     box-shadow:
-        0 6px 16px rgba(0,0,0,.75),
-        0 0 18px rgba(255,255,255,.23),
-        0 0 28px rgba(255,255,255,.10)
+        0 6px 16px rgba(0, 0, 0, .75),
+        0 0 18px rgba(255, 255, 255, .23),
+        0 0 28px rgba(255, 255, 255, .10)
         !important;
-
-    transform: translateY(-1px);
 }
 
-.stButton > button:active {
-    transform: translateY(1px);
+.stButton > button p,
+[data-testid="stPopover"] button p,
+[data-testid="stFormSubmitButton"] button p {
+    color: inherit !important;
 }
 
-.stButton > button:focus-visible {
-    outline: 2px solid #C6A057 !important;
-    outline-offset: 2px;
-}
-
-/* ======================================================
-   CATEGORY BUTTONS
-   ====================================================== */
+/* CATEGORY BUTTONS */
 
 .st-key-cat_0 button,
 .st-key-cat_1 button,
 .st-key-cat_2 button {
-
-    background-color: #030303 !important;
-    width: 100%;
-
+    background: #030303 !important;
     min-height: 66px !important;
-
-    font-size: clamp(13px,1.35vw,18px) !important;
+    width: 100%;
+    font-size: clamp(13px, 1.35vw, 18px) !important;
     font-weight: 700 !important;
-
-    border: 2px solid #383838 !important;
-    border-radius: 9px !important;
-
-    box-shadow:
-        0 4px 12px rgba(0,0,0,.70),
-        0 0 15px rgba(255,255,255,.13)
-        !important;
 }
 
 .st-key-cat_0 button,
@@ -1007,45 +906,25 @@ footer {
     color: #81C568 !important;
 }
 
-.st-key-cat_0 button:hover,
-.st-key-cat_1 button:hover,
-.st-key-cat_2 button:hover {
-    background-color: #151515 !important;
-}
-
-/* ======================================================
-   RECIPE BUTTONS
-   ====================================================== */
+/* RECIPE BUTTONS */
 
 div[class*="st-key-recipe_"] button {
-
-    background-color: #393939 !important;
-
+    background: #393939 !important;
     min-height: 86px !important;
     padding: 14px 16px !important;
 
-    font-size: clamp(13px,1.3vw,17px) !important;
+    font-size: clamp(13px, 1.3vw, 17px) !important;
     font-weight: 700 !important;
 
-    line-height: 1.25 !important;
     text-align: left !important;
-
-    border-width: 2px !important;
-    border-style: solid !important;
-    border-radius: 9px !important;
+    border: 2px solid !important;
 
     box-shadow:
-        0 5px 14px rgba(0,0,0,.74),
-        0 0 12px rgba(255,255,255,.13),
-        0 0 23px rgba(255,255,255,.055)
+        0 5px 14px rgba(0, 0, 0, .74),
+        0 0 12px rgba(255, 255, 255, .13),
+        0 0 23px rgba(255, 255, 255, .055)
         !important;
 }
-
-div[class*="st-key-recipe_"] button:hover {
-    background-color: #474747 !important;
-}
-
-/* Sauces */
 
 .st-key-recipe_grid_sauce
 div[class*="st-key-recipe_"] button {
@@ -1058,8 +937,6 @@ div[class*="st-key-recipe_"] button p {
     color: #D48A55 !important;
 }
 
-/* Mains */
-
 .st-key-recipe_grid_main
 div[class*="st-key-recipe_"] button {
     border-color: #ED555A !important;
@@ -1070,8 +947,6 @@ div[class*="st-key-recipe_"] button {
 div[class*="st-key-recipe_"] button p {
     color: #ED555A !important;
 }
-
-/* Salads */
 
 .st-key-recipe_grid_salad
 div[class*="st-key-recipe_"] button {
@@ -1085,92 +960,51 @@ div[class*="st-key-recipe_"] button p {
 }
 
 /* ======================================================
-   MULTIPLIER ROW
-   15 EQUAL SQUARES ON ONE LINE
+   MULTIPLIER ROW - 15 SQUARE BUTTONS
    ====================================================== */
 
-/*
-    The row has 15 controls:
-    % + 14 preset multipliers.
-
-    No fixed 100px columns.
-    Each column takes 1/15 of the available width.
-
-    Each button has aspect-ratio 1/1.
-*/
-
-.st-key-multiplier_row
-[data-testid="stHorizontalBlock"] {
-
+.st-key-multiplier_row [data-testid="stHorizontalBlock"] {
     display: flex !important;
     flex-wrap: nowrap !important;
-
     gap: 3px !important;
-
     width: 100% !important;
     min-width: 0 !important;
-
+    padding: 12px 3px 20px !important;
     overflow: visible !important;
-
-    padding: 10px 3px 19px !important;
 }
 
-/* Force all 15 Streamlit columns to equal widths */
-
-.st-key-multiplier_row
-[data-testid="stColumn"] {
-
+.st-key-multiplier_row [data-testid="stColumn"] {
     flex: 1 1 0 !important;
-
-    width: 0 !important;
     min-width: 0 !important;
+    width: 0 !important;
     max-width: none !important;
-
     padding: 0 !important;
     margin: 0 !important;
 }
 
-/* The button wrappers must fill each column */
-
 .st-key-multiplier_row .stButton,
-.st-key-multiplier_row
-[data-testid="stPopover"] {
-
+.st-key-multiplier_row [data-testid="stPopover"] {
     width: 100% !important;
     min-width: 0 !important;
     max-width: 100% !important;
 }
 
-/* ======================================================
-   SQUARE SOLID-BLUE MULTIPLIER BUTTONS
-   ====================================================== */
+/* Button size and solid blue color */
 
-.st-key-multiplier_row
-.stButton > button,
-.st-key-multiplier_row
-[data-testid="stPopover"] button {
-
-    background-color: #0097B2 !important;
-    background-image: none !important;
-
-    color: #FFFFFF !important;
-
+.st-key-multiplier_row .stButton > button,
+.st-key-multiplier_row [data-testid="stPopover"] > button,
+.st-key-multiplier_row [data-testid="stPopover"] button {
     width: 100% !important;
+    aspect-ratio: 1 / 1 !important;
 
     min-width: 0 !important;
     max-width: 100% !important;
-
-    aspect-ratio: 1 / 1 !important;
-
     height: auto !important;
     min-height: 0 !important;
     max-height: none !important;
 
     padding: 0 !important;
     margin: 0 !important;
-
-    border: 2px solid #0097B2 !important;
-    border-radius: 0 !important;
 
     display: flex !important;
     align-items: center !important;
@@ -1179,225 +1013,197 @@ div[class*="st-key-recipe_"] button p {
     box-sizing: border-box !important;
     overflow: hidden !important;
 
-    font-family: Arial, Helvetica, sans-serif;
+    background: #0097B2 !important;
+    color: #FFFFFF !important;
 
-    /*
-       Extra-large font, condensed horizontally
-       so 1.5X fits inside a narrow square.
-    */
-
-    font-size: clamp(44px, 5.5vw, 74px) !important;
-    font-weight: 900 !important;
-    line-height: 1 !important;
-
-    white-space: nowrap !important;
+    border: 2px solid #0097B2 !important;
+    border-radius: 0 !important;
 
     box-shadow:
-        0 4px 10px rgba(0,0,0,.70),
-        0 0 11px rgba(0,151,178,.48),
-        0 0 20px rgba(0,151,178,.22)
+        0 4px 10px rgba(0, 0, 0, .70),
+        0 0 12px rgba(0, 151, 178, .48),
+        0 0 22px rgba(0, 151, 178, .24)
         !important;
 }
 
-/* Enlarge the numbers and compress their width */
+/* ======================================================
+   ACTUAL STREAMLIT BUTTON LABEL FIX
 
-.st-key-multiplier_row
-.stButton > button p,
-.st-key-multiplier_row
-[data-testid="stPopover"] button p {
+   Apply size to the markdown container AND its text.
+   Unlike previous attempts, no text scaling/compression.
+   ====================================================== */
 
-    display: block !important;
+/* Preset buttons use st-key-mult_0 etc.
+   This is deliberately independent of container styling. */
 
-    width: max-content !important;
+div[class*="st-key-mult_"] button {
+    font-size: clamp(24px, 2.8vw, 36px) !important;
+    font-weight: 900 !important;
+}
+
+div[class*="st-key-mult_"] button
+[data-testid="stMarkdownContainer"],
+
+div[class*="st-key-mult_"] button
+[data-testid="stMarkdownContainer"] p,
+
+div[class*="st-key-mult_"] button p,
+
+div[class*="st-key-mult_"] button span {
+    font-size: clamp(24px, 2.8vw, 36px) !important;
+    font-weight: 900 !important;
+    line-height: 1 !important;
+    letter-spacing: -1px !important;
+
+    color: #FFFFFF !important;
+    white-space: nowrap !important;
+
+    transform: none !important;
+    zoom: 1 !important;
+    font-stretch: normal !important;
+
+    width: auto !important;
     max-width: none !important;
 
     margin: 0 !important;
     padding: 0 !important;
+}
 
-    color: #FFFFFF !important;
+/* Slightly smaller for the longest label 1.5X
+   so it fits within the same square. */
 
-    font-size: inherit !important;
+.st-key-mult_1 button,
+.st-key-mult_1 button p,
+.st-key-mult_1 button span,
+.st-key-mult_1 button [data-testid="stMarkdownContainer"] {
+    font-size: clamp(21px, 2.45vw, 30px) !important;
+    letter-spacing: -1.5px !important;
+}
+
+/* Custom % button label */
+
+.st-key-multiplier_row
+[data-testid="stPopover"] button {
+    font-size: clamp(24px, 2.8vw, 36px) !important;
+    font-weight: 900 !important;
+}
+
+.st-key-multiplier_row
+[data-testid="stPopover"] button p,
+
+.st-key-multiplier_row
+[data-testid="stPopover"] button span,
+
+.st-key-multiplier_row
+[data-testid="stPopover"] button
+[data-testid="stMarkdownContainer"] {
+    font-size: clamp(24px, 2.8vw, 36px) !important;
     font-weight: 900 !important;
     line-height: 1 !important;
 
-    letter-spacing: -0.055em !important;
-    white-space: nowrap !important;
-
-    transform: scaleX(.50);
-    transform-origin: center center;
-
-    flex: 0 0 auto !important;
-
-    pointer-events: none;
+    color: #FFFFFF !important;
+    transform: none !important;
+    zoom: 1 !important;
 }
 
-.st-key-multiplier_row
-.stButton > button:hover,
-.st-key-multiplier_row
-[data-testid="stPopover"] button:hover {
+/* Selected preset glow and hover */
 
-    background-color: #0AABC6 !important;
+.st-key-multiplier_row button:hover {
+    background: #0AABC6 !important;
     border-color: #0AABC6 !important;
-
-    box-shadow:
-        0 5px 13px rgba(0,0,0,.75),
-        0 0 17px rgba(0,151,178,.65),
-        0 0 28px rgba(0,151,178,.32)
-        !important;
 }
 
-/* ======================================================
-   CURRENT BATCH
-   ====================================================== */
+/* CURRENT BATCH */
 
 .current-batch {
     color: #FFFFFF !important;
-
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: clamp(18px,1.8vw,24px);
-    font-weight: 700;
-    line-height: 1.3;
-
+    font: 700 clamp(18px, 1.8vw, 24px)/1.3 Arial, sans-serif;
     padding: 10px 0 6px;
     margin-bottom: 5px;
 }
 
-/* ======================================================
-   CONTAINER GUIDE
-   ====================================================== */
+/* CONTAINER GUIDE */
 
 .container-guide {
-
     background: #141414 !important;
-
     border: 1px solid #484848;
     border-left: 3px solid #C6A057;
     border-radius: 8px;
-
     padding: 13px 17px;
     margin: 0 0 14px;
-
     min-height: 64px;
 }
 
 .container-guide-label {
     color: #C6A057 !important;
-
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 11px;
-    font-weight: 800;
-
+    font: 800 11px Arial, sans-serif;
     letter-spacing: .12em;
-    text-transform: uppercase;
     margin-bottom: 7px;
 }
 
 .container-guide-value {
     color: #FFFFFF !important;
-
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: clamp(14px,1.35vw,18px);
-    font-weight: 600;
-    line-height: 1.45;
+    font: 600 clamp(14px, 1.35vw, 18px)/1.45 Arial, sans-serif;
 }
 
 .container-guide-value + .container-guide-value {
     margin-top: 6px;
 }
 
-/* ======================================================
-   RECIPE TITLE
-   ====================================================== */
+/* RECIPE TITLE */
 
 .recipe-card-heading {
-
     background: #030303 !important;
+    color: var(--recipe-accent, #FFFFFF) !important;
 
-    color: var(
-        --recipe-accent,
-        #FFFFFF
-    ) !important;
+    font: 700 clamp(19px, 1.9vw, 26px)/1.2 Arial, sans-serif;
 
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: clamp(19px,1.9vw,26px);
-    font-weight: 700;
-    line-height: 1.2;
+    border: 2px solid var(--recipe-accent, #FFFFFF);
+    border-radius: 9px;
 
     padding: 15px 18px;
-
-    border: 2px solid var(
-        --recipe-accent,
-        #FFFFFF
-    );
-
-    border-radius: 9px;
     min-height: 64px;
 
     display: flex;
     align-items: center;
-
     overflow-wrap: anywhere;
 }
 
-/* ======================================================
-   SECTION HEADINGS
-   ====================================================== */
+/* SECTION HEADINGS */
 
 .section-title {
-    color: var(
-        --category-accent,
-        #FFFFFF
-    ) !important;
-
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 17px;
-    font-weight: 800;
-
+    color: var(--category-accent, #FFFFFF) !important;
+    font: 800 17px Arial, sans-serif;
     letter-spacing: .08em;
     margin: 10px 0 12px;
 }
 
-/* ======================================================
-   INGREDIENTS WITH DOTTED LEADERS
-   ====================================================== */
+/* INGREDIENTS WITH DOTTED LEADERS */
 
 .ingredient-row {
-
     display: flex;
     align-items: baseline;
-    justify-content: space-between;
-
     gap: 14px;
 
     border-bottom: 1px solid #292929;
     padding: 9px 0;
 
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: clamp(15px,1.5vw,19px);
-    font-weight: 500;
-    line-height: 1.35;
-
     color: #FFFFFF !important;
+    font: 500 clamp(15px, 1.5vw, 19px)/1.35 Arial, sans-serif;
 }
 
 .ingredient-name {
     color: #FFFFFF !important;
-    font-weight: 500;
-
     overflow-wrap: anywhere;
     flex: 0 1 auto;
     order: 1;
 }
 
 .ingredient-row::after {
-
     content: "";
-
     flex: 1 1 auto;
     min-width: 10px;
-
     border-bottom: 2px dotted #727272;
-
     transform: translateY(-3px);
     order: 2;
 }
@@ -1405,69 +1211,46 @@ div[class*="st-key-recipe_"] button p {
 .ingredient-amount {
     color: #FFFFFF !important;
     font-weight: 700;
-
     text-align: right;
     white-space: nowrap;
-
     font-variant-numeric: tabular-nums;
-
     flex: 0 0 auto;
     order: 3;
 }
 
-/* ======================================================
-   PREPARATION STEPS
-   ====================================================== */
+/* PREPARATION STEPS */
 
 .step-block {
-
     color: #FFFFFF !important;
-
     border-bottom: 1px solid #292929;
+    padding-bottom: 14px;
+    margin-bottom: 14px;
 
-    padding: 0 0 14px;
-    margin: 0 0 14px;
-
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: clamp(15px,1.5vw,19px);
-    line-height: 1.5;
+    font: 500 clamp(15px, 1.5vw, 19px)/1.5 Arial, sans-serif;
 }
-
-.step-instruction {
-    color: #FFFFFF !important;
-    font-weight: 500;
-}
-
-/* STEP NUMBER - GRAY */
 
 .step-number {
     color: #545454 !important;
-
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 13px;
-    font-weight: 800;
-
+    font: 800 13px Arial, sans-serif;
     letter-spacing: .07em;
     margin-bottom: 7px;
 }
 
-/* ======================================================
-   RECIPE NOTES
-   ====================================================== */
+.step-instruction {
+    color: #FFFFFF !important;
+}
+
+/* NOTES */
 
 .recipe-notes {
-
     background: #111111 !important;
-    color: #FFFFFF !important;
-
     border: 1px solid #383838;
     border-left: 3px solid #C6A057;
-
     border-radius: 8px;
-
     padding: 14px 18px;
     margin-top: 18px;
 
+    color: #FFFFFF !important;
     font-size: 15px;
     line-height: 1.5;
 }
@@ -1480,72 +1263,42 @@ div[class*="st-key-recipe_"] button p {
     margin-top: 8px;
 }
 
-/* ======================================================
-   GENERAL STREAMLIT SPACING
-   ====================================================== */
-
-.st-key-recipe_detail
-[data-testid="stVerticalBlock"] {
-    gap: .65rem;
-}
-
-[data-testid="stDivider"],
-hr {
-    border-color: #292929 !important;
-}
-
-/* ======================================================
-   LOGIN
-   ====================================================== */
+/* LOGIN */
 
 .login-heading {
     color: #FFFFFF !important;
-
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 24px;
-    font-weight: 700;
-
-    margin-bottom: 5px;
+    font: 700 24px Arial, sans-serif;
 }
 
 .login-instruction {
     color: #FFFFFF !important;
-
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 16px;
+    font: 16px Arial, sans-serif;
 }
 
 [data-testid="stForm"] {
     background: #030303 !important;
-
     border: 1px solid #383838 !important;
     border-radius: 12px !important;
-
     padding: 18px;
 }
 
 [data-testid="stTextInput"]
 [data-baseweb="input"] {
     background: #030303 !important;
-
     border: 1px solid #555555 !important;
     border-radius: 8px !important;
 }
 
 [data-testid="stTextInput"] input {
     background: #030303 !important;
-
     color: #FFFFFF !important;
     caret-color: #FFFFFF !important;
-
     font-size: 18px !important;
 }
 
 [data-testid="stTextInput"] input::placeholder {
     color: #999999 !important;
 }
-
-/* Password eye control */
 
 [data-testid="stTextInput"] button,
 [data-testid="stTextInput"] button:hover {
@@ -1555,36 +1308,10 @@ hr {
 }
 
 [data-testid="stTextInput"] button svg {
-    color: #FFFFFF !important;
     stroke: #FFFFFF !important;
 }
 
-/* Log in button */
-
-[data-testid="stFormSubmitButton"] button {
-
-    background: #393939 !important;
-    color: #FFFFFF !important;
-
-    border: 1px solid #FFFFFF !important;
-    border-radius: 8px !important;
-
-    min-height: 46px !important;
-    padding: 8px 24px !important;
-
-    box-shadow:
-        0 4px 12px rgba(0,0,0,.7),
-        0 0 15px rgba(255,255,255,.16)
-        !important;
-}
-
-[data-testid="stFormSubmitButton"] button p {
-    color: #FFFFFF !important;
-}
-
-/* ======================================================
-   CUSTOM PERCENTAGE POPOVER
-   ====================================================== */
+/* CUSTOM PERCENTAGE POPOVER */
 
 [data-testid="stPopoverBody"],
 [data-testid="stPopoverContent"],
@@ -1602,61 +1329,27 @@ div[data-baseweb="popover"] > div {
 [data-testid="stPopoverBody"]
 [data-testid="stForm"] {
     background: #111111 !important;
-    border: none !important;
-}
-
-[data-testid="stPopoverBody"]
-[data-testid="stTextInput"]
-[data-baseweb="input"] {
-    background: #030303 !important;
-    border: 1px solid #666666 !important;
 }
 
 [data-testid="stPopoverBody"]
 [data-testid="stFormSubmitButton"] button {
     background: #393939 !important;
-
     color: #FFFFFF !important;
-
     border: 1px solid #C6A057 !important;
     min-height: 44px !important;
 }
 
-input,
-textarea {
-    color: #FFFFFF !important;
-}
-
-/* ======================================================
-   LOG OUT BUTTON
-   ====================================================== */
+/* LOG OUT */
 
 .st-key-logout button {
-
     background: #393939 !important;
     color: #FFFFFF !important;
-
     min-height: 48px !important;
     width: 100% !important;
-
-    border: 1px solid #777777 !important;
-    border-radius: 8px !important;
-
-    font-size: 13px !important;
-
-    box-shadow:
-        0 4px 12px rgba(0,0,0,.7),
-        0 0 15px rgba(255,255,255,.15)
-        !important;
-}
-
-.st-key-logout button:hover {
-    background: #474747 !important;
-    border-color: #FFFFFF !important;
 }
 
 /* ======================================================
-   SMALLER DISPLAYS
+   RESPONSIVE
    ====================================================== */
 
 @media (max-width: 900px) {
@@ -1671,27 +1364,6 @@ textarea {
     .st-key-cat_2 button {
         min-height: 58px !important;
         font-size: 12px !important;
-        padding: 4px !important;
-    }
-
-    .st-key-multiplier_row
-    [data-testid="stHorizontalBlock"] {
-        gap: 2px !important;
-    }
-
-    .st-key-multiplier_row
-    .stButton > button,
-    .st-key-multiplier_row
-    [data-testid="stPopover"] button {
-        font-size: clamp(31px, 5vw, 48px) !important;
-        border-width: 1px !important;
-    }
-
-    .st-key-multiplier_row
-    .stButton > button p,
-    .st-key-multiplier_row
-    [data-testid="stPopover"] button p {
-        transform: scaleX(.45);
     }
 
     div[class*="st-key-recipe_"] button {
@@ -1700,25 +1372,25 @@ textarea {
         font-size: 12px !important;
     }
 
+    div[class*="st-key-mult_"] button,
+    div[class*="st-key-mult_"] button p,
+    div[class*="st-key-mult_"] button span {
+        font-size: clamp(20px, 3vw, 27px) !important;
+    }
+
+    .st-key-mult_1 button,
+    .st-key-mult_1 button p,
+    .st-key-mult_1 button span {
+        font-size: clamp(17px, 2.5vw, 23px) !important;
+    }
+
     .recipe-card-heading {
+        font-size: 17px;
         padding: 12px 10px;
-        font-size: 17px;
-    }
-
-    .current-batch {
-        font-size: 17px;
-    }
-
-    .container-guide {
-        padding: 10px 12px;
     }
 
     .ingredient-row {
         padding: 7px 0;
-    }
-
-    .step-block {
-        font-size: 15px;
     }
 }
 
@@ -1727,45 +1399,39 @@ textarea {
 
 
 # ==========================================================
-# SELECTED CATEGORY HIGHLIGHT
+# SELECTED CATEGORY STYLING
 # ==========================================================
 
 def highlight_category(index):
-
     color = CATEGORY_COLORS[CATEGORIES[index]]
 
     st.markdown(
-        f'<style>'
+        '<style>'
         f'.st-key-cat_{index} button {{'
         f'border:3px solid {color} !important;'
-        f'box-shadow:'
-        f'0 0 0 1px {color},'
-        f'0 0 15px {color}55,'
-        f'0 4px 12px rgba(0,0,0,.6) !important;'
-        f'background:#111111 !important;'
-        f'}}'
-        f'</style>',
+        f'box-shadow:0 0 0 1px {color},'
+        f'0 0 15px {color}55 !important;'
+        'background:#111111 !important;'
+        '}'
+        '</style>',
         unsafe_allow_html=True,
     )
 
 
 # ==========================================================
-# SELECTED MULTIPLIER HIGHLIGHT
+# SELECTED MULTIPLIER STYLING
 # ==========================================================
 
 def highlight_multiplier(key):
-
     st.markdown(
-        f'<style>'
+        '<style>'
         f'.st-key-{key} button {{'
-        f'background-color:#0097B2 !important;'
-        f'border:3px solid #C6A057 !important;'
-        f'box-shadow:'
-        f'0 0 0 1px #C6A057,'
-        f'0 0 18px rgba(0,151,178,.55),'
-        f'0 0 25px rgba(0,151,178,.22) !important;'
-        f'}}'
-        f'</style>',
+        'background:#0097B2 !important;'
+        'border:3px solid #C6A057 !important;'
+        'box-shadow:0 0 0 1px #C6A057,'
+        '0 0 18px rgba(0,151,178,.55) !important;'
+        '}'
+        '</style>',
         unsafe_allow_html=True,
     )
 
@@ -1775,7 +1441,6 @@ def highlight_multiplier(key):
 # ==========================================================
 
 def login_screen():
-
     st.markdown(
         '<div class="brand-logo">riceislife</div>'
         '<div class="brand-subtitle">'
@@ -1793,24 +1458,17 @@ def login_screen():
     )
 
     with st.form("login_form"):
-
         entered = st.text_input(
             "Staff password",
             type="password",
             placeholder="Enter password",
         )
-
         submit = st.form_submit_button("Log In")
 
     if submit:
-
-        if hmac.compare_digest(
-            entered,
-            STAFF_PASSWORD,
-        ):
+        if hmac.compare_digest(entered, STAFF_PASSWORD):
             st.session_state.authenticated = True
             st.rerun()
-
         else:
             st.error("Incorrect password.")
 
@@ -1826,7 +1484,6 @@ if not st.session_state.authenticated:
 # ==========================================================
 
 with st.container(key="top_navigation"):
-
     st.markdown(
         '<div class="brand-logo">riceislife</div>'
         '<div class="brand-subtitle">'
@@ -1835,15 +1492,10 @@ with st.container(key="top_navigation"):
         unsafe_allow_html=True,
     )
 
-    columns = st.columns(
-        3,
-        gap="medium",
-    )
+    columns = st.columns(3, gap="medium")
 
     for index, cat in enumerate(CATEGORIES):
-
         with columns[index]:
-
             st.button(
                 cat.upper(),
                 key=f"cat_{index}",
@@ -1861,12 +1513,11 @@ with st.container(key="top_navigation"):
 # ==========================================================
 
 if st.session_state.recipe is None:
-
     current = st.session_state.category
 
     names = [
-        n
-        for n, data in RECIPES.items()
+        name
+        for name, data in RECIPES.items()
         if data["category"] == current
     ]
 
@@ -1877,20 +1528,11 @@ if st.session_state.recipe is None:
     }[current]
 
     with st.container(key=grid_key):
-
         for start in range(0, len(names), 4):
+            cols = st.columns(4, gap="medium")
 
-            cols = st.columns(
-                4,
-                gap="medium",
-            )
-
-            for index, name in enumerate(
-                names[start:start + 4]
-            ):
-
+            for index, name in enumerate(names[start:start + 4]):
                 with cols[index]:
-
                     st.button(
                         name,
                         key=f"recipe_{start + index}",
@@ -1913,10 +1555,7 @@ if recipe_name not in RECIPES:
     st.rerun()
 
 recipe = RECIPES[recipe_name]
-
-color = CATEGORY_COLORS[
-    recipe["category"]
-]
+color = CATEGORY_COLORS[recipe["category"]]
 
 container_notes, general_notes = split_recipe_notes(
     recipe["notes"]
@@ -1926,35 +1565,17 @@ container_notes, general_notes = split_recipe_notes(
 with st.container(key="recipe_detail"):
 
     # ======================================================
-    # SQUARE MULTIPLIERS
-    # FIRST: %
-    # THEN: 1X THROUGH 30X
+    # MULTIPLIER ROW - % FIRST
     # ======================================================
 
     with st.container(key="multiplier_row"):
+        cols = st.columns(15, gap=None)
 
-        # 15 identical, evenly spaced columns.
-        # No minimum 100px widths or horizontal scrolling.
-
-        cols = st.columns(
-            15,
-            gap=None,
-        )
-
-        # ==================================================
-        # CUSTOM PERCENTAGE - FAR LEFT
-        # ==================================================
+        # CUSTOM PERCENTAGE BUTTON
 
         with cols[0]:
-
-            with st.popover(
-                "%",
-                use_container_width=True,
-            ):
-
-                st.markdown(
-                    "**Custom batch percentage**"
-                )
+            with st.popover("%", use_container_width=True):
+                st.markdown("**Custom batch percentage**")
 
                 st.caption(
                     "100% = 1X · 150% = 1.5X · "
@@ -1962,7 +1583,6 @@ with st.container(key="recipe_detail"):
                 )
 
                 with st.form("custom_batch_form"):
-
                     percentage = st.text_input(
                         "Enter desired percentage",
                         placeholder="__%",
@@ -1975,27 +1595,17 @@ with st.container(key="recipe_detail"):
                     )
 
                 if submitted:
-
-                    error = set_custom_percent(
-                        percentage
-                    )
+                    error = set_custom_percent(percentage)
 
                     if error:
                         st.error(error)
-
                     else:
                         st.rerun()
 
-        # ==================================================
-        # 14 PRESET MULTIPLIERS
-        # ==================================================
+        # PRESET MULTIPLIERS
 
         for index, factor in enumerate(MULTIPLIERS):
-
-            # Index + 1 places presets after %.
-
             with cols[index + 1]:
-
                 st.button(
                     fmt_factor(factor),
                     key=f"mult_{index}",
@@ -2008,9 +1618,7 @@ with st.container(key="recipe_detail"):
                     st.session_state.custom_percentage is None
                     and st.session_state.multiplier == factor
                 ):
-                    highlight_multiplier(
-                        f"mult_{index}"
-                    )
+                    highlight_multiplier(f"mult_{index}")
 
     # ======================================================
     # CURRENT BATCH
@@ -2019,7 +1627,6 @@ with st.container(key="recipe_detail"):
     factor = st.session_state.multiplier
 
     if st.session_state.custom_percentage is not None:
-
         percentage_text = (
             f"{st.session_state.custom_percentage:g}%"
         )
@@ -2028,11 +1635,8 @@ with st.container(key="recipe_detail"):
             f"CURRENT BATCH: {percentage_text} "
             f"({factor:g}X)"
         )
-
     else:
-        batch_text = (
-            f"CURRENT BATCH: {factor:g}X"
-        )
+        batch_text = f"CURRENT BATCH: {factor:g}X"
 
     st.markdown(
         '<div class="current-batch">'
@@ -2042,7 +1646,7 @@ with st.container(key="recipe_detail"):
     )
 
     # ======================================================
-    # TWO COLUMNS
+    # TWO-COLUMN RECIPE LAYOUT
     # ======================================================
 
     left, right = st.columns(
@@ -2050,25 +1654,17 @@ with st.container(key="recipe_detail"):
         gap="large",
     )
 
-    # ======================================================
-    # LEFT - CONTAINER GUIDE AND PREPARATION
-    # ======================================================
+    # LEFT COLUMN
 
     with left:
-
-        # CONTAINER GUIDE
-
         if container_notes:
-
             container_html = "".join(
                 '<div class="container-guide-value">'
                 f'{escape(note)}'
                 '</div>'
                 for note in container_notes
             )
-
         else:
-
             container_html = (
                 '<div class="container-guide-value">'
                 'No container size specified'
@@ -2085,8 +1681,6 @@ with st.container(key="recipe_detail"):
             unsafe_allow_html=True,
         )
 
-        # PREPARATION HEADING
-
         st.markdown(
             f'<div class="section-title" '
             f'style="--category-accent:{color};">'
@@ -2095,15 +1689,8 @@ with st.container(key="recipe_detail"):
             unsafe_allow_html=True,
         )
 
-        # PREPARATION STEPS
-
         if recipe["steps"]:
-
-            for number, step in enumerate(
-                recipe["steps"],
-                1,
-            ):
-
+            for number, step in enumerate(recipe["steps"], 1):
                 html = (
                     '<div class="step-block">'
                     '<div class="step-number">'
@@ -2119,19 +1706,14 @@ with st.container(key="recipe_detail"):
                     html,
                     unsafe_allow_html=True,
                 )
-
         else:
-
             st.warning(
                 "Preparation steps have not been provided."
             )
 
-    # ======================================================
-    # RIGHT - RECIPE NAME AND INGREDIENTS
-    # ======================================================
+    # RIGHT COLUMN
 
     with right:
-
         st.markdown(
             f'<div class="recipe-card-heading" '
             f'style="--recipe-accent:{color};">'
@@ -2149,7 +1731,6 @@ with st.container(key="recipe_detail"):
         )
 
         for ingredient in recipe["ingredients"]:
-
             amount = format_amount(
                 ingredient["amount"],
                 ingredient["unit"],
@@ -2174,12 +1755,9 @@ with st.container(key="recipe_detail"):
                 unsafe_allow_html=True,
             )
 
-    # ======================================================
-    # GENERAL RECIPE NOTES
-    # ======================================================
+    # GENERAL NOTES
 
     if general_notes:
-
         notes_html = "".join(
             f'<div>{escape(note)}</div>'
             for note in general_notes
@@ -2205,16 +1783,13 @@ spacer, logout = st.columns(
 )
 
 with logout:
-
     if st.button(
         "Log Out",
         key="logout",
         use_container_width=True,
     ):
-
         st.session_state.authenticated = False
         st.session_state.recipe = None
         st.session_state.multiplier = 1.0
         st.session_state.custom_percentage = None
-
         st.rerun()
