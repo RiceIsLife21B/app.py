@@ -5,6 +5,8 @@ import re
 from decimal import Decimal, InvalidOperation
 from html import escape
 
+from remembered_sessions import COOKIE_NAME, TTL_SECONDS, RememberedSessions
+
 # ==========================================================
 # RICE IS LIFE - STAFF RECIPE BOOK
 # COMPLETE APP - LARGE MULTIPLIER LABEL FIX
@@ -721,8 +723,35 @@ def split_recipe_notes(notes):
 # APPLICATION STATE
 # ==========================================================
 
+@st.cache_resource(show_spinner=False)
+def remembered_sessions():
+    return RememberedSessions()
+
+
+remember_cookie = st.components.v2.component(
+    "omai_remember_cookie",
+    js="""
+    export default function ({ data, setTriggerValue }) {
+        const { name, token, maxAge } = data;
+        const saved = () => document.cookie.split('; ').includes(`${name}=${token}`);
+        try {
+            if (maxAge === 0 && !saved()) return;  // Preserve a newer token from another tab.
+            const value = maxAge > 0 ? token : '';
+            document.cookie = `${name}=${value}; Max-Age=${maxAge}; Path=/; Secure; SameSite=Lax`;
+            if (maxAge > 0 && !saved()) setTriggerValue('blocked', true);
+        } catch {
+            if (maxAge > 0) setTriggerValue('blocked', true);
+        }
+    }
+    """,
+)
+
+
 if "authenticated" not in st.session_state:
-    st.session_state.authenticated = False
+    # The cookie is a browser credential, not proof of login by itself.
+    token = st.context.cookies.get(COOKIE_NAME)
+    st.session_state.authenticated = remembered_sessions().is_valid(token)
+    st.session_state.remembered_token = token if st.session_state.authenticated else None
 
 if "category" not in st.session_state:
     st.session_state.category = SAUCE
@@ -1265,6 +1294,16 @@ div[class*="st-key-mult_"] button span {
 
 /* LOGIN */
 
+.login-error {
+    background: #2D1117;
+    border: 1px solid #A9454D;
+    border-radius: 9px;
+    color: #FF8088 !important;
+    font-weight: 600;
+    padding: .75rem 1rem;
+    text-align: center;
+}
+
 .login-heading {
     color: #FFFFFF !important;
     font: 700 24px Arial, sans-serif;
@@ -1440,6 +1479,13 @@ def highlight_multiplier(key):
 # PASSWORD PROTECTION
 # ==========================================================
 
+def show_login_error(message):
+    st.markdown(
+        f'<div class="login-error" role="alert">{escape(message)}</div>',
+        unsafe_allow_html=True,
+    )
+
+
 def login_screen():
     st.markdown(
         '<div class="brand-logo">riceislife</div>'
@@ -1463,20 +1509,76 @@ def login_screen():
             type="password",
             placeholder="Enter password",
         )
+        remember_device = st.checkbox(
+            "Remember this device",
+            help="Stay signed in for up to 24 hours, unless the app restarts.",
+        )
         submit = st.form_submit_button("Log In")
 
     if submit:
         if hmac.compare_digest(entered, STAFF_PASSWORD):
             st.session_state.authenticated = True
+            if remember_device:
+                token = remembered_sessions().issue()
+                st.session_state.remembered_token = token
+                st.session_state.remember_cookie_update = (token, TTL_SECONDS)
             st.rerun()
         else:
-            st.error("Incorrect password.")
+            show_login_error("Incorrect password.")
 
     st.stop()
 
 
+def end_login():
+    token = st.session_state.pop("remembered_token", None)
+    if token is not None:
+        remembered_sessions().revoke(token)
+        st.session_state.remember_cookie_update = (token, 0)
+    st.session_state.authenticated = False
+    st.session_state.recipe = None
+    st.session_state.multiplier = 1.0
+    st.session_state.custom_percentage = None
+    st.session_state.pop("remember_cookie_blocked", None)
+
+
+def remember_cookie_blocked():
+    remembered_sessions().revoke(st.session_state.pop("remembered_token", None))
+    st.session_state.remember_cookie_blocked = True
+
+
+# Recheck remembered logins so expired or revoked tokens lose access on rerun.
+active_token = st.session_state.get("remembered_token")
+if active_token is not None and not remembered_sessions().is_valid(active_token):
+    end_login()
+
+cookie_update = st.session_state.pop("remember_cookie_update", None)
+if cookie_update is not None:
+    token, max_age = cookie_update
+    remember_cookie(
+        data={"name": COOKIE_NAME, "token": token, "maxAge": max_age},
+        on_blocked_change=remember_cookie_blocked,
+    )
+
+if st.session_state.get("remember_cookie_blocked"):
+    show_login_error(
+        "This browser could not save the sign-in cookie. "
+        "Use HTTPS and allow cookies to stay signed in after a refresh."
+    )
+
 if not st.session_state.authenticated:
     login_screen()
+
+
+def render_logout():
+    st.divider()
+    _, logout = st.columns([6, 1], gap="small")
+    with logout:
+        st.button(
+            "Log Out",
+            key="logout",
+            use_container_width=True,
+            on_click=end_login,
+        )
 
 
 # ==========================================================
@@ -1541,6 +1643,7 @@ if st.session_state.recipe is None:
                         args=(name,),
                     )
 
+    render_logout()
     st.stop()
 
 
@@ -1775,21 +1878,4 @@ with st.container(key="recipe_detail"):
 # LOG OUT
 # ==========================================================
 
-st.divider()
-
-spacer, logout = st.columns(
-    [6, 1],
-    gap="small",
-)
-
-with logout:
-    if st.button(
-        "Log Out",
-        key="logout",
-        use_container_width=True,
-    ):
-        st.session_state.authenticated = False
-        st.session_state.recipe = None
-        st.session_state.multiplier = 1.0
-        st.session_state.custom_percentage = None
-        st.rerun()
+render_logout()
